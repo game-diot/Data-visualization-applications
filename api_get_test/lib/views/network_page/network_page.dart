@@ -30,11 +30,11 @@ class _network_page_state extends State<network_page> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "网络功能演示", 
+                  "网络功能演示",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 SizedBox(height: 20),
-                
+
                 // 网络连接测试
                 Card(
                   child: Padding(
@@ -48,19 +48,24 @@ class _network_page_state extends State<network_page> {
                         ),
                         SizedBox(height: 10),
                         ElevatedButton.icon(
-                          onPressed: apiService.isLoading ? null : () async {
-                            final isConnected = await apiService.testConnection();
-                            if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    isConnected ? '网络连接正常' : '网络连接失败',
-                                  ),
-                                  backgroundColor: isConnected ? Colors.green : Colors.red,
-                                ),
-                              );
-                            }
-                          },
+                          onPressed: apiService.isLoading
+                              ? null
+                              : () async {
+                                  final isConnected = await apiService
+                                      .testConnection();
+                                  if (mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          isConnected ? '网络连接正常' : '网络连接失败',
+                                        ),
+                                        backgroundColor: isConnected
+                                            ? Colors.green
+                                            : Colors.red,
+                                      ),
+                                    );
+                                  }
+                                },
                           icon: Icon(Icons.wifi),
                           label: Text('测试网络连接'),
                         ),
@@ -68,9 +73,9 @@ class _network_page_state extends State<network_page> {
                     ),
                   ),
                 ),
-                
+
                 SizedBox(height: 20),
-                
+
                 // GitHub用户查询
                 Card(
                   child: Padding(
@@ -102,18 +107,23 @@ class _network_page_state extends State<network_page> {
                                   ? null
                                   : () async {
                                       if (_usernameController.text.isNotEmpty) {
-                                        debugPrint('开始查询用户: ${_usernameController.text}');
-                                        final userInfo = await apiService.fetchUserInfo(
-                                          _usernameController.text.trim(),
+                                        debugPrint(
+                                          '开始查询用户: ${_usernameController.text}',
                                         );
+                                        final userInfo = await apiService
+                                            .fetchUserInfo(
+                                              _usernameController.text.trim(),
+                                            );
                                         debugPrint('查询结果: $userInfo');
-                                        
+
                                         if (userInfo != null) {
                                           networkState.setUserInfo(userInfo);
                                         } else {
                                           // 显示错误信息
                                           if (mounted) {
-                                            ScaffoldMessenger.of(context).showSnackBar(
+                                            ScaffoldMessenger.of(
+                                              context,
+                                            ).showSnackBar(
                                               SnackBar(
                                                 content: Text('用户不存在或网络错误'),
                                                 backgroundColor: Colors.orange,
@@ -135,7 +145,7 @@ class _network_page_state extends State<network_page> {
                             ),
                           ],
                         ),
-                        
+
                         // 显示错误信息
                         if (apiService.error != null)
                           Padding(
@@ -149,12 +159,18 @@ class _network_page_state extends State<network_page> {
                               ),
                               child: Row(
                                 children: [
-                                  Icon(Icons.error_outline, color: Colors.red, size: 16),
+                                  Icon(
+                                    Icons.error_outline,
+                                    color: Colors.red,
+                                    size: 16,
+                                  ),
                                   SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
                                       apiService.error!,
-                                      style: TextStyle(color: Colors.red.shade700),
+                                      style: TextStyle(
+                                        color: Colors.red.shade700,
+                                      ),
                                     ),
                                   ),
                                   TextButton(
@@ -173,7 +189,8 @@ class _network_page_state extends State<network_page> {
                 SizedBox(height: 20),
 
                 // 显示用户信息
-                if (networkState.userInfo != null && networkState.userInfo!.isNotEmpty)
+                if (networkState.userInfo != null &&
+                    networkState.userInfo!.isNotEmpty)
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
@@ -198,7 +215,7 @@ class _network_page_state extends State<network_page> {
                             ],
                           ),
                           SizedBox(height: 10),
-                          
+
                           // 头像
                           if (networkState.userInfo!['avatar_url'] != null)
                             Center(
@@ -207,31 +224,65 @@ class _network_page_state extends State<network_page> {
                                 backgroundImage: NetworkImage(
                                   networkState.userInfo!['avatar_url'],
                                 ),
-                                onBackgroundImageError: (exception, stackTrace) {
-                                  debugPrint('头像加载失败: $exception');
-                                },
-                                child: networkState.userInfo!['avatar_url'] == null 
+                                onBackgroundImageError:
+                                    (exception, stackTrace) {
+                                      debugPrint('头像加载失败: $exception');
+                                    },
+                                child:
+                                    networkState.userInfo!['avatar_url'] == null
                                     ? Icon(Icons.person, size: 40)
                                     : null,
                               ),
                             ),
-                          
+
                           SizedBox(height: 16),
-                          
+
                           // 用户信息
-                          _buildInfoRow(context, '用户名', networkState.userInfo!['login']),
-                          _buildInfoRow(context, '姓名', networkState.userInfo!['name']),
-                          _buildInfoRow(context, '公开仓库', '${networkState.userInfo!['public_repos'] ?? 0}'),
-                          _buildInfoRow(context, '关注者', '${networkState.userInfo!['followers'] ?? 0}'),
-                          _buildInfoRow(context, '关注中', '${networkState.userInfo!['following'] ?? 0}'),
-                          
-                          if (networkState.userInfo!['bio'] != null && 
-                              networkState.userInfo!['bio'].toString().isNotEmpty)
-                            _buildInfoRow(context, '简介', networkState.userInfo!['bio']),
-                          
+                          _buildInfoRow(
+                            context,
+                            '用户名',
+                            networkState.userInfo!['login'],
+                          ),
+                          _buildInfoRow(
+                            context,
+                            '姓名',
+                            networkState.userInfo!['name'],
+                          ),
+                          _buildInfoRow(
+                            context,
+                            '公开仓库',
+                            '${networkState.userInfo!['public_repos'] ?? 0}',
+                          ),
+                          _buildInfoRow(
+                            context,
+                            '关注者',
+                            '${networkState.userInfo!['followers'] ?? 0}',
+                          ),
+                          _buildInfoRow(
+                            context,
+                            '关注中',
+                            '${networkState.userInfo!['following'] ?? 0}',
+                          ),
+
+                          if (networkState.userInfo!['bio'] != null &&
+                              networkState.userInfo!['bio']
+                                  .toString()
+                                  .isNotEmpty)
+                            _buildInfoRow(
+                              context,
+                              '简介',
+                              networkState.userInfo!['bio'],
+                            ),
+
                           if (networkState.userInfo!['location'] != null &&
-                              networkState.userInfo!['location'].toString().isNotEmpty)
-                            _buildInfoRow(context, '位置', networkState.userInfo!['location']),
+                              networkState.userInfo!['location']
+                                  .toString()
+                                  .isNotEmpty)
+                            _buildInfoRow(
+                              context,
+                              '位置',
+                              networkState.userInfo!['location'],
+                            ),
                         ],
                       ),
                     ),
@@ -254,12 +305,15 @@ class _network_page_state extends State<network_page> {
                         Row(
                           children: [
                             ElevatedButton.icon(
-                              onPressed: apiService.isLoading ? null : () async {
-                                debugPrint('开始获取示例数据...');
-                                final quotes = await apiService.fetchRandomQuotes();
-                                debugPrint('获取到数据: ${quotes.length} 条');
-                                networkState.setQuotes(quotes);
-                              },
+                              onPressed: apiService.isLoading
+                                  ? null
+                                  : () async {
+                                      debugPrint('开始获取示例数据...');
+                                      final quotes = await apiService
+                                          .fetchRandomQuotes();
+                                      debugPrint('获取到数据: ${quotes.length} 条');
+                                      networkState.setQuotes(quotes);
+                                    },
                               icon: Icon(Icons.cloud_download),
                               label: Text('获取示例数据'),
                             ),
@@ -267,28 +321,25 @@ class _network_page_state extends State<network_page> {
                             TextButton.icon(
                               onPressed: () {
                                 // 直接使用离线数据
-                                final offlineQuotes = [
-                                  {
-                                    'content': '成功是99%的汗水加上1%的灵感',
-                                    'author': '托马斯·爱迪生',
-                                    'id': 1,
-                                  },
-                                  {
-                                    'content': '生活就像骑自行车，要保持平衡就得不断前进',
-                                    'author': '阿尔伯特·爱因斯坦',
-                                    'id': 2,
-                                  },
-                                  {
-                                    'content': '今天的努力，明天的辉煌',
-                                    'author': '励志格言',
-                                    'id': 3,
-                                  },
-                                ];
-                                networkState.setQuotes(offlineQuotes);
+
+                                networkState.setQuotes(
+                                  apiService.getOfflineQuotes(),
+                                );
                                 apiService.clearError();
                               },
                               icon: Icon(Icons.offline_pin),
                               label: Text('使用离线数据'),
+                            ),
+                            TextButton.icon(
+                              onPressed: () {
+                                final randomQuote = apiService.targetQuote();
+                                if (randomQuote != null) {
+                                  // 只显示一条，不清空缓存
+                                  networkState.setQuotes([randomQuote]);
+                                }
+                              },
+                              icon: Icon(Icons.shuffle),
+                              label: Text('随机来一条'),
                             ),
                           ],
                         ),
@@ -319,34 +370,44 @@ class _network_page_state extends State<network_page> {
                                   networkState.setQuotes([]);
                                 },
                                 icon: Icon(Icons.clear_all),
-                                tooltip: '清空数据',
+                                tooltip: '清空列表',
                               ),
                             ],
                           ),
                           SizedBox(height: 10),
-                          ...networkState.quotes.map((quote) => Card(
-                            margin: EdgeInsets.only(bottom: 8),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '"${quote['content']}"',
-                                    style: Theme.of(context).textTheme.bodyLarge,
-                                  ),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    '- ${quote['author']}',
-                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      fontStyle: FontStyle.italic,
-                                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+
+                          ...networkState.quotes.map(
+                            (quote) => Card(
+                              margin: EdgeInsets.only(bottom: 8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '"${quote['content']}"',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodyLarge,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 8),
+                                    Text(
+                                      '- ${quote['id']}',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodySmall,
+                                    ),
+                                    Text(
+                                      '- ${quote['body']}',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodySmall,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          )).toList(),
+                          ),
                         ],
                       ),
                     ),
@@ -369,9 +430,9 @@ class _network_page_state extends State<network_page> {
             width: 80,
             child: Text(
               '$label:',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(
