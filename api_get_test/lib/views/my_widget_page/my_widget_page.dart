@@ -26,7 +26,7 @@ class _my_widget_page_state extends State<my_widget_page> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.tertiaryContainer,
           border: Border.all(color: Colors.grey, width: 1),
         ),
 
