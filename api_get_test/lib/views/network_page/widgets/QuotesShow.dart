@@ -9,6 +9,7 @@ class QuotesShow extends StatelessWidget {
     return Consumer2<ApiService, NetworkDataState>(
       builder: (context, apiService, networkDataState, child) {
         return Card(
+          color: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(
@@ -33,6 +34,7 @@ class QuotesShow extends StatelessWidget {
                 SizedBox(height: 10),
                 ...networkDataState.quotes.map(
                   (quote) => Card(
+                    color: Colors.white,
                     margin: EdgeInsets.only(bottom: 8),
                     child: Padding(
                       padding: EdgeInsets.all(20),

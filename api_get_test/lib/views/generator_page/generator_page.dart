@@ -12,6 +12,7 @@ class generator_page extends StatelessWidget {
     var pair = wordState.current;
 
     return Center(
+      
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

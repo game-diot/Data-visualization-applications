@@ -9,14 +9,15 @@ import 'widgets/QuotesShow.dart';
 import 'widgets/SearchUser.dart';
 import 'widgets/GetQuotesCard.dart';
 
-
 class network_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer3<ApiService, NetworkDataState, WordGeneratorState>(
       builder: (context, apiService, networkState, wordState, child) {
         return Container(
-          color: Theme.of(context).colorScheme.tertiaryContainer,
+          height: 1000,
+ 
+
           child: Padding(
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(

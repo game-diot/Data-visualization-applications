@@ -12,14 +12,17 @@ class SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      
       child: NavigationRail(
+        backgroundColor: Colors.white,
         extended: MediaQuery.of(context).size.width >= 670,
         selectedIndex: selectedIndex,
         onDestinationSelected: onSelected,
+         indicatorColor: Colors.transparent, 
         destinations: [
           NavigationRailDestination(
             icon: Icon(Icons.home),
-            selectedIcon: Icon(Icons.home_filled),
+            selectedIcon: Icon(Icons.home_filled,),
             label: Text("生成器"),
           ),
           NavigationRailDestination(

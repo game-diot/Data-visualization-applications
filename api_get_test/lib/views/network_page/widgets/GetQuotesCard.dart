@@ -9,6 +9,7 @@ class GetQuotesCard extends StatelessWidget {
     return Consumer2<ApiService, NetworkDataState>(
       builder: (context, apiService, networkDataState, child) {
         return Card(
+          color: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Column(

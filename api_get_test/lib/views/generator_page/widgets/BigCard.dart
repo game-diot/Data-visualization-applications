@@ -8,10 +8,10 @@ class BigCard extends StatelessWidget {
   Widget build(BuildContext context){
     final theme = Theme.of(context);
     final style = theme.textTheme.displayMedium!.copyWith(
-      color:theme.colorScheme.onPrimary,);
+      color:Colors.amberAccent);
 
     return Card(
-      color:theme.colorScheme.primary,
+      color:Colors.black,
       elevation:8,
       child:Padding(
         padding:const EdgeInsets.all(20),
