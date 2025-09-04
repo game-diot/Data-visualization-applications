@@ -5,6 +5,7 @@ import '../network_page/network_page.dart';
 import '../history_page/history_page.dart';
 import '../my_widget_page/my_widget_page.dart';
 import 'widgets/SideBar.dart';
+import '../../test.dart';
 
 //根页面，Row布局，左侧为safe area固定侧边栏，右侧为expanded铺满的page页面，页面通过selectedIndex选择，这个是自带的状态管理statefulWidget
 class my_home_page extends StatefulWidget {
@@ -26,6 +27,8 @@ class _my_home_page extends State<my_home_page> {
         return history_page();
       case 4:
         return my_widget_page();
+      case 5:
+        return TestPage();
       default:
         return Center(child: Text("选中的$selectedIndex页面无内容"));
     }
@@ -39,7 +42,6 @@ class _my_home_page extends State<my_home_page> {
           Container(
             width: 150,
             child: SideBar(
-              
               selectedIndex: selectedIndex,
               onSelected: (index) {
                 setState(() {

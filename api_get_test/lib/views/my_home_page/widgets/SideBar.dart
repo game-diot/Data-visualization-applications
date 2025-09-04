@@ -13,8 +13,7 @@ class SideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: NavigationRail(
-
-        extended: MediaQuery.of(context).size.width >=670,
+        extended: MediaQuery.of(context).size.width >= 670,
         selectedIndex: selectedIndex,
         onDestinationSelected: onSelected,
         destinations: [
@@ -42,6 +41,11 @@ class SideBar extends StatelessWidget {
             icon: Icon(Icons.book),
             selectedIcon: Icon(Icons.book_online),
             label: Text("组件"),
+          ),
+          NavigationRailDestination(
+            icon: Icon(Icons.abc_outlined),
+            selectedIcon: Icon(Icons.abc_rounded),
+            label: Text("test"),
           ),
         ],
       ),
