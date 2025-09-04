@@ -8,7 +8,7 @@ class TestNetWork extends StatelessWidget {
     return Consumer<ApiService>(
       builder: (context, apiService, child) {
         return Card(
-          color: Colors.white,
+     
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Column(

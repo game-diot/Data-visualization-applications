@@ -14,7 +14,7 @@ class SideBar extends StatelessWidget {
     return SafeArea(
       
       child: NavigationRail(
-        backgroundColor: Colors.white,
+  
         extended: MediaQuery.of(context).size.width >= 670,
         selectedIndex: selectedIndex,
         onDestinationSelected: onSelected,

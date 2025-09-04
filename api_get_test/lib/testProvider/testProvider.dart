@@ -48,4 +48,6 @@ class WidgetThemeProvider with ChangeNotifier {
     final group = _themes[_currentType]!;
     return mode == ProjectThemeMode.dark?group.dark:group.light;
   }
+
+  
 }

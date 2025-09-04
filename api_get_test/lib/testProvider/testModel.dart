@@ -15,6 +15,19 @@ class WidgetTheme {
     required this.background,
     required this.text,
   });
+   ColorScheme toColorScheme(Brightness brightness) {
+    return ColorScheme(
+      brightness: brightness,
+      primary: primary,
+      onPrimary: text,
+      secondary: primary,
+      onSecondary: text,
+      surface: background,
+      onSurface: text,
+      error: Colors.red,
+      onError: Colors.white,
+    );
+  }
 }
 
 class WidgetThemeGroup {

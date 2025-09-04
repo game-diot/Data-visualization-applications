@@ -25,7 +25,7 @@ class _my_widget_page_state extends State<my_widget_page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+
         child: Padding(
           padding: EdgeInsets.all(20),
           child: ListView(

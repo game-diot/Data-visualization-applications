@@ -15,7 +15,7 @@ class _UserInfoCard extends State<UserInfoCard> {
     return Consumer<NetworkDataState>(
       builder: (context, networkDataState, child) {
         return Card(
-          color: Colors.white,
+   
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Column(

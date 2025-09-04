@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'views/my_home_page/my_home_page.dart';
-import 'providers/word_generator_state.dart';
-import 'networks/network_data_state.dart';
-import 'networks/api_service_state.dart';
 import 'testProvider/testProvider.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => WordGeneratorState()),
-        ChangeNotifierProvider(create: (context) => ApiService()),
-        ChangeNotifierProvider(create: (context) => NetworkDataState()),
-        ChangeNotifierProvider(create:(context)=>WidgetThemeProvider()),
-        ChangeNotifierProvider(create: (context)=>ProjectThemeProvider())
-      ],
-      child: MaterialApp(
-        title: 'demo',
-        theme: ThemeData(
+    // 这里可以安全访问 Provider
+    final projectTheme = context.watch<ProjectThemeProvider>();
+    final widgetThemeProvider = context.watch<WidgetThemeProvider>();
+    final widgetTheme = widgetThemeProvider.getCurrentTheme(projectTheme.mode);
 
-        ),
-        home: my_home_page(),
+    return MaterialApp(
+      title: 'demo',
+      theme: ThemeData(
+        colorScheme: widgetTheme.toColorScheme(Brightness.light),
       ),
+      home: my_home_page(),
     );
   }
 }

@@ -41,7 +41,6 @@ class _my_home_page extends State<my_home_page> {
       body: Row(
         children: [
           Container(
-            color: Colors.white,
             width: 150,
             child: SideBar(
               selectedIndex: selectedIndex,
@@ -55,7 +54,7 @@ class _my_home_page extends State<my_home_page> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+   
                 border: Border.all(color: Colors.grey.shade100, width: 2),
               ),
               child: getPage(),
