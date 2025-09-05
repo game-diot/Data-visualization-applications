@@ -1,7 +1,7 @@
 import 'package:api_get_test/views/network_page/widgets/UserInfoCard.dart';
 import 'package:flutter/material.dart';
-import '../../networks/api_service_state.dart';
-import '../../networks/network_data_state.dart';
+import '../../providers/api_service_state.dart';
+import '../../providers/network_data_state.dart';
 import '../../providers/word_generator_state.dart';
 import 'package:provider/provider.dart';
 import 'widgets/TestNetworkCard.dart';

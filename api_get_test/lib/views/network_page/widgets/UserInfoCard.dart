@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../networks/network_data_state.dart';
+import '../../../providers/network_data_state.dart';
 import 'package:provider/provider.dart';
 import 'InfoRow.dart';
 

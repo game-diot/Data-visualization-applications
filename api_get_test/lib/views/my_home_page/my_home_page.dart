@@ -1,3 +1,4 @@
+import 'package:api_get_test/views/aaaNetwork_page/testnetwrok_page.dart';
 import 'package:flutter/material.dart';
 
 import '../favorites_page/favorites_page.dart';
@@ -6,8 +7,9 @@ import '../network_page/network_page.dart';
 import '../history_page/history_page.dart';
 import '../my_widget_page/my_widget_page.dart';
 import 'widgets/SideBar.dart';
-import '../../test.dart';
-
+import '../text_page/test.dart';
+import '../login_page/login.dart';
+import '../card_scroll_page/card_scroll_page.dart';
 //根页面，Row布局，左侧为safe area固定侧边栏，右侧为expanded铺满的page页面，页面通过selectedIndex选择，这个是自带的状态管理statefulWidget
 class my_home_page extends StatefulWidget {
   @override
@@ -30,6 +32,12 @@ class _my_home_page extends State<my_home_page> {
         return my_widget_page();
       case 5:
         return TestPage();
+      case 6:
+      return LoginPage();
+      case 7:
+      return testnetwork_page();
+      case 8:
+      return card_scroll_page();
       default:
         return Center(child: Text("选中的$selectedIndex页面无内容"));
     }

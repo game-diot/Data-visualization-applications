@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'testProvider/testModel.dart';
-import 'testProvider/testProvider.dart';
+import '../../testProvider/testModel.dart';
+import '../../testProvider/testProvider.dart';
 import 'package:provider/provider.dart';
 
 class TestPage extends StatefulWidget {

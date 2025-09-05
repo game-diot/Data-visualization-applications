@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../networks/api_service_state.dart';
+import '../../../providers/api_service_state.dart';
 import 'package:provider/provider.dart';
 
 class TestNetWork extends StatelessWidget {

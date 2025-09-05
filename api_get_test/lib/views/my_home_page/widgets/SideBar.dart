@@ -50,6 +50,21 @@ class SideBar extends StatelessWidget {
             selectedIcon: Icon(Icons.abc_rounded),
             label: Text("test"),
           ),
+           NavigationRailDestination(
+            icon: Icon(Icons.zoom_out),
+            selectedIcon: Icon(Icons.zoom_in,),
+            label: Text("Login"),
+          ),
+           NavigationRailDestination(
+            icon: Icon(Icons.network_cell_rounded),
+            selectedIcon: Icon(Icons.network_cell_outlined,),
+            label: Text("Network"),
+          ),
+             NavigationRailDestination(
+            icon: Icon(Icons.account_tree_outlined),
+            selectedIcon: Icon(Icons.account_tree,),
+            label: Text("scroll"),
+          ),
         ],
       ),
     );

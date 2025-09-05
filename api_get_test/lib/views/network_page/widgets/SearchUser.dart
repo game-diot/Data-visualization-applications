@@ -1,7 +1,7 @@
 // ignore_for_file: override_on_non_overriding_member
 
-import 'package:api_get_test/networks/api_service_state.dart';
-import 'package:api_get_test/networks/network_data_state.dart';
+import 'package:api_get_test/providers/api_service_state.dart';
+import 'package:api_get_test/providers/network_data_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
