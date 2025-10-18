@@ -1,0 +1,14 @@
+import express from "express";
+import { fileController } from "../controllers/files.controller.js";
+import { upload } from "../middleware/upload.middleware.js";
+// import { validateFile } from "../../../app/middleware/validation.middleware.js";
+const fileRouter = express.Router();
+// fileRouter.post("/", validateFile, fileController.createFile);
+fileRouter.post("/", fileController.createFile);
+fileRouter.get("/", fileController.getAllFiles);
+fileRouter.get("/:id", fileController.getFileById);
+fileRouter.put("/:id", fileController.updateFile);
+fileRouter.delete("/:id", fileController.deleteFile);
+// fileRouter.post("/upload", fileController.uploadFile);
+fileRouter.post("/upload", upload.single("file"), fileController.uploadFile);
+export default fileRouter;

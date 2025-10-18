@@ -1,0 +1,5 @@
+[2025-10-16 17:22:22] info: POST /api/files/upload 400 49 - 5.184 ms
+[2025-10-16 17:28:28] error: POST /api/files/upload - Unexpected field
+[2025-10-16 17:28:28] info: POST /api/files/upload 200 1252 - 17.253 ms
+[2025-10-16 17:29:40] info: POST /api/files/upload 200 747 - 24.970 ms
+[2025-10-16 17:30:19] info: GET /api/files/ 200 1729 - 11.232 ms
