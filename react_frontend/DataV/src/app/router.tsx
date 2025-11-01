@@ -1,15 +1,19 @@
 // import { lazy, Suspense } from 'react';
 import { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ProtectedRoute } from './components/ProtectedRoute';
+// import { ProtectedRoute } from './components/ProtectedRoute';
 import { Spin } from 'antd';
 import { lazyLoad } from '@/shared/utils/lazyLoad';
-const HomePageLazy = lazyLoad(() => import('@/pages/home/HomePage'), 'HomePage');
+// const HomePageLazy = lazyLoad(() => import('@/pages/home/HomePage'), 'HomePage');
 // const UploadPageLazy = lazyLoad(() => import('@/pages/upload'), 'UploadPage');
 // const LoginPageLazy = lazyLoad(() => import('@/pages/login'), 'LoginPage');
 const NotFoundLazy = lazyLoad(() => import('@/pages/error/404'), 'NotFound');
 const ForibbdenLazy = lazyLoad(() => import('@/pages/error/403'), 'Foribbden');
 const TestCSSLazy = lazyLoad(() => import('@/pages/testCSS/index'), 'TestCSS');
+const DataImportPageLazy = lazyLoad(
+	() => import('@/features/data-import/pages/DataImportPage'),
+	'DataImportPage',
+);
 export const AppRouter = () => {
 	return (
 		<Router>
@@ -18,9 +22,9 @@ export const AppRouter = () => {
 					<Route
 						path="/"
 						element={
-							<ProtectedRoute>
-								<HomePageLazy />
-							</ProtectedRoute>
+							// <ProtectedRoute>
+							<DataImportPageLazy />
+							// </ProtectedRoute>
 						}
 					></Route>
 					<Route path="/login" element={<TestCSSLazy />}></Route>

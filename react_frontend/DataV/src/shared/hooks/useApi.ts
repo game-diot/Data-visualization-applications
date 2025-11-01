@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import apiClient from '@/shared/utils/apiClient.ts';
+import apiClient from '@/api/mainClient';
 
 export function useApi<T>(endpoint: string, method: 'get' | 'post' | 'put' | 'delete' = 'get') {
 	const [loading, setLoading] = useState(false);
 
-	const request = async (payload?: any) => {
+	const request = async (payload?: unknown) => {
 		setLoading(true);
 		try {
 			const res =

@@ -36,4 +36,9 @@ export class Logger {
 	// 		body:JSON.stringify(data),
 	// 	}).catch(()=>{});
 	// }
+
+	static performance(label: string, start: number) {
+		const duration = performance.now() - start;
+		console.log(`[PERF] ${label}: ${duration.toFixed(2)}ms`);
+	}
 }

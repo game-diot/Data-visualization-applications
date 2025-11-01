@@ -11,7 +11,7 @@ import { NODE_API_BASE_URL } from '@/shared/constants/api'; // 引入 Node API B
 import { handleError } from '@/shared/utils/errorHandle'; // 引入统一错误处理
 import { Logger } from '@/shared/utils/logger'; // 引入 Logger
 
-const uploadClient: AxiosInstance = axios.create({
+export const uploadClient: AxiosInstance = axios.create({
 	baseURL: NODE_API_BASE_URL,
 	timeout: 30000, // 上传可能耗时较长，增加超时时间
 	headers: {
@@ -105,5 +105,3 @@ export const uploadWithProgress = async <T>(
 	const response = await uploadClient.post<T>(url, data, config);
 	return response.data;
 };
-
-export default uploadClient;
