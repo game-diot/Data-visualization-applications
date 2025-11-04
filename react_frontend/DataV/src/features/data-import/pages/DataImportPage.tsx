@@ -3,13 +3,16 @@ import { useState } from 'react';
 import { UploadZone } from '../components/UploadZone';
 import { useFileUpload } from '../hooks/useFileUpload';
 import { DataPreview } from '../components/DataPreview';
-import { useImportHistory } from '../hooks/useImportHistory';
+import { useUploadHistoryStore } from '../hooks/useUploadHistoryStore';
 import { ImportRecordCard } from '../components/ImportRecordCard';
 
 export function DataImportPage() {
 	const [activeKey, setActiveKey] = useState('upload');
 	const { parsedData, reset, loading, handleFileSelect, handleUploadToServer } = useFileUpload();
-	const { history, handleDelete } = useImportHistory();
+
+	const history = useUploadHistoryStore((s) => s.history);
+	const deleteRecord = useUploadHistoryStore((s) => s.deleteRecord);
+
 	return (
 		<div>
 			<header className="mb-6">
@@ -55,7 +58,13 @@ export function DataImportPage() {
 						<p>暂无上传记录</p>
 					) : (
 						history.map((record) => (
-							<ImportRecordCard key={record.id} record={record} onDelete={handleDelete} />
+							<ImportRecordCard
+								key={record._id}
+								record={record}
+								onDelete={() => {
+									deleteRecord(record._id);
+								}}
+							/>
 						))
 					)}
 				</div>

@@ -6,9 +6,9 @@
  * @param {any} data - 可选，响应数据
  */
 
-export const response = (res, statusCode, message, data = null) => {
-  const status = statusCode >= 400 ? "error" : "success";
-  const responseBody = { status, message };
+export const response = (res, statusCode, msg, data = null) => {
+  const code = statusCode;
+  const responseBody = { code, msg };
   if (data !== null) {
     responseBody.data = data;
   }

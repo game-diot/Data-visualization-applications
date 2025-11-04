@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Table, Button, Empty } from 'antd';
 import { type ColumnsType } from 'antd/es/table';
-// import { ImportState } from '../types/index';
 
+//数据预览组件props
 interface DataPreviewProps {
 	parseData: Record<string, unknown>[];
 	onClear: () => void;

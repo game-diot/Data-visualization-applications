@@ -1,11 +1,4 @@
-//上传文件元信息
-export interface FileMeta {
-	name: string;
-	size: number;
-	type: string;
-	lastModified: number;
-}
-//数据集基础信息
+//数据集预览数据结构
 export interface DatasetInfo {
 	id: string;
 	name: string;
@@ -20,4 +13,21 @@ export interface ImportState {
 	datasetInfo: DatasetInfo | null;
 	loading: boolean;
 	error?: string;
+}
+//上传文件接口返回数据结构
+export interface FileUploadResponse {
+	originName: string;
+	storedName: string;
+	path: string;
+	size: number;
+	type: string;
+	format: string;
+	uploadTime: string;
+	status: string;
+	description: string;
+	tags: string[];
+	_id: string;
+	createdAt: string;
+	updatedAt: string;
+	__v: number;
 }

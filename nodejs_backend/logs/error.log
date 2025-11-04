@@ -1,1 +1,10 @@
 [2025-10-16 17:28:28] error: POST /api/files/upload - Unexpected field
+[2025-11-02 14:15:43] error: POST /api/files/ - E11000 duplicate key error collection: data_v_platform.files index: storedName_1 dup key: { storedName: "apifoxtest_20251014.json" }
+[2025-11-02 14:34:04] error: POST /api/files/upload - code is not defined
+[2025-11-02 14:35:07] error: POST /api/files/upload - message is not defined
+[2025-11-02 14:55:28] error: GET /api/files/upload - undefined
+[2025-11-03 19:53:29] error: GET /api/files/ - Invalid status code: 1. Status code must be greater than 99 and less than 1000.
+[2025-11-03 19:55:02] error: GET /api/files/ - Invalid status code: 1. Status code must be greater than 99 and less than 1000.
+[2025-11-03 19:56:42] error: GET /api/files/ - Invalid status code: 1
+[2025-11-03 19:57:15] error: GET /api/files/ - Invalid status code: 1
+[2025-11-03 19:57:19] error: GET /api/files/ - Invalid status code: 1

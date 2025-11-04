@@ -33,7 +33,7 @@ export const fileController = {
     try {
       const data = req.body;
       const newFile = await fileService.createFile(data);
-      return response(res, 201, "创建文件成功。", newFile);
+      return response(res, 200, "创建文件成功。", newFile);
     } catch (error) {
       next(error);
     }

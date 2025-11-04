@@ -6,9 +6,7 @@ import { apiRouter } from "./routes/index.js";
 import { errorHandler } from "./middleware/error.middleware.js";
 import { requestLogger } from "./middleware/logger.middleware.js";
 
-
 const app = express();
-
 
 const env = process.env.NODE_ENV || "development";
 dotenv.config({
@@ -16,16 +14,25 @@ dotenv.config({
 });
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({
+app.use(
+  cors({
     origin: "http://localhost:5173",
-    method: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type","Authorization"],
-}))
-
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Authorization",
+    ],
+    credentials: true,
+    preflightContinue: false, // 自动处理 OPTIONS
+  })
+);
 
 app.use(requestLogger);
 
 app.use(express.json());
+
 app.use("/api", apiRouter);
 
 app.use(errorHandler);

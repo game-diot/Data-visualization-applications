@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
-import type { DatasetInfo } from '../types/index';
+import { type DatasetInfo } from '../types/index';
 
 export async function parseFile(file: File): Promise<{
 	data: Record<string, unknown>[];
