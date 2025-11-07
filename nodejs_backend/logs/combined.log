@@ -97,3 +97,13 @@
 [2025-11-04 17:15:48] info: POST /api/files/upload 200 513 - 9.188 ms
 [2025-11-04 17:18:33] info: POST /api/files/upload 200 484 - 39.988 ms
 [2025-11-04 17:19:25] info: POST /api/files/upload 200 523 - 72.435 ms
+[2025-11-07 21:05:33] info: POST /api/files/upload 200 235 - 123.520 ms
+[2025-11-07 21:15:20] info: POST /api/files/upload 200 235 - 6.665 ms
+[2025-11-07 21:18:00] info: POST /api/files/upload 200 235 - 7.031 ms
+[2025-11-07 21:28:50] info: POST /api/files/upload 200 235 - 7.922 ms
+[2025-11-07 21:28:53] info: POST /api/files/upload 200 235 - 8.338 ms
+[2025-11-07 21:29:09] info: POST /api/files/upload 200 235 - 8.926 ms
+[2025-11-07 21:36:46] info: POST /api/files/upload 200 239 - 68.444 ms
+[2025-11-07 21:39:04] info: POST /api/files/upload 200 235 - 7.597 ms
+[2025-11-07 21:42:06] info: POST /api/files/upload 200 227 - 30.630 ms
+[2025-11-07 21:42:37] info: GET /api/files/ 200 4678 - 85.201 ms

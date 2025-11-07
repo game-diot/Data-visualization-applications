@@ -1,6 +1,6 @@
 import { apiClient } from '@/api/index';
-//上传文件接口，调用axios实例，返回响应
-export async function uploadFileToServer(file: File) {
+
+export const uploadFileToServer = async (file: File, onProgress?: (progress: number) => void) => {
 	try {
 		const formData = new FormData();
 		formData.append('file', file);
@@ -8,6 +8,12 @@ export async function uploadFileToServer(file: File) {
 		const response = await apiClient.post('/files/upload', formData, {
 			headers: { 'Content-type': 'multipart/form-data' },
 			responseType: 'json',
+			onUploadProgress: (e) => {
+				if (onProgress && e.total) {
+					const progress = Math.round((e.loaded / e.total) * 100);
+					onProgress(progress);
+				}
+			},
 		});
 
 		return response;
@@ -15,4 +21,4 @@ export async function uploadFileToServer(file: File) {
 		console.error(`[uploadFileToServer]${error}`);
 		throw error;
 	}
-}
+};

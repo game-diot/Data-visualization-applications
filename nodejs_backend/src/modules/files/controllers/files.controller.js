@@ -22,7 +22,20 @@ export const fileController = {
         };
 
         const savedFile = await fileService.createFile(filedData);
-        return response(res, 200, "文件上传成功。", savedFile);
+        // 构造前端响应对象
+        const responseData = {
+          meta: {
+            id: savedFile.id,
+            name: savedFile.originName,
+            size: savedFile.size,
+            type: savedFile.type,
+            totalRows: 0, // 解析后可更新
+            totalCols: 0, // 解析后可更新
+            uploadTime: savedFile.uploadTime.toISOString(),
+          },
+          previewRows: [], // 可以后续调用解析接口获取前10行
+        };
+        return response(res, 200, "文件上传成功。", responseData);
       }
     } catch (error) {
       next(error);

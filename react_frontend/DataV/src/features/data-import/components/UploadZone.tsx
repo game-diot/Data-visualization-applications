@@ -1,20 +1,26 @@
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { UploadOutlined } from '@ant-design/icons';
 import { message } from 'antd';
+import { useFileUpload } from '../store/useFileUpload'; // ✅ 根据你的路径调整
 
-interface UploadZoneProps {
-	onFileSelect: (file: File) => void;
-	loading?: boolean;
-}
+export const FileDropzone: React.FC = () => {
+	const { setFile } = useFileUpload();
 
-export function UploadZone({ onFileSelect, loading = false }: UploadZoneProps) {
-	const onDrop = (acceptedFiles: File[]) => {
-		if (acceptedFiles.length === 0) {
-			message.warning('未选择文件或格式不支持');
-			return;
-		}
-		onFileSelect(acceptedFiles[0]);
-	};
+	const onDrop = useCallback(
+		(acceptedFiles: File[]) => {
+			if (acceptedFiles.length === 0) {
+				message.warning('未选择文件或格式不支持');
+				return;
+			}
+
+			const file = acceptedFiles[0];
+			message.success(`文件已选择：${file.name}`);
+			setFile(file);
+			console.log('选择文件:', file);
+		},
+		[setFile],
+	);
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		onDrop,
@@ -29,10 +35,8 @@ export function UploadZone({ onFileSelect, loading = false }: UploadZoneProps) {
 	return (
 		<div
 			{...getRootProps()}
-			className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition
-        ${isDragActive ? 'border-blue-400 bg-blue-50' : 'border-gray-300 bg-white'}
-      `}
-			aria-busy={loading}
+			className={`border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition 
+        ${isDragActive ? 'border-blue-400 bg-blue-50' : 'border-gray-300 bg-white'}`}
 		>
 			<input {...getInputProps()} />
 			<UploadOutlined className="text-3xl text-gray-500 mb-3" />
@@ -42,4 +46,4 @@ export function UploadZone({ onFileSelect, loading = false }: UploadZoneProps) {
 			<p className="text-xs text-gray-400 mt-1">支持 CSV / Excel 文件</p>
 		</div>
 	);
-}
+};

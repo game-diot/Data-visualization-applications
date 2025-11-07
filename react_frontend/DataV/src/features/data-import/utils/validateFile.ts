@@ -1,16 +1,18 @@
-const ALLOWED_TYPES = [
-	'text/csv',
-	'application/vnd.ms-excel',
-	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-];
-const MAX_SIZE_MB = 10;
+export const validateFile = (file: File): { valid: boolean; message?: string } => {
+	const allowedTypes = [
+		'text/csv',
+		'application/vnd.ms-excel',
+		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	];
+	const maxSize = 10 * 1024 * 1024; // 10MB
 
-export function validateFile(file: File): { success: boolean; message?: string } {
-	if (!ALLOWED_TYPES.includes(file.type)) {
-		return { success: false, message: '文件类型不支持，仅支持 CSV / Excel' };
+	if (!allowedTypes.includes(file.type)) {
+		return { valid: false, message: '仅支持 CSV 或 Excel 文件格式' };
 	}
-	if (file.size > MAX_SIZE_MB * 1024 * 1024) {
-		return { success: false, message: `文件不能超过 ${MAX_SIZE_MB}MB` };
+
+	if (file.size > maxSize) {
+		return { valid: false, message: '文件过大（超过10MB），请重新选择' };
 	}
-	return { success: true };
-}
+
+	return { valid: true };
+};
