@@ -27,16 +27,8 @@ export const AppRouter = () => {
 							// </ProtectedRoute>
 						}
 					></Route>
+					<Route path="/files/upload" element={<DataImportPageLazy />}></Route>
 					<Route path="/login" element={<TestCSSLazy />}></Route>
-					{/* <Route path="/login" element={<LoginPage />}></Route>
-					<Route
-						path="/upload"
-						element={
-							<ProtectedRoute>
-								<UploadPage />
-							</ProtectedRoute>
-						}
-					></Route> */}
 					<Route path="/403" element={<ForibbdenLazy />}></Route>
 					<Route path="*" element={<NotFoundLazy />}></Route>
 				</Routes>

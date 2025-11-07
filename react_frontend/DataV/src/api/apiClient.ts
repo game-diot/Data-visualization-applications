@@ -104,7 +104,7 @@ export function createApiClient(config: ClientConfig): AxiosInstance {
 					case 401:
 						message.error('登录已过期，请重新登录');
 						useAppStore.getState().setToken(null);
-						window.location.href = '/login';
+						// window.location.href = '/login';
 						break;
 					case 403:
 						message.error('无权限访问');
