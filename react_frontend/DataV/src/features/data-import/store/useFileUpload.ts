@@ -40,19 +40,18 @@ export const useFileUpload = create<FileUploadState>((set) => ({
 			if (file.name.endsWith('.csv')) parsed = await parseCSV(file);
 			else parsed = await parseExcel(file);
 
-			const datasetInfo = {
-				id: crypto.randomUUID(),
-				name: file.name,
-				size: file.size,
-				type: file.type,
-				columnCount: parsed.headers.length,
-				rowCount: parsed.rows.length,
-				uploadTime: new Date().toISOString(),
-			};
+			const now = new Date().toISOString();
 
 			set({
 				previewData: { headers: parsed.headers, rows: parsed.rows },
-				datasetInfo,
+				datasetInfo: {
+					id: crypto.randomUUID(),
+					name: file.name,
+					size: file.size,
+					type: file.type,
+					uploadTime: now,
+					stage: 'parsed', // 当前阶段
+				},
 				status: 'parsed',
 			});
 		} catch (error) {

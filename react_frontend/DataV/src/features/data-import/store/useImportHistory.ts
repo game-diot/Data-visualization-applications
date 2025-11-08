@@ -1,17 +1,14 @@
 // src/store/useImportHistory.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { FileMeta } from '../types/dataImportTypes';
 
-export type ImportStage = 'uploaded' | 'cleaning' | 'preprocessing' | 'analyzing' | 'result';
+export type ImportStage = 'uploaded' | 'parsed' | 'processed' | 'result';
 
-export interface HistoryRecord {
-	id: string;
-	name: string;
-	size: number;
-	type: string;
-	uploadTime: string; // ISO string
-	stage: ImportStage;
-}
+export type HistoryRecord = Pick<
+	FileMeta,
+	'id' | 'name' | 'size' | 'type' | 'uploadTime' | 'stage'
+>;
 
 interface ImportHistoryState {
 	history: HistoryRecord[];
@@ -28,7 +25,7 @@ const isValidHistoryRecord = (obj: unknown): obj is HistoryRecord => {
 	const record = obj as Record<string, unknown>;
 	const { id, name, size, type, uploadTime, stage } = record;
 
-	const validStage = ['uploaded', 'cleaning', 'preprocessing', 'analyzing', 'result'];
+	const validStage = ['uploaded', 'parsed', 'processed', 'result'];
 
 	return (
 		typeof id === 'string' &&

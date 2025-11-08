@@ -6,13 +6,13 @@ export const navigateToStage = (navigate: (path: string) => void, file: HistoryR
 		case 'uploaded':
 			navigate(`/files/${file.id}/cleaning`);
 			break;
-		case 'cleaning':
-			navigate(`/files/${file.id}/preprocessing`);
-			break;
-		case 'preprocessing':
-			navigate(`/files/${file.id}/analyzing`);
-			break;
-		case 'analyzing':
+		// case 'cleaning':
+		// 	navigate(`/files/${file.id}/preprocessing`);
+		// 	break;
+		// case 'preprocessing':
+		// 	navigate(`/files/${file.id}/analyzing`);
+		// 	break;
+		// case 'analyzing':
 		case 'result':
 			navigate(`/files/${file.id}/result`);
 			break;

@@ -2,6 +2,18 @@
 import { useNavigate } from 'react-router-dom';
 import { useImportHistory } from '../store/useImportHistory';
 import { navigateToStage } from '../utils/navigateToStorage';
+
+const translateStage = (stage: string) => {
+	const map: Record<string, string> = {
+		uploaded: '上传完成',
+		cleaning: '清洗中',
+		preprocessing: '预处理',
+		analyzing: '分析中',
+		result: '结果展示',
+	};
+	return map[stage] || stage;
+};
+
 export const UploadHistoryTimeline = () => {
 	const navigate = useNavigate();
 	const { history, removeHistoryRecord } = useImportHistory();
@@ -43,15 +55,4 @@ export const UploadHistoryTimeline = () => {
 				))}
 		</div>
 	);
-};
-
-const translateStage = (stage: string) => {
-	const map: Record<string, string> = {
-		uploaded: '上传完成',
-		cleaning: '清洗中',
-		preprocessing: '预处理',
-		analyzing: '分析中',
-		result: '结果展示',
-	};
-	return map[stage] || stage;
 };

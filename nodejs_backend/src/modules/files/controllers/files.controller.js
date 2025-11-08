@@ -4,39 +4,32 @@ import { response } from "../../../shared/utils/response.util.js";
 export const fileController = {
   async uploadFile(req, res, next) {
     try {
-      if (!req.file) {
-        return response(res, 400, "未检测到文件");
-      } else {
-        const file = req.file;
-        const filedData = {
-          originName: file.originalname,
-          storedName: file.filename,
-          path: file.path.replace(/\\/g, "/"), // 兼容Windows路径
-          size: file.size,
-          type: file.mimetype.split("/")[0], // 比如 "text"、"application"
-          format: file.mimetype, // 比如 "text/csv"
-          uploadTime: new Date(),
-          status: "uploaded",
-          description: req.body.description || "",
-          tags: req.body.tags ? req.body.tags.split(",") : [],
-        };
+      if (!req.file) return response(res, 400, "未检测到文件");
 
-        const savedFile = await fileService.createFile(filedData);
-        // 构造前端响应对象
-        const responseData = {
-          meta: {
-            id: savedFile.id,
-            name: savedFile.originName,
-            size: savedFile.size,
-            type: savedFile.type,
-            totalRows: 0, // 解析后可更新
-            totalCols: 0, // 解析后可更新
-            uploadTime: savedFile.uploadTime.toISOString(),
-          },
-          previewRows: [], // 可以后续调用解析接口获取前10行
-        };
-        return response(res, 200, "文件上传成功。", responseData);
-      }
+      const file = req.file;
+
+      const fileData = {
+        name: file.originalname,
+        storedName: file.filename,
+        path: file.path.replace(/\\/g, "/"),
+        size: file.size,
+        type: file.mimetype.split("/")[0],
+        totalRows: 0,
+        totalCols: 0,
+        uploadTime: new Date(),
+        stage: "uploaded",
+      };
+
+      const savedFile = await fileService.createFile(fileData);
+
+      // 直接用保存的对象作为响应的 meta
+      return response(res, 200, "文件上传成功", {
+        meta: {
+          ...fileData,
+          id: savedFile._id.toString(),
+        },
+        previewRows: [],
+      });
     } catch (error) {
       next(error);
     }

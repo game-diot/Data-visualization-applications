@@ -2,26 +2,19 @@ import mongoose from "mongoose";
 
 const fileSchema = new mongoose.Schema(
   {
-    originName: { type: String, required: true },
-    storedName: { type: String, required: true, unique: true },
+    name: { type: String, required: true }, // 原始文件名
+    storedName: { type: String, required: true, unique: true }, // 服务器文件名
     path: { type: String, required: true },
     size: { type: Number, required: true },
     type: { type: String },
-    format: { type: String },
+    totalRows: { type: Number, default: 0 },
+    totalCols: { type: Number, default: 0 },
     uploadTime: { type: Date, default: Date.now },
-    status: {
+    stage: {
       type: String,
       enum: ["uploaded", "parsed", "processed"],
       default: "uploaded",
     },
-    description: {
-      type: String,
-    },
-    tags: [
-      {
-        type: String,
-      },
-    ],
   },
   { timestamps: true }
 );

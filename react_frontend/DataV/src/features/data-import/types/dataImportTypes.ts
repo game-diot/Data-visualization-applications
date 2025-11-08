@@ -1,12 +1,10 @@
-export interface DatasetInfo {
-	id: string;
-	name: string;
-	size: number;
-	type: string;
+export type DatasetInfo = Pick<
+	FileMeta,
+	'id' | 'name' | 'size' | 'type' | 'uploadTime' | 'stage'
+> & {
 	rowCount?: number;
 	columnCount?: number;
-	uploadtime?: string;
-}
+};
 
 export type UploadStatus =
 	| 'idle'
@@ -31,16 +29,20 @@ export interface ImportState {
 	datasetinfo: DatasetInfo | null;
 	status: UploadStatus;
 }
+export interface FileMeta {
+	id: string;
+	name: string;
+	storedName: string;
+	path: string;
+	size: number;
+	type: string;
+	totalRows: number;
+	totalCols: number;
+	uploadTime: string;
+	stage: 'uploaded' | 'parsed' | 'processed' | 'result';
+}
 
 export interface UploadResponse {
-	meta: {
-		id: string;
-		name: string;
-		size: number;
-		type: string;
-		totalRows: number;
-		totalCols: number;
-		uploadTime: string;
-	};
+	meta: FileMeta;
 	previewRows: unknown[];
 }
