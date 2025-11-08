@@ -6,8 +6,22 @@ export const fileService = {
     return await file.save();
   },
 
-  async getAllFiles() {
-    return await File.find().sort({ createdAt: -1 });
+  async getAllFiles({ page = 1, limit = 10 } = {}) {
+    const skip = (page - 1) * limit;
+    return await File.find()
+      .select("-__v -updatedAt") // 过滤无用字段
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+  },
+
+  async countFiles(filter = {}) {
+    // 使用 countDocuments 更精确，或者 estimatedDocumentCount 更快（无 filter）
+    if (Object.keys(filter).length) {
+      return await File.countDocuments(filter);
+    }
+    return await File.estimatedDocumentCount();
   },
 
   async getFileById(id) {

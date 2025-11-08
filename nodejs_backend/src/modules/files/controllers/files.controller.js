@@ -45,10 +45,20 @@ export const fileController = {
     }
   },
 
+  // controllers/files.controller.js
   async getAllFiles(req, res, next) {
     try {
-      const files = await fileService.getAllFiles();
-      return response(res, 200, "获取文件列表成功。", files);
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const files = await fileService.getAllFiles({ page, limit });
+      const total = await fileService.countFiles(); // <- 从 service 调用
+
+      return response(res, 200, "获取文件列表成功。", {
+        total,
+        page,
+        limit,
+        records: files,
+      });
     } catch (error) {
       next(error);
     }

@@ -45,7 +45,7 @@ export const useFileUpload = create<FileUploadState>((set) => ({
 			set({
 				previewData: { headers: parsed.headers, rows: parsed.rows },
 				datasetInfo: {
-					id: crypto.randomUUID(),
+					_id: crypto.randomUUID(),
 					name: file.name,
 					size: file.size,
 					type: file.type,

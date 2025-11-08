@@ -116,3 +116,71 @@
 [2025-11-08 15:51:12] info: POST /api/files/upload 200 397 - 31.665 ms
 [2025-11-08 15:51:19] info: POST /api/files/upload 200 397 - 44.807 ms
 [2025-11-08 15:54:48] info: POST /api/files/upload 200 391 - 26.428 ms
+[2025-11-08 20:18:31] error: GET /api/files/ - fileService.getAllFiles is not a function
+[2025-11-08 20:18:31] info: GET /api/files/ 200 1466 - 12.118 ms
+[2025-11-08 20:20:11] error: GET /api/files/ - fileService.getAllFiles is not a function
+[2025-11-08 20:20:11] info: GET /api/files/ 200 1466 - 10.556 ms
+[2025-11-08 20:22:05] info: GET /api/files/ 200 1725 - 40.853 ms
+[2025-11-08 20:31:20] error: GET /api/files/ - File.countDocuments is not a function
+[2025-11-08 20:31:20] info: GET /api/files/ 200 349 - 41.992 ms
+[2025-11-08 20:38:53] info: GET /api/files/ 200 1579 - 24.266 ms
+[2025-11-08 21:08:58] info: POST /api/files/upload 200 423 - 105.948 ms
+[2025-11-08 21:08:58] info: GET /api/files?page=1&limit=10 200 1970 - 19.366 ms
+[2025-11-08 21:14:05] info: GET /api/files?page=1&limit=10 304 - - 7.188 ms
+[2025-11-08 21:14:05] info: GET /api/files?page=1&limit=10 304 - - 5.074 ms
+[2025-11-08 21:23:21] info: GET /api/files?page=1&limit=10 304 - - 6.371 ms
+[2025-11-08 21:30:36] info: GET /api/files?page=1&limit=10 304 - - 5.274 ms
+[2025-11-08 21:31:06] info: GET /api/files?page=1&limit=10 304 - - 10.664 ms
+[2025-11-08 21:31:19] info: GET /api/files?page=1&limit=10 304 - - 3.459 ms
+[2025-11-08 21:31:19] info: GET /api/files?page=1&limit=10 304 - - 7.595 ms
+[2025-11-08 21:31:56] info: GET /api/files?page=1&limit=10 304 - - 4.410 ms
+[2025-11-08 21:32:27] info: GET /api/files?page=1&limit=10 304 - - 4.574 ms
+[2025-11-08 21:34:41] info: GET /api/files?page=1&limit=10 304 - - 5.897 ms
+[2025-11-08 21:34:54] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:34:54] info: DELETE /api/files/undefined 200 1607 - 10.914 ms
+[2025-11-08 21:35:58] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:35:58] info: DELETE /api/files/undefined 200 1607 - 2.313 ms
+[2025-11-08 21:38:18] info: DELETE /api/files/68edeab9308159f7647a585d 404 35 - 11.773 ms
+[2025-11-08 21:38:23] info: GET /api/files/ 200 1970 - 4.051 ms
+[2025-11-08 21:38:34] info: DELETE /api/files/690f40ea33fade98697c09a4 200 46 - 11.298 ms
+[2025-11-08 21:39:13] info: GET /api/files?page=1&limit=10 200 1579 - 6.375 ms
+[2025-11-08 21:39:35] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:39:35] info: DELETE /api/files/undefined 200 1607 - 2.517 ms
+[2025-11-08 21:42:39] info: GET /api/files?page=1&limit=10 304 - - 6.860 ms
+[2025-11-08 21:43:23] info: GET /api/files?page=1&limit=10 304 - - 3.577 ms
+[2025-11-08 21:43:48] info: GET /api/files?page=1&limit=10 304 - - 3.126 ms
+[2025-11-08 21:43:54] info: GET /api/files?page=1&limit=10 304 - - 6.707 ms
+[2025-11-08 21:44:03] info: GET /api/files?page=1&limit=10 304 - - 7.078 ms
+[2025-11-08 21:44:43] info: GET /api/files?page=1&limit=10 304 - - 3.206 ms
+[2025-11-08 21:44:43] info: GET /api/files?page=1&limit=10 304 - - 3.313 ms
+[2025-11-08 21:45:22] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:45:22] info: DELETE /api/files/undefined 200 1607 - 1.947 ms
+[2025-11-08 21:45:43] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:45:43] info: DELETE /api/files/undefined 200 1607 - 2.046 ms
+[2025-11-08 21:45:47] error: GET /api/files/undefined - undefined
+[2025-11-08 21:45:47] info: GET /api/files/undefined 200 52 - 2.914 ms
+[2025-11-08 21:45:47] info: GET /favicon.ico 404 150 - 2.433 ms
+[2025-11-08 21:48:26] info: GET /api/files/ 200 1579 - 2.991 ms
+[2025-11-08 21:48:48] info: GET /api/files?page=1&limit=10 304 - - 3.432 ms
+[2025-11-08 21:49:05] info: GET /api/files?page=1&limit=10 304 - - 5.755 ms
+[2025-11-08 21:49:21] info: GET /api/files?page=1&limit=10 304 - - 3.211 ms
+[2025-11-08 21:50:45] info: GET /api/files?page=1&limit=10 304 - - 2.679 ms
+[2025-11-08 21:51:12] info: GET /api/files?page=1&limit=10 304 - - 3.843 ms
+[2025-11-08 21:51:39] info: GET /api/files?page=1&limit=10 304 - - 6.681 ms
+[2025-11-08 21:51:41] info: GET /api/files?page=1&limit=10 304 - - 4.233 ms
+[2025-11-08 21:51:41] info: GET /api/files?page=1&limit=10 304 - - 6.339 ms
+[2025-11-08 21:51:54] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:51:54] info: DELETE /api/files/undefined 200 1607 - 2.522 ms
+[2025-11-08 21:52:03] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:52:03] info: DELETE /api/files/undefined 200 1607 - 3.641 ms
+[2025-11-08 21:54:00] info: GET /api/files?page=1&limit=10 304 - - 4.774 ms
+[2025-11-08 22:01:26] info: GET /api/files?page=1&limit=10 304 - - 5.435 ms
+[2025-11-08 22:01:40] info: GET /api/files?page=1&limit=10 304 - - 4.349 ms
+[2025-11-08 22:01:40] info: GET /api/files?page=1&limit=10 304 - - 8.060 ms
+[2025-11-08 22:01:46] info: DELETE /api/files/690ef7482160a276f5b703f6 200 46 - 2.297 ms
+[2025-11-08 22:03:02] info: DELETE /api/files/690ef6772160a276f5b703f4 200 46 - 3.000 ms
+[2025-11-08 22:03:04] info: DELETE /api/files/690ef6702160a276f5b703f2 200 46 - 2.317 ms
+[2025-11-08 22:03:05] info: DELETE /api/files/690eedf22160a276f5b703ec 200 46 - 2.341 ms
+[2025-11-08 22:03:08] info: GET /api/files?page=1&limit=10 200 100 - 4.680 ms
+[2025-11-08 22:03:08] info: GET /api/files?page=1&limit=10 304 - - 3.362 ms
+[2025-11-08 22:03:18] info: GET /api/files/ 200 100 - 3.170 ms

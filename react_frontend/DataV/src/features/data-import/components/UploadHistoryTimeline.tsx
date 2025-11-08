@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useImportHistory } from '../store/useImportHistory';
 import { navigateToStage } from '../utils/navigateToStorage';
-
+import { useEffect } from 'react';
 const translateStage = (stage: string) => {
 	const map: Record<string, string> = {
 		uploaded: '上传完成',
@@ -16,7 +16,12 @@ const translateStage = (stage: string) => {
 
 export const UploadHistoryTimeline = () => {
 	const navigate = useNavigate();
-	const { history, removeHistoryRecord } = useImportHistory();
+	const { history, fetchHistory, deleteHistory } = useImportHistory();
+
+	useEffect(() => {
+		fetchHistory(); // ✅ 页面加载时自动触发
+	}, [fetchHistory]);
+
 	console.log('UploadHistoryTimeline 渲染，history:', history); // 调试日志
 	if (history.length === 0) return <p className="text-gray-500 text-center">暂无历史记录</p>;
 
@@ -45,7 +50,7 @@ export const UploadHistoryTimeline = () => {
 								继续任务
 							</button>
 							<button
-								onClick={() => removeHistoryRecord(file.id)}
+								onClick={() => deleteHistory(file.id)}
 								className="px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600"
 							>
 								删除

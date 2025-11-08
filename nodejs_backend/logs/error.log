@@ -8,3 +8,14 @@
 [2025-11-03 19:56:42] error: GET /api/files/ - Invalid status code: 1
 [2025-11-03 19:57:15] error: GET /api/files/ - Invalid status code: 1
 [2025-11-03 19:57:19] error: GET /api/files/ - Invalid status code: 1
+[2025-11-08 20:18:31] error: GET /api/files/ - fileService.getAllFiles is not a function
+[2025-11-08 20:20:11] error: GET /api/files/ - fileService.getAllFiles is not a function
+[2025-11-08 20:31:20] error: GET /api/files/ - File.countDocuments is not a function
+[2025-11-08 21:34:54] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:35:58] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:39:35] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:45:22] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:45:43] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:45:47] error: GET /api/files/undefined - undefined
+[2025-11-08 21:51:54] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"
+[2025-11-08 21:52:03] error: DELETE /api/files/undefined - Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "File"

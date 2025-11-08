@@ -1,16 +1,19 @@
-// hooks/useSaveDataset.ts
 import { uploadFileToServer } from '../api/uploadFileToServer';
 import { useFileUpload } from '../store/useFileUpload';
-import { useImportHistory, type HistoryRecord } from '../store/useImportHistory';
 import { message } from 'antd';
 import { type PreviewRow, type UploadResponse } from '../types/dataImportTypes';
+import { useImportHistory } from '../store/useImportHistory';
 
 export const useSaveDataset = () => {
 	const { file, setStatus, setUploadProgress, setDatasetInfo, setPreviewData } = useFileUpload();
-	const { addHistoryRecord } = useImportHistory();
+
+	const { fetchHistory } = useImportHistory(); // ✅ 上传后自动刷新历史记录
 
 	const saveDataset = async () => {
-		if (!file) return message.info('还未导入待分析数据');
+		if (!file) {
+			message.info('还未导入待分析数据');
+			return;
+		}
 
 		try {
 			setStatus('uploading');
@@ -19,12 +22,13 @@ export const useSaveDataset = () => {
 			console.log('API 返回:', result);
 			const { meta, previewRows } = result.data as UploadResponse;
 
+			// 设置文件基本信息
 			setDatasetInfo(meta);
-			const rowsArray = Array.isArray(previewRows) ? previewRows : [];
 
+			// 构建预览数据
+			const rowsArray = Array.isArray(previewRows) ? previewRows : [];
 			const mappedRows: PreviewRow[] = rowsArray.map((row) => {
 				if (Array.isArray(row)) {
-					// 如果 row 是数组，使用索引生成 key
 					return row.reduce((acc, value, idx) => {
 						acc[`col${idx + 1}`] = value;
 						return acc;
@@ -41,19 +45,11 @@ export const useSaveDataset = () => {
 				rows: mappedRows,
 			});
 
-			const historyRecord: HistoryRecord = {
-				id: crypto.randomUUID(),
-				name: file.name,
-				size: file.size,
-				type: file.type,
-				uploadTime: new Date().toISOString(),
-				stage: 'uploaded',
-			};
-
-			addHistoryRecord(historyRecord);
-
 			setStatus('success');
 			message.success('上传成功');
+
+			// ✅ 上传成功后刷新文件历史列表
+			await fetchHistory(1, 10);
 		} catch (err) {
 			console.error('上传失败', err);
 			setStatus('error');
