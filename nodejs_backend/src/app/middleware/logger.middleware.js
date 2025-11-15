@@ -1,5 +1,5 @@
 import morgan from "morgan";
-import { logger } from "../utils/logger.js";
+import { logger } from "../../shared/utils/logger.js";
 
 // 自定义 morgan 输出到 winston
 const stream = {

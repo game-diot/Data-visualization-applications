@@ -1,5 +1,5 @@
 import express from "express";
-import fileRouter from "../../modules/files/routes/files.routes.js";
+import fileRouter from "../../modules/file-upload/routes/files.routes.js";
 const router = express.Router();
 
 router.use("/files", fileRouter);

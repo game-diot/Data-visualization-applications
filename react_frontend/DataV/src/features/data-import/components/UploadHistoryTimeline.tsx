@@ -1,5 +1,7 @@
 // src/components/UploadHistoryTimeline.tsx
 import { useNavigate } from 'react-router-dom';
+import { Popconfirm, message } from 'antd';
+
 import { useImportHistory } from '../store/useImportHistory';
 import { navigateToStage } from '../utils/navigateToStorage';
 import { useEffect } from 'react';
@@ -49,12 +51,19 @@ export const UploadHistoryTimeline = () => {
 							>
 								继续任务
 							</button>
-							<button
-								onClick={() => deleteHistory(file.id)}
-								className="px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600"
+							<Popconfirm
+								title={`确定要删除 "${file.name}" 吗？`}
+								description="删除后无法恢复，请谨慎操作。"
+								okText="删除"
+								cancelText="取消"
+								okButtonProps={{ danger: true }}
+								onConfirm={() => deleteHistory(file.id)}
+								onCancel={() => message.info('已取消删除')}
 							>
-								删除
-							</button>
+								<button className="px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600">
+									删除
+								</button>
+							</Popconfirm>
 						</div>
 					</div>
 				))}
