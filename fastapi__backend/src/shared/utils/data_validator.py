@@ -1,8 +1,8 @@
 # fastapi_app/src/app/shared/utils/data_validator.py
 import os
 import pandas as pd
-from loguru import logger
-from src.shared.exceptions.validation import ValidationException
+from src.app.config.logging import app_logger
+from src.shared.exceptions.tepe import ValidationException
 
 MAX_FILE_SIZE_MB = 10  # 限制 10MB
 
@@ -12,9 +12,9 @@ def validate_file_size(file_path: str) -> None:
     """
     size_mb = os.path.getsize(file_path) / (1024 * 1024)
     if size_mb > MAX_FILE_SIZE_MB:
-        logger.error(f"❌ File too large: {size_mb:.2f}MB > {MAX_FILE_SIZE_MB}MB")
-        raise ValidationException(message="文件过大", code=413)
-    logger.info(f"✅ File size valid: {size_mb:.2f}MB")
+        app_logger.error(f"❌ File too large: {size_mb:.2f}MB > {MAX_FILE_SIZE_MB}MB")
+        raise ValidationException(message="文件过大", code=413) # type: ignore
+    app_logger.info(f"✅ File size valid: {size_mb:.2f}MB")
 
 def validate_dataframe_structure(df: pd.DataFrame, required_columns: list[str]) -> None:
     """
@@ -22,6 +22,6 @@ def validate_dataframe_structure(df: pd.DataFrame, required_columns: list[str]) 
     """
     missing_cols = [col for col in required_columns if col not in df.columns]
     if missing_cols:
-        logger.error(f"❌ Missing columns: {missing_cols}")
-        raise ValidationException(message=f"缺少必要列: {missing_cols}", code=422)
-    logger.info(f"✅ DataFrame structure valid: {len(df.columns)} columns")
+        app_logger.error(f"❌ Missing columns: {missing_cols}")
+        raise ValidationException(message=f"缺少必要列: {missing_cols}", code=422) # type: ignore
+    app_logger.info(f"✅ DataFrame structure valid: {len(df.columns)} columns")

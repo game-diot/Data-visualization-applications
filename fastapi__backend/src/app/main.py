@@ -5,10 +5,10 @@ from loguru import logger
 from src.app.middleware.cors import setup_cors
 from src.app.middleware.error_handler import setup_exception_handlers
 from src.app.middleware.logger import setup_logger
-from src.app.api.router import api_router
 from src.shared.utils.response import success_response
 from src.app.config.redis import redis_client
 from src.app.routes.api_routes import api_router
+from src.app.core.initializers.init_filesystem import initialize_directories
  
 
 @asynccontextmanager
@@ -18,6 +18,9 @@ async def lifespan(app: FastAPI):
     """
     # === 启动 (Startup) ===
     logger.info("Starting FastAPI application...")
+
+    initialize_directories()
+    
     # 1. 连接 Redis
     await redis_client.connect()
     
@@ -40,6 +43,8 @@ def create_app():
     # ✅ 挂载统一路由中心
     app.include_router(api_router, prefix="/api") 
     @app.get("/", summary="Health Check")
+
+
     async def root():
         return success_response(msg="Backend service is running")
 

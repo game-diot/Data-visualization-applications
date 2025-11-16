@@ -8,7 +8,7 @@ def setup_cors(app):
     """
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.CORS_ORIGINS,      # Node.js/前端服务地址
+        allow_origins=settings.CORS_ORIGINS,      # Node.js/前端服务地址 # type: ignore
         allow_credentials=True,                   # 允许携带 Cookie
         allow_methods=["*"],                      # 允许所有请求方法
         allow_headers=["*"],                      # 允许所有自定义头部

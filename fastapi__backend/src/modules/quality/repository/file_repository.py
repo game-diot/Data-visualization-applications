@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from src.shared.utils.file_parser import parse_csv,parse_excel
-from src.shared.exceptions.file_nod_found import FileNotFoundException
+from fastapi__backend.src.shared.exceptions.tepe import FileNotFoundException
 
 class FileRepository:
     """文件读取与验证仓储层"""

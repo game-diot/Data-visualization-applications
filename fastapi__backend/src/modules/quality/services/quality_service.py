@@ -9,9 +9,8 @@ from src.modules.quality.utils.data_summary import (
 )
 from src.modules.quality.utils.preview_builder import build_preview, sample_data
 from src.modules.quality.utils.cache_key_generator import get_cache_key
-from src.shared.exceptions.file_nod_found import FileNotFoundException
-from src.shared.exceptions.parse_error import DataParseException
-from src.shared.exceptions.validation import ValidationException
+from fastapi__backend.src.shared.exceptions.tepe import FileNotFoundException,DataParseException,ValidationException
+
 
 logger = logging.getLogger(__name__)
 
