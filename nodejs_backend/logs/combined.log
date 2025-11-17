@@ -191,3 +191,5 @@
 [2025-11-09 14:51:15] info: POST /api/files/upload 200 391 - 46.846 ms
 [2025-11-09 14:51:15] info: GET /api/files?page=1&limit=10 200 458 - 10.097 ms
 [2025-11-15 15:33:08] info: GET /api/files/ 200 458 - 34.891 ms
+[2025-11-17 16:36:21] info: POST /api/files/upload 200 423 - 46.107 ms
+[2025-11-17 16:36:21] error: POST /api/files/upload - qualityService is not defined

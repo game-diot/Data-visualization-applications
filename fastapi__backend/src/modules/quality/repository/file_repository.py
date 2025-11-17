@@ -29,7 +29,7 @@ class FileRepository:
         # 最好在这里也调用 file_parser 的内部校验（如果它被暴露）
         if not os.path.exists(file_path):
              # 假设我们修正了导入路径
-             from fastapi__backend.src.shared.exceptions.type import FileNotFoundException 
+             from src.shared.exceptions.type import FileNotFoundException 
              raise FileNotFoundException(filename=file_path)
              
         return round(os.path.getsize(file_path) / (1024 * 1024), 2)

@@ -7,7 +7,7 @@ from src.modules.quality.schemas.quality_request import (
 )
 from src.modules.quality.services.quality_service import QualityService
 
-router = APIRouter(prefix="/quality", tags=["Quality Analysis"])
+router = APIRouter( tags=["Quality Analysis"])
 
 
 def get_quality_service():

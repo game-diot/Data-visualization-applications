@@ -22,7 +22,7 @@ class FileManager:
     @staticmethod
     async def register_file(file_id: str, file_path: str) -> None:
         key = FileManager.PREFIX + file_id
-        await redis_client.set(key, file_path) # type: ignore
+        await redis_client.client.set(key, file_path) # type: ignore
 
     # ========================
     # 获取映射路径
@@ -30,7 +30,7 @@ class FileManager:
     @staticmethod
     async def get_file_path(file_id: str) -> str:
         key = FileManager.PREFIX + file_id
-        file_path = await redis_client.get(key) # type: ignore
+        file_path = await redis_client.client.get(key) # type: ignore
 
         if not file_path:
             raise HTTPException(status_code=404, detail=f"File {file_id} not found")
@@ -43,7 +43,7 @@ class FileManager:
     @staticmethod
     async def delete_file(file_id: str) -> bool:
         key = FileManager.PREFIX + file_id
-        file_path = await redis_client.get(key) # type: ignore
+        file_path = await redis_client.client.get(key) # type: ignore
 
         if not file_path:
             return False  # 映射不存在，直接返回
@@ -58,7 +58,7 @@ class FileManager:
             raise HTTPException(status_code=500, detail=f"Failed to delete file: {str(e)}")
 
         # 删除 Redis 映射
-        await redis_client.delete(key) # type: ignore
+        await redis_client.client.delete(key) # type: ignore
         return True
 
 

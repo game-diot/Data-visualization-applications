@@ -19,6 +19,7 @@ class ErrorCode:
     
     # 400 - 通用 HTTP 错误，如权限不足、方法不允许等 (用于 StarletteHTTPException)
     HTTP_ERROR = 40002 
+    
     PARSE_ERROR = 40022
 
     # --- 服务器错误 (500xx) ---

@@ -33,10 +33,10 @@ export const fileController = {
         previewRows: [],
       });
 
-      // 3. 异步触发 FastAPI 分析（传递 MongoDB _id）
-      qualityService
-        .triggerAnalysis(fileId, savedFile.path)
-        .catch((err) => logger.error("Analysis failed", err));
+      // // 3. 异步触发 FastAPI 分析（传递 MongoDB _id）
+      // qualityService
+      //   .triggerAnalysis(fileId, savedFile.path)
+      //   .catch((err) => logger.error("Analysis failed", err));
     } catch (error) {
       next(error);
     }

@@ -1,5 +1,5 @@
 # fastapi_app/src/app/shared/exceptions/types.py
-from fastapi__backend.src.shared.constants.error_codes import ErrorCode
+from src.shared.constants.error_codes import ErrorCode
 from src.shared.exceptions.base import BaseAppException
 
 class FileNotFoundException(BaseAppException):
