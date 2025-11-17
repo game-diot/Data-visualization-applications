@@ -1,35 +1,46 @@
-# 文件: src/modules/quality/repository/file_repository.py (优化后)
+# 文件: src/modules/quality/repository/file_repository.py
 
 import os
 import pandas as pd
-# 导入解析工具，让它们处理存在性检查和解析异常
+from src.shared.exceptions.type import FileNotFoundException
 from src.shared.utils.file_parser import parse_csv, parse_excel
-# 不再需要导入 FileNotFoundException，因为它由 parse_csv/parse_excel 内部处理
 
 class FileRepository:
-    """文件读取与验证仓储层"""
-    
-    # 移除 validate_file_exists 
 
-    @staticmethod
-    def read_csv(file_path: str) -> pd.DataFrame:
-        """读取 CSV 文件（存在性检查和解析由 parse_csv 内部处理）"""
-        # 🌟 仅调用封装好的解析函数
-        return parse_csv(file_path)
+    BASE_DIR = "./uploads"
 
-    @staticmethod
-    def read_excel(file_path: str) -> pd.DataFrame:
-        """读取 Excel 文件（存在性检查和解析由 parse_excel 内部处理）"""
-        # 🌟 仅调用封装好的解析函数
-        return parse_excel(file_path)
+    def resolve_file_path(self, file_id: str) -> str:
+        """
+        将 file_id 转换成 uploads 下真实文件路径
+        示例：
+            file_id = "abc123"
+            返回 "./uploads/abc123"
+        """
+        file_path = os.path.join(self.BASE_DIR, file_id)
 
-    @staticmethod
-    def get_file_size(file_path: str) -> float:
-        """获取文件大小（MB）。由于这是文件属性，保留在仓储层合理"""
-        # 最好在这里也调用 file_parser 的内部校验（如果它被暴露）
         if not os.path.exists(file_path):
-             # 假设我们修正了导入路径
-             from src.shared.exceptions.type import FileNotFoundException 
-             raise FileNotFoundException(filename=file_path)
-             
-        return round(os.path.getsize(file_path) / (1024 * 1024), 2)
+            raise FileNotFoundException(filename=file_path)
+
+        return file_path
+
+    # --------------------------
+    # 自动判断读取 CSV / Excel
+    # --------------------------
+    def read_file(self, file_path: str) -> pd.DataFrame:
+        if file_path.endswith(".csv"):
+            return parse_csv(file_path)
+        if file_path.endswith(".xlsx") or file_path.endswith(".xls"):
+            return parse_excel(file_path)
+
+        # 如果无扩展名，也尝试 CSV/Excel 自动识别
+        try:
+            return parse_csv(file_path)
+        except Exception:
+            pass
+
+        try:
+            return parse_excel(file_path)
+        except Exception:
+            pass
+
+        raise FileNotFoundException(filename=file_path)
