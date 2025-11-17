@@ -2,7 +2,7 @@
 
 from loguru import logger
 import os
-
+from src.app.config.settings import settings
 # 假设从 settings.py 中导入配置，这里先用常量代替
 LOG_DIR = "logs"
 CONSOLE_LEVEL = "INFO"

@@ -12,6 +12,14 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
     )
+
+    # --- Redis 配置 ---
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    REDIS_DB: int = 0
+
+    # --- 日志配置 ---
+    LOG_LEVEL: str = "INFO"
     
 # 单例实例
 settings = Settings()

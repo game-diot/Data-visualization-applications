@@ -9,6 +9,7 @@ export type DatasetInfo = Pick<
 export type UploadStatus =
 	| 'idle'
 	| 'uploading'
+	| 'uploaded'
 	| 'parsing'
 	| 'parsed'
 	| 'confirmed'

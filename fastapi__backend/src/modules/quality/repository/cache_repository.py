@@ -1,41 +1,30 @@
-#同cache/cacheMannager一致
+# 文件: src/modules/quality/repository/cache_repository.py (优化后)
 
-import json
-from loguru import logger
-from src.app.config.redis import redis_client
+from typing import Optional, Any
+from src.app.config.logging import app_logger
+# 导入我们之前优化的 CacheManager 单例
+from src.cache import cache_manager 
 
+# 注意：不再需要导入 json 或 redis_client，因为 CacheManager 已经处理了
 
 class CacheRepository:
-    """检测结果缓存仓储层"""
+    """Quality 检测结果缓存仓储层"""
 
-    @staticmethod
-    async def get_quality_result(cache_key: str):
-        """从 Redis 获取检测结果"""
-        try:
-            data = await redis_client.get(cache_key) # type: ignore
-            if data:
-                logger.info(f"缓存命中: {cache_key}")
-                return json.loads(data)
-            logger.info(f"缓存未命中: {cache_key}")
-            return None
-        except Exception as e:
-            logger.warning(f"读取缓存失败: {e}")
-            return None
+    # 推荐使用依赖注入，但为了简洁，这里直接使用导入的单例
+    def __init__(self):
+        self.cache = cache_manager
 
-    @staticmethod
-    async def set_quality_result(cache_key: str, result: dict, ttl: int = 3600):
-        """设置缓存结果"""
-        try:
-            await redis_client.set(cache_key, json.dumps(result), ex=ttl) # type: ignore
-            logger.info(f"缓存已写入: {cache_key}")
-        except Exception as e:
-            logger.warning(f"写入缓存失败: {e}")
+    async def get_quality_result(self, cache_key: str) -> Optional[Any]:
+        """从 Redis 获取检测结果 (由 CacheManager 处理序列化和命中)"""
+        # 🌟 直接使用封装好的 get 方法
+        return await self.cache.get(cache_key) 
 
-    @staticmethod
-    async def delete_quality_result(cache_key: str):
+    async def set_quality_result(self, cache_key: str, result: dict, ttl: int = 3600):
+        """设置缓存结果 (由 CacheManager 处理序列化和容错)"""
+        # 🌟 直接使用封装好的 set 方法
+        return await self.cache.set(cache_key, result, ttl=ttl)
+
+    async def delete_quality_result(self, cache_key: str):
         """删除缓存"""
-        try:
-            await redis_client.delete(cache_key) # type: ignore
-            logger.info(f"缓存已删除: {cache_key}")
-        except Exception as e:
-            logger.warning(f"删除缓存失败: {e}")
+        # 🌟 直接使用封装好的 delete 方法
+        return await self.cache.delete(cache_key)

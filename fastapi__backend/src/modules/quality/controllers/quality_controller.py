@@ -44,7 +44,7 @@ async def get_preview(
     """
     获取文件预览数据（优先走缓存）
     """
-    preview = await service.get_preview(
+    preview = await service.get_preview( # type: ignore
         file_path=request.file_path,
         limit=request.limit,
     )

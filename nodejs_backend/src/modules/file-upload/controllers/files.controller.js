@@ -2,12 +2,12 @@ import { fileService } from "../services/file.service.js";
 import { response } from "../../../shared/utils/response.util.js";
 
 export const fileController = {
+  // controllers/files.controller.js
   async uploadFile(req, res, next) {
     try {
       if (!req.file) return response(res, 400, "未检测到文件");
 
       const file = req.file;
-
       const fileData = {
         name: file.originalname,
         storedName: file.filename,
@@ -20,16 +20,23 @@ export const fileController = {
         stage: "uploaded",
       };
 
+      // 1. 保存到 MongoDB
       const savedFile = await fileService.createFile(fileData);
+      const fileId = savedFile._id.toString(); // ✅ MongoDB _id
 
-      // 直接用保存的对象作为响应的 meta
-      return response(res, 200, "文件上传成功", {
+      // 2. 立即返回响应
+      response(res, 200, "文件上传成功", {
         meta: {
           ...fileData,
-          id: savedFile._id.toString(),
+          id: fileId, // ✅ 返回 MongoDB _id
         },
         previewRows: [],
       });
+
+      // 3. 异步触发 FastAPI 分析（传递 MongoDB _id）
+      qualityService
+        .triggerAnalysis(fileId, savedFile.path)
+        .catch((err) => logger.error("Analysis failed", err));
     } catch (error) {
       next(error);
     }

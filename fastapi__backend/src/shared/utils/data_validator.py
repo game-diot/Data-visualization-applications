@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 from src.app.config.logging import app_logger
-from src.shared.exceptions.tepe import ValidationException
+from fastapi__backend.src.shared.exceptions.type import ValidationException
 
 MAX_FILE_SIZE_MB = 10  # 限制 10MB
 

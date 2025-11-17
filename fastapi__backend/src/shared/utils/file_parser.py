@@ -2,8 +2,8 @@
 import os
 import pandas as pd
 from src.app.config.logging import app_logger
-from fastapi__backend.src.shared.exceptions.tepe import FileNotFoundException
-from src.shared.exceptions.tepe import DataParseException
+from fastapi__backend.src.shared.exceptions.type import FileNotFoundException
+from fastapi__backend.src.shared.exceptions.type import DataParseException
 
 def _validate_file_exists(file_path: str) -> None:
     """验证文件是否存在"""
