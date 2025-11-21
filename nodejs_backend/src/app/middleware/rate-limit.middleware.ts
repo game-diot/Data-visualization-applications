@@ -2,7 +2,7 @@
 import rateLimit from "express-rate-limit";
 import RedisStore from "rate-limit-redis";
 import { redisClient } from "../config/redis.config.js";
-
+import { config } from "../config/env.config.js";
 export const createRateLimiter = () => {
   // 💡 关键修正：在创建 RedisStore 之前，检查客户端是否处于 READY 状态。
   // 这有助于捕获连接成功后立即关闭的情况。
@@ -24,8 +24,8 @@ export const createRateLimiter = () => {
   });
 
   return rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
+    windowMs: config.windowMs,
+    max: config.max,
     message: { error: "Too many requests, please try again later." },
 
     standardHeaders: true,

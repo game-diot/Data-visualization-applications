@@ -1,8 +1,10 @@
-import { Request, Response, NextFunction } from "express"; // 1. 引入类型
-import { logger } from "../config/logger.config";
+// src/app/middleware/errorHandler.ts (优化后的框架)
+import { Request, Response, NextFunction } from "express";
+import { logger } from "../config/logger.config"; // 导入统一日志
+import { config } from "../config/env.config"; // 导入统一配置
 
-// 2. 定义一个简单的接口来描述 Error 可能包含的属性 (可选，但推荐)
-interface AppError extends Error {
+// 2. 导出 AppError 接口，确保所有抛出自定义错误的模块都能正确引用此类型
+export interface AppError extends Error {
   statusCode?: number;
   status?: string;
 }
@@ -11,25 +13,23 @@ export const errorHandler = (
   err: AppError,
   req: Request,
   res: Response,
-  next: NextFunction // 3. 必须有 next，否则 Express 无法识别这是错误处理中间件
+  next: NextFunction
 ) => {
-  logger.error(`${req.method} ${req.url} - ${err.message}`);
-  console.error("❌ Error:", err);
+  // 仅使用 logger 记录错误，并附加 Error 对象，让 logger 处理堆栈提取
+  logger.error(`${req.method} ${req.url} - ${err.message}`, { error: err });
 
-  // 4. 逻辑修复：
-  // - 优先使用 err 中的状态码（如果有），否则使用 res.statusCode（如果被手动设置过且不是200），最后默认 500
-  // - 注意：Express 默认 res.statusCode 是 200，如果是错误，不能用 200
+  // ... 状态码确定逻辑不变 ...
   let statusCode = err.statusCode || res.statusCode;
   if (!statusCode || statusCode === 200) {
     statusCode = 500;
   }
 
-  // - 修复：res 对象上没有 message 属性，应该取 err.message
   const message = err.message || "服务器内部错误";
 
   res.status(statusCode).json({
     status: "error",
     message,
-    error: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    // 使用 config.env 确保环境敏感性
+    error: config.env === "development" ? err.stack : undefined,
   });
 };

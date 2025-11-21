@@ -20,7 +20,7 @@ export const MESSAGES = {
   FILE_PARSE_ERROR: "文件解析失败",
   FILE_ANALYZE_ERROR: "文件分析失败",
 
-  UNAUTHORIZED: "用户身份失败",
+  UNAUTHORIZED: "用户身份验证失败",
 } as const;
 
 export type MessageKey = keyof typeof MESSAGES;

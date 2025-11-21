@@ -1,9 +1,9 @@
 import cors, { CorsOptions } from "cors";
-
+import { config } from "../config/env.config";
 // 可允许的前端域名列表
 const allowedOrigins = [
-  "http://localhost:3000", // React 开发环境
-  "http://127.0.0.1:3000",
+  config.reactUrl, // React 开发环境
+  "http://127.0.0.1:5173",
   // 生产环境可以加你部署的前端域名
   // "https://your-frontend-domain.com",
 ];
