@@ -8,6 +8,7 @@ export const HTTP_STATUS = {
   NOT_FOUND: 404,
   TOO_MANY_REQUESTS: 429,
   SERVER_ERROR: 500,
+  BAD_GATEWAY: 502,
 } as const;
 
 export type HttpStatusCode = (typeof HTTP_STATUS)[keyof typeof HTTP_STATUS];

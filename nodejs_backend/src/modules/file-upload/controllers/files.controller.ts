@@ -4,6 +4,8 @@ import { Request, Response, NextFunction } from "express";
 import { fileService } from "../services/file.service.js";
 import { sendResponse } from "../../../shared/utils/response.util.js";
 import { CreateFileDTO } from "../dto/createFile.dto.js";
+import { QualityService } from "../../quality/services/quality.services.js";
+
 // 导入共享工具和类型
 import { FileValidator } from "../../../shared/validators/file.Validator.js"; // ✅ 导入校验器
 import { ValidationException } from "../../../shared/exceptions/validation.exception.js"; // ✅ 导入校验异常
