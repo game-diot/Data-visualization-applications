@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\.e8e1aa52694e274e4c151df225945d85db996447-audit.json",
+    "files": [
+        {
+            "date": 1766328122402,
+            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\combined-2025-12-21.log",
+            "hash": "72173c07396c544584cc54c405d2817e3db035146e1997dd33bdac3dbb24b2c0"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from "@shared/constants/httpStatusCode.constant";
+import { HTTP_STATUS } from "@shared/constants/http.constant";
 import { BaseException } from "./base.exception";
 
 export class FastApiBusinessException extends BaseException {

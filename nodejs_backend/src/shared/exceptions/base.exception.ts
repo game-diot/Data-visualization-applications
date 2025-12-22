@@ -1,5 +1,5 @@
-import { HTTP_STATUS } from "../constants/httpStatusCode.constant.js";
-import { ERROR_CODES } from "../constants/errorCodes.constants.js";
+import { HTTP_STATUS } from "../constants/http.constant.js";
+import { ERROR_CODES } from "../constants/error.constant.js";
 
 export class BaseException extends Error {
   public statusCode: number;

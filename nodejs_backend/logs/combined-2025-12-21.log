@@ -1,0 +1,43 @@
+[2025-12-21 22:42:03] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2025-12-21 22:42:03] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2025-12-21 22:42:03] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2025-12-21 22:42:03] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2025-12-21 22:42:03] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2025-12-21 22:42:03] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2025-12-21 22:42:03] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 0 in 0ms...[39m
+[2025-12-21 22:42:03] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:03] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 1 in 100ms...[39m
+[2025-12-21 22:42:03] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:03] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 2 in 200ms...[39m
+[2025-12-21 22:42:03] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:03] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 3 in 300ms...[39m
+[2025-12-21 22:42:03] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:04] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 4 in 400ms...[39m
+[2025-12-21 22:42:04] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:04] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 5 in 500ms...[39m
+[2025-12-21 22:42:04] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:05] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 6 in 600ms...[39m
+[2025-12-21 22:42:05] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:05] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 7 in 700ms...[39m
+[2025-12-21 22:42:05] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:06] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 8 in 800ms...[39m
+[2025-12-21 22:42:06] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:07] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 9 in 900ms...[39m
+[2025-12-21 22:42:07] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 10 in 1000ms...[39m
+[2025-12-21 22:42:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2025-12-21 22:42:09] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m=================================[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🛠  Environment: development[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2025-12-21 22:42:35] [32minfo[39m: [32m=================================[39m

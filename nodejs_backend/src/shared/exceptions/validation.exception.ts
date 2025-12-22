@@ -1,6 +1,6 @@
 import { BaseException } from "./base.exception.js";
-import { HTTP_STATUS } from "../constants/httpStatusCode.constant.js";
-import { ERROR_CODES } from "../constants/errorCodes.constants.js";
+import { HTTP_STATUS } from "../constants/http.constant.js";
+import { ERROR_CODES } from "../constants/error.constant.js";
 import { MESSAGES } from "../constants/messages.constants.js";
 
 export class ValidationException extends BaseException {

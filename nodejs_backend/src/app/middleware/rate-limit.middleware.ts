@@ -1,35 +1,51 @@
-// src/middleware/rate-limit.middleware.ts (最终修正版)
 import rateLimit from "express-rate-limit";
 import RedisStore from "rate-limit-redis";
-import { redisClient } from "../config/redis.config.js";
-import { config } from "../config/env.config.js";
+import { getRedisClient } from "../../infrastructure/cache/redis.client";
+import { envConfig } from "../config/env.config";
+import { ERROR_CODES } from "../../shared/constants/error.constant";
+import { HTTP_STATUS } from "../../shared/constants/http.constant";
+
+/**
+ * 创建全局限流中间件
+ * 职责：基于 Redis 限制 IP 请求频率，防止 DDoS 或恶意刷接口
+ */
 export const createRateLimiter = () => {
-  // 💡 关键修正：在创建 RedisStore 之前，检查客户端是否处于 READY 状态。
-  // 这有助于捕获连接成功后立即关闭的情况。
-  if (!redisClient.isReady) {
-    throw new Error(
-      `❌ Redis client is not ready (Status: ${redisClient.status}). 
-            Ensure connectRedis() finished successfully and no code called .quit() afterward.`
-    );
-  }
-
+  // 1. 配置 Redis 存储后端
   const store = new RedisStore({
-    // ❌ 移除 client: redisClient, 这一行！
-
-    // ✅ 只保留 sendCommand
+    // 关键修正：通过 wrapper 函数调用，确保运行时获取到最新的 client 实例
+    // 且兼容 rate-limit-redis 与 redis v4+ 的类型定义
     sendCommand: async (...args: string[]) => {
-      // 注意：args 在这里已经是数组，所以传入 sendCommand(args) 是正确的
-      return await redisClient.sendCommand(args);
+      const client = getRedisClient(); // 如果此时 Redis 未连接，这里会抛错，起到保护作用
+      return client.sendCommand(args);
     },
+    // 可选：为限流 Key 添加前缀，避免与业务缓存冲突
+    prefix: "rate_limit:",
   });
 
+  // 2. 返回中间件实例
   return rateLimit({
-    windowMs: config.windowMs,
-    max: config.max,
-    message: { error: "Too many requests, please try again later." },
+    windowMs: envConfig.rateLimit.windowMs, // 从统一配置读取 (如 15分钟)
+    max: envConfig.rateLimit.max, // 从统一配置读取 (如 100次)
 
+    // 使用标准 Headers (RateLimit-Limit, RateLimit-Remaining, etc.)
     standardHeaders: true,
     legacyHeaders: false,
+
+    // 使用 Redis Store
     store: store,
+
+    // 3. 自定义超限响应 (保持与全局错误处理格式一致)
+    handler: (req, res, next, options) => {
+      res.status(HTTP_STATUS.TOO_MANY_REQUESTS).json({
+        status: "error",
+        code: ERROR_CODES.RATE_LIMIT_EXCEEDED,
+        message: "Too many requests, please try again later.",
+      });
+    },
+
+    // 如果 Redis 挂了，是否跳过限流？
+    // false = 报错 (安全优先), true = 放行 (可用性优先)
+    // 建议设为 false，或者由 error middleware 捕获 redis 错误
+    passOnStoreError: false,
   });
 };
