@@ -1,5 +1,5 @@
 // src/modules/quality/services/quality.service.ts
-import { File } from "../../file-upload/models/File.model";
+import { File } from "../../Step001_file-upload/models/File.model";
 import { QualityResult } from "../models/QualityResult.model.js";
 import { fastApiClient } from "../../../api/fastapi/clients/fastapiClient";
 import { logger } from "@app/config/logger.config.js";

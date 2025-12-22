@@ -3,7 +3,7 @@ import { HTTP_STATUS } from "../../shared/constants/http.constant";
 
 // ⚠️ 注意：我们需要在下一步创建这个文件，目前先写好引用路径
 // 假设导出名为 fileRoutes
-// import { fileRoutes } from "../../features/file/routes/file.routes";
+import { fileRouter } from "../../features/Step001_file-upload/routes/file.routes";
 
 const router = Router();
 
@@ -24,6 +24,6 @@ router.get("/health", (req, res) => {
 // ==========================================
 
 // TODO: 等我们重构完 src/features/file 后，取消下面的注释
-// router.use("/files", fileRoutes);
+router.use("/files", fileRouter);
 
 export default router;
