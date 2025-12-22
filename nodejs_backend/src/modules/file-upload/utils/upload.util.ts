@@ -3,9 +3,9 @@
 import multer from "multer";
 import path from "path";
 // 引入常量和共享工具
-import { MAX_FILE_SIZE_BYTES } from "@shared/constants/fileTypes.constants";
+import { MAX_FILE_SIZE_BYTES } from "@shared/constants/file.constant";
 import { FileValidator } from "@shared/validators/file.Validator";
-import { randomId } from "@shared/utils/cryptoHelper.util"; // ✅ 导入 randomId
+import { randomId } from "@shared/utils/crypto.util"; // ✅ 导入 randomId
 
 // 1. 基础配置 (⚠️ 移除目录创建逻辑，由核心初始化负责)
 const uploadDir = path.join(process.cwd(), "uploadFiles");

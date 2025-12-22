@@ -9,7 +9,7 @@ import FormData from "form-data";
 import { logger } from "../../../app/config/logger.config";
 import { config } from "@app/config/env.config";
 import { FastApiBusinessException } from "@shared/exceptions/fastApiBusiness.exception";
-import { ApiResponse } from "@shared/types/apiResponse.type";
+import { ApiResponse } from "@shared/types/api.type";
 
 // 扩展 axios 配置：重试机制支持
 declare module "axios" {

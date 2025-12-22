@@ -9,7 +9,7 @@ import { QualityService } from "../../quality/services/quality.services.js";
 // 导入共享工具和类型
 import { FileValidator } from "../../../shared/validators/file.Validator.js"; // ✅ 导入校验器
 import { ValidationException } from "../../../shared/exceptions/validation.exception.js"; // ✅ 导入校验异常
-import { PaginationQuery } from "../../../shared/types/paginationQuery.type.js"; // ✅ 导入分页查询类型
+import { PaginationQuery } from "../../../shared/types/pagination.type.js"; // ✅ 导入分页查询类型
 
 export const fileController = {
   async uploadFile(req: Request, res: Response, next: NextFunction) {

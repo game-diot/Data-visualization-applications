@@ -1,7 +1,7 @@
 // 确保导入路径与您实际项目结构匹配
 import { FileModel, IFileDocument, IFile } from "../models/File.model";
 import { CreateFileDTO } from "../dto/createFile.dto.js"; // 假设 DTO 路径
-import { PaginationQuery } from "../../../shared/types/paginationQuery.type.js";
+import { PaginationQuery } from "../../../shared/types/pagination.type.js";
 import { UpdateFileDTO } from "../dto/updateFile.dto.js";
 
 export const fileRepository = {

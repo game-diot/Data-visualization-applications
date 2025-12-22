@@ -8,7 +8,7 @@ import { CreateFileDTO, UpdateFileDTO } from "../dto"; // 引入 DTOs
 import {
   PaginationQuery,
   PaginatedResult,
-} from "../../../shared/types/paginationQuery.type.js";
+} from "../../../shared/types/pagination.type.js";
 import { logger } from "../../../app/config/logger.config.js"; // ✅ 引入 Logger
 import { FileNotFoundException } from "../../../shared/exceptions/fileNotFound.exception.js"; // ✅ 引入异常 (假设已创建)
 import { parseFile } from "../../../shared/utils/fileParse.util.js"; // ✅ 引入解析工具
