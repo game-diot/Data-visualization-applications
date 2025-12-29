@@ -1,18 +1,29 @@
 from fastapi import APIRouter
-# ✅ 导入模块路由
-from src.modules.quality.routes.quality_routes import quality_router
-from src.modules.upload.routes.file_upload_routes import upload_router
 
+# ✅ 修正导入路径：从 features 目录导入
+# 假设 quality 模块的路由定义在 src/features/quality/routes.py 或 src/features/quality/routes/__init__.py
+from src.features.quality.routes.router import router  as Quality_analysis_router
 
-# 后续可扩展其他模块
-# from app.modules.analysis.router import router as analysis_router
-
+# ==========================================
+# 根路由聚合器
+# ==========================================
 api_router = APIRouter()
 
-# ✅ 注册模块路由
-api_router.include_router(quality_router, prefix="/quality", tags=["Data Quality"])
-# api_router.include_router(analysis_router, prefix="/analysis", tags=["Data Analysis"])
-api_router.include_router(upload_router,prefix="/upload",tags=["File Upload"])
+# ------------------------------------------
+# 1. 注册 Quality (数据质量分析) 模块
+# ------------------------------------------
+# 对应的 URL 前缀: /api/v1/quality
+api_router.include_router(
+    router=Quality_analysis_router, 
+    prefix="/quality", 
+    tags=["Data Quality"]
+)
 
-# ✅ 暴露总路由,默认导入*，仅导入指定内容
+# ------------------------------------------
+# ⚠️ 已移除 Upload 模块
+# ------------------------------------------
+# 原因：根据架构规范，文件上传由 Node.js 网关层全权负责。
+# FastAPI 仅通过 /quality/analyze 接口接收文件路径进行计算。
+
+# 导出供 main.py 使用
 __all__ = ["api_router"]

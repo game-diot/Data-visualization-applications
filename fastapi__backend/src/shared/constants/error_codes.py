@@ -1,42 +1,69 @@
-class ErrorCode:
+# src/shared/constants/error_codes.py
+from enum import IntEnum
+
+class ErrorCode(IntEnum):
     """
-    定义应用中使用的标准错误码 (20000 - 99999)
-    - 200xx: 成功/通用信息
-    - 400xx: 客户端输入错误 (Validation, Bad Request)
-    - 500xx: 服务器内部错误
+    FastAPI 标准错误码定义
+    原则：
+    1. 保持与 Node.js 体系一致 (2xxxx, 4xxxx, 5xxxx)
+    2. 剔除 Auth/DB 业务码 (FastAPI 不处理这些)
+    3. 增加 Compute/IO 专用码
     """
     
-    # --- 通用成功/信息 (200xx) ---
+    # ==========================================
+    # 200xx: 成功
+    # ==========================================
     SUCCESS = 20000
 
-    # --- 客户端错误 (400xx) ---
+    # ==========================================
+    # 400xx: 客户端输入错误 (Client Side)
+    # 含义：Node.js 传过来的文件或参数有问题，计算无法继续
+    # ==========================================
     
-    # 404 - 资源未找到 (用于 StarletteHTTPException)
-    NOT_FOUND = 40401  
-    
-    # 400 - 请求参数验证失败 (用于 RequestValidationError)
+    # 通用参数校验错误 (Pydantic 校验失败)
     VALIDATION_ERROR = 40001
     
-    # 400 - 通用 HTTP 错误，如权限不足、方法不允许等 (用于 StarletteHTTPException)
-    HTTP_ERROR = 40002 
-    
-    PARSE_ERROR = 40022
+    # 404: 请求的资源(如临时文件)不存在
+    NOT_FOUND = 40004
 
-    # --- 服务器错误 (500xx) ---
+    # --- 文件/数据 IO 类错误 ---
     
-    # 500 - 服务器内部未知错误 (用于全局 Exception 捕获)
-    INTERNAL_ERROR = 50001
+    # 文件读取失败 (IOError, 权限不足或路径不存在)
+    FILE_READ_ERROR = 40010
     
-    # 501 - 数据库操作失败
-    DATABASE_ERROR = 50002
+    # 文件编码错误 (UnicodeDecodeError, 乱码，需转码)
+    FILE_DECODE_ERROR = 40011
+    
+    # 文件格式支持错误 (后缀名不对)
+    FILE_FORMAT_ERROR = 40012
+    
+    # --- 数据内容解析类错误 ---
 
-    # --- 业务逻辑错误 (自定义 BaseAppException) ---
+    # 数据为空 (文件是空的，或者清洗后没数据了)
+    DATA_EMPTY_ERROR = 40013
     
-    # 403 - 权限不足
-    PERMISSION_DENIED = 40301
+    # 数据结构错误 (如缺少必要的列头，Schema 不匹配)
+    DATA_SCHEMA_ERROR = 40014
+
+    # [新增] 通用解析失败
+    # 场景：Excel 文件损坏、CSV 分隔符混乱导致 Pandas 无法构建 DataFrame
+    DATA_PARSE_ERROR = 40015
+
+    # ==========================================
+    # 500xx: 服务端计算错误 (Server Side)
+    # 含义：文件没问题，是我们的算法或服务器挂了
+    # ==========================================
     
-    # 401 - 未授权/需要登录
-    UNAUTHORIZED = 40101
+    # 通用内部错误 (未捕获的 Exception)
+    INTERNAL_ERROR = 50000
     
-    # 409 - 资源冲突 (例如：用户名已存在)
-    RESOURCE_CONFLICT = 40901
+    # --- 计算引擎错误 (特有) ---
+    
+    # Pandas/Numpy 计算失败 (如逻辑错误、内存溢出)
+    COMPUTE_FAILED = 50010
+    
+    # 外部模型调用失败 (如 AI 服务超时)
+    EXTERNAL_SERVICE_ERROR = 50020
+    
+    # 基础设施错误 (如 Redis 连接失败)
+    INFRASTRUCTURE_ERROR = 50030

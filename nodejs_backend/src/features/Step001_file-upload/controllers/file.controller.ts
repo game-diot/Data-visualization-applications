@@ -43,7 +43,11 @@ export const fileController = {
 
       // 4. 返回响应
       // 注意：这里返回 201 Created，且包含了可能来自“秒传”的旧文件数据
-      return responseUtils.created(res, 201, "文件上传成功，后台分析已启动");
+      return responseUtils.created(
+        res,
+        fileData,
+        "文件上传成功，后台分析已启动"
+      );
     } catch (error) {
       next(error);
     }
