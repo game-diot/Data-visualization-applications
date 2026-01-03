@@ -110,6 +110,27 @@ export const qualityService = {
         };
     }
   },
+  /**
+   * 获取指定 version 的分析结果
+   */
+  async getQualityResultByVersion(fileId: string, version: number) {
+    const file = await this._getFileOrThrow(fileId);
+
+    if (file.stage !== "quality_done") {
+      return {
+        status: "processing",
+        message: "质量分析进行中",
+        stage: file.stage,
+      };
+    }
+
+    const report = await qualityReportRepository.findByFileIdAndVersion(
+      fileId,
+      version
+    );
+
+    return report ?? null;
+  },
 
   /**
    * 获取状态

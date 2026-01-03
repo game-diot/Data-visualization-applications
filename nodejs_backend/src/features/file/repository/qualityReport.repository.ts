@@ -34,10 +34,11 @@ export class QualityReportRepository {
   }
 
   /**
-   * 删除某个文件的所有质量分析记录（用于重试 / 物理删除）
+   * 删除某个文件的所有质量分析记录（用于重试 / 文件硬删除）
    */
-  async deleteByFileId(fileId: string) {
-    await QualityReportModel.deleteMany({ fileId });
+  async deleteByFileId(fileId: string): Promise<number> {
+    const result = await QualityReportModel.deleteMany({ fileId });
+    return result.deletedCount ?? 0;
   }
 }
 

@@ -101,9 +101,9 @@ export const fileRepository = {
   },
 
   /**
-   * ⭐️ 软删除 (Soft Delete)
+   * 物理删除 (仅用于管理员清理或磁盘空间不足时)
    */
-  async deleteById(id: string): Promise<IFileDocument | null> {
+  async hardDeleteById(id: string): Promise<IFileDocument | null> {
     return FileModel.findByIdAndDelete(
       { _id: id },
       {
@@ -111,12 +111,5 @@ export const fileRepository = {
         stage: "isDeleted", // 或者保留原状态，视业务需求而定，这里标记删除
       }
     );
-  },
-
-  /**
-   * 物理删除 (仅用于管理员清理或磁盘空间不足时)
-   */
-  async hardDeleteById(id: string): Promise<IFileDocument | null> {
-    return FileModel.findByIdAndDelete(id);
   },
 };

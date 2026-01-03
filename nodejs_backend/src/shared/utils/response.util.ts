@@ -5,14 +5,12 @@ import { ApiResponse } from "../types/api.type";
 
 /**
  * HTTP 响应工具集
- * 职责：标准化成功响应的格式 (错误响应由全局 Error Middleware 处理)
+ * - success / created / custom 已有
+ * - 新增 fail / error 响应
  */
 export const responseUtils = {
   /**
    * 发送通用成功响应 (200 OK)
-   * @param res Express Response 对象
-   * @param data 返回的数据
-   * @param message 提示消息 (默认: "操作成功")
    */
   success<T>(
     res: Response,
@@ -21,19 +19,15 @@ export const responseUtils = {
   ) {
     const responseBody: ApiResponse<T> = {
       status: "success",
-      code: HTTP_STATUS.OK, // 默认业务码与 HTTP 码一致
+      code: HTTP_STATUS.OK,
       message,
-      data: data ?? undefined, // 如果 data 是 null，转为 undefined 以便 JSON 序列化时忽略或保持 null
+      data: data ?? undefined,
     };
-
     return res.status(HTTP_STATUS.OK).json(responseBody);
   },
 
   /**
    * 发送创建成功响应 (201 Created)
-   * @param res Express Response 对象
-   * @param data 新创建的资源数据
-   * @param message 提示消息 (默认: "创建成功")
    */
   created<T>(
     res: Response,
@@ -46,12 +40,11 @@ export const responseUtils = {
       message,
       data: data ?? undefined,
     };
-
     return res.status(HTTP_STATUS.CREATED).json(responseBody);
   },
 
   /**
-   * 发送自定义状态码的响应 (仅在特殊业务场景使用)
+   * 发送自定义状态码响应 (success 或 fail)
    */
   custom<T>(
     res: Response,
@@ -60,7 +53,51 @@ export const responseUtils = {
     message: string = MESSAGES.SUCCESS
   ) {
     const responseBody: ApiResponse<T> = {
-      status: statusCode >= 400 ? "fail" : "success", // 自动判断状态
+      status: statusCode >= 400 ? "fail" : "success",
+      code: statusCode,
+      message,
+      data,
+    };
+    return res.status(statusCode).json(responseBody);
+  },
+
+  /**
+   * 发送业务错误响应 (fail)
+   * @param res Express Response
+   * @param message 错误信息
+   * @param statusCode HTTP 状态码 (默认 400)
+   * @param data 可选额外信息
+   */
+  fail<T = any>(
+    res: Response,
+    message: string,
+    statusCode: HttpStatusCode = HTTP_STATUS.BAD_REQUEST,
+    data?: T
+  ) {
+    const responseBody: ApiResponse<T> = {
+      status: "fail",
+      code: statusCode,
+      message,
+      data,
+    };
+    return res.status(statusCode).json(responseBody);
+  },
+
+  /**
+   * 发送服务器异常响应 (error)
+   * @param res Express Response
+   * @param message 错误信息
+   * @param statusCode HTTP 状态码 (默认 500)
+   * @param data 可选额外信息
+   */
+  error<T = any>(
+    res: Response,
+    message: string,
+    statusCode: HttpStatusCode = HTTP_STATUS.INTERNAL_SERVER_ERROR,
+    data?: T
+  ) {
+    const responseBody: ApiResponse<T> = {
+      status: "error",
       code: statusCode,
       message,
       data,

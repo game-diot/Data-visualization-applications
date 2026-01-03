@@ -110,15 +110,12 @@ export const fileController = {
     }
   },
 
-  /**
-   * 删除文件
-   */
   async deleteFile(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const deletedFile = await fileService.deleteFile(id);
+      if (!id) return responseUtils.fail(res, "文件 ID 必填", 400);
 
-      // ⚠️ 修复：传入 deletedFile 或 null
+      const deletedFile = await fileService.deleteFile(id);
       return responseUtils.success(res, deletedFile, "删除文件成功");
     } catch (error) {
       next(error);

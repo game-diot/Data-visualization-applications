@@ -13,6 +13,7 @@ import { cryptoUtils } from "../../../shared/utils/crypto.util"; // 假设你在
 
 // ⭐️ 核心引用：将分析逻辑委托给 Quality 模块
 import { qualityService } from "../../Step001.5_quality-analysis/services/quality.services";
+import { qualityReportRepository } from "features/file/repository/qualityReport.repository";
 
 export const fileService = {
   /**
@@ -98,42 +99,39 @@ export const fileService = {
   /**
    * 删除文件 (硬删除)
    */
-  async deleteFile(id: string): Promise<IFileDocument> {
-    // 1. 先查询文件是否存在 (我们需要拿到 path 才能删物理文件)
-    // 注意：这里不用 findById (因为它可能过滤了 isDeleted)，我们要查出原始记录
-    const file = await fileRepository.findById(id);
+  /**
+   * 删除文件 (硬删除 + 删除分析结果)
+   */
+  async deleteFile(fileId: string): Promise<IFileDocument> {
+    // 1️⃣ 查询文件是否存在
+    const file = await fileRepository.findById(fileId);
+    if (!file) throw new FileNotFoundException(`File ID ${fileId} not found.`);
 
-    // 如果用了 findById 且里面过滤了 isDeleted: false，
-    // 那么已经软删除的文件就查不到了。
-    // 如果想支持删除“已软删除”的文件，Repository 需要提供一个 findOriginalById 方法
-    // 但通常我们只允许删除存在的文件，所以这里 findById 没问题。
-
-    if (!file) {
-      throw new FileNotFoundException(`File ID ${id} not found.`);
-    }
-
-    // 2. 执行物理文件删除 (从磁盘移除)
-    // 使用 catch 防止文件本身已经不存在导致流程中断
+    // 2️⃣ 删除物理文件
     try {
       await fileUtils.deleteFile(file.path);
       logger.info(`🗑️ [FileSystem] Physical file deleted: ${file.path}`);
-    } catch (error) {
+    } catch (err) {
       logger.warn(
         `⚠️ [FileSystem] Failed to delete physical file: ${file.path}`
       );
-      // 物理删除失败通常不应阻断数据库删除，继续向下执行
     }
 
-    // 3. 执行数据库硬删除 (从 MongoDB 彻底移除)
-    const deletedFile = await fileRepository.hardDeleteById(id);
+    // 3️⃣ 删除数据库中对应的质量分析结果
+    const deletedReports = await qualityReportRepository.deleteByFileId(fileId);
+    logger.info(
+      `🗑️ [DB] Deleted ${deletedReports} quality report(s) for file ${fileId}`
+    );
 
+    // 4️⃣ 硬删除文件记录
+    const deletedFile = await fileRepository.hardDeleteById(fileId);
     if (!deletedFile) {
       throw new FileNotFoundException(
-        `File ID ${id} not found during deletion.`
+        `File ID ${fileId} not found during deletion.`
       );
     }
 
-    logger.info(`🗑️ [DB] File hard deleted: ${id}`);
+    logger.info(`🗑️ [DB] File hard deleted: ${fileId}`);
     return deletedFile;
   },
 };

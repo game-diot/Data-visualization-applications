@@ -26,6 +26,47 @@ export const qualityController = {
       next(error);
     }
   },
+  /**
+   * 获取指定 version 的分析结果
+   * GET /api/v1/quality/:id/version/:version
+   */
+  async getAnalysisResultByVersion(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { id, version } = req.params;
+
+      if (!id)
+        throw new ValidationException({
+          field: "id",
+          message: "File ID is required",
+        });
+      if (!version || isNaN(Number(version)))
+        throw new ValidationException({
+          field: "version",
+          message: "Version must be a number",
+        });
+
+      const result = await qualityService.getQualityResultByVersion(
+        id,
+        Number(version)
+      );
+
+      if (!result) {
+        return responseUtils.fail(res, "指定版本不存在", 404);
+      }
+
+      return responseUtils.success(
+        res,
+        result,
+        `获取 version=${version} 的分析结果成功`
+      );
+    } catch (error) {
+      next(error);
+    }
+  },
 
   /**
    * 手动触发/重试分析

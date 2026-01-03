@@ -44,6 +44,6 @@ fileRouter.put("/:id", fileController.updateFile);
  * DELETE /api/files/:id
  * 删除文件 (软删除 + 物理清理)
  */
-fileRouter.delete("/:id", fileController.deleteFile);
 
+fileRouter.delete("/:id", fileController.deleteFile);
 export { fileRouter };
