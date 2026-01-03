@@ -1,7 +1,7 @@
-# 文件路径: src/features/quality/repositories/task_repository.py
-
+import json
 from typing import Optional, Dict, Any
-from src.infrastructure.cache.redis_client import RedisClient
+# 1. 导入获取实例的辅助函数
+from src.infrastructure.cache.redis_client import get_redis
 
 class TaskRepository:
     """
@@ -9,20 +9,22 @@ class TaskRepository:
     
     职责：
     维护异步任务(Analysis)的实时进度和状态。
-    数据存储在 Redis 中，允许无状态的 API 服务随时查询进度。
+    数据存储在 Redis 中 (JSON String)，允许无状态的 API 服务随时查询进度。
     """
     
-    # 定义 Key 前缀，确保不与其他模块的任务冲突
     CACHE_PREFIX = "quality:task"
-    
-    # 任务状态默认保留 24 小时 (足够用户查看结果，之后自动清理)
     DEFAULT_TTL = 86400 
 
     def __init__(self):
-        self.cache = RedisClient
+        # 不在 init 中初始化连接，避免启动时序问题
+        pass
+
+    @property
+    def redis(self):
+        """动态获取 Redis 客户端实例"""
+        return get_redis()
 
     def _make_key(self, task_id: str) -> str:
-        """生成标准化的 Redis Key"""
         return f"{self.CACHE_PREFIX}:{task_id}"
 
     async def init_task(self, task_id: str):
@@ -34,35 +36,47 @@ class TaskRepository:
             "status": "pending",
             "progress": 0.0,
             "message": "Task initialized",
-            "result_id": None # 完成后填入 analysis result file_id
+            "result_id": None 
         }
-        await self.cache.set(key, initial_data, ttl=self.DEFAULT_TTL)
+        # 2. 序列化 Dict -> JSON String
+        # 3. 使用 ex 参数设置过期时间
+        await self.redis.set(
+            key, 
+            json.dumps(initial_data, ensure_ascii=False), 
+            ex=self.DEFAULT_TTL
+        )
 
     async def update_progress(self, task_id: str, progress: float, status: str = "processing", message: str = ""):
         """
-        更新任务进度
-        每次更新都会刷新 TTL，起到 '心跳' 作用，防止长任务执行中途过期
+        更新任务进度 (Read-Modify-Write)
         """
         key = self._make_key(task_id)
         
-        # 为了性能，这里我们不再先 Read 再 Write。
-        # 而是假设 Service 层持有完整的上下文，或者我们只更新部分字段。
-        # 但 Redis 的 SET 是覆盖式的。
-        # 更好的做法是 Service 层维护当前状态，或者这里先读取。
-        # 考虑到频率主要在 Python 侧控制，这里为了安全，先读后写 (Read-Modify-Write)
+        # 先读取现有状态
+        current_str = await self.redis.get(key)
         
-        current_data = await self.cache.get(key)
-        if not current_data:
-            # 如果任务意外丢失（Redis重启等），尝试重建基础结构
+        if current_str:
+            try:
+                current_data = json.loads(current_str)
+            except json.JSONDecodeError:
+                current_data = {}
+        else:
+            # 如果 Key 不存在（可能过期了），重建一个基础对象
             current_data = {}
-            
+
+        # 更新字段
         current_data.update({
             "status": status,
             "progress": progress,
             "message": message
         })
         
-        await self.cache.set(key, current_data, ttl=self.DEFAULT_TTL)
+        # 写回 Redis (序列化)
+        await self.redis.set(
+            key, 
+            json.dumps(current_data, ensure_ascii=False), 
+            ex=self.DEFAULT_TTL
+        )
 
     async def mark_completed(self, task_id: str, result_id: str):
         """
@@ -75,7 +89,11 @@ class TaskRepository:
             "message": "Analysis completed successfully",
             "result_id": result_id
         }
-        await self.cache.set(key, data, ttl=self.DEFAULT_TTL)
+        await self.redis.set(
+            key, 
+            json.dumps(data, ensure_ascii=False), 
+            ex=self.DEFAULT_TTL
+        )
 
     async def mark_failed(self, task_id: str, error_msg: str):
         """
@@ -88,19 +106,30 @@ class TaskRepository:
             "message": error_msg,
             "result_id": None
         }
-        # 失败状态也保留，以便前端查询报错原因
-        await self.cache.set(key, data, ttl=self.DEFAULT_TTL)
+        await self.redis.set(
+            key, 
+            json.dumps(data, ensure_ascii=False), 
+            ex=self.DEFAULT_TTL
+        )
 
     async def get_task(self, task_id: str) -> Optional[Dict[str, Any]]:
         """
         获取当前任务状态
         """
         key = self._make_key(task_id)
-        return await self.cache.get(key)
+        data_str = await self.redis.get(key)
+        
+        if not data_str:
+            return None
+            
+        try:
+            return json.loads(data_str)
+        except json.JSONDecodeError:
+            return None
     
     async def delete_task(self, task_id: str):
         """
         手动清理任务状态
         """
         key = self._make_key(task_id)
-        await self.cache.delete(key)
+        await self.redis.delete(key)

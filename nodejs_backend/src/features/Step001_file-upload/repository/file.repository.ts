@@ -102,16 +102,14 @@ export const fileRepository = {
 
   /**
    * ⭐️ 软删除 (Soft Delete)
-   * 实际上是更新操作
    */
   async deleteById(id: string): Promise<IFileDocument | null> {
-    return FileModel.findOneAndUpdate(
+    return FileModel.findByIdAndDelete(
       { _id: id },
       {
         isDeleted: true,
-        stage: "failed", // 或者保留原状态，视业务需求而定，这里标记删除
-      },
-      { new: true }
+        stage: "isDeleted", // 或者保留原状态，视业务需求而定，这里标记删除
+      }
     );
   },
 

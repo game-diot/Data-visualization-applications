@@ -7,7 +7,7 @@ from src.features.quality.schemas.inspection import (
     FileInspectionResponse, 
     ColumnInfo
 )
-from src.features.quality.repositories.dataset_repository import dataset_repository
+from src.features.quality.repository.dataset_repository import dataset_repository
 from src.features.quality.utils.validation import validate_file_for_analysis
 
 class InspectionService:
@@ -62,7 +62,7 @@ class InspectionService:
             cols=int(df.shape[1]),
             size_mb=round(memory_usage, 2),
             columns=columns_info,
-            preview=preview_data,
+            preview=preview_data, # type: ignore
             encoding="utf-8"  # parse_file 内部通常处理了编码，这里默认 utf-8
         )
 

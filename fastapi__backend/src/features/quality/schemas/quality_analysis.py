@@ -12,9 +12,13 @@ class QualityCheckRequest(BaseSchema):
     前端点击 '开始分析' 时触发
     """
     file_id: str = Field(..., description="需要分析的文件 ID")
+    
+    # 🔧 FIX: 新增 file_path 字段
+    file_path: str = Field(..., description="文件的绝对路径 (由 Node.js/前端 传递)")
+    
     force_refresh: bool = Field(False, description="是否强制重新计算 (忽略缓存)")
-    # 未来可以扩展：指定只分析某些列
-    # columns: Optional[List[str]] = None 
+    
+    # columns: Optional[List[str]] = None
 
 # ==========================================
 # 2. 统计详情子模型 (Sub-models)

@@ -1,6 +1,6 @@
 // 引入必要的类型
 import { FileStage } from "../models/File.model";
-import { FastApiAnalysisResultDTO } from "../../Step001.5_quality-analysis/dto/QualityResult.dto";
+import { FastApiQualityResultDTO } from "../../Step001.5_quality-analysis/dto/fastapi-quality-result.dto";
 
 // ==========================================
 // 1. Service 层使用的 DTO (内部流转)
@@ -31,7 +31,7 @@ export interface UpdateFileDTO {
   fastApiFileId?: string;
   analysisStartedAt?: Date;
   analysisCompletedAt?: Date;
-  analysisResult?: FastApiAnalysisResultDTO; // 巨大的分析结果
+  analysisResult?: FastApiQualityResultDTO; // 巨大的分析结果
   errorMessage?: string;
 }
 
@@ -59,6 +59,6 @@ export interface FileResponseDTO {
  * 场景：点击具体的分析报告时使用，包含所有结果
  */
 export interface FileDetailResponseDTO extends FileResponseDTO {
-  analysisResult?: FastApiAnalysisResultDTO; // 包含详细数据
+  analysisResult?: FastApiQualityResultDTO; // 包含详细数据
   errorMessage?: string; // 如果失败，告诉前端原因
 }

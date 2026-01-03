@@ -8,10 +8,10 @@ from src.shared.utils.response import success_response
 # 注意：你需要确保 QualityCheckRequest 在 schema定义 中包含 file_path 字段，
 # 或者在这里定义一个新的 Request Model。
 # 假设前端会发送 { "file_id": "...", "file_path": "/...", "force_refresh": false }
-from src.features.quality.schemas.analysis import QualityCheckRequest, QualityCheckResponse
+from src.features.quality.schemas.quality_analysis import QualityCheckRequest, QualityCheckResponse
 
 # 引入业务服务
-from src.features.quality.services.analysis_service import analysis_service
+from src.features.quality.services.quality_analysis_service import analysis_service
 
 router = APIRouter()
 

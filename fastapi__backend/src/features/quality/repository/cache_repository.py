@@ -1,50 +1,75 @@
-# 文件路径: src/features/quality/repositories/cache_repository.py
-
+import json
 from typing import Optional, Dict, Any
-from src.infrastructure.cache.redis_client import RedisClient 
+# 1. 导入 get_redis 辅助函数，而不是类本身
+from src.infrastructure.cache.redis_client import get_redis
 
 class CacheRepository:
     """
     Quality 模块缓存仓储
     
     职责：
-    1. 管理 Quality 模块在 Redis 中的 Key 命名空间 (Namespace)
-    2. 提供对分析报告(Report)的存取操作
+    1. 管理 Redis Key 命名空间
+    2. 处理 JSON 序列化/反序列化 (Dict <-> String)
+    3. 调用底层 Redis 客户端
     """
 
-    # 定义 Key 前缀，方便统一管理
     CACHE_PREFIX = "quality:analysis"
-    # 默认缓存时间 (1小时)
     DEFAULT_TTL = 3600
 
     def __init__(self):
-        # 依赖注入/单例引用
-        self.cache = RedisClient
+        # 注意：这里我们不直接在 __init__ 里赋值 self.redis = get_redis()
+        # 因为 __init__ 可能在应用启动早期执行，此时 Redis 还没连接。
+        # 最佳实践是在具体方法里调用 get_redis()，或者使用 @property
+        pass
+
+    @property
+    def redis(self):
+        """
+        动态获取 Redis 客户端实例
+        如果 Redis 未连接，get_redis() 会抛出 RuntimeError，这符合预期 (Fail Fast)
+        """
+        return get_redis()
 
     def _make_key(self, file_id: str) -> str:
-        """
-        [Internal] 生成标准化的 Redis Key
-        Format: quality:analysis:{file_id}
-        """
         return f"{self.CACHE_PREFIX}:{file_id}"
 
     async def get_analysis_result(self, file_id: str) -> Optional[Dict[str, Any]]:
         """
-        根据 file_id 获取缓存的分析结果
+        获取分析结果 (自动反序列化 JSON)
         """
         key = self._make_key(file_id)
-        return await self.cache.get(key)
+        
+        # 1. 从 Redis 读取字符串
+        #  - conceptually: Redis String -> JSON Load -> Python Dict
+        data_str = await self.redis.get(key)
+        
+        if not data_str:
+            return None
+            
+        try:
+            # 2. 反序列化: String -> Dict
+            return json.loads(data_str)
+        except json.JSONDecodeError:
+            # 防御性编程：万一缓存里的数据格式坏了，返回 None 并打印日志，不要崩掉整个请求
+            # (这里假设你有 logger，如果没有可以 print 或者忽略)
+            return None
 
     async def save_analysis_result(self, file_id: str, result: Dict[str, Any], ttl: int = DEFAULT_TTL):
         """
-        保存分析结果到缓存
+        保存分析结果 (自动序列化为 JSON)
         """
         key = self._make_key(file_id)
-        await self.cache.set(key, result, ttl=ttl)
+        
+        # 1. 序列化: Dict -> JSON String
+        # ensure_ascii=False 保证中文能正常显示，而不是 \uXXXX
+        data_str = json.dumps(result, ensure_ascii=False)
+        
+        # 2. 存入 Redis
+        await self.redis.set(key, data_str, ex=ttl)
 
     async def delete_analysis_result(self, file_id: str):
         """
-        删除指定文件的分析缓存 (通常用于重算或文件删除)
+        删除缓存
         """
         key = self._make_key(file_id)
-        await self.cache.delete(key)
+        await self.redis.delete(key)

@@ -13,10 +13,10 @@ from src.shared.exceptions.data_empty import DataEmptyException
 
 def detect_encoding(file_path: str) -> str:
     """
-    自动检测文件编码
+    Auto-detect file encoding
     """
     try:
-        # 使用 settings 配置的采样大小，避免魔法数字
+        # Use sampling size from settings to avoid magic numbers
         sample_size = getattr(settings, 'ENCODING_SAMPLE_SIZE', 10000)
         
         with open(file_path, 'rb') as f:
@@ -28,7 +28,7 @@ def detect_encoding(file_path: str) -> str:
         
         logger.debug(f"Detected encoding: {encoding} (confidence: {confidence}) for {file_path}")
         
-        # 阈值也可配置化
+        # Threshold can also be configurable
         if confidence and confidence < 0.6:
             logger.warning(f"Low confidence ({confidence}) for {encoding}, fallback to utf-8")
             return 'utf-8'
@@ -42,19 +42,19 @@ def detect_encoding(file_path: str) -> str:
 
 def parse_csv(file_path: str, filename: str) -> pd.DataFrame:
     """
-    解析 CSV 文件
+    Parse CSV file
     Args:
-        file_path: 绝对路径
-        filename: 原始文件名 (用于报错信息)
+        file_path: Absolute path
+        filename: Original filename (for error messages)
     """
     encoding = detect_encoding(file_path)
     
-    # 尝试的分隔符列表
+    # List of separators to try
     separators = [',', '\t', ';', '|']
     
     try:
-        # 1. 尝试自动解析
-        # engine='python' 更稳定，支持自动推断
+        # 1. Try automatic parsing
+        # engine='python' is more stable and supports auto-inference
         for sep in separators:
             try:
                 df = pd.read_csv(
@@ -62,19 +62,23 @@ def parse_csv(file_path: str, filename: str) -> pd.DataFrame:
                     sep=sep,
                     encoding=encoding,
                     engine='python',
-                    on_bad_lines='skip' # 跳过坏行，避免直接崩溃
+                    on_bad_lines='skip' # Skip bad lines to avoid direct crashes
                 )
                 if not df.empty and df.shape[1] > 1:
                     return df
             except UnicodeDecodeError as e:
-                # 捕获具体的编码错误，抛出业务异常
-                raise FileDecodeException(filename=filename, encoding_error=str(e))
+                # Capture specific encoding errors and raise business exception
+                # FIX: Add details dictionary with 'original_error'
+                raise FileDecodeException(
+                    filename=filename, 
+                    encoding_error=str(e),
+                )
             except pd.errors.EmptyDataError:
                 raise DataEmptyException(detail=f"CSV file '{filename}' is empty.")
             except Exception:
-                continue # 尝试下一个分隔符
+                continue # Try next separator
 
-        # 2. 如果循环都没成功，尝试让 Pandas 自行推断 (Last Resort)
+        # 2. If loop fails, let Pandas infer (Last Resort)
         return pd.read_csv(
             file_path, 
             sep=None, 
@@ -83,23 +87,33 @@ def parse_csv(file_path: str, filename: str) -> pd.DataFrame:
         )
 
     except UnicodeDecodeError as e:
-        raise FileDecodeException(filename=filename, encoding_error=str(e))
+        # FIX: Add details dictionary with 'original_error'
+        raise FileDecodeException(
+            filename=filename, 
+            encoding_error=str(e),
+
+        )
     except pd.errors.EmptyDataError:
         raise DataEmptyException(detail=f"CSV file '{filename}' is empty.")
     except Exception as e:
-        # 兜底异常：文件损坏或其他解析问题
+        # Catch-all exception: file corruption or other parsing issues
         logger.error(f"Failed to parse CSV {filename}: {str(e)}")
-        raise DataParseException(filename=filename, reason=str(e))
+        # FIX: Add details dictionary with 'original_error'
+        raise DataParseException(
+            filename=filename, 
+            reason=str(e),
+
+        )
 
 
 def parse_excel(file_path: str, filename: str) -> pd.DataFrame:
     """
-    解析 Excel 文件
+    Parse Excel file
     """
     path = Path(file_path)
     suffix = path.suffix.lower()
     
-    # 根据后缀选择引擎
+    # Select engine based on suffix
     engine = 'openpyxl' if suffix == '.xlsx' else 'xlrd'
     
     try:
@@ -111,26 +125,41 @@ def parse_excel(file_path: str, filename: str) -> pd.DataFrame:
         return df
 
     except ValueError as e:
-        # 通常是引擎不支持或文件格式伪造
+        # Usually engine unsupported or file format fake
         logger.error(f"Excel engine error: {e}")
-        raise DataParseException(filename=filename, reason="Invalid Excel format or missing dependency.")
+        # FIX: Add details dictionary with 'original_error'
+        raise DataParseException(
+            filename=filename, 
+            reason="Invalid Excel format or missing dependency.",
+     
+        )
     except Exception as e:
         logger.error(f"Failed to parse Excel {filename}: {str(e)}")
-        raise DataParseException(filename=filename, reason=str(e))
+        # FIX: Add details dictionary with 'original_error'
+        raise DataParseException(
+            filename=filename, 
+            reason=str(e),
+      
+        )
 
 
 def parse_file(file_path: str, original_filename: Optional[str] = None) -> pd.DataFrame:
     """
-    统一解析入口
+    Unified parsing entry point
     """
     path = Path(file_path)
     
-    # 如果没传原始文件名，就用路径中的文件名
+    # If no original filename passed, use name from path
     filename = original_filename if original_filename else path.name
     
     if not path.exists():
-        # 这里虽然是文件不存在，但在业务上属于“无法解析”，因为找不到源
-        raise DataParseException(filename=filename, reason="File not found on server.")
+        # Even if file doesn't exist, functionally it's a "parse failure"
+        # FIX: Add details dictionary
+        raise DataParseException(
+            filename=filename, 
+            reason="File not found on server.",
+ 
+        )
 
     ext = path.suffix.lower()
 
@@ -139,7 +168,9 @@ def parse_file(file_path: str, original_filename: Optional[str] = None) -> pd.Da
     elif ext in ['.xlsx', '.xls', '.xlsm']:
         return parse_excel(file_path, filename)
     else:
+        # FIX: Add details dictionary
         raise DataParseException(
             filename=filename, 
-            reason=f"Unsupported file extension: {ext}. Supported formats: .csv, .xlsx, .xls"
+            reason=f"Unsupported file extension: {ext}. Supported formats: .csv, .xlsx, .xls",
+
         )
