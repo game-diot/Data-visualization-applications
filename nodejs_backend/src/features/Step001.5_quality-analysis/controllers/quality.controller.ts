@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { qualityService } from "../services/quality.services";
-import { responseUtils } from "../../../shared/utils/response.util"; // 使用重构后的工具
+import { fileService } from "../../file/services/file.service"; // ⭐️ 关键：允许 Controller 跨模块调用 Service
+import { responseUtils } from "../../../shared/utils/response.util";
 import { ValidationException } from "../../../shared/exceptions/validation.exception";
+import { qualityService } from "../services/quality.services";
+import { FileStage } from "features/file/constant/file-stage.constant";
 
 export const qualityController = {
   /**
@@ -11,24 +13,26 @@ export const qualityController = {
   async getAnalysisResult(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
+      // 1. 先校验文件是否存在 (调用 FileService)
+      // 这比直接查 QualityReport 更安全，防止查到已删除文件的残留报告
+      await fileService.getFileById(id);
 
-      if (!id) {
-        throw new ValidationException({
-          field: "id",
-          message: "File ID is required",
-        });
+      // 2. 获取结果
+      const result = await qualityService.getLatestResult(id);
+
+      if (!result) {
+        // 可能文件存在但还没分析完
+        return responseUtils.success(res, null, "分析结果尚未生成或分析中");
       }
-
-      const result = await qualityService.getQualityResult(id);
 
       return responseUtils.success(res, result, "获取分析结果成功");
     } catch (error) {
       next(error);
     }
   },
+
   /**
    * 获取指定 version 的分析结果
-   * GET /api/v1/quality/:id/version/:version
    */
   async getAnalysisResultByVersion(
     req: Request,
@@ -38,18 +42,7 @@ export const qualityController = {
     try {
       const { id, version } = req.params;
 
-      if (!id)
-        throw new ValidationException({
-          field: "id",
-          message: "File ID is required",
-        });
-      if (!version || isNaN(Number(version)))
-        throw new ValidationException({
-          field: "version",
-          message: "Version must be a number",
-        });
-
-      const result = await qualityService.getQualityResultByVersion(
+      const result = await qualityService.getResultByVersion(
         id,
         Number(version)
       );
@@ -57,41 +50,30 @@ export const qualityController = {
       if (!result) {
         return responseUtils.fail(res, "指定版本不存在", 404);
       }
-
-      return responseUtils.success(
-        res,
-        result,
-        `获取 version=${version} 的分析结果成功`
-      );
+      return responseUtils.success(res, result);
     } catch (error) {
       next(error);
     }
   },
 
   /**
-   * 手动触发/重试分析
-   * POST /api/v1/quality/:id/retry
-   * Body: { forceRefresh: boolean }
+   * ⭐️ 修复：手动触发/重试分析
+   * 逻辑：Controller 负责从 FileService 拿路径，传给 QualityService
    */
   async triggerAnalysis(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
       const { forceRefresh } = req.body;
 
-      if (!id) {
-        throw new ValidationException({
-          field: "id",
-          message: "File ID is required",
-        });
-      }
+      // 1. 跨模块获取文件信息 (获取 filePath)
+      const file = await fileService.getFileById(id);
 
-      // 这里的 forceRefresh 默认为 true，因为通常手动调这个接口就是为了重跑
-      const isForce = typeof forceRefresh === "boolean" ? forceRefresh : true;
+      // 2. 校验状态 (可选：如果正在分析中，是否允许重试？)
+      // if (file.stage === 'quality_analyzing') ...
 
-      // 如果是重试，调用 retryAnalysis (它内部会清理旧数据并强制刷新)
-      // 如果只是单纯触发，也可以调 performAnalysis
-      // 这里统一使用 retry 语义，更符合前端 "重试" 按钮的场景
-      await qualityService.retryAnalysis(id);
+      // 3. 调用 QualityService (传入 path 和 forceRefresh)
+      // 这里复用了 performAnalysis，并没有单独写 retryAnalysis，减少重复逻辑
+      await qualityService.performAnalysis(id, file.path, forceRefresh ?? true);
 
       return responseUtils.success(res, null, "分析任务已重新提交");
     } catch (error) {
@@ -100,21 +82,18 @@ export const qualityController = {
   },
 
   /**
-   * 获取质量分析状态（不返回完整结果）
-   * GET /api/v1/quality/:id/status
+   * ⭐️ 修复：获取质量分析状态
+   * 逻辑：状态是 File 的属性，应该问 FileService 要，然后在这里通过 Helper 转换格式
    */
   async getAnalysisStatus(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
 
-      if (!id) {
-        throw new ValidationException({
-          field: "id",
-          message: "File ID is required",
-        });
-      }
+      // 1. 调用 FileService 获取文件最新状态
+      const file = await fileService.getFileById(id);
 
-      const status = await qualityService.getAnalysisStatus(id);
+      // 2. 转换为前端需要的 status 格式 (逻辑内聚在 Controller 或 Utils)
+      const status = mapFileStageToQualityStatus(file);
 
       return responseUtils.success(res, status, "获取分析状态成功");
     } catch (error) {
@@ -122,3 +101,40 @@ export const qualityController = {
     }
   },
 };
+
+// ==========================================
+// Helper: 状态映射函数 (放在 Controller 底部或 Utils 中)
+// ==========================================
+function mapFileStageToQualityStatus(file: any) {
+  const stage = file.stage as FileStage;
+  const base = {
+    updatedAt: file.updatedAt,
+    hasResult: false,
+    stage: stage,
+    message: "",
+  };
+
+  switch (stage) {
+    case "uploaded":
+      return { ...base, message: "等待开始分析" };
+    case "quality_pending":
+      return { ...base, message: "任务排队中" };
+    case "quality_analyzing":
+      return { ...base, message: "正在进行质量检测..." };
+    case "quality_done":
+      return {
+        ...base,
+        hasResult: true,
+        message: "分析完成",
+        updatedAt: file.analysisCompletedAt,
+      };
+    case "quality_failed":
+      return {
+        ...base,
+        message: file.errorMessage || "分析失败",
+        stage: "quality_failed",
+      };
+    default:
+      return { ...base, message: "未知状态" };
+  }
+}

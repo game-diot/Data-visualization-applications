@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import { QualityAnalysisResultSchema } from "../schemas/quality.schemas"; // 你已经写的
+import { QualityAnalysisResultSchema } from "../../Step001.5_quality-analysis/schema/qualityResult.schema"; // 你已经写的
 
 export interface IQualityReportDocument extends Document {
   fileId: string; // 对应 FileModel 的 _id

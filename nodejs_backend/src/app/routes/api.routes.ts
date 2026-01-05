@@ -3,7 +3,7 @@ import { HTTP_STATUS } from "../../shared/constants/http.constant";
 
 // ⚠️ 注意：我们需要在下一步创建这个文件，目前先写好引用路径
 // 假设导出名为 fileRoutes
-import { fileRouter } from "../../features/Step001_file-upload/routes/file.routes";
+import { fileRouter } from "../../features/file/route/file.routes";
 import { qualityRouter } from "features/Step001.5_quality-analysis/routes/quality.route";
 
 const router = Router();

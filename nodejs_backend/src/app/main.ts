@@ -2,6 +2,7 @@ import { bootstrapApplication } from "./core/bootstrap.core";
 import { createApp } from "./app";
 import { envConfig } from "./config/env.config";
 import { logger } from "../shared/utils/logger.util";
+import { setupFileSubscribers } from "features/file/subscriber/file.subscriber";
 
 /**
  * 程序主入口
@@ -15,6 +16,8 @@ const startServer = async () => {
     // 2. 创建 Express 应用实例
     const app = createApp();
     const { port, apiPrefix, env } = envConfig.app;
+
+    setupFileSubscribers();
 
     // 3. 启动 HTTP 服务器
     const server = app.listen(port, () => {

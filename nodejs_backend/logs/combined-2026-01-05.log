@@ -138,3 +138,498 @@
 [2026-01-05 16:27:14] [32minfo[39m: [32m🛠  Environment: development[39m
 [2026-01-05 16:27:14] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
 [2026-01-05 16:27:14] [32minfo[39m: [32m=================================[39m
+[2026-01-05 16:27:33] [32minfo[39m: [32m⚡️ [Upload] Seconds-transmission triggered for hash: dfd0e5dfaa07f3ef825ef5fa40b45112[39m
+[2026-01-05 16:27:33] [34mdebug[39m: [34m🗑️ [FileUtils] Deleted: Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/uploadFiles/f0e421d60166f64b1cb646eb1091b56e.csv[39m
+[2026-01-05 16:27:33] [32minfo[39m: [32m[0mPOST /api/v1/files/upload [32m201[0m 39.557 ms - 720[0m[39m
+[2026-01-05 16:27:56] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be [32m200[0m 18.344 ms - 4557[0m[39m
+[2026-01-05 16:28:31] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 52.307 ms - 732[0m[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:21:03] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:22:08] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:23:16] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:23:16] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:23:16] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:23:16] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:23:16] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:23:17] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:40:53] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:40:54] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:48:52] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:56:52] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m=================================[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 20:57:16] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:02:30] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:06:59] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:10:16] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:10:16] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:10:16] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:10:16] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:10:16] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:10:17] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:18:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:19:10] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:20:27] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:21:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:25:27] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:26:06] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:26:31] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:27:01] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:28:51] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:29:41] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:29:54] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:31:56] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:34:05] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:34:32] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:34:32] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:34:32] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:34:32] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:34:32] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:34:33] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:36:24] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:36:38] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 42.706 ms - 732[0m[39m
+[2026-01-05 21:37:16] [32minfo[39m: [32m[0mGET /api/v1/files/695b7434a60fbde9d83ee0be [32m200[0m 21.450 ms - 702[0m[39m
+[2026-01-05 21:37:41] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be [32m200[0m 14.205 ms - 80[0m[39m
+[2026-01-05 21:38:38] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be/version/1 [33m404[0m 18.776 ms - 62[0m[39m
+[2026-01-05 21:39:55] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 695b7434a60fbde9d83ee0be (Force: true)[39m
+[2026-01-05 21:39:55] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-05 21:39:55] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:39:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:39:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:39:55] [32minfo[39m: [32m[0mPOST /api/v1/quality/695b7434a60fbde9d83ee0be/retry [31m502[0m 151.301 ms - 1222[0m[39m
+[2026-01-05 21:40:30] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 695b7434a60fbde9d83ee0be (Force: true)[39m
+[2026-01-05 21:40:30] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-05 21:40:30] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:40:30] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:40:30] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:40:30] [32minfo[39m: [32m[0mPOST /api/v1/quality/695b7434a60fbde9d83ee0be/retry [31m502[0m 53.755 ms - 1222[0m[39m
+[2026-01-05 21:41:11] [32minfo[39m: [32m💾 [Upload] File saved to DB: 695bbf77146b1bf2d3570c0c[39m
+[2026-01-05 21:41:11] [32minfo[39m: [32m[0mPOST /api/v1/files/upload [32m201[0m 82.255 ms - 568[0m[39m
+[2026-01-05 21:41:31] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 19.577 ms - 1199[0m[39m
+[2026-01-05 21:41:39] [32minfo[39m: [32m[0mGET /api/v1/files/695bbf77146b1bf2d3570c0c [32m200[0m 7.292 ms - 550[0m[39m
+[2026-01-05 21:41:48] [32minfo[39m: [32m📝 [Update] File updated: 695bbf77146b1bf2d3570c0c[39m
+[2026-01-05 21:41:48] [32minfo[39m: [32m[0mPUT /api/v1/files/695bbf77146b1bf2d3570c0c [32m200[0m 18.720 ms - 544[0m[39m
+[2026-01-05 21:41:58] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 10.398 ms - 1199[0m[39m
+[2026-01-05 21:42:06] [32minfo[39m: [32m🗑️ [SoftDelete] File marked as deleted: 695bbf77146b1bf2d3570c0c[39m
+[2026-01-05 21:42:06] [32minfo[39m: [32m[0mDELETE /api/v1/files/695bbf77146b1bf2d3570c0c [32m200[0m 7.830 ms - 545[0m[39m
+[2026-01-05 21:42:16] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 9.308 ms - 732[0m[39m
+[2026-01-05 21:42:25] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be [32m200[0m 8.923 ms - 80[0m[39m
+[2026-01-05 21:43:23] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be/status [32m200[0m 10.987 ms - 181[0m[39m
+[2026-01-05 21:43:51] [32minfo[39m: [32m[0mGET /api/v1/quality/695b7434a60fbde9d83ee0be/version/1 [33m404[0m 8.197 ms - 62[0m[39m
+[2026-01-05 21:44:31] [32minfo[39m: [32m🗑️ [SoftDelete] File marked as deleted: 695bbf77146b1bf2d3570c0c[39m
+[2026-01-05 21:44:31] [32minfo[39m: [32m[0mDELETE /api/v1/files/695bbf77146b1bf2d3570c0c [32m200[0m 12.771 ms - 545[0m[39m
+[2026-01-05 21:44:55] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 695b7434a60fbde9d83ee0be (Force: true)[39m
+[2026-01-05 21:44:55] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-05 21:44:55] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:44:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:44:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:44:55] [32minfo[39m: [32m[0mPOST /api/v1/quality/695b7434a60fbde9d83ee0be/retry [31m502[0m 53.849 ms - 1222[0m[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 21:47:43] [32minfo[39m: [32m=================================[39m
+[2026-01-05 21:48:27] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 22.309 ms - 136[0m[39m
+[2026-01-05 21:48:32] [32minfo[39m: [32m💾 [Upload] File saved to DB: 695bc130f66095fef0acf674[39m
+[2026-01-05 21:48:32] [32minfo[39m: [32m[0mPOST /api/v1/files/upload [32m201[0m 129.713 ms - 568[0m[39m
+[2026-01-05 21:48:45] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 15.878 ms - 602[0m[39m
+[2026-01-05 21:48:49] [32minfo[39m: [32m[0mGET /api/v1/files/695bc130f66095fef0acf674 [32m200[0m 18.588 ms - 550[0m[39m
+[2026-01-05 21:48:55] [32minfo[39m: [32m📝 [Update] File updated: 695bc130f66095fef0acf674[39m
+[2026-01-05 21:48:55] [32minfo[39m: [32m[0mPUT /api/v1/files/695bc130f66095fef0acf674 [32m200[0m 14.995 ms - 544[0m[39m
+[2026-01-05 21:49:04] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674 [32m200[0m 11.849 ms - 80[0m[39m
+[2026-01-05 21:53:39] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 695bc130f66095fef0acf674 (Force: true)[39m
+[2026-01-05 21:53:39] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-05 21:53:39] [32minfo[39m: [32m✅ [FastAPI] Success [Code:20000]: /api/v1/quality/analyze[39m
+[2026-01-05 21:53:39] [32minfo[39m: [32m√ [QualityService] Analysis successful: 695bc130f66095fef0acf674[39m
+[2026-01-05 21:53:39] [32minfo[39m: [32m[0mPOST /api/v1/quality/695bc130f66095fef0acf674/retry [32m200[0m 906.777 ms - 71[0m[39m
+[2026-01-05 21:53:56] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674 [32m200[0m 25.405 ms - 34696[0m[39m
+[2026-01-05 21:54:05] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674/status [32m200[0m 6.841 ms - 184[0m[39m
+[2026-01-05 21:54:15] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674/version/1 [32m200[0m 10.093 ms - 34684[0m[39m
+[2026-01-05 21:54:24] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674/status [32m200[0m 12.574 ms - 184[0m[39m
+[2026-01-05 21:54:34] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 13.572 ms - 602[0m[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 22:02:15] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m=================================[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-05 22:02:37] [32minfo[39m: [32m=================================[39m
+[2026-01-05 22:02:45] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 39.697 ms - 602[0m[39m
+[2026-01-05 22:02:53] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674/status [32m200[0m 15.729 ms - 184[0m[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 695bc130f66095fef0acf674 (Force: true)[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 695bc130f66095fef0acf674[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m✅ [FastAPI] Success [Code:20000]: /api/v1/quality/analyze[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 695bc130f66095fef0acf674[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m√ [QualityService] Analysis successful: 695bc130f66095fef0acf674[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m[0mPOST /api/v1/quality/695bc130f66095fef0acf674/retry [32m200[0m 282.980 ms - 71[0m[39m
+[2026-01-05 22:03:00] [32minfo[39m: [32m💾 [DB] File 695bc130f66095fef0acf674 stage updated to 'quality_done'[39m
+[2026-01-05 22:03:06] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674 [32m200[0m 40.288 ms - 34696[0m[39m
+[2026-01-05 22:03:19] [32minfo[39m: [32m[0mGET /api/v1/quality/695bc130f66095fef0acf674/status [32m200[0m 21.529 ms - 181[0m[39m

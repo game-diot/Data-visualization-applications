@@ -1,7 +1,7 @@
 import { Router } from "express";
 // ⚠️ 注意：之前的步骤中我们文件名是 file.controller.ts (单数)
-import { fileController } from "../controllers/file.controller";
-import { upload } from "../utils/upload.util"; // Multer 配置
+import { fileController } from "../../file/controllers/file.controller";
+import { upload } from "../../file/utils/upload.util"; // Multer 配置
 
 const fileRouter = Router();
 

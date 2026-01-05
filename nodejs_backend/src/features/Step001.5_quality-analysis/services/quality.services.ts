@@ -1,237 +1,80 @@
-import { fileRepository } from "../../Step001_file-upload/repository/file.repository";
-import { qualityReportRepository } from "../../file/repository/qualityReport.repository";
-import { fastApiClient } from "../../../api/fastapi/clients/fastapiClient";
-import { logger } from "../../../shared/utils/logger.util";
-import { FileNotFoundException } from "../../../shared/exceptions/fileNotFound.exception";
-import { FastApiBusinessException } from "../../../shared/exceptions/fastApiBusiness.exception";
-import { FastApiQualityResultDTO } from "../dto/fastapi-quality-result.dto";
-import { FileStage } from "features/file/enum/fileStage.enum";
-export interface QualityAnalysisStatus {
-  stage:
-    | "uploaded"
-    | "quality_pending"
-    | "quality_analyzing"
-    | "quality_done"
-    | "quality_failed";
-
-  message: string;
-
-  hasResult: boolean;
-
-  updatedAt?: Date;
-}
+import { logger } from "@shared/utils/logger.util";
+import { IQualityAnalysisResult } from "../models/interface/quality-result.interface";
+import { eventBus } from "@app/core/eventBus.core";
+import { FastApiQualityResponseDTO } from "../dto/analysisProtocol.dto";
+import { fastApiClient } from "api/fastapi/clients/fastapiClient";
+import { qualityReportRepository } from "../repository/qualityReport.repository";
 
 export const qualityService = {
   /**
-   * 核心：执行质量分析流程
+   * 核心：执行质量分析流程 (兼顾首次分析和重试)
+   * 注意：必须传入 filePath，因为 Quality 模块不查 File 表
    */
   async performAnalysis(
     fileId: string,
-    forceRefresh: boolean = true
-  ): Promise<FastApiQualityResultDTO> {
-    const file = await this._getFileOrThrow(fileId);
-    logger.info(`🚀 [QualityService] Starting analysis for file: ${fileId}`);
+    filePath: string,
+    forceRefresh: boolean = false
+  ): Promise<IQualityAnalysisResult> {
+    logger.info(
+      `🚀 [QualityService] Starting analysis for file: ${fileId} (Force: ${forceRefresh})`
+    );
+
+    // 1. 广播开始事件 (通知 File 模块更新状态为 analyzing)
+    eventBus.emit("QUALITY_ANALYSIS_STARTED", { fileId });
+
     try {
-      await this._updateFileStage(fileId, "quality_analyzing");
+      // 2. 调用 Python
+      const fastApiResult: FastApiQualityResponseDTO =
+        await fastApiClient.triggerAnalysis({
+          file_id: fileId,
+          file_path: filePath,
+        });
 
-      // 调用 Python
-      const fastApiResult = await fastApiClient.triggerAnalysis({
-        file_id: fileId,
-        file_path: file.path,
-        force_refresh: forceRefresh,
-      });
+      // 3. DTO 强转/映射
+      const snapshot: IQualityAnalysisResult =
+        fastApiResult as IQualityAnalysisResult;
 
-      // DTO -> Snapshot 映射
-      const snapshot = this._mapDtoToSnapshot(fastApiResult);
-      // 保存完整分析结果到 quality_reports
+      // 4. 保存完整历史记录
       await qualityReportRepository.createReport(fileId, snapshot);
 
-      // 从 snapshot 提取 summary 更新 FileModel
-      await fileRepository.updateById(fileId, {
-        stage: "quality_done",
-        qualityScore: snapshot.quality_score,
-        total_missing_cells: snapshot.missing.total_missing_cells,
-        missing_rate: snapshot.missing.missing_rate,
-        total_duplicate_rows: snapshot.duplicates.total_duplicate_rows,
-        duplicate_rate: snapshot.duplicates.duplicate_rate,
-        anomalies_total: snapshot.anomalies.total,
-        analysisCompletedAt: new Date(),
+      // 5. 广播完成事件 (通知 File 模块更新状态为 done 并保存摘要)
+      eventBus.emit("QUALITY_ANALYSIS_COMPLETED", {
+        fileId,
+        result: snapshot,
       });
 
-      logger.info(
-        `√ [QualityService]  analysis successful for file: ${fileId}`
-      );
+      logger.info(`√ [QualityService] Analysis successful: ${fileId}`);
       return snapshot;
     } catch (error: any) {
-      const message =
-        error instanceof FastApiBusinessException
-          ? error.message
-          : `Internal Analysis Error: ${error.message}`;
-      await this._updateFileStage(fileId, "quality_failed", message);
-      logger.error(`❌ [QualityService] wrong analysis for file: ${fileId}`);
+      const errorMessage = error.message || "Internal Analysis Error";
+
+      // 6. 广播失败事件
+      eventBus.emit("QUALITY_ANALYSIS_FAILED", {
+        fileId,
+        error: errorMessage,
+      });
+
+      logger.error(`❌ [QualityService] Failed: ${fileId}`, error);
       throw error;
     }
   },
 
   /**
-   * 获取结果
+   * 获取最新结果
    */
-  async getQualityResult(fileId: string) {
-    // 1. 校验文件存在 & 状态
-    const file = await this._getFileOrThrow(fileId);
-
-    switch (file.stage) {
-      case "quality_done": {
-        // 2. 从质量报告表中读取结果
-        const report = await qualityReportRepository.findLatestByFileId(fileId);
-
-        if (!report) {
-          // 理论上不该发生，防御性处理
-          return {
-            status: "processing",
-            message: "分析结果尚未生成",
-          };
-        }
-
-        return report;
-      }
-
-      case "quality_failed":
-        return {
-          status: "failed",
-          message: file.errorMessage ?? "质量分析失败",
-        };
-
-      default:
-        return {
-          status: "processing",
-          message: "质量分析进行中",
-          stage: file.stage,
-        };
-    }
+  async getLatestResult(fileId: string) {
+    const report = await qualityReportRepository.findLatestByFileId(fileId);
+    return report ? report.snapshot : null;
   },
+
   /**
-   * 获取指定 version 的分析结果
+   * 获取历史版本
    */
-  async getQualityResultByVersion(fileId: string, version: number) {
-    const file = await this._getFileOrThrow(fileId);
-
-    if (file.stage !== "quality_done") {
-      return {
-        status: "processing",
-        message: "质量分析进行中",
-        stage: file.stage,
-      };
-    }
-
+  async getResultByVersion(fileId: string, version: number) {
     const report = await qualityReportRepository.findByFileIdAndVersion(
       fileId,
       version
     );
-
-    return report ?? null;
-  },
-
-  /**
-   * 获取状态
-   */
-
-  async getAnalysisStatus(fileId: string): Promise<QualityAnalysisStatus> {
-    // 1. 只查询必要字段
-    const file = await this._getFileOrThrow(fileId);
-
-    // 2. 根据 stage 映射质量分析状态
-    switch (file.stage) {
-      case "uploaded":
-        return {
-          stage: "uploaded",
-          message: "文件已上传，尚未开始分析",
-          hasResult: false,
-          updatedAt: file.updatedAt,
-        };
-
-      case "quality_pending":
-        return {
-          stage: "quality_pending",
-          message: "文件正在发送至分析服务",
-          hasResult: false,
-          updatedAt: file.updatedAt,
-        };
-
-      case "quality_analyzing":
-        return {
-          stage: "quality_analyzing",
-          message: "质量分析进行中",
-          hasResult: false,
-          updatedAt: file.updatedAt,
-        };
-
-      case "quality_done":
-        return {
-          stage: "quality_done",
-          message: "质量分析已完成",
-          hasResult: true,
-          updatedAt: file.analysisCompletedAt ?? file.updatedAt,
-        };
-
-      case "quality_failed":
-        return {
-          stage: "quality_failed",
-          message: "质量分析失败，请重试",
-          hasResult: false,
-          updatedAt: file.updatedAt,
-        };
-
-      default:
-        // 理论上不会发生，防御式编程
-        return {
-          stage: "quality_failed",
-          message: "未知状态",
-          hasResult: false,
-          updatedAt: file.updatedAt,
-        };
-    }
-  },
-
-  /**
-   * 重试分析
-   */
-  async retryAnalysis(fileId: string) {
-    return this.performAnalysis(fileId, true);
-  },
-
-  // ==========================================
-  // 私有辅助方法
-  // ==========================================
-  async _getFileOrThrow(fileId: string) {
-    const file = await fileRepository.findById(fileId);
-    if (!file) throw new FileNotFoundException(fileId);
-    return file;
-  },
-
-  async _updateFileStage(
-    fileId: string,
-    stage: FileStage,
-    errorMessage?: string
-  ) {
-    const update: Partial<{
-      stage: FileStage;
-      errorMessage: string;
-      analysisStartedAt: Date;
-      analysisCompletedAt: Date;
-    }> = { stage };
-    if (stage === "quality_analyzing") update.analysisStartedAt = new Date();
-    if (stage === "quality_done") update.analysisCompletedAt = new Date();
-    if (stage === "quality_failed" && errorMessage)
-      update.errorMessage = errorMessage;
-    return fileRepository.updateById(fileId, update);
-  },
-
-  _mapDtoToSnapshot(dto: FastApiQualityResultDTO) {
-    // 这里可以处理 DTO -> Snapshot 映射逻辑，比如:
-    // - 类型安全检查
-    // - 字段过滤/重命名
-    // - 版本控制字段等
-    return dto; // 现在直接返回，但可以扩展
+    return report ? report.snapshot : null;
   },
 };

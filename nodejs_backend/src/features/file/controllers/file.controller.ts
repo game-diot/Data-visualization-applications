@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import path from "path";
 import { fileService } from "../services/file.service";
 import { responseUtils } from "../../../shared/utils/response.util";
-import { CreateFileServiceDTO } from "../dto/file.dto";
+import { CreateFileServiceDTO } from "../dto/fileService.dto";
 import { ValidationException } from "../../../shared/exceptions/validation.exception";
 import { PaginationQuery } from "../../../shared/types/pagination.type";
 

@@ -1,0 +1,49 @@
+[2026-01-05 21:39:55] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:39:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:39:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:40:30] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:40:30] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:40:30] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:44:55] [31merror[39m: [31m❌ [FastAPI] HTTP 404 The requested file was not found on the server.[39m
+[2026-01-05 21:44:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 21:44:55] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 404
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:224:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:156:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\services\quality.services.ts:28:9)
+    at async triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\Step001.5_quality-analysis\controllers\quality.controller.ts:76:7)
+[2026-01-05 22:02:15] [31merror[39m: ReferenceError: logger is not defined
+    at setupFileSubscribers (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\file\subscriber\file.subscriber.ts:6:3)
+    at startServer (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\main.ts:20:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
