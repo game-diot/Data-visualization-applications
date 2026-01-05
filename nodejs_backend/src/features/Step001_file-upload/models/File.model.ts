@@ -9,40 +9,7 @@ import { QualityAnalysisSnapshot } from "../../file/types/quality-snapshot.type"
 // 引入 Quality 模块定义的 Schema (存储结构)
 import { QualityAnalysisResultSchema } from "../../file/schemas/quality.schemas";
 import { FastApiQualityResultDTO } from "features/Step001.5_quality-analysis/dto/fastapi-quality-result.dto";
-import { FILE_STAGE_ENUM } from "features/file/enum/fileStage.enum";
-/**
- * 文件全生命周期状态
- * 只描述“当前所处阶段”，不描述阶段内部细节
- */
-export type FileStage =
-  // ===== 文件层 =====
-  | "uploaded" // 文件已上传
-  | "uploaded_failed"
-  | "isDeleted"
-
-  // ===== 质量分析阶段 =====
-  | "quality_pending" // 等待质量分析
-  | "quality_analyzing" // 质量分析中
-  | "quality_done" // 质量分析完成
-  | "quality_failed" // 质量分析失败
-
-  // ===== 数据清洗阶段 =====
-  | "cleaning_pending"
-  | "cleaning"
-  | "cleaning_done"
-  | "cleaning_failed"
-
-  // ===== 数据分析阶段 =====
-  | "analysis_pending"
-  | "analysis"
-  | "analysis_done"
-  | "analysis_failed"
-
-  // ===== AI 阶段 =====
-  | "ai_pending"
-  | "ai_generating"
-  | "ai_done"
-  | "ai_failed";
+import { FILE_STAGE_ENUM, FileStage } from "features/file/enum/fileStage.enum";
 
 // ==========================================
 // 2. 接口定义 (Interfaces)
@@ -67,8 +34,6 @@ export interface IFile {
   // --- 状态流转 ---
   // 使用从 quality.dto 导入的统一状态枚举，确保全系统一致
   stage: FileStage;
-
-  isDeleted: boolean; // 软删除标记
 
   // --- 外部系统关联 ---
   fastApiFileId?: string; // Python端返回的任务ID
@@ -123,8 +88,6 @@ const fileSchema = new Schema<IFileDocument>(
       index: true,
     },
 
-    isDeleted: { type: Boolean, default: false, index: true },
-
     // 4. 外部关联
     fastApiFileId: { type: String, index: true },
 
@@ -154,7 +117,7 @@ const fileSchema = new Schema<IFileDocument>(
 // 4. 索引优化
 // ==========================================
 // 复合索引：查询某用户的未删除文件，按时间倒序
-fileSchema.index({ userId: 1, isDeleted: 1, createdAt: -1 });
+fileSchema.index({ userId: 1, createdAt: -1 });
 
 export const FileModel: Model<IFileDocument> = mongoose.model<IFileDocument>(
   "File",

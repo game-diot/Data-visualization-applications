@@ -18,7 +18,6 @@ export const fileRepository = {
   async create(data: CreateFileServiceDTO): Promise<IFileDocument> {
     const file = new FileModel({
       ...data,
-      isDeleted: false, // 显式初始化
       stage: "uploaded",
     });
     return file.save();
@@ -42,7 +41,7 @@ export const fileRepository = {
     const skip = (page - 1) * pageSize;
 
     // 1. 强制合并：排除已删除的文件
-    const finalFilter = { ...filter, isDeleted: false };
+    const finalFilter = { ...filter };
 
     // 2. 并行执行：查询数据 + 统计总数 (提升效率)
     const [items, total] = await Promise.all([
@@ -68,7 +67,7 @@ export const fileRepository = {
    * 注意：详情页可能需要看到 analysisResult
    */
   async findById(id: string): Promise<IFileDocument | null> {
-    return FileModel.findOne({ _id: id, isDeleted: false });
+    return FileModel.findOne({ _id: id });
   },
 
   /**
@@ -76,14 +75,14 @@ export const fileRepository = {
    * 查找系统中是否存在相同内容且未删除的文件
    */
   async findByHash(hash: string): Promise<IFileDocument | null> {
-    return FileModel.findOne({ hash, isDeleted: false });
+    return FileModel.findOne({ hash });
   },
 
   /**
    * 根据 FastAPI ID 查找
    */
   async findByFastApiId(fastApiFileId: string): Promise<IFileDocument | null> {
-    return FileModel.findOne({ fastApiFileId, isDeleted: false });
+    return FileModel.findOne({ fastApiFileId });
   },
 
   /**
@@ -94,7 +93,7 @@ export const fileRepository = {
     updates: UpdateQuery<IFileDocument> // 使用 Mongoose 的 UpdateQuery 类型更安全
   ): Promise<IFileDocument | null> {
     return FileModel.findOneAndUpdate(
-      { _id: id, isDeleted: false }, // 确保不更新已删除的文件
+      { _id: id }, // 确保不更新已删除的文件
       updates,
       { new: true }
     );
@@ -107,7 +106,6 @@ export const fileRepository = {
     return FileModel.findByIdAndDelete(
       { _id: id },
       {
-        isDeleted: true,
         stage: "isDeleted", // 或者保留原状态，视业务需求而定，这里标记删除
       }
     );

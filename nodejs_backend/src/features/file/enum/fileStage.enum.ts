@@ -27,3 +27,5 @@ export const FILE_STAGE_ENUM = [
   "ai_done",
   "ai_failed",
 ] as const;
+
+export type FileStage = (typeof FILE_STAGE_ENUM)[number];

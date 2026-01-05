@@ -5,7 +5,7 @@ import { logger } from "../../../shared/utils/logger.util";
 import { FileNotFoundException } from "../../../shared/exceptions/fileNotFound.exception";
 import { FastApiBusinessException } from "../../../shared/exceptions/fastApiBusiness.exception";
 import { FastApiQualityResultDTO } from "../dto/fastapi-quality-result.dto";
-import { FileStage } from "features/Step001_file-upload/models/File.model";
+import { FileStage } from "features/file/enum/fileStage.enum";
 export interface QualityAnalysisStatus {
   stage:
     | "uploaded"
