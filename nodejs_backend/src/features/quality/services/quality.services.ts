@@ -4,6 +4,8 @@ import { eventBus } from "@app/core/eventBus.core";
 import { FastApiQualityResponseDTO } from "../dto/analysisProtocol.dto";
 import { fastApiClient } from "api/fastapi/clients/fastapiClient";
 import { qualityReportRepository } from "../repository/qualityReport.repository";
+import { FastApiBusinessException } from "@shared/exceptions/fastApiBusiness.exception";
+import { IAnalysisError } from "features/file/models/interface/ianalysisError.interface";
 
 export const qualityService = {
   /**
@@ -35,26 +37,52 @@ export const qualityService = {
         fastApiResult as IQualityAnalysisResult;
 
       // 4. 保存完整历史记录
-      await qualityReportRepository.createReport(fileId, snapshot);
+      const newReport = await qualityReportRepository.createReport(
+        fileId,
+        snapshot
+      );
 
       // 5. 广播完成事件 (通知 File 模块更新状态为 done 并保存摘要)
       eventBus.emit("QUALITY_ANALYSIS_COMPLETED", {
         fileId,
         result: snapshot,
+        version: newReport.version,
       });
 
       logger.info(`√ [QualityService] Analysis successful: ${fileId}`);
       return snapshot;
     } catch (error: any) {
-      const errorMessage = error.message || "Internal Analysis Error";
+      // 🛑 核心逻辑：构造结构化错误对象
 
-      // 6. 广播失败事件
+      let errorCode = "UNKNOWN_ERROR";
+      let errorMsg = error.message;
+      let errorDetails = null;
+
+      // 如果是我们封装的 FastAPI 异常，可以提取更详细的信息
+      if (error instanceof FastApiBusinessException) {
+        errorCode = error.errorCode.toString(); // e.g. "40004"
+        errorMsg = error.message;
+        errorDetails = error.details;
+      } else if (error.code === "ECONNABORTED") {
+        errorCode = "TIMEOUT";
+        errorMsg = "Analysis service timed out";
+      }
+
+      const structuredError: IAnalysisError = {
+        stage: "quality", // 明确标记是哪个阶段挂了
+        code: errorCode,
+        message: errorMsg,
+        occurredAt: new Date(),
+        details: errorDetails,
+      };
+
+      // 2. 广播失败事件 (携带结构化数据)
       eventBus.emit("QUALITY_ANALYSIS_FAILED", {
         fileId,
-        error: errorMessage,
+        error: structuredError,
       });
 
-      logger.error(`❌ [QualityService] Failed: ${fileId}`, error);
+      logger.error(`❌ [QualityService] Failed: ${fileId}`, structuredError);
       throw error;
     }
   },

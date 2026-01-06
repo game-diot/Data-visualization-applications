@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
-import { IQualityAnalysisResult } from "features/Step001.5_quality-analysis/models/interface/quality-result.interface";
+import { IAnalysisError } from "features/file/models/interface/ianalysisError.interface";
+import { IQualityAnalysisResult } from "features/quality/models/interface/quality-result.interface";
 
 /**
  * 1. 定义事件映射表 (Type Map)
@@ -28,8 +29,9 @@ export type AppEventMap = {
   QUALITY_ANALYSIS_COMPLETED: {
     fileId: string;
     result: IQualityAnalysisResult;
+    version: number; // ✅ 必须带上版本号
   };
-  QUALITY_ANALYSIS_FAILED: { fileId: string; error: string };
+  QUALITY_ANALYSIS_FAILED: { fileId: string; error: IAnalysisError };
 };
 
 /**

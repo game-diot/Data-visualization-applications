@@ -1,7 +1,8 @@
 // 1. 引用模块内的常量
 import { FileStage } from "../constant/file-stage.constant";
 // 2. 引用模块内的核心数据接口 (上一轮重构的成果)
-import { IQualityAnalysisResult } from "../../Step001.5_quality-analysis/models/interface/quality-result.interface";
+import { IQualityAnalysisResult } from "../../quality/models/interface/quality-result.interface";
+import { IAnalysisError } from "../models/interface/ianalysisError.interface";
 
 /**
  * [Internal] 创建文件 DTO
@@ -34,9 +35,15 @@ export interface UpdateFileServiceDTO {
   analysisStartedAt?: Date;
   analysisCompletedAt?: Date;
 
-  // 核心结果 (复用 Interface，保证类型一致性)
-  analysisResult?: IQualityAnalysisResult;
+  // ✅ 新增：扁平化的质量摘要字段 (可选)
+  latestQualityVersion?: number;
+  qualityScore?: number;
+  missingRate?: number;
+  duplicateRate?: number;
+  totalRows?: number;
+  totalColumns?: number;
 
   // 错误处理
-  errorMessage?: string;
+  // ✅ 允许更新错误对象
+  analysisError?: IAnalysisError | null;
 }

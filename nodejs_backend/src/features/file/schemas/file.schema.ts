@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { FILE_STAGE_ENUM } from "../constant/file-stage.constant";
-import { QualityAnalysisResultSchema } from "../../Step001.5_quality-analysis/schema/qualityResult.schema";
+import { QualityAnalysisResultSchema } from "../../quality/schema/qualityResult.schema";
 import { IFile } from "../models/interface/ifile.interface";
 
 /**
@@ -27,14 +27,29 @@ export const fileSchema = new Schema<IFile>(
     },
 
     fastApiFileId: { type: String, index: true },
-    errorMessage: { type: String },
+    analysisError: {
+      type: {
+        stage: String,
+        code: Schema.Types.Mixed, // 允许 string 或 number
+        message: String,
+        occurredAt: Date,
+        details: Schema.Types.Mixed,
+      },
+      required: false,
+      _id: false, // 不需要子文档 ID
+    },
 
     uploadedAt: { type: Date, default: Date.now },
     analysisStartedAt: { type: Date },
     analysisCompletedAt: { type: Date },
 
-    // 这里直接引用之前做好的子 Schema
-    analysisResult: { type: QualityAnalysisResultSchema, required: false },
+    // ⭐️ [核心变更] 摘要字段定义 ⭐️
+    latestQualityVersion: { type: Number }, // 不加 required，因为上传初期没有
+    qualityScore: { type: Number },
+    missingRate: { type: Number },
+    duplicateRate: { type: Number },
+    totalRows: { type: Number },
+    totalColumns: { type: Number },
   },
   {
     timestamps: true, // 自动管理 createdAt, updatedAt

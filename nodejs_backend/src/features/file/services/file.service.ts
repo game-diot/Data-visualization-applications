@@ -24,6 +24,8 @@ import { fileHelper } from "../utils/file.util"; // 需自行定义
 // (后续需要在 shared/infrastructure/event-bus.ts 中创建)
 import { eventBus } from "../../../app/core/eventBus.core";
 import { buildPaginatedResult } from "@shared/utils/pagination.util";
+import { qualityController } from "features/quality/controllers/quality.controller";
+import { qualityService } from "features/quality/services/quality.services";
 
 export const fileService = {
   /**

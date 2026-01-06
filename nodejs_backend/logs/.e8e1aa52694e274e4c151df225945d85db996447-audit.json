@@ -6,11 +6,6 @@
     "auditLog": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\.e8e1aa52694e274e4c151df225945d85db996447-audit.json",
     "files": [
         {
-            "date": 1766413561839,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\combined-2025-12-22.log",
-            "hash": "32d505223368efa20b6d5771d7ed4c34e3f3648075e7de1fb8161e729fc6e204"
-        },
-        {
             "date": 1766500459699,
             "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\combined-2025-12-23.log",
             "hash": "8f9e09dd20971bc25287e0cc338aa4f266e19c380ebc7048950e5ec98c279225"
@@ -39,6 +34,11 @@
             "date": 1767601435977,
             "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\combined-2026-01-05.log",
             "hash": "80293885a94294e0094c464de8e80b273683caf868ca23261db81e08983e4b57"
+        },
+        {
+            "date": 1767683217618,
+            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\combined-2026-01-06.log",
+            "hash": "786d061d417af4a091379908d4d8f201a6522b65ca89b1bd8a92804bd1869649"
         }
     ],
     "hashType": "sha256"

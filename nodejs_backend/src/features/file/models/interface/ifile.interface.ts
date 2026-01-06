@@ -5,7 +5,8 @@
 
 import { FileStage } from "features/file/constant/file-stage.constant";
 import mongoose, { HydratedDocument } from "mongoose";
-import { IQualityAnalysisResult } from "../../../Step001.5_quality-analysis/models/interface/quality-result.interface";
+import { IQualityAnalysisResult } from "../../../quality/models/interface/quality-result.interface";
+import { IAnalysisError } from "./ianalysisError.interface";
 // =========================================================
 // 1. 纯数据接口 (IFile)
 // 职责：定义数据库里实际存的字段。
@@ -32,15 +33,21 @@ export interface IFile {
 
   // --- 外部关联 ---
   fastApiFileId?: string;
-  errorMessage?: string;
+  // ✅ 新增：结构化错误对象
+  analysisError?: IAnalysisError;
 
   // --- 时间 ---
   uploadedAt: Date;
   analysisStartedAt?: Date;
   analysisCompletedAt?: Date;
 
-  // --- 业务数据 ---
-  analysisResult?: IQualityAnalysisResult;
+  // 用于列表页展示 & Cleaning 模块快速读取
+  latestQualityVersion?: number; // 指向 QualityReport 的 version
+  qualityScore?: number; // 质量评分
+  missingRate?: number; // 缺失率
+  duplicateRate?: number; // 重复率
+  totalRows?: number; // 总行数
+  totalColumns?: number; // 总列数
 
   // --- 自动字段 (Mongoose timestamps) ---
   createdAt: Date;

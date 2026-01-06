@@ -1,5 +1,6 @@
 import { FileStage } from "../constant/file-stage.constant";
-import { IQualityAnalysisResult } from "../../Step001.5_quality-analysis/models/interface/quality-result.interface";
+import { IQualityAnalysisResult } from "../../quality/models/interface/quality-result.interface";
+import { IAnalysisError } from "../models/interface/ianalysisError.interface";
 
 /**
  * [Response] 文件列表项 VO (View Object)
@@ -13,8 +14,11 @@ export interface FileSummaryResponseDTO {
   stage: FileStage; // 当前状态 (用于前端显示进度条/Badge)
   uploadTime: Date; // 映射自 createdAt
 
-  // 仅透出关键指标，不透出整个结果对象
+  // ✅ 确认包含这些字段，用于前端列表展示
   qualityScore?: number;
+  missingRate?: number;
+  duplicateRate?: number;
+  totalRows?: number;
 }
 
 /**
@@ -25,8 +29,8 @@ export interface FileDetailResponseDTO extends FileSummaryResponseDTO {
   // 完整的分析结果
   analysisResult?: IQualityAnalysisResult;
 
-  // 如果失败，透出错误原因
-  errorMessage?: string;
+  // ✅ 允许更新错误对象
+  analysisError?: IAnalysisError;
 
   // 任务耗时分析 (可选)
   analysisDuration?: number;

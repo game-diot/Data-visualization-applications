@@ -4,6 +4,7 @@ import { responseUtils } from "../../../shared/utils/response.util";
 import { ValidationException } from "../../../shared/exceptions/validation.exception";
 import { qualityService } from "../services/quality.services";
 import { FileStage } from "features/file/constant/file-stage.constant";
+import { QualitySummaryResponseDTO } from "../dto/qualitySummary.dto";
 
 export const qualityController = {
   /**
@@ -26,6 +27,45 @@ export const qualityController = {
       }
 
       return responseUtils.success(res, result, "获取分析结果成功");
+    } catch (error) {
+      next(error);
+    }
+  },
+  /**
+   * ✅ [新增] 获取质量分析摘要
+   * 目标：轻量级、快速、无需查询 QualityReport 大表
+   * 路由：GET /api/v1/quality/:id/summary
+   */
+  async getAnalysisSummary(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+
+      // 1. 跨模块调用 FileService (只查 File 表)
+      const file = await fileService.getFileById(id);
+
+      // 2. 状态校验 (只有分析完成的文件才有摘要)
+      if (file.stage !== "quality_done") {
+        return responseUtils.fail(
+          res,
+          `无法获取摘要，当前状态为: ${file.stage}`,
+          400
+        );
+      }
+
+      // 3. 组装 DTO (从 FileModel 的扁平字段提取)
+      const summary: QualitySummaryResponseDTO = {
+        fileId: file._id.toString(),
+        // 这里的字段必须对应 FileModel 新增的字段，如果为空则给默认值 0
+        latestVersion: file.latestQualityVersion || 0,
+        qualityScore: file.qualityScore || 0,
+        missingRate: file.missingRate || 0,
+        duplicateRate: file.duplicateRate || 0,
+        totalRows: file.totalRows || 0,
+        totalColumns: file.totalColumns || 0,
+        analyzedAt: file.analysisCompletedAt || file.updatedAt,
+      };
+
+      return responseUtils.success(res, summary, "获取质量摘要成功");
     } catch (error) {
       next(error);
     }

@@ -16,6 +16,7 @@ qualityRouter.get(
   "/:id/version/:version",
   qualityController.getAnalysisResultByVersion
 );
+qualityRouter.get("/:id/summary", qualityController.getAnalysisSummary);
 // 2. 手动触发/重试分析
 // POST /api/v1/quality/:id/analyze
 qualityRouter.post("/:id/retry", qualityController.triggerAnalysis);
