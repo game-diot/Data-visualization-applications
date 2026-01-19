@@ -1,0 +1,91 @@
+[2026-01-13 15:22:18] [31merror[39m: CastError: Cast to ObjectId failed for value "{{6965f0d8202bdeac1e69bd89}}" (type string) at path "_id" for model "CleaningSession"
+    at SchemaObjectId.cast (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+    at SchemaType.castForQuery (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1694:17)
+    at cast (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:5060:12)
+    at Query._castConditions (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:2374:10)
+    at model.Query._findOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:2697:8)
+    at model.Query.exec (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:4627:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Object.addModification (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\userModification.service.ts:14:21)
+[2026-01-13 15:23:41] [31merror[39m: ValidationError: userModification validation failed: diffList.0.path: Path `path` is required., diffList.0.op: `delete_row` is not a valid enum value for path `op`., diffList.1.path: Path `path` is required., diffList.1.op: `update_cell` is not a valid enum value for path `op`.
+    at Document.invalidate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3358:32)
+    at Subdocument.invalidate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3119:17
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1416:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+[2026-01-13 15:58:30] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6965f59740e4c77dd2e7e5bf'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-13 16:20:14] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6965f59740e4c77dd2e7e5bf'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-13 16:20:26] [31merror[39m: [31m❌ [FastAPI] HTTP 400 [{'type': 'missing', 'loc': ('body', 'data_ref', 'path'), 'msg': 'Field required', 'input': {'id': '6965f59740e4c77dd2e7e5bf', 'uri': 'Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/uploadFiles/41c076c2f8f1e3f0f7d3bfcd8cf1d2bf.csv', 'type': 'local_file'}}, {'type': 'extra_forbidden', 'loc': ('body', 'data_ref', 'id'), 'msg': 'Extra inputs are not permitted', 'input': '6965f59740e4c77dd2e7e5bf'}, {'type': 'extra_forbidden', 'loc': ('body', 'data_ref', 'uri'), 'msg': 'Extra inputs are not permitted', 'input': 'Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/uploadFiles/41c076c2f8f1e3f0f7d3bfcd8cf1d2bf.csv'}, {'type': 'extra_forbidden', 'loc': ('body', 'user_actions', 1, 'value'), 'msg': 'Extra inputs are not permitted', 'input': 70}][39m
+[2026-01-13 16:20:27] [31merror[39m: CastError: Cast to string failed for value "{
+  stage: 'execution',
+  code: 'INTERNAL_ERROR',
+  message: 'FastAPI connection failed: Request failed with status code 400',
+  detail: 'FastApiBusinessException: FastAPI connection failed: Request failed with status code 400\n' +
+    '    at FastApiClient.handleFinalError (Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\src\\api\\fastapi\\clients\\fastapiClient.ts:224:11)\n' +
+    '    at <anonymous> (Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\src\\api\\fastapi\\clients\\fastapiClient.ts:156:14)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)\n' +
+    '    at async Object._executeCleaningTask (Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\src\\features\\cleaning\\service\\cleaningTask.service.ts:119:22)\n' +
+    '    at async Object.triggerCleaning (Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\src\\features\\cleaning\\service\\cleaningTask.service.ts:68:5)\n' +
+    '    at async run (Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\src\\features\\cleaning\\controllers\\cleaningTask.controller.ts:20:20)',
+  retryable: true,
+  occurredAt: 2026-01-13T08:20:26.998Z
+}" (type Object) at path "errorDetail"
+    at SchemaString.cast (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schema\string.js:607:11)
+    at SchemaType.applySetters (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+    at SchemaString.castForQuery (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schema\string.js:701:17)
+    at castUpdateVal (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:333:22)
+    at castUpdate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:4874:10)
+    at model.Query._findOneAndUpdate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:3497:23)
+    at model.Query.exec (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\query.js:4627:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-01-13 16:34:54] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6965f59740e4c77dd2e7e5bf Unknown FastAPI Error[39m
+[2026-01-13 16:34:54] [31merror[39m: FastApiBusinessException: Unknown FastAPI Error
+    at client.interceptors.response.use.config (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:114:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:123:22)
+    at async Object.triggerCleaning (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:68:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningTask.controller.ts:20:20)
+[2026-01-13 16:37:07] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6965f59740e4c77dd2e7e5bf'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-13 16:38:06] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6965f59740e4c77dd2e7e5bf Unknown FastAPI Error[39m
+[2026-01-13 16:38:06] [31merror[39m: FastApiBusinessException: Unknown FastAPI Error
+    at client.interceptors.response.use.config (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:114:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:123:22)
+    at async Object.triggerCleaning (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:68:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningTask.controller.ts:20:20)
+[2026-01-13 16:41:52] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6965f59740e4c77dd2e7e5bf Unknown FastAPI Error[39m
+[2026-01-13 16:41:52] [31merror[39m: FastApiBusinessException: Unknown FastAPI Error
+    at client.interceptors.response.use.config (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:114:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:123:22)
+    at async Object.triggerCleaning (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:68:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningTask.controller.ts:20:20)
+[2026-01-13 16:48:02] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6965f59740e4c77dd2e7e5bf CleaningReport validation failed: qualityVersion: Path `qualityVersion` is required., taskId: Path `taskId` is required.[39m
+[2026-01-13 16:48:02] [31merror[39m: ValidationError: CleaningReport validation failed: qualityVersion: Path `qualityVersion` is required., taskId: Path `taskId` is required.
+    at Document.invalidate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3358:32)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3119:17
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1416:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)

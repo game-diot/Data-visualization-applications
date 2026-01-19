@@ -34,7 +34,9 @@ export const ERROR_CODES = {
   // ============================
   // 40000 - 49999: 分析与清洗 (Analysis & Cleaning)
   // ============================
-  ANALYSIS_FAILED: 40000, // FastAPI 分析过程报错
+
+  VALIDATION_ERROR: 40000, // ✅ 对应 BadRequest
+
   ANALYSIS_TIMEOUT: 40001, // 分析耗时过长
   CLEAN_RULE_INVALID: 40002, // 清洗规则不合法
   AI_GENERATE_FAILED: 40003, // LangChain 生成报告失败

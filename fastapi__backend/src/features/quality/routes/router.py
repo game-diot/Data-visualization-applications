@@ -23,14 +23,3 @@ router.include_router(
     tags=["Data Quality Analysis"]
 )
 
-# ==========================================
-# Feature: (预留) 数据清洗 (Cleaning)
-# ==========================================
-# from src.features.quality.controllers.cleaning_controller import router as cleaning_router
-# router.include_router(cleaning_router, tags=["Data Cleaning"])
-
-# ==========================================
-# Feature: (预留) 深度分析 (Analysis)
-# ==========================================
-# from src.features.quality.controllers.analysis_controller import router as analysis_router
-# router.include_router(analysis_router, tags=["Deep Analysis"])

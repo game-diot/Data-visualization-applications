@@ -63,10 +63,11 @@ class FastApiClient {
   }
 
   private setupInterceptors() {
-    // ========== 请求拦截器 ==========
+    // ========== 请求拦截器 (保持不变) ==========
     this.client.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         config._retryCount = config._retryCount || 0;
+        // @ts-ignore
         config._maxRetry = this.MAX_RETRY;
 
         logger.info(
@@ -83,7 +84,7 @@ class FastApiClient {
       }
     );
 
-    // ========== 响应拦截器 ==========
+    // ========== 响应拦截器 (修复核心) ==========
     this.client.interceptors.response.use(
       // A. 成功响应处理 (2xx)
       (response: AxiosResponse) => {
@@ -98,38 +99,52 @@ class FastApiClient {
           );
         }
 
-        // 2. ✅ 业务状态码校验 (适配 Python 的 20000 成功码)
-        if (
-          payload.code === undefined ||
-          payload.code !== FASTAPI_ERROR_CODES.SUCCESS
-        ) {
+        // 2. 🟢 兼容性状态校验 (关键修改点)
+        // 情况 A: 标准接口 (Quality) -> 有 code 字段，必须为 20000
+        const isStandardSuccess = payload.code === FASTAPI_ERROR_CODES.SUCCESS;
+
+        // 情况 B: 清洗接口 (Cleaning) -> 无 code，但有 status: "success"
+        const isCleaningSuccess = payload.status === "success";
+
+        // 如果既不是标准成功，也不是清洗成功，才算失败
+        if (!isStandardSuccess && !isCleaningSuccess) {
           logger.warn(
-            `⚠️ [FastAPI] Business Fail [Code:${payload.code}]:`,
+            `⚠️ [FastAPI] Business Fail:`,
             JSON.stringify(payload, null, 2)
           );
 
-          // ⭐️ 关键修改：透传 Python 的错误码，并映射到内部错误码
-          const mappedCode = this.mapFastApiCodeToInternal(payload.code);
+          // 尝试获取错误信息
+          const errorMsg =
+            payload.msg ||
+            payload.message ||
+            payload.error?.message ||
+            "Unknown FastAPI Business Error";
 
-          throw new FastApiBusinessException(
-            payload.msg || payload.message || "Unknown FastAPI Error",
-            mappedCode, // 使用映射后的内部错误码
-            {
-              fastApiCode: payload.code, // 保留原始 Python 错误码用于调试
-              ...payload.data,
-            }
+          // 映射错误码 (优先用 payload.code，没有则用 50000)
+          const mappedCode = this.mapFastApiCodeToInternal(
+            payload.code || FASTAPI_ERROR_CODES.INTERNAL_ERROR
           );
+
+          throw new FastApiBusinessException(errorMsg, mappedCode, {
+            fastApiCode: payload.code,
+            ...payload.data,
+            ...payload.error, // 透传 CleaningError 详情
+          });
         }
 
-        logger.info(
-          `✅ [FastAPI] Success [Code:${payload.code}]: ${response.config.url}`
-        );
+        logger.info(`✅ [FastAPI] Success: ${response.config.url}`);
 
-        // 3. 自动解包 (只返回 data 部分)
-        return payload.data;
+        // 3. 🟢 智能解包 (Return Data)
+        // 如果是标准格式 (Quality)，数据在 .data 里
+        if (isStandardSuccess) {
+          return payload.data;
+        }
+
+        // 如果是清洗格式 (Cleaning)，整个 payload 就是数据 (包含 summary, diff_summary 等)
+        return payload;
       },
 
-      // B. 错误响应处理 (4xx, 5xx, Network)
+      // B. 错误响应处理 (保持不变)
       async (error: AxiosError) => {
         const config = error.config as InternalAxiosRequestConfig;
 
@@ -138,7 +153,7 @@ class FastApiClient {
           config &&
           ((!error.response && error.code !== "ECONNABORTED") ||
             (error.response && error.response.status >= 500)) &&
-          (config._retryCount || 0) < (config._maxRetry || 0);
+          (config._retryCount || 0) < this.MAX_RETRY;
 
         if (shouldRetry) {
           config._retryCount = (config._retryCount || 0) + 1;
@@ -257,6 +272,21 @@ class FastApiClient {
    */
   async getTaskProgress(fileId: string): Promise<any> {
     return this.client.get(`/api/v1/quality/tasks/${fileId}`);
+  }
+
+  /**
+   * 🟢 触发数据清洗
+   * 对应 FastAPI: POST /api/v1/cleaning/run
+   */
+  public async performCleaning(payload: {
+    file_id: string;
+    data_ref: any;
+    user_actions: any[];
+    clean_rules: any;
+    meta: any;
+  }): Promise<any> {
+    // URL 需要与 FastAPI 路由一致
+    return this.client.post("/api/v1/cleaning/run", payload);
   }
 }
 

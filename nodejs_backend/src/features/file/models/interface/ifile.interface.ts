@@ -34,7 +34,7 @@ export interface IFile {
   // --- 外部关联 ---
   fastApiFileId?: string;
   // ✅ 新增：结构化错误对象
-  analysisError?: IAnalysisError;
+  analysisError?: IAnalysisError | null;
 
   // --- 时间 ---
   uploadedAt: Date;
@@ -48,6 +48,10 @@ export interface IFile {
   duplicateRate?: number; // 重复率
   totalRows?: number; // 总行数
   totalColumns?: number; // 总列数
+
+  //用于列表页展示，cleaning模块
+  latestCleaningVersion?: number; //记录当前文件基于最新quality版本的最新cleaning版本
+  isCleaned?: boolean; //标记是否已经清洗
 
   // --- 自动字段 (Mongoose timestamps) ---
   createdAt: Date;

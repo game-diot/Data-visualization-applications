@@ -11,7 +11,7 @@ export const FILE_STAGE_ENUM = [
 
   // ===== 数据清洗 =====
   "cleaning_pending",
-  "cleaning",
+  "cleaning_processing",
   "cleaning_done",
   "cleaning_failed",
 

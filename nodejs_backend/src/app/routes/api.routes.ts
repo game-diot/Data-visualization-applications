@@ -5,6 +5,7 @@ import { HTTP_STATUS } from "../../shared/constants/http.constant";
 // 假设导出名为 fileRoutes
 import { fileRouter } from "../../features/file/route/file.routes";
 import { qualityRouter } from "features/quality/routes/quality.route";
+import { cleaningRouter } from "features/cleaning/route/cleaning.route";
 
 const router = Router();
 
@@ -27,4 +28,5 @@ router.get("/health", (req, res) => {
 // TODO: 等我们重构完 src/features/file 后，取消下面的注释
 router.use("/files", fileRouter);
 router.use("/quality", qualityRouter);
+router.use("/cleaning", cleaningRouter);
 export default router;
