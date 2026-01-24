@@ -10,13 +10,16 @@ export const cleaningQueryService = {
   /**
    * 获取聚合状态
    */
+  /**
+   * 获取聚合状态（以 Task 为权威）
+   */
   async getCleaningStatus(
     fileId: string,
-    qualityVersion?: number
-  ): Promise<CleaningStatusResponseDTO> {
+    qualityVersion?: number,
+  ): Promise<any /* CleaningStatusResponseDTO */> {
     const fId = new mongoose.Types.ObjectId(fileId);
 
-    // 1. 智能默认值：如果未传 qualityVersion，查 File 表获取最新
+    // 1) 默认 qualityVersion：不传就用 File.latestQualityVersion
     let qVer = qualityVersion;
     if (qVer === undefined) {
       const file = await fileRepository.findById(fileId);
@@ -24,39 +27,33 @@ export const cleaningQueryService = {
       qVer = file.latestQualityVersion || 0;
     }
 
-    if (qVer === 0) {
+    if (!qVer) {
       return {
         fileId,
         qualityVersion: 0,
         session: null,
         currentTask: null,
         latestTask: null,
+        latestReport: null,
       };
     }
 
-    // 2. 并行查询
-    const [activeSession, latestReport] = await Promise.all([
+    // 2) 并行查：session + currentTask + latestTask
+    const [activeSession, currentTask, latestTask] = await Promise.all([
       cleaningSessionRepository.findActiveByFileAndQuality(fId, qVer),
-      cleaningReportRepository.findLatest(fId, qVer),
+      cleaningTaskRepository.findCurrentTask(fId, qVer),
+      cleaningTaskRepository.findLatestTask(fId, qVer),
     ]);
 
-    // 3. 查 Task (依赖 Session)
-    let currentTask = null;
-    if (activeSession) {
-      const task = await cleaningTaskRepository.findLatestBySession(
-        activeSession._id
+    // 3) latestReport：只跟随 latestTask(success)
+    let latestReport = null;
+    if (latestTask?.status === "success") {
+      latestReport = await cleaningReportRepository.findByTaskId(
+        latestTask._id as any,
       );
-      if (task) {
-        currentTask = {
-          taskId: task._id.toString(), // 确保使用 _id
-          status: task.status,
-          startedAt: task.startedAt ?? new Date(),
-          errorMessage: task.errorMessage,
-        };
-      }
     }
 
-    // 4. 组装响应
+    // 4) 返回（注意：startedAt 不要造 new Date()）
     return {
       fileId,
       qualityVersion: qVer,
@@ -64,20 +61,39 @@ export const cleaningQueryService = {
       session: activeSession
         ? {
             sessionId: activeSession._id.toString(),
-            status: activeSession.status,
+            status: activeSession.status, // draft/running/closed：只表示会话生命周期
           }
         : null,
 
-      currentTask,
-
-      latestTask: latestReport
+      // ✅ currentTask：只代表正在跑的任务
+      currentTask: currentTask
         ? {
+            taskId: currentTask._id.toString(),
+            status: currentTask.status,
+            startedAt: currentTask.startedAt ?? null,
+            errorMessage: currentTask.errorMessage ?? null,
+          }
+        : null,
+
+      // ✅ latestTask：最新任务（成功/失败都可能）
+      latestTask: latestTask
+        ? {
+            taskId: latestTask._id.toString(),
+            status: latestTask.status,
+            cleaningVersion: latestTask.cleaningVersion,
+            createdAt: latestTask.createdAt,
+            errorMessage: latestTask.errorMessage ?? null,
+          }
+        : null,
+
+      // ✅ latestReport：仅在 latestTask.success 时出现
+      latestReport: latestReport
+        ? {
+            reportId: latestReport._id.toString(),
             cleaningVersion: latestReport.cleaningVersion,
             createdAt: latestReport.createdAt,
-            // 🚨 [修改] 移除了 metrics，直接返回 summary 对象
-            // summary 内部包含了 rowsBefore, rowsAfter 等统计信息
             summary: latestReport.summary,
-            // 如果前端只需要简要信息，可以在这里只提取 latestReport.summary.description
+            hasAsset: !!latestReport.cleanedAsset?.path,
           }
         : null,
     };
@@ -89,7 +105,7 @@ export const cleaningQueryService = {
   async listReports(fileId: string, qualityVersion: number) {
     const reports = await cleaningReportRepository.listByQualityVersion(
       new mongoose.Types.ObjectId(fileId),
-      qualityVersion
+      qualityVersion,
     );
 
     return {
@@ -113,17 +129,17 @@ export const cleaningQueryService = {
   async getReportDetail(
     fileId: string,
     qualityVersion: number,
-    cleaningVersion: number
+    cleaningVersion: number,
   ) {
     const report = await cleaningReportRepository.findByVersion(
       new mongoose.Types.ObjectId(fileId),
       qualityVersion,
-      cleaningVersion
+      cleaningVersion,
     );
 
     if (!report) {
       throw new FileNotFoundException(
-        `Cleaning Report v${cleaningVersion} not found`
+        `Cleaning Report v${cleaningVersion} not found`,
       );
     }
 

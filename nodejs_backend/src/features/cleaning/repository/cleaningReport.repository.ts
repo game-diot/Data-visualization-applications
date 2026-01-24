@@ -9,20 +9,7 @@ export class CleaningReportRepository {
   async create(data: Partial<ICleaningReport>): Promise<ICleaningReport> {
     return CleaningReportModel.create(data);
   }
-  /**
-   * 获取最新 Report
-   * 用于 Analysis 模块获取最新数据入口
-   */
-  async findLatest(
-    fileId: mongoose.Types.ObjectId,
-    qualityVersion: number
-  ): Promise<ICleaningReport | null> {
-    return CleaningReportModel.findOne({ fileId, qualityVersion })
-      .sort({
-        cleaningVersion: -1,
-      })
-      .lean();
-  }
+
   /**
    * 精确获取某版本
    * 用于回溯/对比
@@ -30,7 +17,7 @@ export class CleaningReportRepository {
   async findByVersion(
     fileId: mongoose.Types.ObjectId,
     qualityVersion: number,
-    cleaningVersion: number
+    cleaningVersion: number,
   ): Promise<ICleaningReport | null> {
     return CleaningReportModel.findOne({
       fileId,
@@ -42,17 +29,21 @@ export class CleaningReportRepository {
    * 获取 Session 下的所有 Report
    * 用于前端展示历史记录
    */
-  async findBySession(
-    sessionId: mongoose.Types.ObjectId
+  async findLatestBySession(
+    sessionId: mongoose.Types.ObjectId,
   ): Promise<ICleaningReport | null> {
     return CleaningReportModel.findOne({ sessionId })
       .sort({ cleaningVersion: -1 })
       .lean();
   }
 
+  findByTaskId(taskId: mongoose.Types.ObjectId) {
+    return CleaningReportModel.findOne({ taskId }).lean();
+  }
+
   async listByQualityVersion(
     fileId: mongoose.Types.ObjectId,
-    qualityVersion: number
+    qualityVersion: number,
   ) {
     return CleaningReportModel.find({ fileId, qualityVersion })
       .sort({ cleaningVersion: -1 })

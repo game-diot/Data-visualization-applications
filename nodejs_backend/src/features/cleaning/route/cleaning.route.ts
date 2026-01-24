@@ -10,7 +10,7 @@ export const cleaningRouter = Router();
 // --- User Modifications ---
 cleaningRouter.post(
   "/:fileId/modifications",
-  userModificationController.create
+  userModificationController.create,
 );
 
 cleaningRouter.get("/:fileId/modifications", userModificationController.list);
@@ -19,11 +19,11 @@ cleaningRouter.get("/:fileId/modifications", userModificationController.list);
 cleaningRouter.post("/:fileId/sessions", cleaningSessionController.create);
 cleaningRouter.get(
   "/:fileId/sessions/active",
-  cleaningSessionController.getActive
+  cleaningSessionController.getActive,
 );
 cleaningRouter.post(
-  "sessions/:sessionsId/closed",
-  cleaningSessionController.close
+  "/sessions/:sessionsId/closed",
+  cleaningSessionController.close,
 );
 
 // --- Cleaning Tasks ---
@@ -40,5 +40,5 @@ cleaningRouter.get("/:fileId/reports", cleaningQueryController.listReports);
 // 3. 报告详情
 cleaningRouter.get(
   "/:fileId/reports/:version",
-  cleaningQueryController.getReportDetail
+  cleaningQueryController.getReportDetail,
 );

@@ -1,0 +1,114 @@
+[2026-01-24 22:00:20] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-24 22:00:20] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:00:55] [32minfo[39m: [32m[0mGET /api/v1/files/ [32m200[0m 120.746 ms - 862[0m[39m
+[2026-01-24 22:01:42] [32minfo[39m: [32m[0mGET /api/v1/quality/6973204148b2ef7d16fff848/summary [33m400[0m 18.429 ms - 92[0m[39m
+[2026-01-24 22:02:10] [32minfo[39m: [32m[0mGET /api/v1/quality/6973204148b2ef7d16fff848/summary [33m400[0m 14.300 ms - 92[0m[39m
+[2026-01-24 22:02:25] [32minfo[39m: [32m[0mGET /api/v1/quality/6973204148b2ef7d16fff848/status [32m200[0m 7.562 ms - 183[0m[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m💾 [Upload] File saved to DB: 6974d1933f3c904a142cf5d6[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m📨 [Event] Received FILE_UPLOADED for 6974d1933f3c904a142cf5d6, triggering analysis...[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 6974d1933f3c904a142cf5d6 (Force: true)[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 6974d1933f3c904a142cf5d6[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m[0mPOST /api/v1/files/upload [32m201[0m 81.451 ms - 588[0m[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 6974d1933f3c904a142cf5d6 (v1)[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m√ [QualityService] Analysis successful: 6974d1933f3c904a142cf5d6[39m
+[2026-01-24 22:05:07] [32minfo[39m: [32m💾 [DB] File 6974d1933f3c904a142cf5d6 updated with Quality Summary (v1)[39m
+[2026-01-24 22:06:03] [32minfo[39m: [32m[0mGET /api/v1/quality/6974d1933f3c904a142cf5d6/summary [32m200[0m 9.486 ms - 264[0m[39m
+[2026-01-24 22:06:24] [32minfo[39m: [32m[0mGET /api/v1/quality/6974d1933f3c904a142cf5d6/status [32m200[0m 6.677 ms - 181[0m[39m
+[2026-01-24 22:06:46] [32minfo[39m: [32m[0mGET /api/v1/quality/6974d1933f3c904a142cf5d6 [32m200[0m 21.738 ms - 1426[0m[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 6974d1933f3c904a142cf5d6 (Force: true)[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 6974d1933f3c904a142cf5d6[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 6974d1933f3c904a142cf5d6 (v2)[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m√ [QualityService] Analysis successful: 6974d1933f3c904a142cf5d6[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m[0mPOST /api/v1/quality/6974d1933f3c904a142cf5d6/retry [32m200[0m 112.764 ms - 71[0m[39m
+[2026-01-24 22:07:11] [32minfo[39m: [32m💾 [DB] File 6974d1933f3c904a142cf5d6 updated with Quality Summary (v2)[39m
+[2026-01-24 22:07:47] [32minfo[39m: [32m[0mGET /api/v1/quality/6974d1933f3c904a142cf5d6/version/2 [32m200[0m 10.027 ms - 1414[0m[39m
+[2026-01-24 22:08:34] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/sessions [32m201[0m 12.130 ms - 282[0m[39m
+[2026-01-24 22:09:48] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/modifications [32m201[0m 23.612 ms - 367[0m[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 6974d2db3f3c904a142cf5f2 (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 23.272 ms - 326[0m[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-01-24 22:10:35] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 62ms[39m
+[2026-01-24 22:15:33] [32minfo[39m: [32m[0mGET /api/v1/cleaning/6974d1933f3c904a142cf5d6/reports?qualityVersion=1 [32m200[0m 11.815 ms - 271[0m[39m
+[2026-01-24 22:17:08] [32minfo[39m: [32m[0mGET /api/v1/cleaning/6974d1933f3c904a142cf5d6/reports/1?qualityVersion=1 [32m200[0m 6.412 ms - 1121[0m[39m
+[2026-01-24 22:18:05] [32minfo[39m: [32m[0mGET /api/v1/cleaning/6974d1933f3c904a142cf5d6/status?qualityVersion=1 [32m200[0m 20.696 ms - 518[0m[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-24 22:23:55] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 6974d61d4bb8fb27648f7e61 (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 86.937 ms - 326[0m[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-01-24 22:24:29] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 33ms[39m
+[2026-01-24 22:24:29] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6974d61d4bb8fb27648f7e61 CleaningReport validation failed: taskId: Path `taskId` is required.[39m
+[2026-01-24 22:24:29] [31merror[39m: ValidationError: CleaningReport validation failed: taskId: Path `taskId` is required.
+    at Document.invalidate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3358:32)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3119:17
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1416:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+[2026-01-24 22:28:32] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-24 22:28:32] [32minfo[39m: [32m=================================[39m
+[2026-01-24 22:31:02] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-24 22:31:02] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [31m500[0m 183.146 ms - 1199[0m[39m
+[2026-01-24 22:31:23] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-24 22:31:23] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [31m500[0m 31.014 ms - 1199[0m[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 6974d7e488480d03725eada5 (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 57.125 ms - 326[0m[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-01-24 22:32:04] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 39ms[39m

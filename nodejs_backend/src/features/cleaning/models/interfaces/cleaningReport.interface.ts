@@ -10,10 +10,11 @@ export interface ICleaningSummary {
   cellsModified: number;
   userActionsApplied: number;
   rulesApplied: string[];
-  missingRateBefore: number;
-  missingRateAfter: number;
-  duplicateRateBefore: number;
-  duplicateRateAfter: number;
+  missingRateBefore?: number | null;
+  missingRateAfter?: number | null;
+  duplicateRateBefore?: number | null;
+  duplicateRateAfter?: number | null;
+  durationMs?: number | null;
 }
 
 export interface ICleaningDiffSummary {
@@ -40,15 +41,21 @@ export interface ICleaningReport extends Document {
   cleaningVersion: number;
 
   // 📊 核心统计 (替换原来的 metrics，因为 summary 包含了 metrics)
-  summary: ICleaningSummary;
+  summary: ICleaningSummary | null;
 
   // 🔍 差异详情
   diffSummary: ICleaningDiffSummary;
 
+  rulesAppliedDetail?: any[];
+  actionsReplay?: { total: number; applied: number; failed: number } | null;
+
   // 📦 产物引用 (FastAPI 返回的 cleaned_asset_ref)
   cleanedAsset: {
-    path: string; // 物理文件路径
-    preview?: any[]; // 前 5 行预览
+    type?: "local_file" | "s3" | "oss";
+    path: string;
+    format?: "csv" | "parquet" | "json";
+    sizeBytes?: number; // 用 camelCase 存 Mongo
+    preview?: any[];
   };
 
   // 📝 执行日志

@@ -1,0 +1,18 @@
+[2026-01-24 22:24:29] [31merror[39m: [31m❌ [Cleaning] Task Failed: 6974d61d4bb8fb27648f7e61 CleaningReport validation failed: taskId: Path `taskId` is required.[39m
+[2026-01-24 22:24:29] [31merror[39m: ValidationError: CleaningReport validation failed: taskId: Path `taskId` is required.
+    at Document.invalidate (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3358:32)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\document.js:3119:17
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongoose\lib\schemaType.js:1416:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11)
+[2026-01-24 22:31:02] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-24 22:31:23] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)

@@ -10,6 +10,9 @@ from ..schema.cleaning_response_schema import (
     CleaningSummary,
     CleaningDiffSummary,
     CleaningError,
+        # ✅ 新增这两个（按你修改后的 schema 文件名对齐）
+    RuleAppliedDetail,
+    ActionsReplaySummary,
 )
 from ..utils.cleaning_exception_util import CleaningException
 from src.shared.utils.logger import logger
@@ -20,6 +23,98 @@ from ..service.replay_service import apply_user_actions
 from ..service.rules_service import apply_clean_rules
 from ..service.exporter_service import export_cleaned_asset
 
+def _build_rules_applied_detail(
+    req: CleaningRunRequest,
+    replay_stats: Dict[str, int],
+    rules_metrics: Dict[str, Any],
+) -> List[RuleAppliedDetail]:
+    details: List[RuleAppliedDetail] = []
+
+    # 0) user_actions（回放）
+    total = int(replay_stats.get("total", 0))
+    applied = int(replay_stats.get("applied", 0))
+    failed = int(replay_stats.get("failed", 0))  # 如果你 replay_stats 没有 failed，就默认 0
+    details.append(
+        RuleAppliedDetail(
+            rule="user_actions",
+            enabled=total > 0,
+            params={"total": total},
+            effect={"applied": applied, "failed": failed},
+        )
+    )
+
+    # 1) missing
+    m = rules_metrics.get("missing")
+    if m is not None:
+        details.append(
+            RuleAppliedDetail(
+                rule="missing",
+                enabled=bool(req.clean_rules.missing.enabled),
+                params=req.clean_rules.missing.model_dump(),
+                effect=m,
+            )
+        )
+
+    # 2) deduplicate
+    d = rules_metrics.get("deduplicate")
+    if d is not None:
+        details.append(
+            RuleAppliedDetail(
+                rule="deduplicate",
+                enabled=bool(req.clean_rules.deduplicate.enabled),
+                params=req.clean_rules.deduplicate.model_dump(),
+                effect=d,
+            )
+        )
+
+    # 3) type_cast
+    t = rules_metrics.get("type_cast")
+    # 你现在日志里“Skipped: Type casting...”就是因为 metrics/规则没进来
+    if t is not None:
+        details.append(
+            RuleAppliedDetail(
+                rule="type_cast",
+                enabled=bool(req.clean_rules.type_cast.enabled) and len(req.clean_rules.type_cast.rules) > 0,
+                params=req.clean_rules.type_cast.model_dump(),
+                effect=t,
+            )
+        )
+    else:
+        # 如果没执行也给一条说明（可选，但论文展示很舒服）
+        details.append(
+            RuleAppliedDetail(
+                rule="type_cast",
+                enabled=bool(req.clean_rules.type_cast.enabled) and len(req.clean_rules.type_cast.rules) > 0,
+                params=req.clean_rules.type_cast.model_dump(),
+                effect={"reason": "not_executed_or_no_metrics"},
+            )
+        )
+
+    # 4) outliers
+    o = rules_metrics.get("outliers")
+    if o is not None:
+        details.append(
+            RuleAppliedDetail(
+                rule="outliers",
+                enabled=bool(req.clean_rules.outliers.enabled),
+                params=req.clean_rules.outliers.model_dump(),
+                effect=o,
+            )
+        )
+
+    # 5) filter
+    f = rules_metrics.get("filter")
+    if f is not None:
+        details.append(
+            RuleAppliedDetail(
+                rule="filter",
+                enabled=bool(req.clean_rules.filter.enabled),
+                params=req.clean_rules.filter.model_dump(),
+                effect=f,
+            )
+        )
+
+    return details
 
 def _calculate_cells_modified(
     req: CleaningRunRequest,
@@ -61,45 +156,43 @@ def _build_summary(
     before_profile: Dict[str, Any],
     after_profile: Dict[str, Any],
     replay_stats: Dict[str, int],
-    rules_metrics: Dict[str, Any]
+    rules_metrics: Dict[str, Any],
+    duration_ms: int,
 ) -> CleaningSummary:
-    """构建符合 Schema 契约的 Summary 对象"""
-    
     rows_before = int(before_profile["rows"])
     rows_after = int(after_profile["rows"])
     cols_before = int(before_profile["cols"])
     cols_after = int(after_profile["cols"])
 
-    # 计算生效的规则列表
-    rules_applied = []
-    if req.clean_rules.missing.enabled: rules_applied.append("missing")
-    if req.clean_rules.deduplicate.enabled: rules_applied.append("deduplicate")
-    if req.clean_rules.type_cast.enabled: rules_applied.append("type_cast")
-    if req.clean_rules.outliers.enabled: rules_applied.append("outliers")
-    if req.clean_rules.filter.enabled: rules_applied.append("filter")
+    # ✅ 只有 metrics 里存在的，才认为真正“生效/执行”
+    rules_applied: List[str] = []
+    for name in ("missing", "deduplicate", "type_cast", "outliers", "filter"):
+        if name in rules_metrics:
+            rules_applied.append(name)
 
-    return CleaningSummary(
-        # 基础维度
+    summary = CleaningSummary(
         rows_before=rows_before,
         rows_after=rows_after,
         columns_before=cols_before,
         columns_after=cols_after,
-        
-        # 变化量
+
         rows_removed=rows_before - rows_after,
         columns_removed=cols_before - cols_after,
         cells_modified=_calculate_cells_modified(req, rules_metrics, rows_after),
-        
-        # 执行统计
-        user_actions_applied=replay_stats["applied"],
+
+        user_actions_applied=int(replay_stats.get("applied", 0)),
         rules_applied=rules_applied,
-        
-        # 质量指标
+
         missing_rate_before=float(before_profile["missing_rate"]),
         missing_rate_after=float(after_profile["missing_rate"]),
         duplicate_rate_before=float(before_profile["duplicate_rate"]),
         duplicate_rate_after=float(after_profile["duplicate_rate"]),
+
+        # ✅ 新增（按你 schema 加了 duration_ms 的前提）
+        duration_ms=duration_ms,
     )
+    return summary
+
 
 
 def _build_diff_summary(
@@ -165,11 +258,19 @@ def run_cleaning(req: CleaningRunRequest) -> CleaningRunResponse:
         logs.append(f"Export: Asset saved as {export_fmt}. Path: {cleaned_asset_ref_dict['path']}")
 
         # --- Step 5: Assemble Response ---
-        summary = _build_summary(req, before_profile, after_profile, replay_stats, rules_metrics)
-        diff_summary = _build_diff_summary(before_profile, after_profile, rules_metrics)
-        
         elapsed_ms = int((time.time() - start_ts) * 1000)
         logs.insert(0, f"Meta: Pipeline finished in {elapsed_ms}ms")
+
+        summary = _build_summary(req, before_profile, after_profile, replay_stats, rules_metrics, elapsed_ms)
+        diff_summary = _build_diff_summary(before_profile, after_profile, rules_metrics)
+
+        rules_applied_detail = _build_rules_applied_detail(req, replay_stats, rules_metrics)
+
+        actions_replay = ActionsReplaySummary(
+            total=int(replay_stats.get("total", 0)),
+            applied=int(replay_stats.get("applied", 0)),
+            failed=int(replay_stats.get("failed", 0)),
+        )
 
         logger.info(f"Runner[{file_id}]: Pipeline success. Duration: {elapsed_ms}ms")
 
@@ -178,9 +279,12 @@ def run_cleaning(req: CleaningRunRequest) -> CleaningRunResponse:
             cleaned_asset_ref=CleanedAssetRef(**cleaned_asset_ref_dict),
             summary=summary,
             diff_summary=diff_summary,
+            rules_applied_detail=rules_applied_detail,   # ✅ 新增
+            actions_replay=actions_replay,               # ✅ 新增
             log=logs,
             error=None,
         )
+
 
     except CleaningException as ce:
         elapsed_ms = int((time.time() - start_ts) * 1000)

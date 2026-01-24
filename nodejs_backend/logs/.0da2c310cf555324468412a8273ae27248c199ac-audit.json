@@ -6,21 +6,6 @@
     "auditLog": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\.0da2c310cf555324468412a8273ae27248c199ac-audit.json",
     "files": [
         {
-            "date": 1767683217615,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-06.log",
-            "hash": "cfe5f4550515e5f28f737d70b33c92816f07584448ffff51c843b7e946c56f0a"
-        },
-        {
-            "date": 1767767077313,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-07.log",
-            "hash": "9884adb377a4d0b0e536a190be237959d8e02af5875d93076a1eb9200af7df77"
-        },
-        {
-            "date": 1767877721231,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-08.log",
-            "hash": "e9ebc159bfb236a9d949193ac5b9e24a4409673a6906204db146937e3380c981"
-        },
-        {
             "date": 1768288211209,
             "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-13.log",
             "hash": "193cb14a922070c712323b34f2c3c3c2096a8b14367057496b0d04e84f1147b1"
@@ -29,6 +14,16 @@
             "date": 1768823450916,
             "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-19.log",
             "hash": "933dd57a5dae748731be9e2438b17132d4b5e6ca88bd1cb50cacff28ad79f917"
+        },
+        {
+            "date": 1769150299686,
+            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-23.log",
+            "hash": "ac43bdf21e62134ab4e727d5d23739678125a7f92b091849323b30874a2af192"
+        },
+        {
+            "date": 1769263048616,
+            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-24.log",
+            "hash": "aeda5f487a68d89ca8eafd2d6bc006ff1ba79b624e5e372bf0f0f5cd308ec62f"
         }
     ],
     "hashType": "sha256"

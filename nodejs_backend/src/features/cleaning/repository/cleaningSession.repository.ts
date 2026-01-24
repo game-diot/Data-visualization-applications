@@ -9,7 +9,7 @@ export class CleaningSessionRepository {
    */
   async create(
     fileId: mongoose.Types.ObjectId,
-    qualityVersion: number
+    qualityVersion: number,
   ): Promise<ICleaningSession> {
     return CleaningSessionModel.create({
       fileId,
@@ -24,21 +24,21 @@ export class CleaningSessionRepository {
    */
   async findActiveByFileAndQuality(
     fileId: mongoose.Types.ObjectId,
-    qualityVersion: number
+    qualityVersion: number,
   ): Promise<ICleaningSession | null> {
     return CleaningSessionModel.findOne({
       fileId,
       qualityVersion,
       status: { $in: ["draft", "running"] },
     })
-      .sort({ createAt: -1 })
+      .sort({ createdAt: -1 })
       .lean();
   }
   /**
    * 通过id查找session
    */
   async findActiveById(
-    id: mongoose.Types.ObjectId | string
+    id: mongoose.Types.ObjectId | string,
   ): Promise<ICleaningSession | null> {
     return CleaningSessionModel.findById(id).lean();
   }
@@ -46,26 +46,26 @@ export class CleaningSessionRepository {
    * 锁定session（draft->running）
    */
   async lockedSession(
-    sessionId: mongoose.Types.ObjectId
+    sessionId: mongoose.Types.ObjectId,
   ): Promise<ICleaningSession | null> {
     return CleaningSessionModel.findByIdAndUpdate(
       sessionId,
       {
         $set: { status: "running", lockedAt: new Date() },
       },
-      { new: true }
+      { new: true },
     );
   }
   /**
    * 关闭session（any ->closed）
    */
   async closedSession(
-    sessionId: mongoose.Types.ObjectId
+    sessionId: mongoose.Types.ObjectId,
   ): Promise<ICleaningSession | null> {
     return CleaningSessionModel.findByIdAndUpdate(
       sessionId,
       { $set: { status: "closed", closedAt: new Date() } },
-      { new: true }
+      { new: true },
     );
   }
 }

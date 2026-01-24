@@ -26,7 +26,7 @@ export class UserModificationRepository {
    * 关键：按 createdAt 升序排列，保证 replay 顺序正确
    */
   async findBySessionId(
-    sessionId: mongoose.Types.ObjectId
+    sessionId: mongoose.Types.ObjectId,
   ): Promise<IUserMondification[]> {
     return UserModificationModel.find({ sessionId })
       .sort({ createAt: 1 })
@@ -39,7 +39,7 @@ export class UserModificationRepository {
   async markConsumed(ids: mongoose.Types.ObjectId[]): Promise<void> {
     await UserModificationModel.updateMany(
       { _id: { $in: ids } },
-      { $set: { consumed: true } }
+      { $set: { consumed: true } },
     );
   }
   /**
@@ -47,6 +47,23 @@ export class UserModificationRepository {
    */
   async deleteBySessionId(sessionId: mongoose.Types.ObjectId): Promise<void> {
     await UserModificationModel.deleteMany({ sessionId });
+  }
+
+  // userModification.repository.ts
+  async markConsumedBySession(
+    sessionId: mongoose.Types.ObjectId,
+    consumedByTaskId: mongoose.Types.ObjectId,
+  ) {
+    return UserModificationModel.updateMany(
+      { sessionId, consumed: false },
+      {
+        $set: {
+          consumed: true,
+          consumedAt: new Date(),
+          consumedByTaskId,
+        },
+      },
+    );
   }
 }
 

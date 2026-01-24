@@ -65,8 +65,8 @@ export interface CleaningStatusResponseDTO {
   session: CleaningSessionSummaryDTO | null;
   currentTask: CleaningTaskSummaryDTO | null;
 
-  // 这里引用上面的 CleaningReportSummaryDTO
-  latestTask: CleaningReportSummaryDTO | null;
+  latestTask: CleaningTaskSummaryDTO | null;
+  latestReport: CleaningReportSummaryDTO | null;
 }
 
 // 7. [修改] Report 详情 (用于详情页)

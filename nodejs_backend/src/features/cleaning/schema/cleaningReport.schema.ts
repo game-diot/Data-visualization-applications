@@ -28,9 +28,25 @@ export const CleaningReportSchema = new Schema<ICleaningReport>(
 
     // ✅ 新增匹配字段 (FastAPI 返回的是对象)
     cleanedAsset: {
-      path: { type: String, required: true }, // 对应 cleaned_asset_ref.path
-      preview: { type: Schema.Types.Mixed }, // 对应 preview
+      type: { type: String }, // ✅ 新增
+      path: { type: String, required: true },
+      format: { type: String }, // ✅ 新增
+      sizeBytes: { type: Number }, // ✅ 新增（camelCase）
+      preview: { type: Schema.Types.Mixed },
     },
+
+    // ✅ 新增：结构化规则明细
+    rulesAppliedDetail: { type: [Schema.Types.Mixed], default: [] },
+
+    // ✅ 新增：回放统计
+    actionsReplay: {
+      total: { type: Number, default: 0 },
+      applied: { type: Number, default: 0 },
+      failed: { type: Number, default: 0 },
+    },
+
+    // ✅ 日志建议改成 string[]
+    logs: { type: [String], default: [] },
 
     // 基础统计
     summary: {
@@ -54,17 +70,14 @@ export const CleaningReportSchema = new Schema<ICleaningReport>(
       byRule: { type: Schema.Types.Mixed },
       byColumn: { type: Schema.Types.Mixed },
     },
-
-    // 统一日志字段名 (Service 层用的是 detailLog, 这里匹配一下)
-    logs: { type: Schema.Types.Mixed },
   },
   {
     timestamps: { createdAt: true, updatedAt: false },
     collection: "cleaning_reports",
-  }
+  },
 );
 
 CleaningReportSchema.index(
-  { sessionId: 1, cleaningVersion: 1 },
-  { unique: true }
+  { fileId: 1, qualityVersion: 1, cleaningVersion: 1 },
+  { unique: true },
 );

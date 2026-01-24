@@ -48,7 +48,7 @@ export const qualityController = {
         return responseUtils.fail(
           res,
           `无法获取摘要，当前状态为: ${file.stage}`,
-          400
+          400,
         );
       }
 
@@ -77,14 +77,14 @@ export const qualityController = {
   async getAnalysisResultByVersion(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ) {
     try {
       const { id, version } = req.params;
 
       const result = await qualityService.getResultByVersion(
         id,
-        Number(version)
+        Number(version),
       );
 
       if (!result) {
@@ -102,18 +102,26 @@ export const qualityController = {
    */
   async triggerAnalysis(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
-      const { forceRefresh } = req.body;
+      const fileId = req.params.id;
+      const { forceRefresh, fileId: bodyFileId } = req.body ?? {};
 
       // 1. 跨模块获取文件信息 (获取 filePath)
-      const file = await fileService.getFileById(id);
+      const file = await fileService.getFileById(fileId);
 
-      // 2. 校验状态 (可选：如果正在分析中，是否允许重试？)
-      // if (file.stage === 'quality_analyzing') ...
+      if (bodyFileId && bodyFileId !== fileId) {
+        return responseUtils.fail(
+          res,
+          "fileId must not be provided in body",
+          400,
+        );
+      }
 
-      // 3. 调用 QualityService (传入 path 和 forceRefresh)
-      // 这里复用了 performAnalysis，并没有单独写 retryAnalysis，减少重复逻辑
-      await qualityService.performAnalysis(id, file.path, forceRefresh ?? true);
+      const force = forceRefresh === true;
+      await qualityService.performAnalysis(
+        fileId,
+        file.path,
+        forceRefresh ?? true,
+      );
 
       return responseUtils.success(res, null, "分析任务已重新提交");
     } catch (error) {

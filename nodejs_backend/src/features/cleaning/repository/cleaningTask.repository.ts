@@ -15,16 +15,16 @@ export class CleaningTaskRepository {
    * 更新状态
    */
   async updateStatus(
-    taskId: mongoose.Types.ObjectId,
+    taskId: mongoose.Types.ObjectId | string,
     status: CleaningTaskStatus,
-    extras: Partial<ICleaningTask> = {}
+    extras: Partial<ICleaningTask> = {},
   ): Promise<ICleaningTask | null> {
     return CleaningTaskModel.findByIdAndUpdate(
       taskId,
       {
         $set: { status, ...extras },
       },
-      { new: true }
+      { new: true },
     );
   }
   /**
@@ -40,7 +40,7 @@ export class CleaningTaskRepository {
    */
   async getNextCleaningVersion(
     fileId: mongoose.Types.ObjectId,
-    qualityVersion: number
+    qualityVersion: number,
   ): Promise<number> {
     const lastReport = await CleaningReportModel.findOne({
       fileId,
@@ -55,6 +55,25 @@ export class CleaningTaskRepository {
 
   async findLatestBySession(sessionId: mongoose.Types.ObjectId) {
     return CleaningTaskModel.findOne({ sessionId })
+      .sort({ createdAt: -1 })
+      .lean();
+  }
+
+  findCurrentTask(fileId: mongoose.Types.ObjectId, qualityVersion: number) {
+    return CleaningTaskModel.findOne({
+      fileId,
+      qualityVersion,
+      status: { $in: ["pending", "running"] },
+    })
+      .sort({ createdAt: -1 })
+      .lean();
+  }
+
+  findLatestTask(fileId: mongoose.Types.ObjectId, qualityVersion: number) {
+    return CleaningTaskModel.findOne({
+      fileId,
+      qualityVersion,
+    })
       .sort({ createdAt: -1 })
       .lean();
   }

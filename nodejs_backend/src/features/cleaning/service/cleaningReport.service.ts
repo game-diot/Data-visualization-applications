@@ -8,61 +8,90 @@ export const cleaningReportService = {
    * @param result FastAPI 返回的清洗结果
    */
   async createFromTask(task: ICleaningTask, result: any) {
-    // 1. 提取 metrics，防止 result.metrics 为空导致 crash
-    const m = result.metrics || {};
+    // ✅ FastAPI: summary / cleaned_asset_ref / diff_summary / log
+    const s = result?.summary ?? null;
+    const asset = result?.cleaned_asset_ref ?? null;
+    const diff = result?.diff_summary ?? null;
 
-    // 2. 提取 asset，防止 result.cleaned_asset_ref 为空
-    const asset = result.cleaned_asset_ref || {};
+    // ✅ FastAPI 新增字段
+    const rulesAppliedDetail = result?.rules_applied_detail ?? [];
+    const actionsReplay = result?.actions_replay ?? null;
+
+    // ✅ taskId 必须是 cleaningTask 的 _id
+    const taskId = (task as any)._id ?? (task as any).id;
 
     return cleaningReportRepository.create({
-      // --- ID 映射 ---
       fileId: task.fileId,
       sessionId: task.sessionId,
-      // 必须使用任务的 _id (MongoDB ObjectId)
-      taskId: task.taskId,
+      taskId: taskId,
 
-      // --- 版本控制 (继承 Task) ---
       qualityVersion: task.qualityVersion,
       cleaningVersion: task.cleaningVersion,
 
-      // --- 📊 核心统计 Summary ---
-      // 严格按照 ICleaningSummary 接口字段进行映射
-      // 假设 FastAPI 返回的是下划线格式 (snake_case)，映射到 Schema 的驼峰 (camelCase)
-      summary: {
-        rowsBefore: m.rows_before ?? 0,
-        rowsAfter: m.rows_after ?? 0,
-        columnsBefore: m.columns_before ?? 0,
-        columnsAfter: m.columns_after ?? 0,
+      // ✅ summary: snake_case -> camelCase（这是你 report 为空的关键修复）
+      summary: s
+        ? {
+            rowsBefore: s.rows_before ?? 0,
+            rowsAfter: s.rows_after ?? 0,
+            columnsBefore: s.columns_before ?? 0,
+            columnsAfter: s.columns_after ?? 0,
 
-        rowsRemoved: m.rows_removed ?? 0,
-        columnsRemoved: m.columns_removed ?? 0,
-        cellsModified: m.cells_modified ?? 0,
+            rowsRemoved: s.rows_removed ?? 0,
+            columnsRemoved: s.columns_removed ?? 0,
+            cellsModified: s.cells_modified ?? 0,
 
-        userActionsApplied: m.user_actions_applied ?? 0,
-        // 确保是字符串数组
-        rulesApplied: Array.isArray(m.rules_applied) ? m.rules_applied : [],
+            userActionsApplied: s.user_actions_applied ?? 0,
+            rulesApplied: Array.isArray(s.rules_applied) ? s.rules_applied : [],
 
-        missingRateBefore: m.missing_rate_before ?? 0,
-        missingRateAfter: m.missing_rate_after ?? 0,
-        duplicateRateBefore: m.duplicate_rate_before ?? 0,
-        duplicateRateAfter: m.duplicate_rate_after ?? 0,
-      },
+            missingRateBefore: s.missing_rate_before ?? null,
+            missingRateAfter: s.missing_rate_after ?? null,
+            duplicateRateBefore: s.duplicate_rate_before ?? null,
+            duplicateRateAfter: s.duplicate_rate_after ?? null,
 
-      // --- 🔍 差异详情 ---
-      diffSummary: result.diff_summary || {},
+            // 如果你 FastAPI summary 加了 duration_ms 且 schema/interface 也加了
+            durationMs: s.duration_ms ?? null,
+          }
+        : null,
 
-      // --- 📦 产物引用 ---
-      // 对应 Interface: { path: string; preview?: any[] }
-      cleanedAsset: {
-        path: asset.path || "", // 确保有值
-        preview: asset.preview || [], // 可选，确保是数组
-      },
+      // ✅ diffSummary: snake_case -> camelCase
+      diffSummary: diff
+        ? {
+            byRule: diff.by_rule ?? null,
+            byColumn: diff.by_column ?? null,
+          }
+        : { byRule: null, byColumn: null },
 
-      // --- 📝 执行日志 ---
-      // 对应 Interface: string[] (不能为 null)
-      logs: result.detail_log || [],
+      // ✅ cleanedAsset: snake_case -> camelCase（你 schema 已扩展）
+      cleanedAsset: asset
+        ? {
+            type: asset.type ?? "local_file",
+            path: asset.path ?? "",
+            format: asset.format ?? "csv",
+            sizeBytes: asset.size_bytes ?? null,
+            preview: asset.preview ?? [],
+          }
+        : {
+            type: "local_file",
+            path: "",
+            format: "csv",
+            sizeBytes: null,
+            preview: [],
+          },
 
-      // createdAt 由 Mongoose timestamp 自动处理，无需手动传
+      // ✅ 新增字段落库
+      rulesAppliedDetail: Array.isArray(rulesAppliedDetail)
+        ? rulesAppliedDetail
+        : [],
+      actionsReplay: actionsReplay
+        ? {
+            total: actionsReplay.total ?? 0,
+            applied: actionsReplay.applied ?? 0,
+            failed: actionsReplay.failed ?? 0,
+          }
+        : { total: 0, applied: 0, failed: 0 },
+
+      // ✅ logs 字段名：FastAPI 是 log
+      logs: Array.isArray(result?.log) ? result.log : [],
     });
   },
 };
