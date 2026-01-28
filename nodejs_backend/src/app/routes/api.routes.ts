@@ -6,6 +6,7 @@ import { HTTP_STATUS } from "../../shared/constants/http.constant";
 import { fileRouter } from "../../features/file/route/file.routes";
 import { qualityRouter } from "features/quality/routes/quality.route";
 import { cleaningRouter } from "features/cleaning/route/cleaning.route";
+import { analysisRouter } from "features/analysis/router/analysis.router";
 
 const router = Router();
 
@@ -29,4 +30,5 @@ router.get("/health", (req, res) => {
 router.use("/files", fileRouter);
 router.use("/quality", qualityRouter);
 router.use("/cleaning", cleaningRouter);
+router.use("/analysis", analysisRouter);
 export default router;

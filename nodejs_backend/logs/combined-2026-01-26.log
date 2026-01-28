@@ -1,0 +1,87 @@
+[2026-01-26 14:22:56] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m=================================[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-26 14:22:56] [32minfo[39m: [32m=================================[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m=================================[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-26 14:30:58] [32minfo[39m: [32m=================================[39m
+[2026-01-26 14:43:22] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/modifications [32m201[0m 182.482 ms - 333[0m[39m
+[2026-01-26 14:43:39] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69770d1b12afe7b66924340c (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-26 14:43:39] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 150.689 ms - 326[0m[39m
+[2026-01-26 14:43:39] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-26 14:43:39] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:43:43] [33mwarn[39m: [33m🔁 [FastAPI Retry] Attempt 1 in 100ms... (Request failed with status code 502)[39m
+[2026-01-26 14:43:43] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:1/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:43:46] [33mwarn[39m: [33m🔁 [FastAPI Retry] Attempt 2 in 400ms... (Request failed with status code 502)[39m
+[2026-01-26 14:43:46] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:2/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:43:50] [33mwarn[39m: [33m🔁 [FastAPI Retry] Attempt 3 in 900ms... (Request failed with status code 502)[39m
+[2026-01-26 14:43:51] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:3/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:43:53] [31merror[39m: [31m❌ [FastAPI] HTTP 502[39m
+[2026-01-26 14:43:53] [31merror[39m: [31m❌ [Cleaning] Task Failed: 69770d1b12afe7b66924340c FastAPI connection failed: Request failed with status code 502[39m
+[2026-01-26 14:43:54] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 502
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:239:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:171:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:150:22)
+[2026-01-26 14:44:21] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/modifications [32m201[0m 10.261 ms - 333[0m[39m
+[2026-01-26 14:44:37] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-26 14:44:37] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [31m500[0m 37.279 ms - 1199[0m[39m
+[2026-01-26 14:45:46] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-26 14:45:46] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [31m500[0m 32.158 ms - 1199[0m[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69770dd212afe7b669243428 (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 26.065 ms - 326[0m[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-01-26 14:46:42] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 76ms[39m
+[2026-01-26 14:47:09] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/modifications [32m201[0m 14.369 ms - 335[0m[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69770e0112afe7b66924343b (session=6974d2623f3c904a142cf5e9)[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/6974d1933f3c904a142cf5d6/run [32m201[0m 39.147 ms - 326[0m[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=6, typeCast.enabled=true, typeCast.rules=3[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-01-26 14:47:29] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 40ms[39m
+[2026-01-26 14:48:58] [32minfo[39m: [32m[0mGET /api/v1/cleaning/6974d1933f3c904a142cf5d6/reports?qualityVersion=1 [32m200[0m 9.745 ms - 1431[0m[39m
+[2026-01-26 14:52:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/6974d1933f3c904a142cf5d6/reports/2?qualityVersion=1 [32m200[0m 11.054 ms - 1804[0m[39m
+[2026-01-26 19:04:29] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-26 19:04:29] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 0 in 0ms...[39m
+[2026-01-26 19:04:29] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-26 19:04:29] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-26 19:04:29] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m

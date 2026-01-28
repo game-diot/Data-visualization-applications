@@ -73,7 +73,7 @@ class FastApiClient {
         logger.info(
           `🚀 [FastAPI Req] [Retry:${config._retryCount}/${
             this.MAX_RETRY
-          }] ${config.method?.toUpperCase()} ${config.url}`
+          }] ${config.method?.toUpperCase()} ${config.url}`,
         );
 
         return config;
@@ -81,7 +81,7 @@ class FastApiClient {
       (error: AxiosError) => {
         logger.error("❌ [FastAPI Req Error]", error);
         return Promise.reject(error);
-      }
+      },
     );
 
     // ========== 响应拦截器 (修复核心) ==========
@@ -95,7 +95,7 @@ class FastApiClient {
           logger.error("❌ [FastAPI] Invalid response format:", payload);
           throw new FastApiBusinessException(
             "Invalid response format from Analysis Engine",
-            ERROR_CODES.EXTERNAL_SERVICE_ERROR
+            ERROR_CODES.EXTERNAL_SERVICE_ERROR,
           );
         }
 
@@ -110,7 +110,7 @@ class FastApiClient {
         if (!isStandardSuccess && !isCleaningSuccess) {
           logger.warn(
             `⚠️ [FastAPI] Business Fail:`,
-            JSON.stringify(payload, null, 2)
+            JSON.stringify(payload, null, 2),
           );
 
           // 尝试获取错误信息
@@ -122,7 +122,7 @@ class FastApiClient {
 
           // 映射错误码 (优先用 payload.code，没有则用 50000)
           const mappedCode = this.mapFastApiCodeToInternal(
-            payload.code || FASTAPI_ERROR_CODES.INTERNAL_ERROR
+            payload.code || FASTAPI_ERROR_CODES.INTERNAL_ERROR,
           );
 
           throw new FastApiBusinessException(errorMsg, mappedCode, {
@@ -160,7 +160,7 @@ class FastApiClient {
           const delay = Math.pow(config._retryCount, 2) * 100;
 
           logger.warn(
-            `🔁 [FastAPI Retry] Attempt ${config._retryCount} in ${delay}ms... (${error.message})`
+            `🔁 [FastAPI Retry] Attempt ${config._retryCount} in ${delay}ms... (${error.message})`,
           );
 
           await new Promise((resolve) => setTimeout(resolve, delay));
@@ -170,7 +170,7 @@ class FastApiClient {
         // --- 最终错误处理 ---
         this.handleFinalError(error);
         throw error;
-      }
+      },
     );
   }
 
@@ -287,6 +287,16 @@ class FastApiClient {
   }): Promise<any> {
     // URL 需要与 FastAPI 路由一致
     return this.client.post("/api/v1/cleaning/run", payload);
+  }
+
+  public async performAnalysis(payload: {
+    file_id: string;
+    data_ref: any;
+    data_selection?: any;
+    analysis_config: any;
+    meta: any;
+  }): Promise<any> {
+    return this.client.post("/api/v1/analysis/run", payload);
   }
 }
 

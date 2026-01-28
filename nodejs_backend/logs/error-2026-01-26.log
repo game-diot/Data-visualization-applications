@@ -1,0 +1,25 @@
+[2026-01-26 14:43:53] [31merror[39m: [31m❌ [FastAPI] HTTP 502[39m
+[2026-01-26 14:43:53] [31merror[39m: [31m❌ [Cleaning] Task Failed: 69770d1b12afe7b66924340c FastAPI connection failed: Request failed with status code 502[39m
+[2026-01-26 14:43:54] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 502
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:239:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:171:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:150:22)
+[2026-01-26 14:44:37] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-26 14:45:46] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('6974d1933f3c904a142cf5d6'), cleaningVersion: 2 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-01-26 19:04:29] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-26 19:04:29] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m

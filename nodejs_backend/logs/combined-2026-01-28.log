@@ -1,0 +1,65 @@
+[2026-01-28 15:22:36] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m=================================[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-01-28 15:22:36] [32minfo[39m: [32m=================================[39m
+[2026-01-28 15:28:52] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/catalog?qualityVersion=1 [32m200[0m 57.429 ms - 1039[0m[39m
+[2026-01-28 15:29:36] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/catalog?qualityVersion=1&selectedColumns=age,bmi [32m200[0m 13.897 ms - 1088[0m[39m
+[2026-01-28 15:30:30] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/catalog?qualityVersion=1&selectedColumns=age [32m200[0m 8.420 ms - 1116[0m[39m
+[2026-01-28 15:31:55] [33mwarn[39m: BaseException: Route not found: POST /api/v1/6974d1933f3c904a142cf5d6/run
+    at notFoundMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\notFound.middleware.ts:16:17)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:688:15
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:276:14)
+    at Function.handle (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:186:3)
+    at router (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:60:12)
+[2026-01-28 15:31:55] [32minfo[39m: [32m[0mPOST /api/v1/6974d1933f3c904a142cf5d6/run [33m404[0m 54.139 ms - 1493[0m[39m
+[2026-01-28 15:32:13] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [32m201[0m 117.993 ms - 821[0m[39m
+[2026-01-28 15:32:13] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=6979bb7dc69693af70fe3625[39m
+[2026-01-28 15:32:13] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-01-28 15:32:13] [31merror[39m: [31m❌ [FastAPI] HTTP 404 Requested resource not found[39m
+[2026-01-28 15:32:13] [31merror[39m: [31m❌ [Analysis] Task failed task=6979bb7dc69693af70fe3625 FastAPI connection failed: Request failed with status code 404[39m
+[2026-01-28 15:34:58] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [32m201[0m 40.042 ms - 814[0m[39m
+[2026-01-28 15:34:58] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=6979bc22c69693af70fe3631[39m
+[2026-01-28 15:34:58] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-01-28 15:34:58] [31merror[39m: [31m❌ [FastAPI] HTTP 404 Requested resource not found[39m
+[2026-01-28 15:34:58] [31merror[39m: [31m❌ [Analysis] Task failed task=6979bc22c69693af70fe3631 FastAPI connection failed: Request failed with status code 404[39m
+[2026-01-28 15:35:09] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [32m201[0m 37.205 ms - 808[0m[39m
+[2026-01-28 15:35:09] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=6979bc2dc69693af70fe363d[39m
+[2026-01-28 15:35:09] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-01-28 15:35:09] [31merror[39m: [31m❌ [FastAPI] HTTP 404 Requested resource not found[39m
+[2026-01-28 15:35:09] [31merror[39m: [31m❌ [Analysis] Task failed task=6979bc2dc69693af70fe363d FastAPI connection failed: Request failed with status code 404[39m
+[2026-01-28 15:36:17] [33mwarn[39m: BadRequestException: columns cannot be empty array; use null for all columns
+    at validateSelectionOrThrow (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\utils\validateSelection.util.ts:35:13)
+    at Object.triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisTask.service.ts:55:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisTask.controller.ts:26:20)
+[2026-01-28 15:36:17] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [33m400[0m 13.390 ms - 771[0m[39m
+[2026-01-28 15:36:27] [33mwarn[39m: BadRequestException: rows.end must be > rows.start (end is exclusive)
+    at validateSelectionOrThrow (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\utils\validateSelection.util.ts:20:13)
+    at Object.triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisTask.service.ts:55:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisTask.controller.ts:26:20)
+[2026-01-28 15:36:27] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [33m400[0m 14.919 ms - 757[0m[39m
+[2026-01-28 15:36:36] [33mwarn[39m: BadRequestException: filters is not supported in MVP
+    at validateSelectionOrThrow (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\utils\validateSelection.util.ts:48:11)
+    at Object.triggerAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisTask.service.ts:55:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async run (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisTask.controller.ts:26:20)
+[2026-01-28 15:36:36] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [33m400[0m 10.120 ms - 723[0m[39m
+[2026-01-28 15:37:50] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 14.239 ms - 445[0m[39m
+[2026-01-28 15:39:01] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 9.358 ms - 445[0m[39m

@@ -17,7 +17,7 @@ export const FILE_STAGE_ENUM = [
 
   // ===== 数据分析 =====
   "analysis_pending",
-  "analysis",
+  "analysis_processing",
   "analysis_done",
   "analysis_failed",
 
