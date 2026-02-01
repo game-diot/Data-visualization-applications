@@ -4,3 +4,5 @@
 [2026-01-28 15:34:58] [31merror[39m: [31m❌ [Analysis] Task failed task=6979bc22c69693af70fe3631 FastAPI connection failed: Request failed with status code 404[39m
 [2026-01-28 15:35:09] [31merror[39m: [31m❌ [FastAPI] HTTP 404 Requested resource not found[39m
 [2026-01-28 15:35:09] [31merror[39m: [31m❌ [Analysis] Task failed task=6979bc2dc69693af70fe363d FastAPI connection failed: Request failed with status code 404[39m
+[2026-01-28 18:53:47] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-28 18:53:47] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m

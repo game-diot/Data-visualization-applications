@@ -19,8 +19,23 @@ export class CleaningSessionRepository {
     });
   }
   /**
-   * 查找活跃 Session (draft 或 running)
-   * 策略：如果有多个，返回最新的一个 (sort by createdAt desc)
+   * ✅ 创建 session 前：自动关闭同 fileId + qualityVersion 下所有 active(session.status in draft/running)
+   */
+  async closeActiveByFileAndQuality(fileId: string, qualityVersion: number) {
+    return CleaningSessionModel.updateMany(
+      {
+        fileId,
+        qualityVersion,
+        status: { $in: ["draft", "running"] },
+      },
+      {
+        $set: { status: "closed", closedAt: new Date() },
+      },
+    );
+  }
+
+  /**
+   * ✅（顺手修复）findActiveByFileAndQuality 的排序字段拼写：createdAt
    */
   async findActiveByFileAndQuality(
     fileId: mongoose.Types.ObjectId,
@@ -31,7 +46,7 @@ export class CleaningSessionRepository {
       qualityVersion,
       status: { $in: ["draft", "running"] },
     })
-      .sort({ createdAt: -1 })
+      .sort({ createdAt: -1 }) // ✅ 修复：createAt -> createdAt
       .lean();
   }
   /**

@@ -26,7 +26,10 @@ import { eventBus } from "../../../app/core/eventBus.core";
 import { buildPaginatedResult } from "@shared/utils/pagination.util";
 import { qualityController } from "features/quality/controllers/quality.controller";
 import { qualityService } from "features/quality/services/quality.services";
-
+// 对外 DTO（只允许 name）
+export interface UpdateFilePublicDTO {
+  name: string;
+}
 export const fileService = {
   /**
    * [核心业务] 处理上传 -> 查重 -> 入库 -> 广播事件
@@ -78,9 +81,8 @@ export const fileService = {
    * 修复点：Service 层负责计算 totalPages，补全 PaginatedResult 结构
    */
   async getAllFiles(query: PaginationQuery): Promise<PaginatedResult<IFile>> {
-    const { items, total, page, pageSize } = await fileRepository.findAll(
-      query
-    );
+    const { items, total, page, pageSize } =
+      await fileRepository.findAll(query);
 
     // 一行代码搞定结构转换
     return buildPaginatedResult(items, total, page, pageSize);
@@ -100,15 +102,21 @@ export const fileService = {
   /**
    * 更新文件信息
    */
-  async updateFile(id: string, updates: UpdateFileServiceDTO): Promise<IFile> {
-    // 业务校验：比如校验状态流转是否合法
-    const updatedFile = await fileRepository.updateById(id, updates);
+
+  async updateFilePublic(
+    id: string,
+    updates: UpdateFilePublicDTO,
+  ): Promise<IFile> {
+    // 只更新 name
+    const updatedFile = await fileRepository.updateById(id, {
+      name: updates.name,
+    } as any);
 
     if (!updatedFile) {
       throw new FileNotFoundException(`File ID ${id} not found for update.`);
     }
 
-    logger.info(`📝 [Update] File updated: ${id}`);
+    logger.info(`📝 [UpdatePublic] File name updated: ${id}`);
     return updatedFile;
   },
 

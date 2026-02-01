@@ -116,12 +116,9 @@ export const qualityController = {
         );
       }
 
-      const force = forceRefresh === true;
-      await qualityService.performAnalysis(
-        fileId,
-        file.path,
-        forceRefresh ?? true,
-      );
+      const force = typeof forceRefresh === "boolean" ? forceRefresh : false;
+
+      await qualityService.performAnalysis(fileId, file.path, force);
 
       return responseUtils.success(res, null, "分析任务已重新提交");
     } catch (error) {

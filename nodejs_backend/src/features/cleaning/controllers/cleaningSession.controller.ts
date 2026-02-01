@@ -10,22 +10,29 @@ export const cleaningSessionController = {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { fileId } = req.params;
-      const { qualityVersion } = req.body;
+      const raw = req.body?.qualityVersion;
 
-      if (qualityVersion === undefined) {
+      if (raw === undefined || raw === null) {
         return responseUtils.fail(res, "qualityVersion is required", 400);
       }
 
-      const result = await cleaningSessionService.createSession(
-        fileId,
-        qualityVersion
-      );
+      // 允许 JSON number 或字符串数字（可选兼容）
+      const qVer = typeof raw === "number" ? raw : Number(raw);
+
+      if (!Number.isInteger(qVer) || qVer <= 0) {
+        return responseUtils.fail(
+          res,
+          "qualityVersion must be a positive integer",
+          400,
+        );
+      }
+
+      const result = await cleaningSessionService.createSession(fileId, qVer);
       return responseUtils.created(res, result);
     } catch (error) {
       next(error);
     }
   },
-
   /**
    * GET /api/v1/cleaning/:fileId/sessions/active?qualityVersion=N
    */
@@ -38,13 +45,13 @@ export const cleaningSessionController = {
         return responseUtils.fail(
           res,
           "qualityVersion query param is required",
-          400
+          400,
         );
       }
 
       const result = await cleaningSessionService.getActiveSession(
         fileId,
-        qualityVersion
+        qualityVersion,
       );
       return responseUtils.success(res, result);
     } catch (error) {

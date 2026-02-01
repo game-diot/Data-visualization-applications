@@ -49,7 +49,7 @@ export const fileRepository = {
    */
   async findAll(
     query: PaginationQuery,
-    filter: FilterQuery<IFile> = {}
+    filter: FilterQuery<IFile> = {},
   ): Promise<PaginatedResult<IFile>> {
     const {
       page = 1,
@@ -105,12 +105,12 @@ export const fileRepository = {
    */
   async updateById(
     id: string,
-    updates: UpdateFileServiceDTO // 使用 ServiceDTO 或 UpdateQuery
+    updates: UpdateFileServiceDTO, // 使用 ServiceDTO 或 UpdateQuery
   ): Promise<IFile | null> {
     return FileModel.findByIdAndUpdate(
       id,
       { $set: updates }, // 使用 $set 确保是局部更新
-      { new: true } // 返回更新后的对象
+      { new: true }, // 返回更新后的对象
     );
   },
 
@@ -122,7 +122,7 @@ export const fileRepository = {
     return FileModel.findByIdAndUpdate(
       id,
       { stage: "isDeleted" }, // 使用硬编码字符串 "isDeleted" 对应的枚举值
-      { new: true }
+      { new: true },
     );
   },
 

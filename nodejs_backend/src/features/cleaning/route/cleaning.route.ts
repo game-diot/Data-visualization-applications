@@ -21,10 +21,6 @@ cleaningRouter.get(
   "/:fileId/sessions/active",
   cleaningSessionController.getActive,
 );
-cleaningRouter.post(
-  "/sessions/:sessionsId/closed",
-  cleaningSessionController.close,
-);
 
 // --- Cleaning Tasks ---
 cleaningRouter.post("/:fileId/run", cleaningTaskController.run);

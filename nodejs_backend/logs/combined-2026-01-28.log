@@ -63,3 +63,8 @@
 [2026-01-28 15:36:36] [32minfo[39m: [32m[0mPOST /api/v1/analysis/6974d1933f3c904a142cf5d6/run [33m400[0m 10.120 ms - 723[0m[39m
 [2026-01-28 15:37:50] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 14.239 ms - 445[0m[39m
 [2026-01-28 15:39:01] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 9.358 ms - 445[0m[39m
+[2026-01-28 18:53:47] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-28 18:53:47] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 0 in 0ms...[39m
+[2026-01-28 18:53:47] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-01-28 18:53:47] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-01-28 18:53:47] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m

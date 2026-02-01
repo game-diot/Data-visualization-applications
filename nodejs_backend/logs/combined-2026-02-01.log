@@ -1,0 +1,286 @@
+[2026-02-01 10:44:55] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m=================================[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 10:44:55] [32minfo[39m: [32m=================================[39m
+[2026-02-01 10:45:05] [32minfo[39m: [32m[0mGET /api/v1/quality/697e0fcb21486d4af118cc39 [32m200[0m 88.150 ms - 587[0m[39m
+[2026-02-01 10:45:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 70.919 ms - 282[0m[39m
+[2026-02-01 10:46:04] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697e180963f06845ed0d4bcb/closed [32m200[0m 36.078 ms - 71[0m[39m
+[2026-02-01 10:46:11] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 15.422 ms - 282[0m[39m
+[2026-02-01 10:47:02] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697e182863f06845ed0d4bce/closed [32m200[0m 11.051 ms - 71[0m[39m
+[2026-02-01 10:47:11] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 13.753 ms - 282[0m[39m
+[2026-02-01 10:47:24] [33mwarn[39m: BadRequestException: QualityReport not found for qualityVersion=666
+    at Object.createSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:23:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async create (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:30:22)
+[2026-02-01 10:47:24] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [33m400[0m 47.390 ms - 591[0m[39m
+[2026-02-01 10:47:51] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [32m201[0m 42.384 ms - 282[0m[39m
+[2026-02-01 10:48:54] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/modifications [32m201[0m 18.752 ms - 367[0m[39m
+[2026-02-01 10:49:29] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('697e0fcb21486d4af118cc39'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-02-01 10:49:29] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [31m500[0m 68.756 ms - 1199[0m[39m
+[2026-02-01 10:50:33] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('697e0fcb21486d4af118cc39'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-02-01 10:50:33] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [31m500[0m 21.580 ms - 1199[0m[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 697ebf9f2360e40681480fa8 (session=697e182863f06845ed0d4bce)[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [32m201[0m 28.915 ms - 328[0m[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=5, typeCast.enabled=true, typeCast.rules=5[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-02-01 10:51:11] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 63ms[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 697e0fcb21486d4af118cc39 (Force: false)[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 697e0fcb21486d4af118cc39[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 697e0fcb21486d4af118cc39 (v1)[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m√ [QualityService] Analysis successful: 697e0fcb21486d4af118cc39[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m[0mPOST /api/v1/quality/697e0fcb21486d4af118cc39/retry [32m200[0m 120.677 ms - 71[0m[39m
+[2026-02-01 10:52:58] [32minfo[39m: [32m💾 [DB] File 697e0fcb21486d4af118cc39 updated with Quality Summary (v1)[39m
+[2026-02-01 10:53:33] [33mwarn[39m: BadRequestException: QualityReport not found for qualityVersion=3
+    at Object.createSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:23:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async create (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:30:22)
+[2026-02-01 10:53:33] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [33m400[0m 9.239 ms - 587[0m[39m
+[2026-02-01 10:53:38] [33mwarn[39m: BadRequestException: QualityReport not found for qualityVersion=2
+    at Object.createSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:23:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async create (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:30:22)
+[2026-02-01 10:53:38] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [33m400[0m 9.141 ms - 587[0m[39m
+[2026-02-01 10:53:47] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [33m400[0m 6.435 ms - 82[0m[39m
+[2026-02-01 10:53:55] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [32m201[0m 19.280 ms - 282[0m[39m
+[2026-02-01 10:54:26] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/modifications [32m201[0m 9.919 ms - 367[0m[39m
+[2026-02-01 10:54:41] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 697ec0712360e40681480fc9 (session=697ec0432360e40681480fc0)[39m
+[2026-02-01 10:54:41] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [32m201[0m 24.669 ms - 326[0m[39m
+[2026-02-01 10:54:41] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=5, typeCast.enabled=true, typeCast.rules=5[39m
+[2026-02-01 10:54:41] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-02-01 10:54:42] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-02-01 10:54:42] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 31ms[39m
+[2026-02-01 10:54:58] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 9.237 ms - 322[0m[39m
+[2026-02-01 10:55:11] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697ec0432360e40681480fc0/closed [32m200[0m 6.137 ms - 71[0m[39m
+[2026-02-01 10:55:16] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 7.448 ms - 322[0m[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 697ec0fa2360e40681480fdd (session=697ec0432360e40681480fc0)[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [32m201[0m 24.773 ms - 326[0m[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=5, typeCast.enabled=true, typeCast.rules=5[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-02-01 10:56:58] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 31ms[39m
+[2026-02-01 10:57:08] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/status?qualityVersion=1 [32m200[0m 20.884 ms - 790[0m[39m
+[2026-02-01 10:57:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/reports?qualityVersion=666 [32m200[0m 7.949 ms - 135[0m[39m
+[2026-02-01 10:57:51] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/reports?qualityVersion=1 [32m200[0m 10.049 ms - 954[0m[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:01:17] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:01:18] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:02:30] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:03:17] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:03:18] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:03:48] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:07:06] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:07:48] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:08:02] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:08:15] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 85.458 ms - 322[0m[39m
+[2026-02-01 11:08:25] [33mwarn[39m: BadRequestException: Session not found
+    at Object.closeSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:79:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async close (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:68:22)
+[2026-02-01 11:08:25] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697ec0432360e40681480fc0/closed [33m400[0m 22.739 ms - 531[0m[39m
+[2026-02-01 11:08:50] [33mwarn[39m: BadRequestException: Session not found
+    at Object.closeSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:79:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async close (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:68:22)
+[2026-02-01 11:08:50] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697ec0432360e40681480fc0/closed [33m400[0m 17.795 ms - 531[0m[39m
+[2026-02-01 11:09:14] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [32m201[0m 68.491 ms - 282[0m[39m
+[2026-02-01 11:09:45] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions [32m201[0m 22.813 ms - 282[0m[39m
+[2026-02-01 11:10:12] [32minfo[39m: [32m[0mGET /api/v1/cleaning/697e0fcb21486d4af118cc39/sessions/active?qualityVersion=1 [32m200[0m 12.847 ms - 282[0m[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 697ec43eb8f2ba46ea17ff64 (session=697ec3f9b8f2ba46ea17ff5d)[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/697e0fcb21486d4af118cc39/run [32m201[0m 49.666 ms - 326[0m[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=last, dedup.subset=5, typeCast.enabled=true, typeCast.rules=5[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-02-01 11:10:54] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 54ms[39m
+[2026-02-01 11:11:19] [33mwarn[39m: BadRequestException: Session not found
+    at Object.closeSession (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningSession.service.ts:79:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async close (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\controllers\cleaningSession.controller.ts:68:22)
+[2026-02-01 11:11:19] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/sessions/697ec3f9b8f2ba46ea17ff5d/closed [33m400[0m 11.254 ms - 531[0m[39m
+[2026-02-01 11:11:50] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-02-01 11:11:50] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-02-01 11:11:50] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-02-01 11:11:50] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-02-01 11:11:50] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m=================================[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-02-01 11:11:51] [32minfo[39m: [32m=================================[39m
+[2026-02-01 13:58:39] [33mwarn[39m: BadRequestException: QualityReport not found for version=1
+    at Object.getCatalog (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisiCatalog.service.ts:56:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getCatalog (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisCatalog.controller.ts:20:20)
+[2026-02-01 13:58:39] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/catalog?qualityVersion=1&selectedColumns=Store_Area,Items_Available,Store_Sales [33m400[0m 117.563 ms - 574[0m[39m
+[2026-02-01 13:59:14] [33mwarn[39m: BadRequestException: QualityReport not found for version=1
+    at Object.getCatalog (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisiCatalog.service.ts:56:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getCatalog (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisCatalog.controller.ts:20:20)
+[2026-02-01 13:59:14] [32minfo[39m: [32m[0mGET /api/v1/analysis/6974d1933f3c904a142cf5d6/catalog?qualityVersion=1 [33m400[0m 8.461 ms - 574[0m[39m
+[2026-02-01 14:00:11] [32minfo[39m: [32m[0mGET /api/v1/quality/697e0fcb21486d4af118cc39/summary [33m400[0m 22.549 ms - 92[0m[39m
+[2026-02-01 14:00:28] [32minfo[39m: [32m[0mGET /api/v1/quality/697e0fcb21486d4af118cc39 [32m200[0m 22.127 ms - 587[0m[39m
+[2026-02-01 14:02:26] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/catalog?qualityVersion=1 [32m200[0m 13.953 ms - 1036[0m[39m
+[2026-02-01 14:02:42] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/catalog?qualityVersion=1&selectedColumns=Store_Area,Items_Available,Store_Sales [32m200[0m 11.187 ms - 1078[0m[39m
+[2026-02-01 14:03:28] [32minfo[39m: [32m[0mPOST /api/v1/analysis/697e0fcb21486d4af118cc39/run [32m201[0m 188.067 ms - 913[0m[39m
+[2026-02-01 14:03:28] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=697eecb05e291f96e6ceef24[39m
+[2026-02-01 14:03:28] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-02-01 14:03:28] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/analysis/run[39m
+[2026-02-01 14:03:28] [32minfo[39m: [32m✅ [Analysis] Task success task=697eecb05e291f96e6ceef24[39m
+[2026-02-01 14:04:10] [32minfo[39m: [32m[0mPOST /api/v1/analysis/697e0fcb21486d4af118cc39/run [32m201[0m 31.983 ms - 906[0m[39m
+[2026-02-01 14:04:10] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=697eecda5e291f96e6ceef33[39m
+[2026-02-01 14:04:10] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-02-01 14:04:10] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/analysis/run[39m
+[2026-02-01 14:04:10] [32minfo[39m: [32m✅ [Analysis] Task success task=697eecda5e291f96e6ceef33[39m
+[2026-02-01 14:04:39] [32minfo[39m: [32m[0mPOST /api/v1/analysis/697e0fcb21486d4af118cc39/run [32m201[0m 26.067 ms - 785[0m[39m
+[2026-02-01 14:04:39] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=697eecf75e291f96e6ceef42[39m
+[2026-02-01 14:04:39] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-02-01 14:04:39] [33mwarn[39m: [33m⚠️ [FastAPI] Business Fail:[39m
+[2026-02-01 14:04:39] [31merror[39m: [31m❌ [Analysis] Task failed task=697eecf75e291f96e6ceef42 rows out of range: start=0, end=999999, totalRows=895[39m
+[2026-02-01 14:05:44] [32minfo[39m: [32m[0mPOST /api/v1/analysis/697e0fcb21486d4af118cc39/run [32m201[0m 25.155 ms - 779[0m[39m
+[2026-02-01 14:05:44] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=697eed385e291f96e6ceef4e[39m
+[2026-02-01 14:05:44] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-02-01 14:05:45] [33mwarn[39m: [33m⚠️ [FastAPI] Business Fail:[39m
+[2026-02-01 14:05:45] [31merror[39m: [31m❌ [Analysis] Task failed task=697eed385e291f96e6ceef4e analysis_config.columns must be subset of data_selection.columns, extra: ['Store_Sales'][39m
+[2026-02-01 14:06:41] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 16.146 ms - 471[0m[39m
+[2026-02-01 14:07:25] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports?qualityVersion=1&cleaningVersion=1 [32m200[0m 9.332 ms - 1863[0m[39m
+[2026-02-01 14:07:53] [33mwarn[39m: BadRequestException: AnalysisReport not found (analysisVersion=31)
+    at Object.getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisQuery.service.ts:189:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisQuery.controller.ts:60:20)
+[2026-02-01 14:07:53] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports/31?qualityVersion=1&cleaningVersion=1 [33m400[0m 8.342 ms - 596[0m[39m
+[2026-02-01 14:07:59] [33mwarn[39m: BadRequestException: AnalysisReport not found (analysisVersion=3)
+    at Object.getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisQuery.service.ts:189:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisQuery.controller.ts:60:20)
+[2026-02-01 14:07:59] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports/3?qualityVersion=1&cleaningVersion=1 [33m400[0m 10.502 ms - 594[0m[39m
+[2026-02-01 14:08:08] [33mwarn[39m: BadRequestException: AnalysisReport not found (analysisVersion=23)
+    at Object.getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\service\analysisQuery.service.ts:189:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getReportDetail (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\analysis\controller\analysisQuery.controller.ts:60:20)
+[2026-02-01 14:08:08] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports/23?qualityVersion=1&cleaningVersion=1 [33m400[0m 5.207 ms - 596[0m[39m
+[2026-02-01 14:08:15] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports/2?qualityVersion=1&cleaningVersion=1 [32m200[0m 8.222 ms - 1994[0m[39m
+[2026-02-01 14:16:20] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/reports?qualityVersion=1&cleaningVersion=1 [32m200[0m 12.112 ms - 1863[0m[39m
+[2026-02-01 14:18:39] [32minfo[39m: [32m[0mGET /api/v1/analysis/697e0fcb21486d4af118cc39/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 8.622 ms - 471[0m[39m

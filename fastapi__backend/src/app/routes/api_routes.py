@@ -3,7 +3,8 @@ from fastapi import APIRouter
 # ✅ 修正导入路径：从 features 目录导入
 # 假设 quality 模块的路由定义在 src/features/quality/routes.py 或 src/features/quality/routes/__init__.py
 from src.features.cleaning.router.cleaning_router import router as cleaning_router
-from src.features.quality.routes.router import router  as Quality_analysis_router
+from src.features.quality.routes.router import router  as quality_analysis_router
+from src.features.analysis.router.analysis_router import router as analysis_router
 
 # ==========================================
 # 根路由聚合器
@@ -15,12 +16,13 @@ api_router = APIRouter()
 # ------------------------------------------
 # 对应的 URL 前缀: /api/v1/quality
 api_router.include_router(
-    router=Quality_analysis_router, 
+    router=quality_analysis_router, 
     prefix="/quality", 
     tags=["Data Quality"]
 )
 api_router.include_router(cleaning_router, prefix="/cleaning",tags=["Data Cleaning"])
 
+api_router.include_router(analysis_router,prefix="/analysis",tags=["Data Analysis"])
 # ------------------------------------------
 # ⚠️ 已移除 Upload 模块
 # ------------------------------------------

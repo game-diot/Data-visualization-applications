@@ -95,15 +95,46 @@ export const fileController = {
   },
 
   /**
-   * 更新文件
+   * 更新文件（对外接口：只允许改 name）
    */
   async updateFile(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const updates = req.body;
-      const updatedFile = await fileService.updateFile(id, updates); // 假设 Service 有这个方法
 
-      // ⚠️ 修复：传入 updatedFile
+      // 只允许 name
+      const allowedKeys = new Set(["name"]);
+      const bodyKeys = Object.keys(req.body ?? {});
+      const forbidden = bodyKeys.filter((k) => !allowedKeys.has(k));
+
+      if (forbidden.length > 0) {
+        return responseUtils.fail(
+          res,
+          `Forbidden fields: ${forbidden.join(", ")}`,
+          400,
+        );
+      }
+
+      const nameRaw = req.body?.name;
+
+      // 没有传 name，或者 name 不是 string
+      if (nameRaw === undefined) {
+        return responseUtils.fail(res, "name is required", 400);
+      }
+      if (typeof nameRaw !== "string") {
+        return responseUtils.fail(res, "name must be a string", 400);
+      }
+
+      const name = nameRaw.trim();
+      if (name.length === 0) {
+        return responseUtils.fail(res, "name cannot be empty", 400);
+      }
+      if (name.length > 128) {
+        return responseUtils.fail(res, "name is too long (max 128)", 400);
+      }
+
+      // 调用新的 public 方法（只更新 name）
+      const updatedFile = await fileService.updateFilePublic(id, { name });
+
       return responseUtils.success(res, updatedFile, "更新文件成功");
     } catch (error) {
       next(error);
@@ -115,7 +146,7 @@ export const fileController = {
       const { id } = req.params;
       if (!id) return responseUtils.fail(res, "文件 ID 必填", 400);
 
-      const deletedFile = await fileService.deleteFile(id);
+      const deletedFile = await fileService.hardDeleteFile(id);
       return responseUtils.success(res, deletedFile, "删除文件成功");
     } catch (error) {
       next(error);

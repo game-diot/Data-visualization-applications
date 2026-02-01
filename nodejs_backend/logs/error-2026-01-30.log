@@ -1,0 +1,2 @@
+[2026-01-30 18:47:41] [31merror[39m: [31m❌ [Analysis] Task failed task=697c8c4d61fefaf116b8e275 rows out of range: start=0, end=999999, totalRows=1334[39m
+[2026-01-30 18:54:32] [31merror[39m: [31m❌ [Analysis] Task failed task=697c8de861fefaf116b8e282 rows out of range: start=0, end=999999, totalRows=1334[39m
