@@ -1,6 +1,8 @@
 {
   "devDependencies": {
-    "@types/morgan": "^1.9.10"
+    "@types/morgan": "^1.9.10",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
@@ -8,5 +10,17 @@
     "multer": "^2.0.2",
     "path": "^0.12.7",
     "winston": "^3.18.3"
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
   }
 }
