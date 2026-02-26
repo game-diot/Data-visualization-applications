@@ -1,50 +1,20 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\.0da2c310cf555324468412a8273ae27248c199ac-audit.json",
+  "files": [
+    {
+      "date": 1770619659453,
+      "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-02-09.log",
+      "hash": "633e34bd874eaca0b2bb08f182df8d35ee1a2e20892b5ad1a4c6180331143fac"
     },
-    "auditLog": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\.0da2c310cf555324468412a8273ae27248c199ac-audit.json",
-    "files": [
-        {
-            "date": 1768823450916,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-19.log",
-            "hash": "933dd57a5dae748731be9e2438b17132d4b5e6ca88bd1cb50cacff28ad79f917"
-        },
-        {
-            "date": 1769150299686,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-23.log",
-            "hash": "ac43bdf21e62134ab4e727d5d23739678125a7f92b091849323b30874a2af192"
-        },
-        {
-            "date": 1769263048616,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-24.log",
-            "hash": "aeda5f487a68d89ca8eafd2d6bc006ff1ba79b624e5e372bf0f0f5cd308ec62f"
-        },
-        {
-            "date": 1769408575269,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-26.log",
-            "hash": "8e894fd9666923316ff3b6d4c45e300e166a668c27292dad036b2f2d15cc626c"
-        },
-        {
-            "date": 1769584954737,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-28.log",
-            "hash": "962d5adb4bfae5bf38b83eff5ec7c0e24b202d8bae672c089c958fdfad9b4a2e"
-        },
-        {
-            "date": 1769766125000,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-30.log",
-            "hash": "ba79020aa090a4227d0058043eabbdea22733ee89072762122bcdc5ed680a91f"
-        },
-        {
-            "date": 1769856055325,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-01-31.log",
-            "hash": "be4ce1ce6fb8b0d6a6ef110778890111bfa943c5c128cd330ce816de8da469d5"
-        },
-        {
-            "date": 1769913893143,
-            "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-02-01.log",
-            "hash": "fae54ac71409e589404481e3319cdd545b0860c4475a2cc8a260f8423fa70aee"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1771483552676,
+      "name": "Z:\\000aaaaa000\\React-Data-visualization-applications\\nodejs_backend\\logs\\error-2026-02-19.log",
+      "hash": "9ec0b70ba44aefb16ae72c39ad90fdc7e077ab0582494771765f47c41607460a"
+    }
+  ],
+  "hashType": "sha256"
 }
