@@ -175,3 +175,22 @@
 [2026-03-07 14:17:27] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 10 in 1000ms...[39m
 [2026-03-07 14:17:27] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
 [2026-03-07 14:17:28] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m=================================[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-07 14:18:05] [32minfo[39m: [32m=================================[39m
+[2026-03-07 14:18:12] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 100.234 ms - 1753[0m[39m
+[2026-03-07 14:18:14] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 15.939 ms - -[0m[39m
+[2026-03-07 14:20:12] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 7.946 ms - -[0m[39m
+[2026-03-07 14:20:13] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 7.250 ms - -[0m[39m

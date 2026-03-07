@@ -1,10 +1,10 @@
 // src/shared/types/api.ts
 
 export interface ApiResponse<T = unknown> {
-  status: 'success' | 'fail' | string
+  status: 'success' | 'error'
   code: number
   message: string
-  data: T
+  data?: T
   requestId?: string
 }
 

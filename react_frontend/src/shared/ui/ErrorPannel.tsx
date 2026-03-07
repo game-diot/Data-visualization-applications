@@ -2,15 +2,16 @@ import React from 'react'
 import { Alert, Collapse } from 'antd'
 
 interface ErrorPanelProps {
-  message: string
+  title: string
+
   detail?: React.ReactNode
   stack?: string
 }
 
-export const ErrorPanel: React.FC<ErrorPanelProps> = ({ message, detail, stack }) => {
+export const ErrorPanel: React.FC<ErrorPanelProps> = ({ detail, stack, title }) => {
   return (
     <Alert
-      message={message}
+      title={title}
       type="error"
       showIcon
       className="my-4 text-left"

@@ -110,3 +110,47 @@
 [2026-03-07 14:17:26] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
 [2026-03-07 14:17:27] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
 [2026-03-07 14:17:28] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
+[2026-03-07 14:57:01] [31merror[39m: SyntaxError: Expected ':' after property name in JSON at position 7 (line 1 column 8)
+    at JSON.parse (<anonymous>)
+    at parse (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:238:16)
+    at done (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[2026-03-07 15:58:03] [31merror[39m: [31m❌ [FastAPI] HTTP 500 Internal server error[39m
+[2026-03-07 15:58:03] [31merror[39m: [31m❌ [QualityService] Failed: 69abda8ae565c98103504580 FastAPI connection failed: Request failed with status code 500[39m
+[2026-03-07 15:58:03] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 500
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:239:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:171:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\quality\services\quality.services.ts:30:9)
+[2026-03-07 16:00:16] [31merror[39m: SyntaxError: Expected ',' or '}' after property value in JSON at position 48 (line 3 column 3)
+    at JSON.parse (<anonymous>)
+    at parse (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:238:16)
+    at done (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[2026-03-07 16:02:58] [31merror[39m: SyntaxError: Expected double-quoted property name in JSON at position 47 (line 3 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:238:16)
+    at done (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)

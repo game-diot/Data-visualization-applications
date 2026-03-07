@@ -41,7 +41,7 @@ httpClientInstance.interceptors.response.use(
   ((response: AxiosResponse<ApiResponse<unknown>>) => {
     const body = response.data
 
-    const isSuccess = body.status === 'success' || body.status === 'ok' || body.code === 0
+    const isSuccess = body.status === 'success' || body.status === 'error' || body.code === 0
     if (isSuccess) return body.data
 
     throw new AppError({

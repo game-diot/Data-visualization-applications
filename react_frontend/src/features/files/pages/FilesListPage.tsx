@@ -13,6 +13,7 @@ import { RenameModal } from '../components/RenameModal'
 import { DeleteConfirmModal } from '../components/DeleteConfimModal'
 import type { DatasetVM } from '@/entities/file/types/file.types'
 import { filesSearchSchema, type FilesSearch } from '@/shared/filters/schemas/filters'
+import { Link } from '@tanstack/react-router'
 const DEFAULT_FILTERS: FilesSearch = {
   page: 1,
   pageSize: 10,
@@ -38,7 +39,7 @@ export default function FilesListPage() {
   })
 
   if (error) {
-    return <ErrorPanel message="加载数据集列表失败" detail={(error as any).message}></ErrorPanel>
+    return <ErrorPanel title="加载数据集列表失败" detail={(error as any).message}></ErrorPanel>
   }
 
   const columns = [
@@ -70,9 +71,13 @@ export default function FilesListPage() {
       key: 'action',
       render: (_: any, record: DatasetVM) => (
         <div className="flex gap-2">
-          <Button type="link" size="small">
-            详情
-          </Button>
+          <Link
+            to="/files/$fileId"
+            params={{ fileId: record.id }}
+            className="text-blue-600 hover:underline"
+          >
+            查看详情
+          </Link>
           <Button type="link" size="small" onClick={() => openRenameModal(record)}>
             重命名
           </Button>

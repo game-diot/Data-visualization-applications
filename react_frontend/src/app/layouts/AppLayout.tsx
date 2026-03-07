@@ -12,7 +12,7 @@ import { Suspense, useMemo } from 'react'
 import { NetworkStatusBar } from '@/shared/ui/NetworkStatusBar'
 import { LoadingBlock } from '@/shared/ui/LoadingBlock'
 
-const { Header, Content, Sider } = Layout
+const { Content, Sider } = Layout
 
 const MENU_ITEMS = [
   { key: 'dashboard', label: '工作台', to: '/dashboard', icon: <DashboardOutlined /> },
@@ -68,8 +68,6 @@ export function AppLayout() {
       </Sider>
 
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-
         <Content style={{ margin: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Breadcrumb items={breadcrumbItems} />
 

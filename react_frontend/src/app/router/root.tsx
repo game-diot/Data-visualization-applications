@@ -20,7 +20,7 @@ export const rootRoute = createRootRoute({
   ),
   errorComponent: () => (
     <div className="p-8">
-      <ErrorPanel message="出现错误" />
+      <ErrorPanel title="出现错误" />
     </div>
   ),
 })

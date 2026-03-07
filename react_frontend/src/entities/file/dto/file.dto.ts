@@ -1,3 +1,13 @@
+// 1. 解析出的具体错误信息对象 DTO
+export interface FileAnalysisErrorDTO {
+  stage: string
+  code: string
+  message: string
+  details: string
+  occurredAt: string
+}
+
+// 2. 单个文件数据的完整 DTO (严格对齐 items 数组里的每一个字段)
 export interface FileDTO {
   _id: string
   name: string
@@ -8,28 +18,32 @@ export interface FileDTO {
   extension: string
   hash: string
   stage: string
-  isDeleted: boolean
-  uploadAt: string
+
+  // 时间戳相关 (部分可能是后端动态生成的，用可选符 ? 兜底更安全)
+  uploadedAt: string
   createdAt: string
   updatedAt: string
-  __v: number
-  errorMessage?: string
-}
+  analysisStartedAt?: string
+  analysisCompletedAt?: string
 
-export interface FileListResponseDTO {
-  items: FileDTO[]
-  total: number
-  page: number
-  pageSize: number
-}
-
-// 详情页后端返回的原始结构 (继承基础属性，增加统计指标)
-export interface FileDetailDTO extends FileDTO {
-  totalRows?: number
-  totalColumns?: number
+  // 质量检测与清洗分析指标
   qualityScore?: number
   latestQualityVersion?: number
-  hasCleanedData?: boolean
-  hasAnalysisReports?: boolean
-  // 其他扩展字段...
+  isCleaned?: boolean
+  duplicateRate?: number
+  missingRate?: number
+  totalRows?: number
+  totalColumns?: number
+
+  // 错误信息 (如果没有报错，后端可能不传或传 null)
+  analysisError?: FileAnalysisErrorDTO | null
+}
+
+// 3. 列表请求的响应 DTO (对应拦截器返回的 body.data)
+export interface FilesListResponseDTO {
+  items: FileDTO[]
+  page: number
+  pageSize: number
+  total: number
+  totalPages: number
 }
