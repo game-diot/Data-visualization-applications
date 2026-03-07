@@ -25,6 +25,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react/no-danger': 'error', // 严禁在业务代码中使用 dangerouslySetInnerHTML
       // Prettier 集成
       'prettier/prettier': 'error',
       // 自动排序 Import

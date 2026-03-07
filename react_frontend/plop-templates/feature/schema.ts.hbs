@@ -1,0 +1,12 @@
+﻿import { z } from 'zod'
+
+export const {{camelCase name}}Schema = z.object({
+  id: z.string(),
+  createdAt: z.string().optional(),
+})
+
+export const {{camelCase name}}ResponseSchema = z.object({
+  data: {{camelCase name}}Schema,
+})
+
+export type {{pascalCase name}} = z.infer<typeof {{camelCase name}}Schema>

@@ -1,0 +1,177 @@
+[2026-03-07 13:53:08] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-07 13:53:08] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-07 13:53:08] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-07 13:53:08] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-07 13:53:08] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-07 13:53:08] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-07 13:53:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 0 in 0ms...[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 1 in 100ms...[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 2 in 200ms...[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 3 in 300ms...[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 4 in 400ms...[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:09] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 5 in 500ms...[39m
+[2026-03-07 13:53:09] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:09] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 6 in 600ms...[39m
+[2026-03-07 13:53:09] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:10] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 7 in 700ms...[39m
+[2026-03-07 13:53:10] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:11] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 8 in 800ms...[39m
+[2026-03-07 13:53:11] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:11] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 9 in 900ms...[39m
+[2026-03-07 13:53:11] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:12] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 10 in 1000ms...[39m
+[2026-03-07 13:53:12] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:13] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m=================================[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-07 13:53:40] [32minfo[39m: [32m=================================[39m
+[2026-03-07 13:57:48] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:48] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:48] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 9.028 ms - 1424[0m[39m
+[2026-03-07 13:57:49] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:49] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:49] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 5.451 ms - 1424[0m[39m
+[2026-03-07 13:57:51] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:51] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:51] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 3.595 ms - 1424[0m[39m
+[2026-03-07 13:57:54] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:54] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:54] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 5.368 ms - 1424[0m[39m
+[2026-03-07 13:57:55] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:55] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:55] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 1.911 ms - 1424[0m[39m
+[2026-03-07 13:57:56] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:56] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:56] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 2.850 ms - 1424[0m[39m
+[2026-03-07 13:57:58] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:57:58] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:58] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 3.633 ms - 1424[0m[39m
+[2026-03-07 13:58:01] [33mwarn[39m: [33m🛑 [CORS] Blocked request from origin: http://localhost:5174[39m
+[2026-03-07 13:58:01] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:58:01] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [31m500[0m 2.060 ms - 1424[0m[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-07 14:17:22] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-07 14:17:22] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 0 in 0ms...[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 1 in 100ms...[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 2 in 200ms...[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 3 in 300ms...[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:23] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 4 in 400ms...[39m
+[2026-03-07 14:17:23] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:23] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 5 in 500ms...[39m
+[2026-03-07 14:17:23] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:24] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 6 in 600ms...[39m
+[2026-03-07 14:17:24] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:24] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 7 in 700ms...[39m
+[2026-03-07 14:17:24] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:25] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 8 in 800ms...[39m
+[2026-03-07 14:17:25] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:26] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 9 in 900ms...[39m
+[2026-03-07 14:17:26] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:27] [33mwarn[39m: [33m🔁 [Redis] Reconnecting attempt 10 in 1000ms...[39m
+[2026-03-07 14:17:27] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:28] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m

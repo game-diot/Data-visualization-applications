@@ -1,0 +1,9 @@
+﻿import { client } from '@/api/client'
+import { {{camelCase name}}ResponseSchema } from '../schemas/{{camelCase name}}Schema'
+
+export const {{camelCase name}}Api = {
+  getDetail: async (id: string) => {
+    const response = await client.get(/{{camelCase name}}/\${id}\`)
+    return {{camelCase name}}ResponseSchema.parse(response)
+  }
+}

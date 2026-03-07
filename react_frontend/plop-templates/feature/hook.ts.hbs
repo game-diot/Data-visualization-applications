@@ -1,0 +1,10 @@
+﻿import { useQuery } from '@tanstack/react-query'
+import { {{camelCase name}}Api } from '../services/{{camelCase name}}Api'
+
+export const use{{pascalCase name}}Detail = (id: string) => {
+  return useQuery({
+    queryKey: ['{{camelCase name}}', id],
+    queryFn: () => {{camelCase name}}Api.getDetail(id),
+    enabled: !!id,
+  })
+}

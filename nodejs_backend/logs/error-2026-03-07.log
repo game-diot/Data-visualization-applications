@@ -1,0 +1,112 @@
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:08] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:09] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:09] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:10] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:11] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:11] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:12] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 13:53:13] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
+[2026-03-07 13:57:48] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:49] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:51] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:54] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:55] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:56] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:57:58] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 13:58:01] [31merror[39m: Error: Not allowed by CORS
+    at origin (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\app\middleware\cors.middleware.ts:51:16)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:342:13)
+    at Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:297:9
+    at processParams (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:582:12)
+    at next (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\router\index.js:291:5)
+    at logger (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\morgan\index.js:144:5)
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:22] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:23] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:23] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:24] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:24] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:25] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:26] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:27] [31merror[39m: [31m❌ [Redis] Client Error: AggregateError[39m
+[2026-03-07 14:17:28] [31merror[39m: [31m❌ [Redis] Max reconnection attempts reached.[39m
