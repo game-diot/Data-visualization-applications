@@ -154,3 +154,5 @@
     at IncomingMessage.emit (node:events:518:28)
     at endReadableNT (node:internal/streams/readable:1698:12)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[2026-03-07 18:19:49] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m
+[2026-03-07 18:19:49] [31merror[39m: [31m❌ [Redis] Client Error: Error: Socket closed unexpectedly[39m

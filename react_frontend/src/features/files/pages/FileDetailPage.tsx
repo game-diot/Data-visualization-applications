@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams, useNavigate } from '@tanstack/react-router'
 import { Button, Skeleton } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'

@@ -29,7 +29,14 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
             ghost
             block
             icon={<SearchOutlined />}
-            onClick={() => notifyInfo('质量检测模块即将开放，敬请期待！')}
+            // ⬇️ 3. 核心修改：触发真正的路由跳转
+            onClick={() => {
+              navigate({
+                to: '/files/$fileId/quality',
+                // 这里的 data.id 就是 fileId，来源于 DatasetDetailVM
+                params: { fileId: data.id },
+              })
+            }}
           >
             {data.flowStatus.quality === 'done' ? '查看质量报告' : '立即开始体检'}
           </Button>
@@ -69,7 +76,7 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
             block
             icon={<LineChartOutlined />}
             onClick={() => notifyInfo('模型分析模块即将开放，敬请期待！')}
-            className="bg-slate-900 text-white hover:!bg-slate-800 hover:!text-white border-none"
+            className="bg-slate-900 text-white hover:bg-slate-800! hover:text-white! border-none"
           >
             创建分析任务
           </Button>
