@@ -1,0 +1,6 @@
+[2026-03-09 16:20:43] [31merror[39m: [31m❌ [Cleaning] Task Failed: 69ae82db43e911f867d59da2 Column 'Store_Sales' not found[39m
+[2026-03-09 16:20:43] [31merror[39m: FastApiBusinessException: Column 'Store_Sales' not found
+    at client.interceptors.response.use.config (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:128:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:150:22)

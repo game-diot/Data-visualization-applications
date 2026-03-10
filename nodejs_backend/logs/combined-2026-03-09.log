@@ -1,0 +1,103 @@
+[2026-03-09 14:37:41] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m=================================[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-09 14:37:41] [32minfo[39m: [32m=================================[39m
+[2026-03-09 14:38:21] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 46.848 ms - 1588[0m[39m
+[2026-03-09 14:38:25] [32minfo[39m: [32m[0mGET /api/v1/files/69abde4be565c981035045b2 [32m200[0m 14.381 ms - 810[0m[39m
+[2026-03-09 14:40:53] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 17.000 ms - -[0m[39m
+[2026-03-09 14:40:56] [32minfo[39m: [32m[0mGET /api/v1/files/69abde4be565c981035045b2 [36m304[0m 14.648 ms - -[0m[39m
+[2026-03-09 14:43:01] [32minfo[39m: [32m[0mGET /api/v1/files/69abde4be565c981035045b2 [36m304[0m 7.121 ms - -[0m[39m
+[2026-03-09 14:43:07] [32minfo[39m: [32m[0mGET /api/v1/quality/69abde4be565c981035045b2/status [32m200[0m 14.409 ms - 181[0m[39m
+[2026-03-09 14:43:07] [32minfo[39m: [32m[0mGET /api/v1/quality/69abde4be565c981035045b2 [32m200[0m 29.405 ms - 587[0m[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m[0mOPTIONS /api/v1/quality/69abde4be565c981035045b2/retry [32m204[0m 0.417 ms - 0[0m[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 69abde4be565c981035045b2 (Force: true)[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 69abde4be565c981035045b2[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 69abde4be565c981035045b2 (v3)[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m√ [QualityService] Analysis successful: 69abde4be565c981035045b2[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m[0mPOST /api/v1/quality/69abde4be565c981035045b2/retry [32m200[0m 216.836 ms - 71[0m[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m💾 [DB] File 69abde4be565c981035045b2 updated with Quality Summary (v3)[39m
+[2026-03-09 14:43:25] [32minfo[39m: [32m[0mGET /api/v1/quality/69abde4be565c981035045b2/status [32m200[0m 9.213 ms - 181[0m[39m
+[2026-03-09 14:43:30] [32minfo[39m: [32m[0mGET /api/v1/quality/69abde4be565c981035045b2/status [36m304[0m 8.650 ms - -[0m[39m
+[2026-03-09 14:43:30] [32minfo[39m: [32m[0mGET /api/v1/quality/69abde4be565c981035045b2 [36m304[0m 12.784 ms - -[0m[39m
+[2026-03-09 14:43:42] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 9.269 ms - 1588[0m[39m
+[2026-03-09 14:43:47] [32minfo[39m: [32m[0mGET /api/v1/files/69abdd76e565c981035045a8 [32m200[0m 12.104 ms - 809[0m[39m
+[2026-03-09 14:43:49] [32minfo[39m: [32m[0mGET /api/v1/quality/69abdd76e565c981035045a8/status [32m200[0m 9.223 ms - 181[0m[39m
+[2026-03-09 14:43:49] [32minfo[39m: [32m[0mGET /api/v1/quality/69abdd76e565c981035045a8 [32m200[0m 17.311 ms - 7155[0m[39m
+[2026-03-09 14:45:19] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 8.648 ms - -[0m[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m💾 [Upload] File saved to DB: 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m📨 [Event] Received FILE_UPLOADED for 69ae6cd543e911f867d59d3f, triggering analysis...[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 69ae6cd543e911f867d59d3f (Force: true)[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m[0mPOST /api/v1/files/upload [32m201[0m 43.974 ms - 595[0m[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 69ae6cd543e911f867d59d3f (v1)[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m√ [QualityService] Analysis successful: 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:46:45] [32minfo[39m: [32m💾 [DB] File 69ae6cd543e911f867d59d3f updated with Quality Summary (v1)[39m
+[2026-03-09 14:46:46] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 7.651 ms - 2322[0m[39m
+[2026-03-09 14:46:49] [32minfo[39m: [32m[0mGET /api/v1/files/69ae6cd543e911f867d59d3f [32m200[0m 6.842 ms - 817[0m[39m
+[2026-03-09 14:46:53] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [32m200[0m 13.376 ms - 181[0m[39m
+[2026-03-09 14:46:53] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [32m200[0m 24.141 ms - 18277[0m[39m
+[2026-03-09 14:46:53] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 10.598 ms - -[0m[39m
+[2026-03-09 14:47:19] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 12.430 ms - -[0m[39m
+[2026-03-09 14:47:19] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 22.184 ms - -[0m[39m
+[2026-03-09 14:48:08] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 14.618 ms - -[0m[39m
+[2026-03-09 14:48:08] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 26.234 ms - -[0m[39m
+[2026-03-09 14:48:08] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 13.280 ms - -[0m[39m
+[2026-03-09 14:51:01] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 9.771 ms - -[0m[39m
+[2026-03-09 14:51:29] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 4.730 ms - -[0m[39m
+[2026-03-09 14:51:50] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 14.280 ms - -[0m[39m
+[2026-03-09 14:51:50] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 22.560 ms - -[0m[39m
+[2026-03-09 14:51:50] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 13.534 ms - -[0m[39m
+[2026-03-09 14:54:41] [32minfo[39m: [32m[0mOPTIONS /api/v1/quality/69ae6cd543e911f867d59d3f/retry [32m204[0m 0.433 ms - 0[0m[39m
+[2026-03-09 14:54:41] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 69ae6cd543e911f867d59d3f (Force: true)[39m
+[2026-03-09 14:54:41] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:54:41] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-03-09 14:54:41] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-03-09 14:54:42] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 69ae6cd543e911f867d59d3f (v2)[39m
+[2026-03-09 14:54:42] [32minfo[39m: [32m√ [QualityService] Analysis successful: 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:54:42] [32minfo[39m: [32m[0mPOST /api/v1/quality/69ae6cd543e911f867d59d3f/retry [32m200[0m 128.185 ms - 71[0m[39m
+[2026-03-09 14:54:42] [32minfo[39m: [32m💾 [DB] File 69ae6cd543e911f867d59d3f updated with Quality Summary (v2)[39m
+[2026-03-09 14:54:42] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [32m200[0m 5.634 ms - 181[0m[39m
+[2026-03-09 14:56:20] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 5.357 ms - -[0m[39m
+[2026-03-09 14:56:23] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 9.666 ms - -[0m[39m
+[2026-03-09 14:56:23] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 16.247 ms - -[0m[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m[0mOPTIONS /api/v1/quality/69ae6cd543e911f867d59d3f/retry [32m204[0m 0.382 ms - 0[0m[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 69ae6cd543e911f867d59d3f (Force: true)[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 69ae6cd543e911f867d59d3f (v3)[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m√ [QualityService] Analysis successful: 69ae6cd543e911f867d59d3f[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m[0mPOST /api/v1/quality/69ae6cd543e911f867d59d3f/retry [32m200[0m 135.392 ms - 71[0m[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m💾 [DB] File 69ae6cd543e911f867d59d3f updated with Quality Summary (v3)[39m
+[2026-03-09 14:56:27] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [32m200[0m 5.649 ms - 181[0m[39m
+[2026-03-09 14:56:30] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 8.568 ms - -[0m[39m
+[2026-03-09 14:56:30] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f [36m304[0m 14.841 ms - -[0m[39m
+[2026-03-09 14:56:43] [32minfo[39m: [32m[0mGET /api/v1/quality/69ae6cd543e911f867d59d3f/status [36m304[0m 5.756 ms - -[0m[39m
+[2026-03-09 14:57:19] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 6.054 ms - 2322[0m[39m
+[2026-03-09 14:57:22] [32minfo[39m: [32m[0mGET /api/v1/files/69ae6cd543e911f867d59d3f [32m200[0m 4.371 ms - 817[0m[39m
+[2026-03-09 14:57:46] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 5.171 ms - -[0m[39m
+[2026-03-09 15:04:09] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=&stage=cleaning_done [32m200[0m 10.430 ms - 2322[0m[39m
+[2026-03-09 15:04:12] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 10.864 ms - -[0m[39m
+[2026-03-09 15:07:40] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 5.953 ms - -[0m[39m
+[2026-03-09 15:07:43] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=w [32m200[0m 5.997 ms - 2322[0m[39m
+[2026-03-09 15:07:46] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=win [32m200[0m 4.720 ms - 2322[0m[39m
+[2026-03-09 15:07:47] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=wi [32m200[0m 7.310 ms - 2322[0m[39m
+[2026-03-09 15:07:49] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=super [32m200[0m 7.672 ms - 2322[0m[39m
+[2026-03-09 15:07:51] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=sd [32m200[0m 6.102 ms - 2322[0m[39m
+[2026-03-09 15:07:52] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=sdper [32m200[0m 4.697 ms - 2322[0m[39m
+[2026-03-09 15:07:54] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 6.468 ms - -[0m[39m

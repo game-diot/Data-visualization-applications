@@ -53,11 +53,20 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
             />
           </div>
           <Button
+            type="primary"
+            ghost
             block
             icon={<ClearOutlined />}
-            onClick={() => notifyInfo('数据清洗模块即将开放，敬请期待！')}
+            // ⬇️ 3. 核心修改：触发路由跳转，携带 params
+            onClick={() => {
+              navigate({
+                to: '/files/$fileId/cleaning',
+                // 将当前文件的 ID 传给 URL
+                params: { fileId: data.id },
+              })
+            }}
           >
-            进入清洗工作台
+            {data.flowStatus?.cleaning === 'done' ? '查看清洗工作台' : '进入清洗配置'}
           </Button>
         </Card>
       </Col>
