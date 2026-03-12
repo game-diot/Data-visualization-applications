@@ -1,0 +1,330 @@
+[2026-03-12 09:03:55] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m=================================[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-12 09:03:55] [32minfo[39m: [32m=================================[39m
+[2026-03-12 09:04:41] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 77.436 ms - -[0m[39m
+[2026-03-12 09:04:47] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query=&stage=stage_analysis [32m200[0m 22.347 ms - 136[0m[39m
+[2026-03-12 09:06:03] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 35.740 ms - -[0m[39m
+[2026-03-12 09:06:27] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 21.977 ms - -[0m[39m
+[2026-03-12 09:06:27] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 35.605 ms - -[0m[39m
+[2026-03-12 09:06:48] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 12.884 ms - -[0m[39m
+[2026-03-12 09:06:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 37.944 ms - -[0m[39m
+[2026-03-12 09:06:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 11.963 ms - -[0m[39m
+[2026-03-12 09:06:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 16.469 ms - -[0m[39m
+[2026-03-12 09:07:02] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 9.320 ms - -[0m[39m
+[2026-03-12 09:07:51] [33mwarn[39m: FileNotFoundException: File ID 697e0fcb21486d4af118cc39 not found.
+    at Object.getFileById (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\file\services\file.service.ts:101:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getAnalysisStatus (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\quality\controllers\quality.controller.ts:138:20)
+[2026-03-12 09:07:51] [32minfo[39m: [32m[0mGET /api/v1/quality/697e0fcb21486d4af118cc39/status [33m404[0m 10.317 ms - 575[0m[39m
+[2026-03-12 09:08:01] [32minfo[39m: [32m[0mGET /api/v1/files/?page=1&pageSize=10 [32m200[0m 13.820 ms - 3882[0m[39m
+[2026-03-12 09:08:16] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [32m200[0m 5.727 ms - 183[0m[39m
+[2026-03-12 09:12:59] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 17.719 ms - -[0m[39m
+[2026-03-12 09:12:59] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 25.746 ms - -[0m[39m
+[2026-03-12 09:13:44] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 8.006 ms - -[0m[39m
+[2026-03-12 09:14:55] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 9.496 ms - -[0m[39m
+[2026-03-12 09:17:14] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 8.028 ms - -[0m[39m
+[2026-03-12 09:17:14] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 15.284 ms - -[0m[39m
+[2026-03-12 09:17:19] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 7.836 ms - -[0m[39m
+[2026-03-12 09:18:27] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 4.473 ms - -[0m[39m
+[2026-03-12 09:18:30] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 12.707 ms - -[0m[39m
+[2026-03-12 09:18:30] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 8.983 ms - -[0m[39m
+[2026-03-12 09:18:30] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 14.105 ms - -[0m[39m
+[2026-03-12 09:18:38] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 9.270 ms - -[0m[39m
+[2026-03-12 09:18:40] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 12.772 ms - -[0m[39m
+[2026-03-12 09:18:49] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 16.451 ms - -[0m[39m
+[2026-03-12 09:19:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 17.954 ms - -[0m[39m
+[2026-03-12 09:19:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 24.366 ms - -[0m[39m
+[2026-03-12 09:19:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 17.214 ms - -[0m[39m
+[2026-03-12 09:19:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 10.958 ms - -[0m[39m
+[2026-03-12 09:25:46] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 9.921 ms - -[0m[39m
+[2026-03-12 09:25:50] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.647 ms - -[0m[39m
+[2026-03-12 09:30:37] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [32m200[0m 7.754 ms - 1075[0m[39m
+[2026-03-12 09:32:50] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [32m200[0m 7.508 ms - 1063[0m[39m
+[2026-03-12 09:43:18] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 8.798 ms - -[0m[39m
+[2026-03-12 09:43:18] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 16.241 ms - -[0m[39m
+[2026-03-12 09:43:18] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 21.020 ms - -[0m[39m
+[2026-03-12 09:43:18] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.912 ms - -[0m[39m
+[2026-03-12 09:45:20] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 21.142 ms - -[0m[39m
+[2026-03-12 09:45:20] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 8.962 ms - -[0m[39m
+[2026-03-12 09:45:20] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 13.224 ms - -[0m[39m
+[2026-03-12 09:45:20] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.197 ms - -[0m[39m
+[2026-03-12 09:50:23] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 12.038 ms - -[0m[39m
+[2026-03-12 09:50:23] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 10.709 ms - -[0m[39m
+[2026-03-12 09:50:23] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 13.438 ms - -[0m[39m
+[2026-03-12 09:50:23] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.769 ms - -[0m[39m
+[2026-03-12 09:55:17] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 8.484 ms - -[0m[39m
+[2026-03-12 09:55:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/1?qualityVersion=1 [32m200[0m 10.606 ms - 1264[0m[39m
+[2026-03-12 10:04:37] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 16.702 ms - -[0m[39m
+[2026-03-12 10:04:37] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 14.762 ms - -[0m[39m
+[2026-03-12 10:04:37] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 17.874 ms - -[0m[39m
+[2026-03-12 10:04:37] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.700 ms - -[0m[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.533 ms - 0[0m[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b21f459346c541a3931936 (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 157.892 ms - 326[0m[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=first, dedup.subset=0, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:04:53] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 57.665 ms - 378[0m[39m
+[2026-03-12 10:04:54] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:04:54] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 125ms[39m
+[2026-03-12 10:05:10] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 10.765 ms - 960[0m[39m
+[2026-03-12 10:05:15] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/2?qualityVersion=1 [32m200[0m 4.538 ms - 1364[0m[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.193 ms - 0[0m[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b220499346c541a393194c (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 23.046 ms - 326[0m[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m[Cleaning] Effective rules: missing=false, dedup.keep=last, dedup.subset=1, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 8.909 ms - 378[0m[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:09:13] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 82ms[39m
+[2026-03-12 10:10:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 12.099 ms - 790[0m[39m
+[2026-03-12 10:10:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 8.603 ms - 322[0m[39m
+[2026-03-12 10:10:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 16.671 ms - -[0m[39m
+[2026-03-12 10:10:06] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 7.726 ms - -[0m[39m
+[2026-03-12 10:10:08] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 5.846 ms - 1371[0m[39m
+[2026-03-12 10:10:13] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/3?qualityVersion=1 [32m200[0m 5.888 ms - 1352[0m[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.147 ms - 0[0m[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b220a79346c541a393196c (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 14.577 ms - 326[0m[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m[Cleaning] Effective rules: missing=false, dedup.keep=first, dedup.subset=1, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 7.968 ms - 378[0m[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:10:47] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 21ms[39m
+[2026-03-12 10:11:00] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 6.127 ms - -[0m[39m
+[2026-03-12 10:11:02] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 15.106 ms - 801[0m[39m
+[2026-03-12 10:11:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 11.933 ms - 322[0m[39m
+[2026-03-12 10:11:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 16.950 ms - -[0m[39m
+[2026-03-12 10:11:03] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 5.053 ms - -[0m[39m
+[2026-03-12 10:11:04] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 8.524 ms - 1793[0m[39m
+[2026-03-12 10:11:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/4?qualityVersion=1 [32m200[0m 5.229 ms - 1365[0m[39m
+[2026-03-12 10:12:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 7.327 ms - -[0m[39m
+[2026-03-12 10:12:21] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/3?qualityVersion=1 [36m304[0m 4.874 ms - -[0m[39m
+[2026-03-12 10:18:54] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 9.035 ms - -[0m[39m
+[2026-03-12 10:18:54] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 11.910 ms - -[0m[39m
+[2026-03-12 10:18:54] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 9.475 ms - -[0m[39m
+[2026-03-12 10:21:25] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 14.946 ms - -[0m[39m
+[2026-03-12 10:21:25] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 21.454 ms - -[0m[39m
+[2026-03-12 10:22:52] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 17.321 ms - -[0m[39m
+[2026-03-12 10:22:52] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 25.224 ms - -[0m[39m
+[2026-03-12 10:23:05] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 11.860 ms - -[0m[39m
+[2026-03-12 10:23:05] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 7.633 ms - -[0m[39m
+[2026-03-12 10:23:05] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.278 ms - -[0m[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.257 ms - 0[0m[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b2239f9346c541a39319a8 (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 21.343 ms - 326[0m[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=first, dedup.subset=0, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 17.769 ms - 378[0m[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:23:27] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 41ms[39m
+[2026-03-12 10:23:33] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 6.030 ms - 2212[0m[39m
+[2026-03-12 10:23:38] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/5?qualityVersion=1 [32m200[0m 5.544 ms - 1363[0m[39m
+[2026-03-12 10:24:16] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 9.915 ms - -[0m[39m
+[2026-03-12 10:24:21] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 12.465 ms - 798[0m[39m
+[2026-03-12 10:24:21] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 8.584 ms - 322[0m[39m
+[2026-03-12 10:24:21] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.680 ms - -[0m[39m
+[2026-03-12 10:25:24] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [32m200[0m 6.758 ms - 816[0m[39m
+[2026-03-12 10:25:26] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [32m200[0m 7.524 ms - 183[0m[39m
+[2026-03-12 10:25:26] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 13.300 ms - -[0m[39m
+[2026-03-12 10:25:28] [32minfo[39m: [32m[0mOPTIONS /api/v1/quality/69afdeefaba5e229f3ad6618/retry [32m204[0m 0.282 ms - 0[0m[39m
+[2026-03-12 10:25:28] [32minfo[39m: [32m🚀 [QualityService] Starting analysis for file: 69afdeefaba5e229f3ad6618 (Force: true)[39m
+[2026-03-12 10:25:28] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_STARTED for 69afdeefaba5e229f3ad6618[39m
+[2026-03-12 10:25:28] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/quality/analyze[39m
+[2026-03-12 10:25:28] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/quality/analyze[39m
+[2026-03-12 10:25:29] [32minfo[39m: [32m📨 [Event] Received QUALITY_ANALYSIS_COMPLETED for 69afdeefaba5e229f3ad6618 (v2)[39m
+[2026-03-12 10:25:29] [32minfo[39m: [32m√ [QualityService] Analysis successful: 69afdeefaba5e229f3ad6618[39m
+[2026-03-12 10:25:29] [32minfo[39m: [32m[0mPOST /api/v1/quality/69afdeefaba5e229f3ad6618/retry [32m200[0m 196.756 ms - 71[0m[39m
+[2026-03-12 10:25:29] [32minfo[39m: [32m💾 [DB] File 69afdeefaba5e229f3ad6618 updated with Quality Summary (v2)[39m
+[2026-03-12 10:25:29] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [32m200[0m 21.032 ms - 181[0m[39m
+[2026-03-12 10:25:32] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 4.473 ms - -[0m[39m
+[2026-03-12 10:25:32] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 7.226 ms - -[0m[39m
+[2026-03-12 10:25:34] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 4.835 ms - -[0m[39m
+[2026-03-12 10:25:34] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 8.457 ms - -[0m[39m
+[2026-03-12 10:25:36] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [32m200[0m 4.025 ms - 815[0m[39m
+[2026-03-12 10:25:38] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 7.605 ms - -[0m[39m
+[2026-03-12 10:25:40] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 13.559 ms - 3881[0m[39m
+[2026-03-12 10:25:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 11.689 ms - -[0m[39m
+[2026-03-12 10:25:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 8.062 ms - -[0m[39m
+[2026-03-12 10:25:45] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.354 ms - -[0m[39m
+[2026-03-12 10:25:48] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.588 ms - -[0m[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.125 ms - 0[0m[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b224a49346c541a39319e2 (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 23.084 ms - 326[0m[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m[Cleaning] Effective rules: missing=true, dedup.keep=first, dedup.subset=0, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:27:48] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 17.080 ms - 378[0m[39m
+[2026-03-12 10:27:49] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:27:49] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 37ms[39m
+[2026-03-12 10:27:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 5.035 ms - -[0m[39m
+[2026-03-12 10:28:10] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 7.654 ms - 798[0m[39m
+[2026-03-12 10:28:10] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 4.595 ms - 322[0m[39m
+[2026-03-12 10:28:10] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.078 ms - -[0m[39m
+[2026-03-12 10:28:11] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 4.651 ms - 2631[0m[39m
+[2026-03-12 10:28:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 10.207 ms - -[0m[39m
+[2026-03-12 10:28:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 5.471 ms - -[0m[39m
+[2026-03-12 10:28:47] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.419 ms - -[0m[39m
+[2026-03-12 10:32:02] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 14.309 ms - -[0m[39m
+[2026-03-12 10:32:02] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 6.195 ms - -[0m[39m
+[2026-03-12 10:32:02] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 4.391 ms - -[0m[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.366 ms - 0[0m[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b225ae9346c541a3931a0a (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 34.916 ms - 326[0m[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m[Cleaning] Effective rules: missing=false, dedup.keep=first, dedup.subset=0, typeCast.enabled=true, typeCast.rules=1[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 16.175 ms - 378[0m[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:32:14] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 42ms[39m
+[2026-03-12 10:32:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 6.834 ms - 3052[0m[39m
+[2026-03-12 10:32:22] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 3.879 ms - -[0m[39m
+[2026-03-12 10:32:34] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [32m200[0m 9.631 ms - 816[0m[39m
+[2026-03-12 10:32:38] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [32m200[0m 7.957 ms - 183[0m[39m
+[2026-03-12 10:32:38] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 11.087 ms - -[0m[39m
+[2026-03-12 10:36:41] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 8.367 ms - 3882[0m[39m
+[2026-03-12 10:36:45] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 5.694 ms - 322[0m[39m
+[2026-03-12 10:36:45] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 8.803 ms - 800[0m[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m204[0m 0.339 ms - 0[0m[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b226c09346c541a3931a2b (session=69afdf03aba5e229f3ad662b)[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afdeefaba5e229f3ad6618/run [32m201[0m 27.094 ms - 326[0m[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m[Cleaning] Effective rules: missing=false, dedup.keep=first, dedup.subset=0, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-12 10:36:48] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 28ms[39m
+[2026-03-12 10:36:49] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [32m200[0m 11.293 ms - 788[0m[39m
+[2026-03-12 10:36:52] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [32m200[0m 6.113 ms - 3461[0m[39m
+[2026-03-12 10:36:57] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 3.976 ms - -[0m[39m
+[2026-03-12 10:39:04] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/8?qualityVersion=1 [32m200[0m 5.977 ms - 1264[0m[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m=================================[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-12 10:48:19] [32minfo[39m: [32m=================================[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m=================================[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-12 10:52:25] [32minfo[39m: [32m=================================[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m=================================[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-12 10:53:09] [32minfo[39m: [32m=================================[39m
+[2026-03-12 11:01:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 76.459 ms - -[0m[39m
+[2026-03-12 11:01:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [32m200[0m 7.640 ms - 322[0m[39m
+[2026-03-12 11:01:56] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 8.228 ms - -[0m[39m
+[2026-03-12 11:02:36] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 8.574 ms - -[0m[39m
+[2026-03-12 11:02:37] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/8?qualityVersion=1 [36m304[0m 8.415 ms - -[0m[39m
+[2026-03-12 11:02:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/quality/1/cleaning/8/preview [32m200[0m 8.382 ms - -[0m[39m
+[2026-03-12 11:02:54] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/quality/1/cleaning/8/preview [32m200[0m 6.529 ms - -[0m[39m
+[2026-03-12 11:07:15] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 53.840 ms - -[0m[39m
+[2026-03-12 11:07:15] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 48.215 ms - -[0m[39m
+[2026-03-12 11:07:15] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 61.395 ms - -[0m[39m
+[2026-03-12 11:07:17] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/quality/1/cleaning/8/preview [32m200[0m 12.142 ms - -[0m[39m
+[2026-03-12 11:07:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 16.315 ms - -[0m[39m
+[2026-03-12 11:07:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 8.959 ms - -[0m[39m
+[2026-03-12 11:07:39] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.314 ms - -[0m[39m
+[2026-03-12 11:07:41] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.076 ms - -[0m[39m
+[2026-03-12 11:07:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/7?qualityVersion=1 [32m200[0m 5.628 ms - 1343[0m[39m
+[2026-03-12 11:07:46] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/quality/1/cleaning/7/preview [32m200[0m 6.269 ms - -[0m[39m
+[2026-03-12 11:10:04] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 10.911 ms - -[0m[39m
+[2026-03-12 11:10:04] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 8.444 ms - -[0m[39m
+[2026-03-12 11:10:04] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 5.996 ms - -[0m[39m
+[2026-03-12 11:10:05] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 12.847 ms - -[0m[39m
+[2026-03-12 11:10:07] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports/8?qualityVersion=1 [36m304[0m 4.489 ms - -[0m[39m
+[2026-03-12 11:10:08] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/quality/1/cleaning/8/preview [32m200[0m 7.782 ms - -[0m[39m
+[2026-03-12 11:10:18] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 9.726 ms - -[0m[39m
+[2026-03-12 11:10:27] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [32m200[0m 18.115 ms - 816[0m[39m
+[2026-03-12 11:14:45] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 6.163 ms - -[0m[39m
+[2026-03-12 11:14:50] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 9.503 ms - -[0m[39m
+[2026-03-12 11:14:50] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 5.754 ms - -[0m[39m
+[2026-03-12 11:14:50] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.002 ms - -[0m[39m
+[2026-03-12 11:16:52] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [32m200[0m 8.520 ms - 183[0m[39m
+[2026-03-12 11:16:52] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 9.447 ms - -[0m[39m
+[2026-03-12 11:16:53] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 9.047 ms - -[0m[39m
+[2026-03-12 11:17:59] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 12.981 ms - -[0m[39m
+[2026-03-12 11:18:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 9.799 ms - -[0m[39m
+[2026-03-12 11:18:54] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 8.419 ms - -[0m[39m
+[2026-03-12 11:18:55] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 16.435 ms - -[0m[39m
+[2026-03-12 11:18:57] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 11.501 ms - -[0m[39m
+[2026-03-12 11:18:57] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 4.934 ms - -[0m[39m
+[2026-03-12 11:18:57] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 8.196 ms - -[0m[39m
+[2026-03-12 11:21:24] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.591 ms - -[0m[39m
+[2026-03-12 13:47:19] [33mwarn[39m: [33m⚠️ [MongoDB] Disconnected![39m
+[2026-03-12 13:48:40] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 10.233 ms - -[0m[39m
+[2026-03-12 13:48:40] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.709 ms - -[0m[39m
+[2026-03-12 13:48:41] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 5.603 ms - -[0m[39m
+[2026-03-12 13:48:41] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.019 ms - -[0m[39m
+[2026-03-12 13:48:42] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 11.888 ms - -[0m[39m
+[2026-03-12 13:48:42] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 4.945 ms - -[0m[39m
+[2026-03-12 13:48:42] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 3.879 ms - -[0m[39m
+[2026-03-12 13:51:01] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.707 ms - -[0m[39m
+[2026-03-12 13:51:03] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 4.866 ms - -[0m[39m
+[2026-03-12 13:51:03] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.903 ms - -[0m[39m
+[2026-03-12 13:52:17] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 6.555 ms - -[0m[39m
+[2026-03-12 13:52:17] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 9.868 ms - -[0m[39m
+[2026-03-12 13:54:36] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 10.286 ms - -[0m[39m
+[2026-03-12 13:55:08] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 7.916 ms - -[0m[39m
+[2026-03-12 13:55:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 10.199 ms - -[0m[39m
+[2026-03-12 13:55:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 5.623 ms - -[0m[39m
+[2026-03-12 13:55:19] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.799 ms - -[0m[39m
+[2026-03-12 13:55:25] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/modifications?sessionId=69afdf03aba5e229f3ad662b [36m304[0m 5.433 ms - -[0m[39m
+[2026-03-12 13:55:27] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.677 ms - -[0m[39m
+[2026-03-12 13:56:41] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.335 ms - -[0m[39m
+[2026-03-12 13:57:22] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.007 ms - -[0m[39m
+[2026-03-12 13:57:32] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.223 ms - -[0m[39m
+[2026-03-12 13:57:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.518 ms - -[0m[39m
+[2026-03-12 13:58:09] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 7.972 ms - -[0m[39m
+[2026-03-12 13:58:11] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 8.825 ms - -[0m[39m
+[2026-03-12 13:58:11] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 8.102 ms - -[0m[39m
+[2026-03-12 13:58:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 5.774 ms - -[0m[39m
+[2026-03-12 13:59:01] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/status [36m304[0m 11.578 ms - -[0m[39m
+[2026-03-12 13:59:01] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618 [36m304[0m 17.310 ms - -[0m[39m
+[2026-03-12 13:59:04] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 6.630 ms - -[0m[39m
+[2026-03-12 13:59:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/status?qualityVersion=1 [36m304[0m 9.433 ms - -[0m[39m
+[2026-03-12 13:59:06] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/sessions/active?qualityVersion=1 [36m304[0m 5.373 ms - -[0m[39m
+[2026-03-12 13:59:06] [32minfo[39m: [32m[0mGET /api/v1/quality/69afdeefaba5e229f3ad6618/version/1 [36m304[0m 6.600 ms - -[0m[39m
+[2026-03-12 14:26:37] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 18.664 ms - 3882[0m[39m
+[2026-03-12 14:26:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 21.502 ms - -[0m[39m
+[2026-03-12 14:26:39] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 24.829 ms - -[0m[39m
+[2026-03-12 14:26:52] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 30.730 ms - 197[0m[39m

@@ -32,7 +32,8 @@ export const CleaningHeader: React.FC<Props> = ({ fileId, qualityVersion, status
     <Card
       size="small"
       className="mb-6 shadow-sm border border-slate-200"
-      bodyStyle={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      // 🌟 修复 Ant Design 的黄牌警告
+      styles={{ body: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } }}
     >
       <Space size="large" align="center">
         <Space>

@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react'
 import { useDebounce } from '@/shared/hooks/useDebouncedValue'
 
 // 1. 引入泛型 TStage，默认回退为 string
+export type StageOptionItem<T> =
+  | { label: string; value: T }
+  | { label: string; options: { label: string; value: T }[] }
 export interface FilterBarProps<TStage extends string = string> {
   initialQuery?: string
   initialStage?: TStage
-  stageOptions?: { label: string; value: TStage }[]
+  stageOptions?: StageOptionItem<TStage>[] // 👈 使用新的联合类型
   onFilterChange: (filters: { query?: string; stage?: TStage }) => void
   onReset: () => void
 }
@@ -25,7 +28,7 @@ export function FilterBar<TStage extends string = string>({
   // 3. 内部状态也使用泛型
   const [localStage, setLocalStage] = useState<TStage | undefined>(initialStage)
 
-  const debouncedQuery = useDebounce(localQuery, 500)
+  const debouncedQuery = useDebounce(localQuery, 300)
 
   useEffect(() => {
     onFilterChange({ query: debouncedQuery, stage: localStage })
@@ -59,8 +62,9 @@ export function FilterBar<TStage extends string = string>({
           <Select
             value={localStage}
             onChange={(value) => setLocalStage(value)}
-            options={[{ label: '全部状态', value: 'all' as TStage }, ...stageOptions]}
-            className="w-40"
+            // 🟢 修改这里：合并 'all' 选项并进行安全的类型断言
+            options={[{ label: '全部状态', value: 'all' }, ...stageOptions] as any}
+            className="w-48" // 稍微加宽一点点，因为分组标题可能比较长
           />
         )}
       </Space>

@@ -78,13 +78,17 @@ export const fileService = {
 
   /**
    * 获取文件列表 (分页)
-   * 修复点：Service 层负责计算 totalPages，补全 PaginatedResult 结构
    */
-  async getAllFiles(query: PaginationQuery): Promise<PaginatedResult<IFile>> {
-    const { items, total, page, pageSize } =
-      await fileRepository.findAll(query);
+  async getAllFiles(
+    query: PaginationQuery,
+    filter: any = {}, // 🛠️ 核心修复 3：新增 filter 参数
+  ): Promise<PaginatedResult<IFile>> {
+    // 🛠️ 核心修复 4：将 filter 喂给 findAll
+    const { items, total, page, pageSize } = await fileRepository.findAll(
+      query,
+      filter,
+    );
 
-    // 一行代码搞定结构转换
     return buildPaginatedResult(items, total, page, pageSize);
   },
 

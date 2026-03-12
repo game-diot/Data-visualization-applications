@@ -38,7 +38,17 @@ axiosRetry(httpClientInstance, retryConfig)
 axiosRetry(rawHttpClient, retryConfig)
 
 httpClientInstance.interceptors.response.use(
-  ((response: AxiosResponse<ApiResponse<unknown>>) => {
+  // 🌟 修改点 1：把范型从 ApiResponse 改成 any，因为它现在不仅要接 JSON，还要接纯文本和二进制流
+  ((response: AxiosResponse<any>) => {
+    // 🌟 核心修复：智能白名单旁路 (Bypass)
+    // 只要我们在发起请求时明确要求了非 JSON 格式（如 text、blob、arraybuffer），
+    // 拦截器直接放行，原封不动地把纯文本或文件流（response.data）返回给组件！
+    const responseType = response.config.responseType
+    if (responseType === 'text' || responseType === 'blob' || responseType === 'arraybuffer') {
+      return response.data
+    }
+
+    // 👇 下方是原本的标准化 JSON 业务解包逻辑，完全不受影响
     const body = response.data
 
     const isSuccess = body.status === 'success' || body.status === 'error' || body.code === 0
@@ -49,8 +59,8 @@ httpClientInstance.interceptors.response.use(
       code: body.code ?? -1,
       isBusinessError: true,
       originalError: body,
-      requestId: (body as any).requestId,
-      stage: (body as any).stage,
+      requestId: body?.requestId,
+      stage: body?.stage,
     })
   }) as any,
   (error: AxiosError) => Promise.reject(error),

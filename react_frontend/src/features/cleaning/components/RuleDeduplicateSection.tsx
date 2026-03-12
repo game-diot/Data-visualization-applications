@@ -5,8 +5,10 @@ import { useFormContext, Controller, useWatch } from 'react-hook-form'
 import type { CleanRulesFormValues } from '../schemas/cleaningRules.schema'
 
 const { Text } = Typography
-
-export const RuleDeduplicateSection: React.FC = () => {
+interface Props {
+  availableColumns: string[]
+}
+export const RuleDeduplicateSection: React.FC<Props> = ({ availableColumns }) => {
   const { control } = useFormContext<CleanRulesFormValues>()
   const isEnabled = useWatch({ control, name: 'deduplicate.enabled' })
 
@@ -53,15 +55,17 @@ export const RuleDeduplicateSection: React.FC = () => {
             control={control}
             render={({ field, fieldState }) => (
               <Form.Item
-                label="判断重复的列依据 (留空代表依据所有列)"
-                validateStatus={fieldState.error ? 'error' : ''}
-                help={fieldState.error?.message}
+                label="🎯 查重依据列 (可选子集)"
+                tooltip="留空则默认整行完全相同才算重复"
+                className="mb-0"
               >
                 <Select
                   {...field}
-                  mode="tags"
-                  placeholder="例如输入 Store_ID 作为唯一去重标准"
-                  style={{ width: '100%' }}
+                  mode="multiple"
+                  allowClear
+                  placeholder="请选择基于哪些列判断重复 (默认全列)"
+                  options={availableColumns.map((col) => ({ label: col, value: col }))}
+                  className="w-full"
                 />
               </Form.Item>
             )}

@@ -11,6 +11,22 @@ import type {
 // src/entities/quality/mappers/quality.mapper.ts
 import type { QualitySummaryDTO, QualityStatusDTO } from '../dto/quality.dto'
 
+// 1. 整理一个“后置阶段”的黑名单集合
+const POST_QUALITY_STAGES = [
+  'cleaning_pending',
+  'cleaning_processing',
+  'cleaning_done',
+  'cleaning_failed',
+  'analysis_pending',
+  'analysis_processing',
+  'analysis_done',
+  'analysis_failed',
+  'ai_pending',
+  'ai_generating',
+  'ai_done',
+  'ai_failed',
+]
+
 const formatPercent = (val?: number) => {
   if (typeof val !== 'number') return '0.00%'
   return (val * 100).toFixed(2) + '%'
@@ -100,8 +116,20 @@ export const mapQualitySummaryDtoToVM = (dto: QualitySummaryDTO): QualitySummary
 
 export const mapQualityStatusDtoToVM = (dto: QualityStatusDTO): QualityStatusVM => {
   // 核心：把业务 stage 映射为纯粹的 UI 状态颜色
+  const { stage, message, ...rest } = dto
   let uiStatus: QualityUIStatus = 'default'
-  const stage = dto.stage || ''
+
+  // 🌟 核心魔法：如果当前全局阶段属于“质量检测”之后的任何阶段
+  if (POST_QUALITY_STAGES.includes(stage)) {
+    return {
+      ...rest,
+      uiStatus: 'success', // 强行让 UI 显示成功绿勾
+      message: '质量检测已完成 (文件已进入后续阶段)',
+      updatedAtFormatted: dto.updatedAt ? new Date(dto.updatedAt).toLocaleTimeString('zh-CN') : '',
+      hasResult: dto.hasResult || false,
+      stage: stage,
+    }
+  }
 
   if (['uploaded', 'quality_pending', 'quality_analyzing'].includes(stage)) {
     uiStatus = 'processing'

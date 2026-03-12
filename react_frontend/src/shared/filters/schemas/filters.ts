@@ -1,6 +1,10 @@
 // src/shared/filters/schemas.ts
 import { z } from 'zod'
 import { securityValidators } from '@/shared/security/validators'
+import { FILE_STAGE_ENUM } from '@/entities/file/constant/failStageEnum'
+
+// 2. 魔法拼接：组合 'all' 和后端的严格状态
+const SEARCH_STAGE_OPTIONS = ['all', ...FILE_STAGE_ENUM] as const
 
 const paginationSchema = z.object({
   page: z.coerce.number().min(1).catch(1),
@@ -10,12 +14,24 @@ const paginationSchema = z.object({
 
 export const filesSearchSchema = paginationSchema.extend({
   query: securityValidators.safeQuery.optional().catch(undefined),
+
+  // 🌟 定义 5 个生命周期大阶段
   stage: z
-    .enum(['all', 'uploaded', 'quality_done', 'cleaning_done', 'analysis_done', 'failed'])
+    .enum([
+      'all', // 全部
+      'stage_uploaded', // 上传阶段
+      'stage_quality', // 质量检测阶段
+      'stage_cleaning', // 清洗阶段
+      'stage_analysis', // 分析阶段
+      'stage_ai', // AI阶段
+    ])
     .catch('all'),
+
   sortBy: z.enum(['createdAt', 'updatedAt', 'name']).catch('createdAt'),
 })
 export type FilesSearch = z.infer<typeof filesSearchSchema>
+
+// ... 保持 reportsSearchSchema 和 tasksSearchSchema 不变
 
 export const reportsSearchSchema = paginationSchema.extend({
   version: z.string().trim().max(32).catch(''),

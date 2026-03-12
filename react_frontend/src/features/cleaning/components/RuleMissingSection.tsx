@@ -5,8 +5,11 @@ import { useFormContext, Controller, useWatch } from 'react-hook-form'
 import type { CleanRulesFormValues } from '../schemas/cleaningRules.schema'
 
 const { Text } = Typography
-
-export const RuleMissingSection: React.FC = () => {
+// 修改 Props 定义
+interface Props {
+  availableColumns: string[] // 👈 新增接收列名的 Prop
+}
+export const RuleMissingSection: React.FC<Props> = ({ availableColumns }) => {
   // 1. 接入 RHF 上下文，获取绝对类型安全的 control
   const { control } = useFormContext<CleanRulesFormValues>()
 
@@ -113,13 +116,19 @@ export const RuleMissingSection: React.FC = () => {
                 validateStatus={fieldState.error ? 'error' : ''}
                 help={fieldState.error?.message}
               >
+                {/* 🌟 核心改造：使用多选 Select，且提供一键全选功能 */}
                 <Select
                   {...field}
-                  mode="tags"
-                  placeholder="请输入或选择要处理的列名（输入后回车）"
-                  style={{ width: '100%' }}
-                  // 理想状态下，这里应该传入 Quality 传过来的列名字典，MVP 先让用户自由输入标签
-                  options={[]}
+                  mode="multiple"
+                  allowClear
+                  placeholder={
+                    availableColumns.length > 0
+                      ? '请选择需要处理缺失值的列'
+                      : '🎉 当前数据极其健康，无缺失值！'
+                  }
+                  disabled={availableColumns.length === 0}
+                  options={availableColumns.map((col) => ({ label: col, value: col }))}
+                  className="w-full"
                 />
               </Form.Item>
             )}

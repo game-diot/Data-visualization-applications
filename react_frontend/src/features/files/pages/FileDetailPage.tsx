@@ -47,7 +47,7 @@ export default function FileDetailPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       {/* 顶部面包屑导航区 */}
-      <div className="mb-6">
+      <div>
         <Button
           type="text"
           icon={<ArrowLeftOutlined />}

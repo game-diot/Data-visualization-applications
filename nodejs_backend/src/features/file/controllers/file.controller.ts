@@ -68,11 +68,80 @@ export const fileController = {
         order: (req.query.order as "asc" | "desc") || "desc",
       };
 
-      const result = await fileService.getAllFiles(query);
+      // 🛠️ 核心修复 1：提取过滤条件并构造 Mongoose Filter
+      const filter: any = {};
 
-      // ⚠️ 修复：responseUtils.success 需要传入 data
-      // 原代码：responseUtils.success(res, 200, "msg") -> 错误的参数
-      // 正确：responseUtils.success(res, result, "msg")
+      // 处理文本搜索 (假设前端传的是 query，我们要去匹配文件的 name 或 originalName 字段)
+      if (req.query.query) {
+        const searchKeyword = req.query.query as string;
+        // 使用正则进行不区分大小写的模糊搜索
+        // ⚠️ 请根据你的 Mongoose Schema，把 'originalName' 替换为你实际存储文件名的字段（比如 'name' 或 'filename'）
+        filter.name = { $regex: searchKeyword, $options: "i" };
+        // 💡 扩展提示：如果你想同时搜索文件名和后缀，可以使用 $or：
+        filter.$or = [
+          { name: { $regex: searchKeyword, $options: "i" } },
+          { format: { $regex: searchKeyword, $options: "i" } },
+        ];
+      }
+
+      // 处理阶段筛选 (排除掉 'all' 的情况)
+      // 处理宏观阶段筛选
+      if (req.query.stage && req.query.stage !== "all") {
+        const stage = req.query.stage as string;
+
+        switch (stage) {
+          case "stage_uploaded":
+            // 包含刚上传和上传失败的
+            filter.stage = { $in: ["uploaded", "uploaded_failed"] };
+            break;
+
+          case "stage_quality":
+            // 🌟 体检阶段：包含所有跟 quality 相关的枚举
+            filter.stage = {
+              $in: [
+                "quality_pending",
+                "quality_analyzing",
+                "quality_done",
+                "quality_failed",
+              ],
+            };
+            break;
+
+          case "stage_cleaning":
+            // 🌟 清洗阶段：包含所有跟 cleaning 相关的枚举
+            filter.stage = {
+              $in: [
+                "cleaning_pending",
+                "cleaning_processing",
+                "cleaning_done",
+                "cleaning_failed",
+              ],
+            };
+            break;
+
+          case "stage_analysis":
+            // 🌟 分析阶段：包揽分析的生老病死
+            filter.stage = {
+              $in: [
+                "analysis_pending",
+                "analysis_processing",
+                "analysis_done",
+                "analysis_failed",
+              ],
+            };
+            break;
+
+          case "stage_ai":
+            filter.stage = {
+              $in: ["ai_pending", "ai_generating", "ai_done", "ai_failed"],
+            };
+            break;
+        }
+      }
+
+      // 🛠️ 核心修复 2：把 filter 传给 Service
+      const result = await fileService.getAllFiles(query, filter);
+
       return responseUtils.success(res, result, "获取文件列表成功");
     } catch (error) {
       next(error);

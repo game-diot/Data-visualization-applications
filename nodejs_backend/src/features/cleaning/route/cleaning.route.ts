@@ -38,3 +38,8 @@ cleaningRouter.get(
   "/:fileId/reports/:version",
   cleaningQueryController.getReportDetail,
 );
+
+cleaningRouter.get(
+  "/:fileId/quality/:qualityVersion/cleaning/:cleaningVersion/preview",
+  cleaningQueryController.previewCleanedData,
+);

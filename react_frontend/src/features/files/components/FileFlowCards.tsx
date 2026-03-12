@@ -1,16 +1,26 @@
 import React from 'react'
-import { Card, Button, Badge, Row, Col, Progress } from 'antd'
+import { Card, Button, Badge, Row, Col, Progress, Space, Skeleton } from 'antd'
 import { SearchOutlined, ClearOutlined, LineChartOutlined } from '@ant-design/icons'
 import type { DatasetDetailVM } from '@/entities/file/types/file.types'
-import { useNavigate } from '@tanstack/react-router' // 假设使用 TanStack Router
+import { useNavigate } from '@tanstack/react-router'
 import { notifyInfo } from '@/shared/utils/notify'
+import { useCleaningReports } from '@/entities/cleaning/queries/cleaning.queries'
 
 export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => {
   const navigate = useNavigate()
 
+  // 🌟 消费 reports 接口预热缓存并获取数量
+  const { data: reports, isLoading: isReportsLoading } = useCleaningReports(data.id, 1)
+
+  const reportCount = reports?.length || 0
+
+  // 🌟 核心破局：不要只相信 flowStatus！只要真实的报告数量大于 0，它就是 100% 被清洗过的！
+  const isCleaningDone = data.flowStatus?.cleaning === 'done' || reportCount > 0
   return (
-    <Row gutter={16}>
+    <Row gutter={[16, 16]} className="items-stretch">
+      {/* ========================================================= */}
       {/* 1. 质量检测卡片 */}
+      {/* ========================================================= */}
       <Col span={8}>
         <Card title="1. 数据质量检测" bordered={false} className="shadow-sm h-full flex flex-col">
           <div className="flex-1 flex flex-col items-center justify-center py-4">
@@ -29,11 +39,9 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
             ghost
             block
             icon={<SearchOutlined />}
-            // ⬇️ 3. 核心修改：触发真正的路由跳转
             onClick={() => {
               navigate({
                 to: '/files/$fileId/quality',
-                // 这里的 data.id 就是 fileId，来源于 DatasetDetailVM
                 params: { fileId: data.id },
               })
             }}
@@ -43,35 +51,64 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
         </Card>
       </Col>
 
+      {/* ========================================================= */}
       {/* 2. 数据清洗卡片 */}
+      {/* ========================================================= */}
       <Col span={8}>
         <Card title="2. 数据清洗工作台" bordered={false} className="shadow-sm h-full flex flex-col">
-          <div className="flex-1 flex flex-col items-center justify-center py-4">
-            <Badge
-              status={data.flowStatus.cleaning === 'done' ? 'success' : 'default'}
-              text={data.flowStatus.cleaning === 'done' ? '已生成清洗版本' : '保持原始数据状态'}
-            />
+          <div className="flex-1 flex flex-col items-center justify-center p-10">
+            {isCleaningDone ? (
+              // 🌟 状态 1：已清洗
+              isReportsLoading ? (
+                // 数据加载中的骨架屏防抖
+                <div className="flex flex-col items-center gap-2">
+                  <Badge status="success" text="清洗已完成" />
+                  <Skeleton.Button
+                    active
+                    size="small"
+                    style={{ width: 120, height: 24, borderRadius: 999 }}
+                  />
+                </div>
+              ) : (
+                <Space direction="vertical" align="center" size="small">
+                  <Badge
+                    status="success"
+                    text={<span className="font-medium text-slate-700">清洗已完成</span>}
+                  />
+                  <div className="bg-blue-50 px-3 py-1 rounded-full mt-2 border border-blue-100 ">
+                    <span className="text-sm text-blue-600">
+                      📦 累计生成了 <span className="font-bold text-lg">{reportCount}</span>{' '}
+                      个产物快照
+                    </span>
+                  </div>
+                </Space>
+              )
+            ) : (
+              // 🌟 状态 2：未清洗
+              <Badge status="default" text="保持原始数据状态" />
+            )}
           </div>
+
           <Button
-            type="primary"
-            ghost
+            type={isCleaningDone ? 'default' : 'primary'}
+            ghost={!isCleaningDone}
             block
             icon={<ClearOutlined />}
-            // ⬇️ 3. 核心修改：触发路由跳转，携带 params
             onClick={() => {
               navigate({
                 to: '/files/$fileId/cleaning',
-                // 将当前文件的 ID 传给 URL
                 params: { fileId: data.id },
               })
             }}
           >
-            {data.flowStatus?.cleaning === 'done' ? '查看清洗工作台' : '进入清洗配置'}
+            {isCleaningDone ? '进入工作台继续清洗' : '进入清洗配置'}
           </Button>
         </Card>
       </Col>
 
+      {/* ========================================================= */}
       {/* 3. 模型分析卡片 */}
+      {/* ========================================================= */}
       <Col span={8}>
         <Card title="3. 智能分析与图表" bordered={false} className="shadow-sm h-full flex flex-col">
           <div className="flex-1 flex flex-col items-center justify-center py-4">
@@ -85,7 +122,8 @@ export const FileFlowCards: React.FC<{ data: DatasetDetailVM }> = ({ data }) => 
             block
             icon={<LineChartOutlined />}
             onClick={() => notifyInfo('模型分析模块即将开放，敬请期待！')}
-            className="bg-slate-900 text-white hover:bg-slate-800! hover:text-white! border-none"
+            // 使用 Tailwind 覆盖，避免内联样式的优先级问题
+            className="bg-slate-900 text-white hover:bg-slate-800 hover:text-white border-none"
           >
             创建分析任务
           </Button>

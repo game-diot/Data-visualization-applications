@@ -61,17 +61,18 @@ export const useCleaningRunMutation = (fileId: string, qualityVersion: number) =
     onSuccess: (_, variables) => {
       notifySuccess('数据清洗任务已提交，正在执行中...')
 
-      // 🚀 核心战术：触发 Run 成功后，后端会生成 pending 的 Task。
-      // 我们立刻让全局 Status 缓存失效，迫使 React Query 重新拉取 Status。
-      // 重新拉取的 Status 会变成 'processing'，从而唤醒下方的动态轮询！
-      queryClient.invalidateQueries({
-        queryKey: CLEANING_QUERY_KEYS.status(fileId, qualityVersion),
-      })
+      // 🚀 核心战术升级：加入“黄金延时 (Golden Delay)”
+      // 给后端 500~800 毫秒的时间去完成数据库事务(把状态改成 processing)
+      // 然后再让 React Query 去拉取，这样 100% 能唤醒轮询！
+      setTimeout(() => {
+        queryClient.invalidateQueries({
+          queryKey: CLEANING_QUERY_KEYS.status(fileId, qualityVersion),
+        })
 
-      // 同时让当前 Session 的修改历史失效，因为它们可能已经被标记为 consumed (已消费)
-      queryClient.invalidateQueries({
-        queryKey: CLEANING_QUERY_KEYS.modification(fileId, variables.sessionId),
-      })
+        queryClient.invalidateQueries({
+          queryKey: CLEANING_QUERY_KEYS.modification(fileId, variables.sessionId),
+        })
+      }, 800) // 800ms 是一个几乎无感知，但对数据库极其安全的延时
     },
     onError: (error: Error) => {
       notifyError('提交清洗任务失败', error.message)

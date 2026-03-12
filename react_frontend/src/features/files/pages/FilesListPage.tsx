@@ -31,7 +31,7 @@ export default function FilesListPage() {
   })
   const { handleTableChange } = useTableFilters(updateFilters)
 
-  const { data, isLoading, error, refetch } = useFilesList({
+  const { data, isLoading, error, isFetching } = useFilesList({
     page: filters.page || 1,
     pageSize: filters.pageSize || 10,
     query: filters.query,
@@ -106,19 +106,21 @@ export default function FilesListPage() {
         initialQuery={filters.query}
         initialStage={filters.stage}
         stageOptions={[
-          { label: '已上传', value: 'uploaded' },
-          { label: '处理完成', value: 'cleaning_done' },
-          { label: '处理失败', value: 'failed' },
+          { label: '📦 初始上传阶段', value: 'stage_uploaded' },
+          { label: '🩺 质量检测阶段', value: 'stage_quality' },
+          { label: '🧹 数据清洗阶段', value: 'stage_cleaning' },
+          { label: '📈 分析建模阶段', value: 'stage_analysis' },
+          { label: '🤖 AI 处理阶段', value: 'stage_ai' },
         ]}
         onFilterChange={updateFilters}
-        onReset={() => resetFilters}
+        onReset={resetFilters}
       />
       <div className="bg-white rounded-lg shadow-sm border border-slate-100 p-2 mt-4">
         <Table
           rowKey="id"
           columns={columns}
           dataSource={data?.data || []}
-          loading={isLoading}
+          loading={isLoading || isFetching}
           onChange={handleTableChange}
           pagination={{
             current: filters.page || 1,

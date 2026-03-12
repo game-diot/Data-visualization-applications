@@ -1,3 +1,5 @@
+import { FILE_STAGE_ENUM } from '@/entities/file/constant/failStageEnum'
+import { securityValidators } from '@/shared/security/validators'
 import { z } from 'zod'
 
 // 1. 你的任务状态契约 (保留，用于后续上传进度或后台任务轮询)
@@ -11,17 +13,27 @@ export const TaskStatusSchema = z.object({
 export type TaskStatus = z.infer<typeof TaskStatusSchema>
 
 // 2. [建议采纳] 列表 URL 搜索参数契约 (解决之前 useQueryFilters 报错的关键)
-export const filesSearchSchema = z.object({
-  // 使用 catch() 兜底：如果用户在 URL 里乱敲 ?page=abc，自动降级为 1，防止页面白屏崩溃
-  page: z.number().catch(1),
-  pageSize: z.number().catch(10),
-  query: z.string().optional().catch(''),
-  stage: z.string().optional().catch('all'),
-  order: z.enum(['asc', 'desc']).optional().catch('desc'),
-  sortBy: z.string().optional().catch('createdAt'),
-})
-export type FilesSearchFilters = z.infer<typeof filesSearchSchema>
+// 1. 魔法拼接：组合 'all' 和后端所有的严格状态
+// 注意 `as const` 极其重要，它保证了这不仅是个数组，更是字面量类型组合
+const SEARCH_STAGE_OPTIONS = ['all', ...FILE_STAGE_ENUM] as const
 
+export const filesSearchSchema = z.object({
+  // 💡 架构师加餐：由于 URL 里的参数默认全都是 "字符串" (例如 ?page=2 会被解析为 "2")
+  // 强烈建议加上 .coerce 强制转换，否则 z.number() 校验 URL 字符串时必报错，最终永远触发 catch(1)
+  page: z.coerce.number().catch(1),
+  pageSize: z.coerce.number().catch(10),
+
+  order: z.enum(['asc', 'desc']).optional().catch('desc'),
+  query: securityValidators.safeQuery.optional().catch(undefined),
+
+  // 🌟 核心修改：极其严谨的枚举校验！
+  // 现在它不仅能拦截非法乱敲的 URL，推导出的 FilesSearchFilters 类型也会拥有完美的自动补全
+  stage: z.enum(SEARCH_STAGE_OPTIONS).catch('all'),
+
+  sortBy: z.enum(['createdAt', 'updatedAt', 'name']).catch('createdAt'),
+})
+
+export type FilesSearchFilters = z.infer<typeof filesSearchSchema>
 // 3. [建议采纳] 重命名表单校验契约 (防 SQL 注入/越界)
 export const renameFileSchema = z.object({
   name: z

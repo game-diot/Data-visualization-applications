@@ -5,8 +5,10 @@ import { PlusOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useFormContext, Controller, useWatch, useFieldArray } from 'react-hook-form'
 import type { CleanRulesFormValues } from '../schemas/cleaningRules.schema'
 const { Text } = Typography
-
-export const RuleTypeCastSection: React.FC = () => {
+interface Props {
+  availableColumns: string[]
+}
+export const RuleTypeCastSection: React.FC<Props> = ({ availableColumns }) => {
   const { control } = useFormContext<CleanRulesFormValues>()
   const isEnabled = useWatch({ control, name: 'typeCast.enabled' })
 
@@ -44,14 +46,18 @@ export const RuleTypeCastSection: React.FC = () => {
                 <Controller
                   name={`typeCast.rules.${index}.column`}
                   control={control}
-                  render={({ field: f, fieldState }) => (
+                  render={({ field, fieldState }) => (
                     <Form.Item
-                      label="目标列名"
-                      required
-                      validateStatus={fieldState.error ? 'error' : ''}
+                      label="请选择目标列"
                       help={fieldState.error?.message}
+                      validateStatus={fieldState.error ? 'error' : ''}
+                      className="mb-0"
                     >
-                      <Input {...f} placeholder="例如: Age" />
+                      <Select
+                        {...field}
+                        showSearch // 允许打字搜索，对上百列的数据集极度友好
+                        options={availableColumns.map((col) => ({ label: col, value: col }))}
+                      />
                     </Form.Item>
                   )}
                 />

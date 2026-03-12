@@ -1,5 +1,5 @@
 // src/features/cleaning/hooks/useCleaningStatusPolling.ts
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import {
   useCleaningStatus,
@@ -12,25 +12,26 @@ import {
 export const useCleaningStatusPolling = (fileId: string, qualityVersion: number | null) => {
   const queryClient = useQueryClient()
 
-  // 1. 调用环节一写好的基础 Status Query，并动态注入轮询参数
   const query = useCleaningStatus(fileId, qualityVersion, (queryInstance) => {
-    // React Query v5: 只有当推导出的状态是 'processing' 时，才每秒轮询一次！
-    return queryInstance.state.data?.uiStatus === 'processing' ? 1000 : false
+    return queryInstance.state.data?.uiStatus === 'processing' ? 2000 : false
   })
 
-  // 2. 监听状态突变，触发“雪崩式刷新”
-  useEffect(() => {
-    // 当轮询发现状态终于变成 'success' 时
-    if (query.data?.uiStatus === 'success') {
-      // 触发全局失效，让下方的“报告列表 (Reports)”和“活跃会话 (Session)”自动去拿新数据
-      queryClient.invalidateQueries({
-        queryKey: CLEANING_QUERY_KEYS.all, // 为了保证数据绝对一致，也可以偷懒刷新所有 cleaning 相关的 query
-      })
+  // 🌟 核心修复 1：使用 useRef 记录上一次的状态
+  const currentStatus = query.data?.uiStatus
+  const prevStatusRef = useRef(currentStatus)
 
-      // 也可以更精准地只刷新即将到来的 环节六（历史报告列表）
-      // queryClient.invalidateQueries({ queryKey: CLEANING_QUERY_KEYS.reports(fileId) });
+  useEffect(() => {
+    // 🌟 核心修复 2：只有当上一个状态是 processing，且新状态变成了 done/failed 时，才触发雪崩刷新！
+    if (
+      prevStatusRef.current === 'processing' &&
+      (currentStatus === 'success' || currentStatus === 'failed')
+    ) {
+      queryClient.invalidateQueries({ queryKey: CLEANING_QUERY_KEYS.all })
     }
-  }, [query.data?.uiStatus, fileId, queryClient])
+
+    // 同步历史状态
+    prevStatusRef.current = currentStatus
+  }, [currentStatus, queryClient])
 
   return query
 }

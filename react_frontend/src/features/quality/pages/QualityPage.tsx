@@ -1,5 +1,5 @@
-import { useParams } from '@tanstack/react-router'
-import { Skeleton, Alert } from 'antd'
+import { useNavigate, useParams } from '@tanstack/react-router'
+import { Skeleton, Alert, Button } from 'antd'
 import { QualityHeader } from '../components/QualityHeader'
 import { OverviewCards } from '../components/OverViewCards'
 // 引入防腐层暴露的弹药
@@ -12,8 +12,10 @@ import { AnomaliesTable } from '../components/AnomaliesTable'
 import { DuplicatesPanel } from '../components/DuplicatesPanel'
 import { MissingTable } from '../components/MissingTable'
 import { TypesPanel } from '../components/TypesPanel'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 
 export default function QualityPage() {
+  const navigate = useNavigate()
   // 1. 从 TanStack Router 获取文件 ID
   const { fileId } = useParams({ strict: false }) as { fileId: string }
 
@@ -58,6 +60,16 @@ export default function QualityPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
+      <div>
+        <Button
+          type="text"
+          icon={<ArrowLeftOutlined />}
+          className="text-slate-500 hover:text-slate-800 -ml-4"
+          onClick={() => navigate({ to: '/files' })}
+        >
+          返回数据集列表
+        </Button>
+      </div>
       {/* 头部：展示文件名、状态 Badge、重试按钮 */}
       <QualityHeader fileId={fileId} isViewingHistory={isViewingHistory} />
 
