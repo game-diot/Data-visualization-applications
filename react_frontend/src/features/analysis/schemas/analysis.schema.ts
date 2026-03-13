@@ -8,9 +8,8 @@ const dataSelectionSchema = z
         start: z.number().min(0),
         end: z.number().min(1),
       })
-      .nullable()
-      .default(null),
-    columns: z.array(z.string()).nullable().default(null),
+      .nullable(),
+    columns: z.array(z.string()).nullable(),
   })
   .optional()
 
@@ -19,7 +18,7 @@ const descriptiveSchema = z.object({
   type: z.literal('descriptive'),
   columns: z.array(z.string()).min(1, '请至少选择 1 个字段进行统计'),
   options: z.object({
-    bins: z.number().min(2, '分箱数至少为 2').max(100, '分箱数最多为 100').default(10),
+    bins: z.number().min(2, '分箱数至少为 2').max(100, '分箱数最多为 100'),
   }),
 })
 
@@ -29,7 +28,7 @@ const correlationSchema = z.object({
   // 🌟 安检核心：相关性分析雷区，必须 >= 2 列
   columns: z.array(z.string()).min(2, '相关性分析必须至少选择 2 个数值字段'),
   options: z.object({
-    method: z.enum(['pearson', 'spearman']).default('pearson'),
+    method: z.enum(['pearson', 'spearman']),
   }),
 })
 
@@ -40,7 +39,7 @@ const groupCompareSchema = z.object({
   groupBy: z.string().min(1, '必须选择 1 个类别型字段作为分组依据'),
   target: z.string().min(1, '必须选择 1 个数值型字段作为对比目标'),
   options: z.object({
-    agg: z.enum(['mean', 'median']).default('mean'),
+    agg: z.enum(['mean', 'median']),
   }),
 })
 

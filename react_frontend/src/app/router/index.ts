@@ -9,6 +9,7 @@ import { reportsRoute } from '@/features/reports/router/routes'
 import { exportsRoute } from '@/features/exports/pages/router/routes'
 import { qualityRoute } from '@/features/quality/router/routes'
 import { CleaningRoute } from '@/features/cleaning/router/routes'
+import { analysisRoute } from '@/features/analysis/router/routes'
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
@@ -27,6 +28,7 @@ const routeTree = rootRoute.addChildren([
   exportsRoute,
   qualityRoute,
   CleaningRoute,
+  analysisRoute,
 ])
 
 export const router = createRouter({

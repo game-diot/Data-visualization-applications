@@ -16,6 +16,26 @@ const METHOD_ICONS: Record<string, React.ReactNode> = {
   correlation: <DotChartOutlined />,
   group_compare: <LineChartOutlined />,
 }
+// 🚀 1. 补充：定义前端 UI 字典
+const METHOD_META: Record<string, { title: string; desc: string }> = {
+  descriptive: {
+    title: '描述性统计',
+    desc: '一键生成均值、方差、分位数等基础统计指标与数据分布直方图。',
+  },
+  correlation: {
+    title: '相关性分析',
+    desc: '计算并可视化多个数值型字段之间的 Pearson/Spearman 相关系数矩阵。',
+  },
+  group_compare: {
+    title: '分组对比',
+    desc: '按类别字段进行透视，对比不同组别下目标数值字段的均值或中位数差异。',
+  },
+  // 如果后续有新的算法，直接在这里加！
+  linear_regression: {
+    title: '线性回归',
+    desc: '探索自变量与因变量之间的线性拟合关系，评估模型决定系数。',
+  },
+}
 
 interface Props {
   fileId: string
@@ -53,6 +73,12 @@ export const AnalysisCatalogPanel: React.FC<Props> = ({
           {catalog.methods.map((method) => {
             const isSelected = selectedMethod === method.methodType
 
+            // 🚀 2. 核心修复：从前端字典中匹配文案，如果找不到就兜底显示原本的 methodType
+            const meta = METHOD_META[method.methodType] || {
+              title: method.methodType,
+              desc: '暂无详细描述信息',
+            }
+
             // 样式计算
             let cardClass = 'p-3 rounded-lg border transition-all duration-200 relative '
             if (!method.isAvailable) {
@@ -84,12 +110,14 @@ export const AnalysisCatalogPanel: React.FC<Props> = ({
                       strong
                       className={method.isAvailable ? 'text-slate-800' : 'text-slate-500'}
                     >
-                      {method.displayName}
+                      {/* 🚀 3. 替换为前端字典的 title */}
+                      {meta.title}
                     </Text>
                     {!method.isAvailable && <InfoCircleOutlined className="text-red-400 ml-auto" />}
                   </div>
-                  <Text type="secondary" className="text-xs line-clamp-2 leading-relaxed">
-                    {method.description}
+                  <Text type="secondary" className="text-xs line-clamp-2 leading-relaxed mt-1">
+                    {/* 🚀 4. 替换为前端字典的 desc */}
+                    {meta.desc}
                   </Text>
                 </div>
               </Tooltip>

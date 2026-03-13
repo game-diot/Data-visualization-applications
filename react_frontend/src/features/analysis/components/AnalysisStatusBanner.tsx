@@ -1,95 +1,80 @@
-import React from 'react'
-import { Alert, Spin, Tag, Space, Typography } from 'antd'
-import { CheckCircleOutlined, CloseCircleOutlined, LoadingOutlined } from '@ant-design/icons'
+import React, { useEffect } from 'react'
+import { Alert, Spin } from 'antd'
+import { useQueryClient } from '@tanstack/react-query'
 import { useAnalysisStatusPolling } from '@/entities/analysis/queries/analysis.queries'
 
-const { Text } = Typography
-
-// 阶段字典映射
-const STAGE_DICT: Record<string, string> = {
-  received: '已接收',
-  load: '加载数据中',
-  validate: '校验规则中',
-  process: '模型运算中',
-  export: '打包产物中',
-  done: '分析完毕',
+interface Props {
+  fileId: string
+  qv: number
+  cv: number
 }
 
-export const AnalysisStatusBanner: React.FC<{
-  fileId: string
-  qualityVersion: number
-  cleaningVersion: number
-}> = ({ fileId, qualityVersion, cleaningVersion }) => {
-  const { data: statusData, isLoading } = useAnalysisStatusPolling(
-    fileId,
-    qualityVersion,
-    cleaningVersion,
-  )
+export const AnalysisStatusBanner: React.FC<Props> = ({ fileId, qv, cv }) => {
+  const queryClient = useQueryClient()
 
-  if (isLoading) return <Spin />
-  if (!statusData) return null
+  const { data: statusData, isLoading } = useAnalysisStatusPolling(fileId, qv, cv)
 
-  const { currentTask, latestTask } = statusData
+  // =========================================================
+  // 🚀 1. 精准提取状态：优先看当前正在执行的任务，如果没有，看最新完成的任务
+  // =========================================================
+  const activeTask = statusData?.currentTask || statusData?.latestTask
+  const currentStatus = activeTask?.status // 推导为 'pending' | 'running' | 'success' | 'failed' | undefined
 
-  // 1. 正在运行中...
-  if (currentTask) {
+  // =========================================================
+  // 🚀 2. 终极哨兵机制：监听 currentStatus
+  // =========================================================
+  useEffect(() => {
+    // 契约显示成功状态是 'success'
+    if (currentStatus === 'success') {
+      console.log('🛡️ [StatusBanner] 侦测到分析完成 (success)，正在命令 Table 刷新...')
+      queryClient.invalidateQueries({
+        queryKey: ['analysis', 'reports', fileId, qv, cv],
+      })
+    }
+  }, [currentStatus, queryClient, fileId, qv, cv])
+
+  // UI 渲染兜底
+  if (!statusData || !activeTask) return null
+
+  // 渲染进行中
+  if (currentStatus === 'pending' || currentStatus === 'running') {
     return (
       <Alert
-        message={
-          <Space>
-            <Spin indicator={<LoadingOutlined spin />} />
-            <Text strong className="text-blue-700">
-              分析引擎全速运转中...
-            </Text>
-            <Tag color="processing" className="ml-4">
-              {STAGE_DICT[currentTask.stage] || currentTask.stage}
-            </Tag>
-          </Space>
-        }
         type="info"
-        className="border-blue-200 bg-blue-50 shadow-sm mb-6"
-      />
-    )
-  }
-
-  // 2. 没有运行中的任务，且最新任务是失败的
-  if (latestTask?.status === 'failed') {
-    return (
-      <Alert
-        message={<Text strong>最新分析任务执行失败</Text>}
-        description={
-          <div className="mt-1">
-            <Tag color="error">中断阶段: {STAGE_DICT[latestTask.stage] || latestTask.stage}</Tag>
-            <Text type="danger" className="ml-2">
-              {latestTask.error?.message || '未知错误'}
-              {latestTask.error?.code && ` (错误码: ${latestTask.error.code})`}
-            </Text>
-          </div>
-        }
-        type="error"
-        showIcon
-        icon={<CloseCircleOutlined />}
-        className="mb-6 shadow-sm"
-      />
-    )
-  }
-
-  // 3. 成功或空闲状态 (UI 留白或展示轻量提示，因为成功结果会展示在下方的报告列表里)
-  if (latestTask?.status === 'success') {
-    return (
-      <Alert
         message={
-          <Text strong className="text-green-700">
-            分析已完成，请在下方历史记录查看报告。
-          </Text>
+          <span>
+            <Spin size="small" className="mr-2" />
+            AI 正在全力进行深度分析
+            <span className="text-slate-400 ml-1 text-xs">(阶段: {activeTask.stage})</span>...
+          </span>
         }
-        type="success"
-        showIcon
-        icon={<CheckCircleOutlined />}
-        className="mb-6 shadow-sm border-green-200 bg-green-50"
+        className="border-blue-200 bg-blue-50"
       />
     )
   }
 
-  return null // 还没有触发过任务
+  // 渲染成功
+  if (currentStatus === 'success') {
+    return (
+      <Alert
+        type="success"
+        message="分析任务已完成！历史图表已自动更新在下方。"
+        showIcon
+        closable // 允许用户关掉它，保持界面清爽
+      />
+    )
+  }
+
+  // 渲染失败
+  if (currentStatus === 'failed') {
+    return (
+      <Alert
+        type="error"
+        message={`分析任务执行失败: ${activeTask.errorMessage || '未知系统异常'}`}
+        showIcon
+      />
+    )
+  }
+
+  return null
 }

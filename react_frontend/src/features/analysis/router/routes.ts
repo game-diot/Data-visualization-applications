@@ -2,16 +2,15 @@ import { createRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { z } from 'zod'
 import { rootRoute } from '@/app/router/root'
 
-// 🌟 核心：URL 参数校验，规定必须传或者解析为可选的 qv 和 cv
+// 🚀 核心修复：使用 z.coerce.number()，让 "10" 自动变成数字 10
 export const analysisSearchSchema = z.object({
-  qv: z.number().positive().optional(), // qualityVersion
-  cv: z.number().nonnegative().optional(), // cleaningVersion (0 表示 raw, 但 MVP 强制要求清洗)
+  qv: z.coerce.number().positive().optional(),
+  cv: z.coerce.number().nonnegative().optional(),
 })
 
 export const analysisRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/analysis',
+  path: '/files/$fileId/analysis', // 确保你的 path 写对了
   validateSearch: (search) => analysisSearchSchema.parse(search),
-  // 使用延迟加载，保持首屏性能
   component: lazyRouteComponent(() => import('@/features/analysis/pages/AnalysisPage')),
 })

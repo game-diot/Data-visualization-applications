@@ -16,3 +16,12 @@ export interface AnalysisCatalogVM {
   columns: ColumnProfileVM[]
   methods: AnalysisMethodVM[]
 }
+
+export interface AnalysisReportSummaryVM {
+  reportId: string
+  analysisVersion: number
+  analysisType: string
+  analysisTypeLabel: string // 翻译后的类型：'相关性分析'
+  dataShapeLabel: string // 例如：'使用 895 行, 4 列'
+  createdAtFormatted: string
+}

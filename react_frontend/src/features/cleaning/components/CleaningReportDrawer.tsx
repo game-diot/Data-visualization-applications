@@ -4,6 +4,7 @@ import { Drawer, Descriptions, Typography, Divider, List, Tag, Space, Button, Sk
 import { RocketOutlined, FileExcelOutlined } from '@ant-design/icons'
 import { useCleaningReportDetail } from '@/entities/cleaning/queries/cleaning.queries'
 import { DataPreviewModal } from '@/shared/ui/DataPreviewModal'
+import { useNavigate } from '@tanstack/react-router'
 
 const { Text, Title } = Typography
 
@@ -28,6 +29,10 @@ export const CleaningReportDrawer: React.FC<Props> = ({
   } = useCleaningReportDetail(fileId, qualityVersion, cleaningVersion)
   // 🌟 核心组装 1：加一个状态，控制大屏弹窗的开关
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+
+  const navigate = useNavigate()
+
+  // ... 你的 Drawer 底部代码 ...
   return (
     <>
       <Drawer
@@ -44,7 +49,24 @@ export const CleaningReportDrawer: React.FC<Props> = ({
               <Button icon={<FileExcelOutlined />} onClick={() => setIsPreviewOpen(true)}>
                 预览产物数据
               </Button>
-              <Button type="primary" icon={<RocketOutlined />}>
+
+              {/* 🚀 终极时空传送门：带着版本的血统凭证，跃迁至分析模块！ */}
+              <Button
+                type="primary"
+                icon={<RocketOutlined />}
+                onClick={() => {
+                  navigate({
+                    to: '/files/$fileId/analysis',
+                    params: { fileId: fileId }, // 确保组件 props 里有 fileId
+                    search: {
+                      // 🚀 核心修复：用 nullish 合并运算符，把 null 洗成 undefined
+                      qv: qualityVersion ?? undefined,
+                      cv: cleaningVersion ?? undefined,
+                    },
+                  })
+                }}
+                className="bg-indigo-600 hover:bg-indigo-500" // 搞个高亮的颜色
+              >
                 基于此版本去分析 (Analysis)
               </Button>
             </Space>

@@ -1,43 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, useSearch, useNavigate } from '@tanstack/react-router'
 import { Alert, Skeleton, Result, Button } from 'antd'
 import { ClearOutlined } from '@ant-design/icons'
-// 复用我们在 shared/entities 写好的文件详情 Hook
-import { useFileDetail } from '@/entities/file/queries/file.queries'
-import { AnalysisHeader } from '../components/AnalysisHeader'
 
-export const AnalysisPage: React.FC = () => {
+// Entities Hooks
+import { useFileDetail } from '@/entities/file/queries/file.queries'
+import {
+  useAnalysisCatalog,
+  useAnalysisRunMutation,
+} from '@/entities/analysis/queries/analysis.queries'
+
+// Components
+import { AnalysisHeader } from '../components/AnalysisHeader'
+import { AnalysisCatalogPanel } from '../components/AnalysisCatalogPanel'
+import { AnalysisConfigForm } from '../components/AnalysisConfigForm'
+import { AnalysisStatusBanner } from '../components/AnalysisStatusBanner'
+import { AnalysisReportsTable } from '../components/AnalysisReportsTable'
+import { AnalysisReportDrawer } from '../components/AnalytsisReportDrawer'
+
+// Schemas
+import type { AnalysisConfigFormValues } from '../schemas/analysis.schema'
+
+const AnalysisPage: React.FC = () => {
+  // =========================================================
+  // 1. 所有的 Hooks 必须在最顶层无条件调用！绝对不能有 if 阻断！
+  // =========================================================
   const { fileId } = useParams({ strict: false }) as { fileId: string }
   const searchParams = useSearch({ strict: false }) as { qv?: number; cv?: number }
   const navigate = useNavigate()
 
-  // 1. 获取全局文件状态
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(null)
+  const [drawerVersion, setDrawerVersion] = useState<number | null>(null)
+
   const { data: fileDetail, isLoading, error } = useFileDetail(fileId)
 
-  // 2. 兜底渲染 (Loading & 异常断言)
+  // 即使 fileDetail 还没加载完，这里用可选链推导出的也是 0，安全的
+  const resolvedQv = searchParams.qv ?? fileDetail?.latestQualityVersion ?? 0
+  const resolvedCv = searchParams.cv ?? 0
+
+  // 依赖 resolvedQv 的 Hook，React Query 内部会判断如果 qv 是 0 就 pending，不报错
+  const { data: catalogData } = useAnalysisCatalog(fileId, resolvedQv)
+  const runMutation = useAnalysisRunMutation(fileId, resolvedQv, resolvedCv)
+
+  // =========================================================
+  // 2. 所有的 UI 拦截和兜底 (Early Returns) 必须放在 Hooks 之后！
+  // =========================================================
   if (!fileId) return <Alert message="缺失 File ID" type="error" className="m-6" />
+
+  // 正在加载文件详情，显示骨架屏
   if (isLoading)
     return (
       <div className="p-8">
         <Skeleton active paragraph={{ rows: 6 }} />
       </div>
     )
+
   if (error || !fileDetail) return <Alert message="获取文件信息失败" type="error" className="m-6" />
 
-  // 3. 版本决议 (URL 优先，否则 fallback 到文件最新版本)
-  const resolvedQv = searchParams.qv ?? fileDetail.latestQualityVersion ?? 0
-  const resolvedCv = searchParams.cv ?? fileDetail.latestCleaningVersion ?? 0
-
-  // 4. 防御性 UI 拦截：如果根本没有清洗过，或者解析出来的 cleaningVersion 无效
-  const isCleaningDone = fileDetail.flowStatus?.cleaning === 'done' && resolvedCv > 0
-
+  // 拦截未清洗的数据
+  const isCleaningDone = resolvedCv > 0
   if (!isCleaningDone) {
     return (
       <div className="p-12 bg-white m-6 rounded-lg shadow-sm border border-slate-200 mt-20">
         <Result
           status="warning"
           title="前置依赖未就绪 (Missing Cleaned Asset)"
-          subTitle="智能分析模块必须基于结构化且干净的【清洗产物】运行。系统检测到当前文件尚未完成数据清洗，或无有效的 Cleaning Version。"
+          subTitle="分析模块必须基于清洗产物运行。您尚未完成清洗，或访问链接缺失清洗版本参数 (cv)。"
           extra={
             <Button
               type="primary"
@@ -54,7 +82,21 @@ export const AnalysisPage: React.FC = () => {
     )
   }
 
-  // 5. 正常渲染工作台骨架 (为后续环节预留占位坑位)
+  // =========================================================
+  // 3. 事件处理与主渲染区 (完全安全)
+  // =========================================================
+  const handleRunAnalysis = (formValues: AnalysisConfigFormValues) => {
+    const payload = {
+      qualityVersion: resolvedQv,
+      cleaningVersion: resolvedCv,
+      input: 'cleaned' as const,
+      dataSelection: formValues.dataSelection,
+      analysisConfig: formValues.analysisConfig,
+    }
+
+    console.log('🚀 准备发射给 FastAPI 的 Payload:', payload)
+    runMutation.mutate(payload)
+  }
   return (
     <div className="p-6 bg-slate-50 min-h-screen">
       {/* 环节一：上下文锁定 */}
@@ -64,29 +106,62 @@ export const AnalysisPage: React.FC = () => {
         cleaningVersion={resolvedCv}
       />
 
-      <div className="grid grid-cols-12 gap-6">
-        {/* 左侧：特征目录区 (预留给环节二: Catalog Panel) */}
-        <div className="col-span-4">
-          <div className="bg-white rounded-lg shadow-sm p-4 h-[600px] border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-            [占位] 环节二：Catalog 列画像
-          </div>
+      {/* 🚀 修复点 1：给 grid 加上 items-start，取消子元素默认的等高拉伸，为 Sticky 做准备 */}
+      <div className="grid grid-cols-12 gap-6 mt-6 items-start">
+        {/* 左侧：环节二 (Catalog)
+            🚀 修复点 2：去掉坑爹的 h-[600px]！
+            改成 sticky top-6（吸顶），max-h-[calc(100vh-120px)]（不超过屏幕高度），并开启内部滚动（overflow-y-auto）
+        */}
+        <div className="col-span-4 sticky top-6 max-h-[calc(100vh-120px)] overflow-y-auto rounded-lg shadow-sm">
+          <AnalysisCatalogPanel
+            fileId={fileId}
+            qualityVersion={resolvedQv}
+            selectedMethod={selectedMethod}
+            onMethodSelect={setSelectedMethod}
+          />
         </div>
 
-        {/* 右侧：配置与执行区 (预留给环节二/三/四) */}
+        {/* 右侧：环节三 (配置表单) & 环节四 (状态栏) */}
         <div className="col-span-8 flex flex-col gap-6">
-          <div className="bg-white rounded-lg shadow-sm p-4 h-48 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-            [占位] 环节二：Method Cards Panel (分析能力矩阵)
+          {/* 🚀 修复点 3：去掉坑爹的 h-[400px]，让表单内容自己撑开高度！ */}
+          <div className="w-full">
+            <AnalysisConfigForm
+              selectedMethod={selectedMethod}
+              availableColumns={catalogData?.columns || []}
+              onSubmitTask={handleRunAnalysis}
+              isSubmitting={runMutation.isPending}
+            />
           </div>
-          <div className="bg-white rounded-lg shadow-sm p-4 h-64 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-            [占位] 环节三 & 环节四：动态表单 Config Form & 运行状态 Banner
+
+          <div className="min-h-[60px]">
+            <AnalysisStatusBanner fileId={fileId} qv={resolvedQv} cv={resolvedCv} />
           </div>
         </div>
       </div>
 
-      {/* 底部：历史报告区 (预留给环节五: Reports Table) */}
-      <div className="mt-6 bg-white rounded-lg shadow-sm p-4 h-64 border border-slate-200 border-dashed flex items-center justify-center text-slate-400">
-        [占位] 环节五：Analysis Reports 历史列表
+      {/* 环节五：历史报告 Table
+          🚀 修复点 4：加上 mt-8，与上方的 Grid 布局彻底拉开安全距离！
+      */}
+      <div className="mt-10">
+        <AnalysisReportsTable
+          fileId={fileId}
+          qualityVersion={resolvedQv}
+          cleaningVersion={resolvedCv}
+          onViewDetail={setDrawerVersion}
+        />
       </div>
+
+      {/* 环节六：可视化大屏 Drawer */}
+      <AnalysisReportDrawer
+        fileId={fileId}
+        qualityVersion={resolvedQv}
+        cleaningVersion={resolvedCv}
+        analysisVersion={drawerVersion}
+        open={drawerVersion !== null}
+        onClose={() => setDrawerVersion(null)}
+      />
     </div>
   )
 }
+
+export default AnalysisPage
