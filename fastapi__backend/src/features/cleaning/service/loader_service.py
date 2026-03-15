@@ -127,6 +127,7 @@ def load_dataframe(
                 na_values=DEFAULT_NULL_VALUES,
                 keep_default_na=True,
                 low_memory=False, # 防止混合类型警告，牺牲一点内存换准确性
+                on_bad_lines='warn'
             )
             
         elif data_ref.format == "xlsx":

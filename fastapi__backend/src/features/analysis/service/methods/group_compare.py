@@ -33,9 +33,9 @@ def run_group_compare(
 
     g = sub.groupby(group_by)[target]
 
-    stats_df = g.agg(["count", "mean", "median", "min", "max"]).reset_index()
-    stats_df.columns = ["group", "count", "mean", "median", "min", "max"]
-
+# 1. 完善统计维度：在 g.agg 里加上 "sum"
+    stats_df = g.agg(["count", "mean", "median", "min", "max", "sum"]).reset_index()
+    stats_df.columns = ["group", "count", "mean", "median", "min", "max", "sum"]
     # warnings for small groups
     small_groups = stats_df[stats_df["count"] < 2]["group"].astype(str).tolist()
     if small_groups:
@@ -51,7 +51,9 @@ def run_group_compare(
             float(row["median"]) if not pd.isna(row["median"]) else None,
             float(row["min"]) if not pd.isna(row["min"]) else None,
             float(row["max"]) if not pd.isna(row["max"]) else None,
+            float(row["sum"]) if not pd.isna(row["sum"]) else None, # 🌟 这一列给 Table 用
         ])
+        
 
     charts: List[Dict[str, Any]] = [{
         "type": "table",
@@ -68,20 +70,24 @@ def run_group_compare(
 
     # charts: bar (mean)
     bar_labels = [r[0] for r in table_rows]
-    bar_values = [r[2] for r in table_rows]  # mean
+    # 🚀 智能路由：根据用户选的 agg，决定柱状图展示哪一列
+    agg_to_idx = {"mean": 2, "median": 3, "sum": 6}
+    current_idx = agg_to_idx.get(agg, 2) # 默认回退到 mean
+    
+    bar_values = [r[current_idx] for r in table_rows]
     charts.append({
-        "type": "bar",
-        "title": f"Mean of {target} by {group_by}",
-        "data": {
-            "labels": bar_labels,
-            "values": bar_values,
-        },
-        "meta": {
-            "metric": "mean",
-            "groupBy": group_by,
-            "target": target,
-        }
-    })
+            "type": "bar",
+            "title": f"{agg.capitalize()} of {target} by {group_by}", # 标题也动态化
+            "data": {
+                "labels": bar_labels,
+                "values": bar_values,
+            },
+            "meta": {
+                "metric": agg,
+                "groupBy": group_by,
+                "target": target,
+            }
+        })  
 
     # key_metrics
     groups_metrics = []

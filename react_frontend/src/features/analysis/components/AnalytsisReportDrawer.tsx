@@ -1,8 +1,29 @@
 import React from 'react'
-import { Drawer, Spin, Alert, Typography, Descriptions, Collapse, Tag, Row, Col, Space } from 'antd'
+// Added Table to antd imports
+import {
+  Drawer,
+  Spin,
+  Alert,
+  Typography,
+  Descriptions,
+  Collapse,
+  Tag,
+  Row,
+  Col,
+  Space,
+  Table,
+} from 'antd'
 import ReactECharts from 'echarts-for-react'
 import { useAnalysisReportDetail } from '@/entities/analysis/queries/analysis.queries'
-import { mapHistogramToOption, mapHeatmapToOption, mapBarToOption } from '../charts/ChartsMappers'
+// Added mapTableToAntdProps here
+import {
+  mapHistogramToOption,
+  mapHeatmapToOption,
+  mapBarToOption,
+  mapTableToAntdProps,
+} from '../charts/ChartsMappers'
+import { AIInsightPanel } from './ai/AIInsightPanel'
+import { buildAIChartSummary } from '../charts/ai-payload'
 
 const { Text, Title } = Typography
 const { Panel } = Collapse
@@ -92,7 +113,7 @@ export const AnalysisReportDrawer: React.FC<Props> = ({
           />
         )}
 
-        {/* ================= C. ECharts 图表渲染区 ================= */}
+        {/* ================= C. 图表渲染区 ================= */}
         {charts && charts.length > 0 && (
           <div>
             <Title level={5} className="mb-4 text-slate-800 border-b pb-2">
@@ -100,8 +121,48 @@ export const AnalysisReportDrawer: React.FC<Props> = ({
             </Title>
             <Row gutter={[16, 16]}>
               {charts.map((chart, idx) => {
+                // ==========================================
+                // 🏭 1. 优先路由 Table 类型 (不走 ECharts)
+                // ==========================================
+                if (chart.type === 'table') {
+                  const { columns, dataSource } = mapTableToAntdProps(chart.data)
+                  return (
+                    <Col span={24} key={idx}>
+                      <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 className="text-center text-slate-800 text-sm font-bold mb-4">
+                          {chart.title}
+                        </h3>
+                        {/* 🌟 渲染 Antd Table */}
+                        <Table
+                          columns={columns}
+                          dataSource={dataSource}
+                          pagination={false}
+                          size="small"
+                          bordered
+                        />
+                      </div>
+
+                      {/* 🌟 挂载 AI 魔法引擎！ */}
+                      <div className="mt-4 border-t border-dashed border-gray-200 pt-4">
+                        <AIInsightPanel
+                          fileId={fileId}
+                          qualityVersion={qualityVersion}
+                          cleaningVersion={cleaningVersion}
+                          analysisVersion={report.analysisVersion}
+                          chartId={chart.id}
+                          analysisType={report.summary?.analysis_type || 'unknown'}
+                          // 🛡️ Table 数据本身就是摘要，直接全量传给 AI
+                          chartDataSummary={chart.data}
+                        />
+                      </div>
+                    </Col>
+                  )
+                }
+
+                // ==========================================
+                // 🏭 2. 智能路由：根据后端传来的 type 匹配对应的 Mapper
+                // ==========================================
                 let option = null
-                // 🏭 智能路由：根据后端传来的 type 匹配对应的 Mapper
                 try {
                   if (chart.type === 'histogram') {
                     option = mapHistogramToOption(chart.title, chart.data)
@@ -136,6 +197,23 @@ export const AnalysisReportDrawer: React.FC<Props> = ({
                         style={{ height: isFullWidth ? '500px' : '320px', width: '100%' }}
                         notMerge={true} // 绝对不可删：防止 Drawer 多次打开时图表状态互相污染
                         lazyUpdate={true}
+                      />
+                    </div>
+
+                    {/* 🌟 挂载 AI 魔法引擎！ */}
+                    {/* ========================================== */}
+                    <div className="mt-4 border-t border-dashed border-gray-200 pt-4">
+                      <AIInsightPanel
+                        // 🩸 绝对血统注入 (直接使用 Drawer 的 Props，而不是 report)
+                        fileId={fileId}
+                        qualityVersion={qualityVersion}
+                        cleaningVersion={cleaningVersion}
+                        analysisVersion={report.analysisVersion} // 这个用 report. 或者 props. 里的都可以
+                        // 🎯 目标定位
+                        chartId={chart.id}
+                        analysisType={report.summary?.analysis_type || 'unknown'}
+                        // 🛡️ 经过 Mapper 降维提纯的安全数据
+                        chartDataSummary={buildAIChartSummary(chart)}
                       />
                     </div>
                   </Col>

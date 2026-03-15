@@ -32,14 +32,19 @@ const correlationSchema = z.object({
   }),
 })
 
-// 4. 分组对比参数校验 (预留)
+// 4. 分组对比参数校验 (修复版)
 const groupCompareSchema = z.object({
   type: z.literal('group_compare'),
-  columns: z.array(z.string()).min(1, '需选择参与计算的列'),
+
+  // 🚀 修复 1：把 .min(1) 删掉，改为 .optional() 或者允许为空数组
+  // 因为分组对比的灵魂是下面的 groupBy 和 target，columns 只是为了 DTO 结构对齐
+  columns: z.array(z.string()).optional(),
+
   groupBy: z.string().min(1, '必须选择 1 个类别型字段作为分组依据'),
   target: z.string().min(1, '必须选择 1 个数值型字段作为对比目标'),
   options: z.object({
-    agg: z.enum(['mean', 'median']),
+    // 🚀 修复 2：把 'sum' 加进白名单，和我们的 UI 按钮保持绝对一致！
+    agg: z.enum(['mean', 'median', 'sum']),
   }),
 })
 

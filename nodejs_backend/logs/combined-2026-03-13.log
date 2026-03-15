@@ -174,3 +174,180 @@
 [2026-03-13 15:38:48] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=7 [32m200[0m 19.183 ms - 153[0m[39m
 [2026-03-13 15:39:02] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 8.172 ms - -[0m[39m
 [2026-03-13 15:39:02] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 12.351 ms - -[0m[39m
+[2026-03-13 15:40:48] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 18.195 ms - 3883[0m[39m
+[2026-03-13 15:40:52] [32minfo[39m: [32m[0mGET /api/v1/files/69afce7bcfd2af35e54f3798 [36m304[0m 9.080 ms - -[0m[39m
+[2026-03-13 15:40:52] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/reports?qualityVersion=1 [36m304[0m 8.197 ms - -[0m[39m
+[2026-03-13 15:40:52] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports?qualityVersion=1&cleaningVersion=1 [32m200[0m 6.498 ms - 153[0m[39m
+[2026-03-13 15:40:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/status?qualityVersion=1 [36m304[0m 7.264 ms - -[0m[39m
+[2026-03-13 15:40:56] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/sessions/active?qualityVersion=1 [36m304[0m 4.715 ms - -[0m[39m
+[2026-03-13 15:40:56] [32minfo[39m: [32m[0mGET /api/v1/quality/69afce7bcfd2af35e54f3798/version/1 [32m200[0m 3.614 ms - 2428[0m[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m[0mOPTIONS /api/v1/cleaning/69afce7bcfd2af35e54f3798/run [32m204[0m 0.423 ms - 0[0m[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m🚀 [Cleaning] Start execution for Task 69b3bf9dacb3e83e8471f0ff (session=69afcf22cfd2af35e54f37ae)[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m[0mPOST /api/v1/cleaning/69afce7bcfd2af35e54f3798/run [32m201[0m 39.480 ms - 326[0m[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m[Cleaning] Effective rules: missing=false, dedup.keep=first, dedup.subset=0, typeCast.enabled=false, typeCast.rules=0[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/cleaning/run[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/cleaning/run[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m✅ [Cleaning] FastAPI Computed. Duration: Meta: Pipeline finished in 203ms[39m
+[2026-03-13 15:41:17] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/status?qualityVersion=1 [32m200[0m 8.166 ms - 792[0m[39m
+[2026-03-13 15:41:19] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/reports?qualityVersion=1 [32m200[0m 6.486 ms - 958[0m[39m
+[2026-03-13 15:41:21] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/reports/2?qualityVersion=1 [32m200[0m 4.590 ms - 1273[0m[39m
+[2026-03-13 15:41:25] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afce7bcfd2af35e54f3798/quality/1/cleaning/2/preview [32m200[0m 5.727 ms - -[0m[39m
+[2026-03-13 15:41:33] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/catalog?qualityVersion=1 [32m200[0m 13.660 ms - 1461[0m[39m
+[2026-03-13 15:41:33] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/status?qualityVersion=1&cleaningVersion=2 [32m200[0m 15.392 ms - 197[0m[39m
+[2026-03-13 15:41:33] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports?qualityVersion=1&cleaningVersion=2 [32m200[0m 17.066 ms - 153[0m[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m[0mOPTIONS /api/v1/analysis/69afce7bcfd2af35e54f3798/run [32m204[0m 0.114 ms - 0[0m[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m[0mPOST /api/v1/analysis/69afce7bcfd2af35e54f3798/run [32m201[0m 17.609 ms - 782[0m[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=69b3bfbbacb3e83e8471f11a[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/analysis/run[39m
+[2026-03-13 15:41:47] [32minfo[39m: [32m✅ [Analysis] Task success task=69b3bfbbacb3e83e8471f11a[39m
+[2026-03-13 15:41:48] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports?qualityVersion=1&cleaningVersion=2 [32m200[0m 12.262 ms - 916[0m[39m
+[2026-03-13 15:41:48] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/status?qualityVersion=1&cleaningVersion=2 [32m200[0m 19.797 ms - 1142[0m[39m
+[2026-03-13 15:41:48] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports?qualityVersion=1&cleaningVersion=2 [36m304[0m 4.560 ms - -[0m[39m
+[2026-03-13 15:41:50] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports/1?qualityVersion=1&cleaningVersion=2 [32m200[0m 5.714 ms - 1948[0m[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m[0mOPTIONS /api/v1/analysis/69afce7bcfd2af35e54f3798/run [32m204[0m 0.360 ms - 0[0m[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m[0mPOST /api/v1/analysis/69afce7bcfd2af35e54f3798/run [32m201[0m 18.430 ms - 791[0m[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=69b3bfcfacb3e83e8471f12f[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/analysis/run[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m✅ [Analysis] Task success task=69b3bfcfacb3e83e8471f12f[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports?qualityVersion=1&cleaningVersion=2 [32m200[0m 10.616 ms - 1475[0m[39m
+[2026-03-13 15:42:07] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/status?qualityVersion=1&cleaningVersion=2 [32m200[0m 17.330 ms - 937[0m[39m
+[2026-03-13 15:42:09] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afce7bcfd2af35e54f3798/reports/2?qualityVersion=1&cleaningVersion=2 [32m200[0m 5.379 ms - 1469[0m[39m
+[2026-03-13 15:44:50] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 8.526 ms - 3883[0m[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 15:46:25] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m=================================[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m=================================[39m
+[2026-03-13 15:46:26] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 44.788 ms - -[0m[39m
+[2026-03-13 15:49:33] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 10.190 ms - -[0m[39m
+[2026-03-13 15:49:44] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 13.496 ms - -[0m[39m
+[2026-03-13 15:55:21] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 14.023 ms - -[0m[39m
+[2026-03-13 15:55:25] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 28.296 ms - -[0m[39m
+[2026-03-13 15:55:25] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 11.830 ms - -[0m[39m
+[2026-03-13 15:55:25] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 10.336 ms - -[0m[39m
+[2026-03-13 15:55:34] [32minfo[39m: [32m[0mOPTIONS /api/v1/files/69afce7bcfd2af35e54f3798 [32m204[0m 0.270 ms - 0[0m[39m
+[2026-03-13 15:55:34] [32minfo[39m: [32m🗑️ [FileSystem] Physical file deleted: Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/uploadFiles/ca9af0816bff5ce160a0a541a12f141c.csv[39m
+[2026-03-13 15:55:34] [32minfo[39m: [32m💀 [HardDelete] File destroyed: 69afce7bcfd2af35e54f3798[39m
+[2026-03-13 15:55:34] [32minfo[39m: [32m[0mDELETE /api/v1/files/69afce7bcfd2af35e54f3798 [32m200[0m 21.602 ms - 805[0m[39m
+[2026-03-13 15:55:34] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 8.098 ms - 3155[0m[39m
+[2026-03-13 15:55:38] [32minfo[39m: [32m[0mOPTIONS /api/v1/files/69ae6cd543e911f867d59d3f [32m204[0m 0.413 ms - 0[0m[39m
+[2026-03-13 15:55:38] [32minfo[39m: [32m🗑️ [FileSystem] Physical file deleted: Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/uploadFiles/6a11a1b3b29ab46f0528495887da6de5.csv[39m
+[2026-03-13 15:55:38] [32minfo[39m: [32m💀 [HardDelete] File destroyed: 69ae6cd543e911f867d59d3f[39m
+[2026-03-13 15:55:38] [32minfo[39m: [32m[0mDELETE /api/v1/files/69ae6cd543e911f867d59d3f [32m200[0m 22.835 ms - 1636[0m[39m
+[2026-03-13 15:55:38] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 8.088 ms - 1596[0m[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 17:01:58] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 17:09:26] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 17:12:55] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 17:13:34] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 17:13:35] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-03-13 17:14:42] [32minfo[39m: [32m=================================[39m
+[2026-03-13 17:21:26] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 115.864 ms - -[0m[39m
+[2026-03-13 17:21:29] [32minfo[39m: [32m[0mGET /api/v1/files/69abde4be565c981035045b2 [32m200[0m 19.917 ms - 811[0m[39m
+[2026-03-13 17:21:29] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69abde4be565c981035045b2/reports?qualityVersion=1 [32m200[0m 17.252 ms - 505[0m[39m
+[2026-03-13 17:21:30] [32minfo[39m: [32m[0mGET /api/v1/analysis/69abde4be565c981035045b2/reports?qualityVersion=1&cleaningVersion=1 [32m200[0m 7.789 ms - 153[0m[39m
+[2026-03-13 17:21:32] [32minfo[39m: [32m[0mGET /api/v1/analysis/69abde4be565c981035045b2/catalog?qualityVersion=1 [32m200[0m 35.999 ms - 1036[0m[39m
+[2026-03-13 17:21:32] [32minfo[39m: [32m[0mGET /api/v1/analysis/69abde4be565c981035045b2/status?qualityVersion=1&cleaningVersion=1 [32m200[0m 31.220 ms - 197[0m[39m
+[2026-03-13 17:21:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69abde4be565c981035045b2/reports?qualityVersion=1 [36m304[0m 6.749 ms - -[0m[39m
+[2026-03-13 17:21:46] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [36m304[0m 19.079 ms - -[0m[39m
+[2026-03-13 17:21:47] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [36m304[0m 5.482 ms - -[0m[39m
+[2026-03-13 17:21:47] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69afdeefaba5e229f3ad6618/reports?qualityVersion=1 [36m304[0m 9.902 ms - -[0m[39m
+[2026-03-13 17:21:47] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 12.796 ms - -[0m[39m
+[2026-03-13 17:21:49] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/catalog?qualityVersion=1 [36m304[0m 12.468 ms - -[0m[39m
+[2026-03-13 17:21:49] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/status?qualityVersion=1&cleaningVersion=11 [36m304[0m 17.798 ms - -[0m[39m
+[2026-03-13 17:21:49] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 8.762 ms - -[0m[39m
+[2026-03-13 17:21:57] [32minfo[39m: [32m[0mOPTIONS /api/v1/analysis/69afdeefaba5e229f3ad6618/run [32m204[0m 0.223 ms - 0[0m[39m
+[2026-03-13 17:21:57] [32minfo[39m: [32m[0mPOST /api/v1/analysis/69afdeefaba5e229f3ad6618/run [32m201[0m 93.122 ms - 792[0m[39m
+[2026-03-13 17:21:57] [32minfo[39m: [32m🚀 [Analysis] FastAPI Req: POST /api/v1/analysis/run task=69b3d73590c00b140bde5857[39m
+[2026-03-13 17:21:57] [32minfo[39m: [32m🚀 [FastAPI Req] [Retry:0/3] POST /api/v1/analysis/run[39m
+[2026-03-13 17:21:58] [32minfo[39m: [32m✅ [FastAPI] Success: /api/v1/analysis/run[39m
+[2026-03-13 17:21:58] [32minfo[39m: [32m✅ [Analysis] Task success task=69b3d73590c00b140bde5857[39m
+[2026-03-13 17:21:58] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [32m200[0m 15.816 ms - 6675[0m[39m
+[2026-03-13 17:21:58] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/status?qualityVersion=1&cleaningVersion=11 [32m200[0m 25.444 ms - 935[0m[39m
+[2026-03-13 17:22:02] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports/7?qualityVersion=1&cleaningVersion=11 [32m200[0m 6.660 ms - 1466[0m[39m
+[2026-03-13 17:22:44] [32minfo[39m: [32m[0mGET /api/v1/files/69afdeefaba5e229f3ad6618 [32m200[0m 8.508 ms - 816[0m[39m
+[2026-03-13 17:22:44] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/catalog?qualityVersion=1 [36m304[0m 14.762 ms - -[0m[39m
+[2026-03-13 17:22:45] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 10.988 ms - -[0m[39m
+[2026-03-13 17:22:45] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/status?qualityVersion=1&cleaningVersion=11 [36m304[0m 16.293 ms - -[0m[39m
+[2026-03-13 17:22:45] [32minfo[39m: [32m[0mGET /api/v1/analysis/69afdeefaba5e229f3ad6618/reports?qualityVersion=1&cleaningVersion=11 [36m304[0m 9.151 ms - -[0m[39m
+[2026-03-13 19:00:23] [33mwarn[39m: [33m⚠️ [MongoDB] Disconnected![39m

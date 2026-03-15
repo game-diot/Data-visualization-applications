@@ -79,10 +79,17 @@ export interface AnalysisReportsListResDTO {
 }
 
 export interface AnalysisChartDTO {
+  id: string // 配合上面的 chartId，必须有唯一标识
   type: 'histogram' | 'bar' | 'heatmap' | 'table'
   title: string
-  data: any // 根据 type 变化，交由 mapper 解析
+  data: any // 原始 ECharts 需要的数据
   meta: any
+
+  // 🚀 新增：AI 洞察的永久资产存储字段
+  aiInsight?: string | null
+
+  // 🚀 新增（可选增强）：AI 生成状态，防止用户在最终报告页疯狂点击重复生成
+  aiStatus?: 'idle' | 'generating' | 'success' | 'failed'
 }
 
 export interface AnalysisReportDetailDTO {

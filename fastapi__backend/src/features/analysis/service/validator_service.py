@@ -243,10 +243,10 @@ def _normalize_options(analysis_type: str, options: Dict[str, Any]) -> Dict[str,
 
     if analysis_type == "group_compare":
         agg = options.get("agg", "mean")
-        if agg not in ("mean", "median"):
+        if agg not in ("mean", "median","sum"):
             raise AnalysisException(
                 stage=STAGE_VALIDATE,
-                message="agg must be mean or median",
+                message="agg must be mean or median or sum",
                 details={"agg": agg},
             )
         return {"agg": agg}

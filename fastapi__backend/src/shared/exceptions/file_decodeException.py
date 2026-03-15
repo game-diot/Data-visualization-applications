@@ -11,10 +11,10 @@ class FileDecodeException(BaseAppException):
     文件编码解析失败 (如 GBK 无法解析为 UTF-8)
     前端应提示用户转换编码
     """
-    def __init__(self, filename: str, encoding_error: str):
+    def __init__(self, filename: str, encoding_error: str,details):
         super().__init__(
             message=f"Failed to decode file '{filename}'. Please ensure it is UTF-8 or GBK encoded.",
             code=ErrorCode.FILE_DECODE_ERROR,
             status_code=400,
-            details={"original_error": encoding_error}
+            details={"original_error": encoding_error,}
         )

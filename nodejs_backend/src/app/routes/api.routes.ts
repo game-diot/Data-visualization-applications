@@ -7,6 +7,7 @@ import { fileRouter } from "../../features/file/route/file.routes";
 import { qualityRouter } from "features/quality/routes/quality.route";
 import { cleaningRouter } from "features/cleaning/route/cleaning.route";
 import { analysisRouter } from "features/analysis/router/analysis.router";
+import AIrouter from "features/ai/router/ai.route";
 
 const router = Router();
 
@@ -31,4 +32,5 @@ router.use("/files", fileRouter);
 router.use("/quality", qualityRouter);
 router.use("/cleaning", cleaningRouter);
 router.use("/analysis", analysisRouter);
+router.use("/ai", AIrouter);
 export default router;

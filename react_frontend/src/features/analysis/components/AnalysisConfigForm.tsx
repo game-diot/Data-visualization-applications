@@ -87,10 +87,28 @@ export const AnalysisConfigForm: React.FC<Props> = ({
     .filter((c) => !c.isNumeric)
     .map((c) => ({ label: `${c.columnName} (类别)`, value: c.columnName }))
   const allColOptions = availableColumns.map((c) => ({ label: c.columnName, value: c.columnName }))
+  // 🚀 发射前的最后一道组装工序
+  const handleFinalSubmit = (values: AnalysisConfigFormValues) => {
+    // 拷贝一份，防止污染 RHF 内部状态
+    const payload = { ...values }
 
+    if (payload.analysisConfig.type === 'group_compare') {
+      // 满足 FastAPI Pydantic 对 columns.min_length = 1 的铁血要求！
+      // 把 groupBy 和 target 组装成数组塞进去
+      payload.analysisConfig.columns = [
+        payload.analysisConfig.groupBy,
+        payload.analysisConfig.target,
+      ].filter(Boolean) // 过滤掉可能为空的值，确保安全
+    }
+
+    // 将组装好的完美 Payload 移交给父组件 (AnalysisPage) 去发请求
+    onSubmitTask(payload)
+  }
   return (
     <Card title="参数配置" size="small" className="shadow-sm border-slate-200 h-full">
-      <Form layout="vertical" onFinish={handleSubmit(onSubmitTask)}>
+      {/* 🚀 加上 onError 回调，Zod 拦截的原因将会在控制台大白于天下！ */}
+      <Form layout="vertical" onFinish={handleSubmit(handleFinalSubmit)}>
+        {' '}
         {/* ================= 动态渲染区：描述性统计 ================= */}
         {selectedMethod === 'descriptive' && (
           <>
@@ -106,7 +124,7 @@ export const AnalysisConfigForm: React.FC<Props> = ({
                   <Select
                     {...field}
                     mode="multiple"
-                    placeholder="请选择字段 (可多选)"
+                    placeholder="请选择字段 (可多选，建议选中可表示文件主要内容的字段)"
                     options={allColOptions}
                     maxTagCount="responsive"
                   />
@@ -128,7 +146,6 @@ export const AnalysisConfigForm: React.FC<Props> = ({
             />
           </>
         )}
-
         {/* ================= 动态渲染区：相关性分析 ================= */}
         {selectedMethod === 'correlation' && (
           <>
@@ -170,17 +187,79 @@ export const AnalysisConfigForm: React.FC<Props> = ({
             />
           </>
         )}
-
-        {/* ================= 动态渲染区：分组对比 (预留) ================= */}
+        {/* ================= 动态渲染区：分组对比 ================= */}
         {selectedMethod === 'group_compare' && (
           <>
-            {/* 略，根据你的 schema 类似上述编写即可 */}
-            <Alert message="分组对比模块开发中" type="info" />
+            {/* 1. 分组维度 (groupBy)：防呆设计，只允许选类别列 */}
+            <Controller
+              name="analysisConfig.groupBy"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Form.Item
+                  label="分组维度 (Group By) - 类别列"
+                  validateStatus={fieldState.error ? 'error' : ''}
+                  help={fieldState.error?.message}
+                >
+                  <Select
+                    {...field}
+                    placeholder="请选择用哪个类别列进行分组 (如：部门、性别)"
+                    options={categoricalColOptions}
+                  />
+                </Form.Item>
+              )}
+            />
+
+            {/* 2. 对比目标 (target)：防呆设计，只允许选数值列 */}
+            <Controller
+              name="analysisConfig.target"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Form.Item
+                  label="对比指标 (Target) - 数值列"
+                  validateStatus={fieldState.error ? 'error' : ''}
+                  help={fieldState.error?.message}
+                >
+                  <Select
+                    {...field}
+                    placeholder="请选择要对比的数值列 (如：薪资、身高)"
+                    options={numericColOptions}
+                  />
+                </Form.Item>
+              )}
+            />
+
+            {/* 3. 聚合算法 (agg) */}
+            <Controller
+              name="analysisConfig.options.agg"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Form.Item
+                  label="聚合算法 (Aggregation)"
+                  validateStatus={fieldState.error ? 'error' : ''}
+                  help={fieldState.error?.message}
+                >
+                  <Radio.Group
+                    {...field}
+                    optionType="button"
+                    buttonStyle="solid"
+                    className="w-full flex"
+                  >
+                    <Radio.Button value="mean" className="flex-1 text-center">
+                      平均值 (Mean)
+                    </Radio.Button>
+                    <Radio.Button value="median" className="flex-1 text-center">
+                      中位数 (Median)
+                    </Radio.Button>
+                    <Radio.Button value="sum" className="flex-1 text-center">
+                      总和 (Sum)
+                    </Radio.Button>
+                  </Radio.Group>
+                </Form.Item>
+              )}
+            />
           </>
         )}
-
         <Divider className="my-4" />
-
         <Button
           type="primary"
           htmlType="submit"

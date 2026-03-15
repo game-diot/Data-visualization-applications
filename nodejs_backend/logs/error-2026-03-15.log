@@ -1,0 +1,38 @@
+[2026-03-15 09:23:05] [31merror[39m: [31m❌ [Cleaning] Task Failed: 69b609f98ffa10b948b89034 Failed to parse data file[39m
+[2026-03-15 09:23:05] [31merror[39m: FastApiBusinessException: Failed to parse data file
+    at client.interceptors.response.use.config (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:128:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object._executeCleaningTask (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\cleaning\service\cleaningTask.service.ts:150:22)
+[2026-03-15 09:24:40] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('69b609da8ffa10b948b89018'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-03-15 09:27:16] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('69b609da8ffa10b948b89018'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-03-15 09:27:53] [31merror[39m: MongoServerError: E11000 duplicate key error collection: data_v_platform.cleaning_tasks index: fileId_1_cleaningVersion_1 dup key: { fileId: ObjectId('69b609da8ffa10b948b89018'), cleaningVersion: 1 }
+    at InsertOneOperation.execute (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\node_modules\mongodb\src\collection.ts:286:12)
+[2026-03-15 10:10:16] [31merror[39m: [31m❌ [FastAPI] HTTP 400 [{'type': 'too_short', 'loc': ('body', 'analysis_config', 'columns'), 'msg': 'List should have at least 1 item after validation, not 0', 'input': [], 'ctx': {'field_type': 'List', 'min_length': 1, 'actual_length': 0}}][39m
+[2026-03-15 10:10:16] [31merror[39m: [31m❌ [Analysis] Task failed task=69b61508dbdbcf6a4368c922 FastAPI connection failed: Request failed with status code 400[39m
+[2026-03-15 10:18:17] [31merror[39m: [31m❌ [Analysis] Task failed task=69b616e9dbdbcf6a4368c958 agg must be mean or median[39m
+[2026-03-15 10:42:12] [31merror[39m: [31m❌ [FastAPI] HTTP 500 Internal server error[39m
+[2026-03-15 10:42:12] [31merror[39m: [31m❌ [QualityService] Failed: 69b61c82dbdbcf6a4368ca06 FastAPI connection failed: Request failed with status code 500[39m
+[2026-03-15 10:42:12] [31merror[39m: FastApiBusinessException: FastAPI connection failed: Request failed with status code 500
+    at FastApiClient.handleFinalError (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:239:11)
+    at <anonymous> (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\api\fastapi\clients\fastapiClient.ts:171:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
+    at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\quality\services\quality.services.ts:30:9)

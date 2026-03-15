@@ -38,21 +38,25 @@ export class CleaningTaskRepository {
    * 规则：CleaningVersion = Max(CleaningReport.version) + 1
    * 意义：只有成功的清洗才算一个版本。失败的任务不占版本号。
    */
+  /**
+   * 🚀 修复版：获取下一个清洗版本号
+   * 必须无视任务状态 (status)，找出历史长河中绝对的 Max 版本号！
+   */
   async getNextCleaningVersion(
-    fileId: mongoose.Types.ObjectId,
-    qualityVersion: number,
+    fileId: mongoose.Types.ObjectId | string,
   ): Promise<number> {
-    const lastReport = await CleaningReportModel.findOne({
-      fileId,
-      qualityVersion,
+    const lastTask = await CleaningTaskModel.findOne({
+      fileId: new mongoose.Types.ObjectId(fileId.toString()),
+      // ⚠️ 绝不能在这里加 { status: 'success' } 的过滤条件！
+      // 因为哪怕是 failed 的任务，它的版本号也被永久占用了。
     })
-      .sort({ cleaningVersion: -1 }) // 找最大的成功版本
+      .sort({ cleaningVersion: -1 }) // 倒序排，取最大值
       .select("cleaningVersion")
       .lean();
 
-    return (lastReport?.cleaningVersion || 0) + 1;
+    // 拿到绝对的最大值后 + 1
+    return (lastTask?.cleaningVersion || 0) + 1;
   }
-
   async findLatestBySession(sessionId: mongoose.Types.ObjectId) {
     return CleaningTaskModel.findOne({ sessionId })
       .sort({ createdAt: -1 })

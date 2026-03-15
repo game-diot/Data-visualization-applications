@@ -1,6 +1,53 @@
 // --- src/features/analysis/mappers/charts/histogram.mapper.ts ---
 import type { EChartsOption } from 'echarts'
 
+// ==========================================
+// 🚀 新增：Table 专用的 Ant Design 数据转换器
+// ==========================================
+interface TableData {
+  headers?: string[] // 列名 (如: ['部门', '薪资均值'])
+  columns?: string[] // 兼容不同命名
+  rows?: any[][] // 二维数组数据 (如: [['开发部', 15000], ['HR', 8000]])
+  data?: any[][] // 兼容不同命名
+  records?: Record<string, any>[] // 或者对象数组 (如: [{部门: '开发', 薪资: 15k}])
+}
+
+export const mapTableToAntdProps = (rawData: TableData) => {
+  let antdColumns: any[] = []
+  let antdDataSource: any[] = []
+
+  // 场景 A：后端传来的是对象数组 (Records)
+  if (rawData.records && rawData.records.length > 0) {
+    const keys = Object.keys(rawData.records[0])
+    antdColumns = keys.map((k) => ({ title: k, dataIndex: k, key: k }))
+    antdDataSource = rawData.records.map((r, i) => ({ key: i, ...r }))
+  }
+  // 场景 B：后端传来的是表头 + 二维数组矩阵 (Pandas 默认导出格式)
+  else {
+    const headers = rawData.headers || rawData.columns || []
+    const rows = rawData.rows || rawData.data || []
+
+    // 1. 组装 Antd Columns
+    antdColumns = headers.map((h, i) => ({
+      title: h,
+      dataIndex: `col_${i}`,
+      key: `col_${i}`,
+    }))
+
+    // 2. 组装 Antd DataSource
+    antdDataSource = rows.map((row, rIndex) => {
+      const record: any = { key: rIndex }
+      row.forEach((val, cIndex) => {
+        // 如果数字太长，稍微保留一下小数位防溢出
+        record[`col_${cIndex}`] = typeof val === 'number' ? Number(val.toFixed(3)) : val
+      })
+      return record
+    })
+  }
+
+  return { columns: antdColumns, dataSource: antdDataSource }
+}
+
 // 声明 Histogram 需要的数据结构
 interface HistogramData {
   bins: number[]

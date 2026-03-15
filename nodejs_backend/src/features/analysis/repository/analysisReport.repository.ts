@@ -70,6 +70,38 @@ export class AnalysisReportRepository {
 
     return (last?.analysisVersion || 0) + 1;
   }
+
+  /**
+   * 🚀 专门用于更新特定图表的 AI 洞察结果
+   * 精确打击：只更新对应 report 下、特定 chartId 的图表节点
+   */
+  async updateChartAIInsight(
+    fileId: mongoose.Types.ObjectId | string,
+    qualityVersion: number,
+    cleaningVersion: number,
+    analysisVersion: number,
+    chartId: string,
+    aiInsight: string,
+  ): Promise<boolean> {
+    const result = await AnalysisReportModel.updateOne(
+      {
+        fileId: new mongoose.Types.ObjectId(fileId.toString()), // 确保转为 ObjectId
+        qualityVersion,
+        cleaningVersion,
+        analysisVersion,
+        "charts.id": chartId, // 🎯 精准匹配 charts 数组中 id 为 chartId 的对象
+      },
+      {
+        $set: {
+          "charts.$.aiInsight": aiInsight, // $ 代表上面匹配到的那一个具体的 chart
+          "charts.$.aiStatus": "success",
+        },
+      },
+    );
+
+    // 如果修改数量 > 0，说明成功找到并更新了数据
+    return result.modifiedCount > 0;
+  }
 }
 
 export const analysisReportRepository = new AnalysisReportRepository();
