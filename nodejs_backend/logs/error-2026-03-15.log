@@ -36,3 +36,8 @@
     at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
     at async Axios.request (file:///Z:/000aaaaa000/React-Data-visualization-applications/nodejs_backend/node_modules/axios/lib/core/Axios.js:40:14)
     at async Object.performAnalysis (Z:\000aaaaa000\React-Data-visualization-applications\nodejs_backend\src\features\quality\services\quality.services.ts:30:9)
+[2026-03-15 11:16:45] [31merror[39m: [31m❌ [Analysis] Task failed task=69b6249df6e62711a294f45c Columns not found: ['age', 'gender', 'height', 'weight', 'alco'][39m
+[2026-03-15 11:17:20] [31merror[39m: [31m❌ [Analysis] Task failed task=69b624c0f6e62711a294f46b Columns not found: ['age', 'height', 'weight', 'smoke'][39m
+[2026-03-15 11:20:24] [31merror[39m: [31m❌ [Analysis] Task failed task=69b62578f6e62711a294f47a Columns not found: ['age', 'height', 'weight', 'smoke'][39m
+[2026-03-15 11:20:55] [31merror[39m: [31m❌ [Analysis] Task failed task=69b62597f6e62711a294f48e Columns not found: ['age', 'height', 'weight', 'cholesterol', 'active', 'smoke'][39m
+[2026-03-15 11:21:53] [31merror[39m: [31m❌ [Analysis] Task failed task=69b625d1f6e62711a294f4c5 Columns not found: ['height', 'weight', 'ap_lo', 'active', 'smoke'][39m

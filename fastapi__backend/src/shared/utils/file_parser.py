@@ -32,47 +32,53 @@ def detect_encoding(file_path: str) -> str:
     except Exception as e:
         logger.warning(f"Encoding detection failed: {e}, fallback to utf-8")
         return 'utf-8'
+# src/shared/utils/file_parser.py
 
 def parse_csv(file_path: str, filename: str) -> pd.DataFrame:
     """
-    Parse CSV file with Multi-Encoding Recovery
+    升级版：带有智能嗅探功能的 CSV 解析器
     """
-    # 1. 初始探测
     encoding = detect_encoding(file_path)
-    separators = [',', '\t', ';', '|']
     
-    # 🚀 策略：如果探测的编码失败，我们准备一套“生还者名单”依次尝试
-    fallback_encodings = [encoding, 'utf-8', 'gbk', 'utf-16', 'latin-1']
-    # 去重并保持顺序
-    try_encodings = list(dict.fromkeys([e for e in fallback_encodings if e]))
+    # 🚀 绝杀招式：利用 Python 标准库的 Sniffer 自动探测分隔符
+    import csv
+    try:
+        with open(file_path, 'r', encoding=encoding) as f:
+            # 采样前 2048 字节进行嗅探
+            sample = f.read(2048)
+            # 强制要求包含几种常见分隔符之一，防止嗅探器犯糊涂
+            dialect = csv.Sniffer().sniff(sample, delimiters=',;\t|')
+            detected_sep = dialect.delimiter
+            logger.info(f"Sniffer detected separator: '{detected_sep}' for {filename}")
+    except Exception as e:
+        logger.warning(f"Sniffer failed, falling back to comma. Error: {e}")
+        detected_sep = ','
 
-    for enc in try_encodings:
-        for sep in separators:
-            try:
-                df = pd.read_csv(
-                    file_path,
-                    sep=sep,
-                    encoding=enc,
-                    engine='python',
-                    on_bad_lines='skip' 
-                )
-                if not df.empty and df.shape[1] > 1:
-                    logger.info(f"Successfully parsed {filename} using {enc} and sep='{sep}'")
-                    return df
-            except (UnicodeDecodeError, Exception):
-                continue # 这个编码/分隔符组合不行，试下一个
+    # 定义一套重试优先级：嗅探出来的优先，然后是常见的
+    separators = [detected_sep, ',', ';', '\t', '|']
+    # 去重
+    separators = list(dict.fromkeys(separators))
 
-    # 2. 最终绝杀：如果所有组合都挂了，抛出结构完整的异常
-    # 🌟 修复：必须传入 details 字段，防止中间件 KeyError
-    raise FileDecodeException(
-        filename=filename, 
-        encoding_error="All encoding/separator combinations failed.",
-        # 关键修复：加入 details 字典，里面包含 original_error 键
-        details={
-            "original_error": f"Tried encodings: {try_encodings}",
-            "file_path": file_path
-        }
-    )
+    for sep in separators:
+        try:
+            df = pd.read_csv(
+                file_path,
+                sep=sep,
+                encoding=encoding,
+                engine='python',
+                on_bad_lines='skip'
+            )
+            
+            # 🌟 关键校验：只有列数 > 1 的才被认为是“解析成功”
+            # 如果用逗号去切分分号分隔的文件，列数通常只有 1
+            if not df.empty and df.shape[1] > 1:
+                return df
+                
+        except Exception:
+            continue
+
+    # 兜底：如果都失败了，最后尝试一次原生的 read_csv（让它自生自灭或抛出异常）
+    return pd.read_csv(file_path, sep=None, encoding=encoding, engine='python')
 
 def parse_excel(file_path: str, filename: str) -> pd.DataFrame:
     """
