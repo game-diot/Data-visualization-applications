@@ -20,8 +20,7 @@ export const ManualInputModal: React.FC = () => {
     // 1. 将用户输入的制表符(Excel复制的)替换为标准逗号 CSV 格式
     const csvContent = rawData.replace(/\t/g, ',')
 
-    // 2. 核心黑魔法：在浏览器内存中直接生成一份纯粹的 CSV Blob 文件！
-    // 加入 \uFEFF 是为了防止 Excel 打开时出现中文乱码 (BOM头)
+    // 2.加入 \uFEFF 是为了防止 Excel 打开时出现中文乱码 (BOM头)
     const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' })
 
     // 3. 构造虚拟文件名

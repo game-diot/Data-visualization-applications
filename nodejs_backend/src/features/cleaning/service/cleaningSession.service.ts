@@ -18,20 +18,17 @@ export const cleaningSessionService = {
       fileId,
       qualityVersion,
     );
-
     if (!qReport) {
       throw new BadRequestException(
         `QualityReport not found for qualityVersion=${qualityVersion}`,
       );
     }
-
     // 2) ✅ 关闭同组 active（draft/running）
     await cleaningSessionRepository.closeActiveByFileAndQuality(
       fileId,
       qualityVersion,
     );
     // 2. 校验 qualityVersion 是否合法 (通常需要查 QualityReport，这里简化处理或后续补充)
-
     return cleaningSessionRepository.create(
       new mongoose.Types.ObjectId(fileId),
       qualityVersion,

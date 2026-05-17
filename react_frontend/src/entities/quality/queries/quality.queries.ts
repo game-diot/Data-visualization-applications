@@ -22,7 +22,7 @@ export const useQualityLatest = (fileId: string) => {
     queryKey: QUALITY_QUERY_KEYS.latest(fileId),
     queryFn: async () => {
       const dto = await qualityApi.getLatestQuality(fileId)
-      return mapQualityDtoToVM(dto) // 送入净水器
+      return mapQualityDtoToVM(dto)
     },
     enabled: !!fileId,
     staleTime: 1000 * 60 * 5, // 报告内容短时间内不会变，缓存 5 分钟

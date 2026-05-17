@@ -13,9 +13,7 @@ import { IAnalysisError } from "./ianalysisError.interface";
 // 注意：不要在这里 extends Document，只定义数据！
 // =========================================================
 export interface IFile {
-  // 我们手动声明 _id，以便在 lean() 查询时也能获得代码提示
   _id: mongoose.Types.ObjectId;
-
   // --- 基础元数据 ---
   name: string;
   storedName: string;
@@ -23,37 +21,22 @@ export interface IFile {
   size: number;
   mimetype: string;
   extension: string;
-
-  // --- 归属 ---
   userId?: string;
   hash?: string;
-
-  // --- 状态 ---
   stage: FileStage;
-
-  // --- 外部关联 ---
   fastApiFileId?: string;
-  // ✅ 新增：结构化错误对象
   analysisError?: IAnalysisError | null;
-
-  // --- 时间 ---
   uploadedAt: Date;
   analysisStartedAt?: Date;
   analysisCompletedAt?: Date;
-
-  // 用于列表页展示 & Cleaning 模块快速读取
-  latestQualityVersion?: number; // 指向 QualityReport 的 version
+  latestQualityVersion?: number;
   qualityScore?: number; // 质量评分
   missingRate?: number; // 缺失率
   duplicateRate?: number; // 重复率
   totalRows?: number; // 总行数
   totalColumns?: number; // 总列数
-
-  //用于列表页展示，cleaning模块
   latestCleaningVersion?: number; //记录当前文件基于最新quality版本的最新cleaning版本
   isCleaned?: boolean; //标记是否已经清洗
-
-  // --- 自动字段 (Mongoose timestamps) ---
   createdAt: Date;
   updatedAt: Date;
 }

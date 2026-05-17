@@ -145,7 +145,7 @@ export const CleaningReportDrawer: React.FC<Props> = ({
             {/* 4. 引擎执行日志 (Logs) */}
             <div>
               <Title level={5}>📝 引擎执行日志</Title>
-              <div className="bg-[#1e1e1e] rounded-md p-4 max-h-64 overflow-y-auto mt-2">
+              <div className="bg-[#ffffff] rounded-md p-4 max-h-64 overflow-y-auto mt-2">
                 <List
                   size="small"
                   split={false}

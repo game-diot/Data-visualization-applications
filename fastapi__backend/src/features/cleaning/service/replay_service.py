@@ -96,22 +96,14 @@ def apply_user_actions(
     df: pd.DataFrame,
     actions: List[UserAction],
 ) -> Tuple[pd.DataFrame, List[str], Dict[str, Any], Dict[str, Any]]:
-    """
-    应用用户修改指令流（Fail-Fast 策略）
     
-    :return: (new_df, logs, stats_dict, baseline_profile)
-    """
     logger.info(f"Replay: Starting replay of {len(actions)} actions.")
-    
     # 1. 生成基线画像 (Before State)
     baseline_profile = _profile_baseline(df)
-
     # 2. 深拷贝，防止修改原引用
     df2 = df.copy(deep=True)
-
     replay_log: List[str] = []
     stats = ReplayStats(total=len(actions), applied=0, failed=0, failed_index=None)
-
     for i, act in enumerate(actions):
         try:
             # --- Case A: Update Cell ---
@@ -161,7 +153,7 @@ def apply_user_actions(
                 # 尝试保持类型一致性 (Best Effort)
                 # 例如：原列是 Int，写入 "123" -> 尝试转 Int
                 # 如果失败，Pandas 会自动 Upcast 为 Object，这是预期行为
-                df2.iat[row_pos, col_pos] = act.after
+                df2.iat[row_pos, col_pos] = act.after # type: ignore
                 
                 stats.applied += 1
                 replay_log.append(

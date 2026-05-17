@@ -12,9 +12,8 @@ export const userModificationService = {
   async addModification(fileId: string, dto: CreateUserModificationDTO) {
     // 1. 校验 Session 是否存在且属于当前文件
     const session = await cleaningSessionRepository.findActiveById(
-      dto.sessionId
+      dto.sessionId,
     );
-
     if (!session) {
       throw new BadRequestException("Session not found");
     }
@@ -26,7 +25,6 @@ export const userModificationService = {
     if (session.status === "closed") {
       throw new BadRequestException("Cannot modify an archived session");
     }
-
     // 2. 落库
     return userModificationRepository.create({
       fileId: new mongoose.Types.ObjectId(fileId),
@@ -40,7 +38,7 @@ export const userModificationService = {
    */
   async listModifications(sessionId: string) {
     return userModificationRepository.findBySessionId(
-      new mongoose.Types.ObjectId(sessionId)
+      new mongoose.Types.ObjectId(sessionId),
     );
   },
 };

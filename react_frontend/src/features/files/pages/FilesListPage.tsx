@@ -110,7 +110,6 @@ export default function FilesListPage() {
           { label: '🩺 质量检测阶段', value: 'stage_quality' },
           { label: '🧹 数据清洗阶段', value: 'stage_cleaning' },
           { label: '📈 分析建模阶段', value: 'stage_analysis' },
-          { label: '🤖 AI 处理阶段', value: 'stage_ai' },
         ]}
         onFilterChange={updateFilters}
         onReset={resetFilters}

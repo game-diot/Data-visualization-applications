@@ -66,12 +66,9 @@ export interface IQualityAnalysisResult {
 export interface IQualityReport {
   // 关联 File 模块的主键
   fileId: mongoose.Types.ObjectId;
-
   // 版本号 (V1, V2...) 支持同一文件多次分析
   version: number;
-
   // 核心分析结果 (快照)
-  // ⭐️ 这里直接复用接口，TS 类型检查会确保 snapshot 结构正确
   snapshot: IQualityAnalysisResult;
 
   // 时间戳

@@ -46,10 +46,8 @@ export const cleaningTaskService = {
     const actionsPayload = modifications.flatMap((m) => m.diffList);
 
     // 3. 计算版本
-    const cleaningVersion = await cleaningTaskRepository.getNextCleaningVersion(
-      fId,
-      session.qualityVersion,
-    );
+    const cleaningVersion =
+      await cleaningTaskRepository.getNextCleaningVersion(fId);
 
     // 4. 创建 Task (Pending)
     const task = await cleaningTaskRepository.create({

@@ -46,7 +46,7 @@ def run_correlation(
             val_float = float(cast(Any, val))
             pairs.append({"a": labels[i], "b": labels[j], "corr": val_float})
 
-    # sort by abs corr desc
+ 
     pairs.sort(key=lambda x: abs(x["corr"]), reverse=True)
     top_n = pairs[:10]
 

@@ -11,7 +11,6 @@ const openai = new OpenAI({
 
 export const generateInsightStream = async (req: Request, res: Response) => {
   try {
-    // 解析前端传来的 001 契约数据
     const {
       fileId,
       qualityVersion,
@@ -23,7 +22,6 @@ export const generateInsightStream = async (req: Request, res: Response) => {
     } = req.body;
 
     // 🚀 2. 建立 SSE (Server-Sent Events) 流式连接响应头
-    // 这是让前端实现“打字机”效果的核心魔法！
     res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
@@ -53,22 +51,20 @@ export const generateInsightStream = async (req: Request, res: Response) => {
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
-      stream: true, // 开启流式传输
-      temperature: 0.7, // 稍微发散一点，让分析不那么死板
+      stream: true,
+      temperature: 0.7,
     });
 
-    let fullContent = ""; // 在内存里暂存完整的回答，为了最后的落盘保存
+    let fullContent = "";
 
     // 🚀 5. 监听并透传数据流给前端
     for await (const chunk of stream) {
       const text = chunk.choices[0]?.delta?.content || "";
       if (text) {
         fullContent += text;
-        // 把数据按照 SSE 标准格式发给前端：以 "data: " 开头，以 "\n\n" 结尾
+
         res.write(`data: ${JSON.stringify({ text })}\n\n`);
 
-        // 🚀 核心修复：使用 (res as any) 绕过 TypeScript 的静态类型检查，
-        // 但保留 typeof 的运行时安全检查！
         if (typeof (res as any).flush === "function") {
           (res as any).flush();
         }
@@ -79,9 +75,8 @@ export const generateInsightStream = async (req: Request, res: Response) => {
     res.write("data: [DONE]\n\n");
     res.end();
 
-    // ==========================================
-    // 🌟 隐藏关卡：将最终完整的 AI 洞察存入 MongoDB 永久资产化！
-    // ==========================================
+    // 将最终完整的 AI 洞察存入 MongoDB 永久资产化！
+
     if (fullContent) {
       console.log(
         `[AI Insight] 流式输出完成，准备写入数据库... ChartId: ${chartId}`,

@@ -1,6 +1,6 @@
 // src/features/cleaning/pages/CleaningPage.tsx
 import React, { useState } from 'react'
-import { useNavigate, useParams } from '@tanstack/react-router'
+import { useNavigate, useParams, useRouter } from '@tanstack/react-router'
 import { Skeleton, Tabs, Alert, Typography, Button } from 'antd'
 
 // 引入全局组件
@@ -15,11 +15,13 @@ import { CleaningReportsTable } from '../components/CleaningReportsTable'
 // 引入防腐层 Hooks
 import { useCleaningStatusPolling } from '../hooks/useCleaningStatusPolling'
 import { useCleaningActiveSession } from '@/entities/cleaning/queries/cleaning.queries'
+import { ArrowLeftOutlined } from '@ant-design/icons'
 
 export default function CleaningPage() {
   // 1. 获取核心上下文参数
   // 注意：在实际集成 TanStack Router 时，这里需要确保路由配了 $fileId
   const { fileId } = useParams({ strict: false }) as { fileId: string }
+  const router = useRouter() // 2. 获取 router 实例
   const navigate = useNavigate()
   // MVP 阶段：暂定 qualityVersion 为 1 (后续可从 URL ?qv=x 中获取)
   const [qualityVersion] = useState<number>(1)
@@ -57,6 +59,16 @@ export default function CleaningPage() {
 
   return (
     <div className="p-6 max-w-7xl mx-auto min-h-screen bg-slate-50/50">
+      <div>
+        <Button
+          type="text"
+          icon={<ArrowLeftOutlined />}
+          className="text-slate-500 hover:text-slate-800 -ml-4"
+          onClick={() => router.history.back()} // 3. 调用 history.back()
+        >
+          返回数据详情
+        </Button>
+      </div>
       {/* 顶部仪表盘永远在线 */}
       <CleaningHeader fileId={fileId} qualityVersion={qualityVersion} statusData={statusData} />
 

@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from '@tanstack/react-router'
+import { useNavigate, useParams, useRouter } from '@tanstack/react-router'
 import { Skeleton, Alert, Button } from 'antd'
 import { QualityHeader } from '../components/QualityHeader'
 import { OverviewCards } from '../components/OverViewCards'
@@ -15,6 +15,7 @@ import { TypesPanel } from '../components/TypesPanel'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 
 export default function QualityPage() {
+  const router = useRouter() // 2. 获取 router 实例
   const navigate = useNavigate()
   // 1. 从 TanStack Router 获取文件 ID
   const { fileId } = useParams({ strict: false }) as { fileId: string }
@@ -65,9 +66,9 @@ export default function QualityPage() {
           type="text"
           icon={<ArrowLeftOutlined />}
           className="text-slate-500 hover:text-slate-800 -ml-4"
-          onClick={() => navigate({ to: '/files' })}
+          onClick={() => router.history.back()} // 3. 调用 history.back()
         >
-          返回数据集列表
+          返回数据详情
         </Button>
       </div>
       {/* 头部：展示文件名、状态 Badge、重试按钮 */}

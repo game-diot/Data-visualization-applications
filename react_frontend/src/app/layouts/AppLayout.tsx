@@ -17,18 +17,11 @@ const { Content, Sider } = Layout
 
 const MENU_ITEMS = [
   { key: 'files', label: '数据资产', to: '/files', icon: <DatabaseOutlined /> },
-  { key: 'dashboard', label: '工作台', to: '/dashboard', icon: <DashboardOutlined /> },
-  { key: 'tasks', label: '任务中心', to: '/tasks', icon: <ControlOutlined /> },
-  { key: 'reports', label: '报告大屏', to: '/reports', icon: <ProfileOutlined /> },
-  { key: 'exports', label: '数据导出', to: '/exports', icon: <ExportOutlined /> },
 ] as const
 
 const getSelectedKey = (pathname: string) => {
   if (pathname.startsWith('/files')) return 'files'
-  if (pathname.startsWith('/tasks')) return 'tasks'
-  if (pathname.startsWith('/dashboard')) return 'dashboard'
-  if (pathname.startsWith('/reports')) return 'reports'
-  if (pathname.startsWith('/exports')) return 'exports'
+
   return 'files'
 }
 

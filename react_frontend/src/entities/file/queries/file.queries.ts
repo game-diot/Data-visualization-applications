@@ -28,7 +28,6 @@ export const useFilesList = (params: GetFilesParams) => {
 
 export const useFileDetail = (fileId: string) => {
   return useQuery({
-    // 关键：QueryKey 必须包含 fileId，保证不同文件的缓存互不干扰
     queryKey: FILE_QUERY_KEYS.detail(fileId),
     queryFn: async () => {
       const dto = await fileApi.getFileById(fileId)

@@ -36,20 +36,12 @@ export interface ICleaningReport extends Document {
   sessionId: Types.ObjectId;
   taskId: Types.ObjectId;
   fileId: Types.ObjectId;
-
   qualityVersion: number;
   cleaningVersion: number;
-
-  // 📊 核心统计 (替换原来的 metrics，因为 summary 包含了 metrics)
   summary: ICleaningSummary | null;
-
-  // 🔍 差异详情
   diffSummary: ICleaningDiffSummary;
-
   rulesAppliedDetail?: any[];
   actionsReplay?: { total: number; applied: number; failed: number } | null;
-
-  // 📦 产物引用 (FastAPI 返回的 cleaned_asset_ref)
   cleanedAsset: {
     type?: "local_file" | "s3" | "oss";
     path: string;

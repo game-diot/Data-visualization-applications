@@ -149,11 +149,8 @@ def _apply_deduplicate_rule(
     logger.info("Rules: Applying deduplication...")
     before_rows = len(df)
     
-    # Schema 定义中 subset 为 Optional[List[str]]
     subset = dr.subset
-    
-    # 如果 keep=False (Pydantic 转换后可能是 False boolean)
-    # Pandas drop_duplicates keep参数: 'first', 'last', False
+
     keep_param = dr.keep 
     
     if subset:
@@ -189,12 +186,12 @@ def _apply_type_cast_rule(
     success_casts = []
 
     for idx, item in enumerate(tr.rules):
-        # item 是 TypeCastItem 对象 (强类型)
+ 
         col = item.column
         target = item.target_type
         
         if col not in df2.columns:
-            # 策略：忽略不存在的列，还是报错？这里选择报错以提示配置错误
+
             raise CleaningException(
                 stage="rules",
                 message=f"Type cast target column '{col}' not found",

@@ -1,0 +1,34 @@
+[2026-05-10 11:49:18] [32minfo[39m: [32m🚀 [Bootstrap] System initialization started...[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m✨ [Config] Environment: development[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🔌 [Config] Database: data_v_platform[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🔌 [Config] Redis: redis://localhost:6379[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m📂 [FileSystem] Core directories verified.[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m✅ [MongoDB] Connection successful to database: data_v_platform[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🔌 [Redis] Initiating connection...[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m✅ [Redis] Connection ready at redis://localhost:6379[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m✅ [Bootstrap] All systems operational. Ready to lift off![39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🎧 [FileSubscriber] Listening for events...[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m=================================[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🚀 Server running on port 5000[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🛠  Environment: development[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m🔗 Base URL: http://localhost:5000/api/v1[39m
+[2026-05-10 11:49:18] [32minfo[39m: [32m=================================[39m
+[2026-05-10 11:50:36] [32minfo[39m: [32m[0mGET /api/v1/files?page=1&pageSize=10&query= [32m200[0m 106.830 ms - 9157[0m[39m
+[2026-05-10 11:50:38] [32minfo[39m: [32m[0mGET /api/v1/files/69fe77a6f3aeda4415640f92 [32m200[0m 33.579 ms - 828[0m[39m
+[2026-05-10 11:50:39] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/reports?qualityVersion=1 [36m304[0m 67.314 ms - -[0m[39m
+[2026-05-10 11:50:39] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/reports?qualityVersion=1&cleaningVersion=1 [36m304[0m 81.301 ms - -[0m[39m
+[2026-05-10 11:51:10] [32minfo[39m: [32m[0mGET /api/v1/quality/69fe77a6f3aeda4415640f92/status [32m200[0m 15.132 ms - 183[0m[39m
+[2026-05-10 11:51:10] [32minfo[39m: [32m[0mGET /api/v1/quality/69fe77a6f3aeda4415640f92 [36m304[0m 62.497 ms - -[0m[39m
+[2026-05-10 11:51:41] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/reports?qualityVersion=1 [36m304[0m 25.055 ms - -[0m[39m
+[2026-05-10 11:51:41] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/reports?qualityVersion=1&cleaningVersion=1 [36m304[0m 33.538 ms - -[0m[39m
+[2026-05-10 11:51:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/status?qualityVersion=1 [36m304[0m 122.109 ms - -[0m[39m
+[2026-05-10 11:51:44] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/sessions/active?qualityVersion=1 [36m304[0m 11.945 ms - -[0m[39m
+[2026-05-10 11:51:44] [32minfo[39m: [32m[0mGET /api/v1/quality/69fe77a6f3aeda4415640f92/version/1 [36m304[0m 18.172 ms - -[0m[39m
+[2026-05-10 11:51:55] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/reports?qualityVersion=1 [36m304[0m 9.888 ms - -[0m[39m
+[2026-05-10 11:51:57] [32minfo[39m: [32m[0mGET /api/v1/cleaning/69fe77a6f3aeda4415640f92/reports/1?qualityVersion=1 [36m304[0m 5.912 ms - -[0m[39m
+[2026-05-10 11:52:10] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/catalog?qualityVersion=1 [32m200[0m 16.613 ms - 2586[0m[39m
+[2026-05-10 11:52:10] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/status?qualityVersion=1&cleaningVersion=1 [36m304[0m 108.782 ms - -[0m[39m
+[2026-05-10 11:52:11] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/reports?qualityVersion=1&cleaningVersion=1 [36m304[0m 11.302 ms - -[0m[39m
+[2026-05-10 11:52:39] [32minfo[39m: [32m[0mGET /api/v1/analysis/69fe77a6f3aeda4415640f92/reports/2?qualityVersion=1&cleaningVersion=1 [32m200[0m 25.721 ms - 3383[0m[39m
+[2026-05-10 11:52:51] [32minfo[39m: [32m[0mOPTIONS /api/v1/ai/insight/stream [32m204[0m 0.547 ms - 0[0m[39m
+[2026-05-10 11:52:57] [32minfo[39m: [32m[0mPOST /api/v1/ai/insight/stream [32m200[0m 2057.383 ms - -[0m[39m

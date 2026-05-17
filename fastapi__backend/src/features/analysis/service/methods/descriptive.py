@@ -82,8 +82,7 @@ def run_descriptive(
                 "metrics": numeric_metrics[col] 
             }
         })
-    # ---- categorical columns: value_counts + bar ----
-# ---- categorical columns: value_counts + bar ----
+
     for col in cat_cols:
         s = df[col].astype("object")
         missing_count = int(s.isna().sum())

@@ -3,12 +3,11 @@
 import { Document, Types } from "mongoose";
 
 export interface IDiffItem {
-  op: "update_cell" | "delete_row" | "insert_row"; // 更新枚举
-  rowId: string; // 新增
-  column?: string; // 新增 (可选)
+  op: "update_cell" | "delete_row" | "insert_row";
+  rowId: string;
+  column?: string;
   before?: any;
   after?: any;
-  // path?: string;  // 移除或设为可选
 }
 
 export interface IUserMondification extends Document {

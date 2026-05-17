@@ -7,8 +7,6 @@ export interface IAnalysisChart {
   title: string;
   data: any;
   meta?: any;
-
-  // 🌟 AI 辅助模块新增字段
   aiInsight?: string | null;
   aiStatus?: "idle" | "generating" | "success" | "failed";
 }
@@ -23,10 +21,7 @@ export interface IAnalysisReport extends Document {
   analysisVersion: number;
 
   summary: any;
-
-  // 🌟 替换掉原来的 charts: any[]
   charts: IAnalysisChart[];
-
   modelResult?: any | null;
   artifacts?: any[];
 
